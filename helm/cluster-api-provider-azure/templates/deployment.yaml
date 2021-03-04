@@ -5,7 +5,7 @@ metadata:
     aadpodidbinding: capz-controller-aadpodidentity-selector
     control-plane: capz-controller-manager
     {{- include "labels.common" . | nindent 4 }}
-  name: capz-controller-manager
+  name: {{ include "resource.default.name" . }}
   namespace: {{ include "resource.default.namespace" . }}
 spec:
   replicas: 1
@@ -25,7 +25,6 @@ spec:
       containers:
       - args:
         - --metrics-addr=127.0.0.1:8080
-        - --enable-leader-election
         - --feature-gates=MachinePool={{ .Values.featuregates.machinepool }},AKS={{ .Values.featuregates.aks }}
         env:
         - name: AZURE_ENVIRONMENT
