@@ -85,7 +85,7 @@ spec:
         - --upstream=http://127.0.0.1:8080/
         - --logtostderr=true
         - --v=10
-        image: ""{{ .Values.kuberbacproxy.image.registry }}/{{ .Values.kuberbacproxy.image.name }}:{{ .Values.kuberbacproxy.image.tag }}""
+        image: "{{ .Values.kuberbacproxy.image.registry }}/{{ .Values.kuberbacproxy.image.name }}:{{ .Values.kuberbacproxy.image.tag }}"
         name: kube-rbac-proxy
         ports:
         - containerPort: 8443
