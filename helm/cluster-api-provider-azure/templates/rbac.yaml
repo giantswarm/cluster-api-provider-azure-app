@@ -1,0 +1,333 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels:
+    cluster.x-k8s.io/provider: infrastructure-azure
+  name: {{ include "resource.default.name" . }}-leader-election
+  namespace: {{ include "resource.default.namespace" . }}
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps
+    verbs:
+      - get
+      - list
+      - watch
+      - create
+      - update
+      - patch
+      - delete
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps/status
+    verbs:
+      - get
+      - update
+      - patch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    cluster.x-k8s.io/provider: infrastructure-azure
+  name: {{ include "resource.default.name" . }}
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - events
+    verbs:
+      - create
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - ""
+    resources:
+      - secrets
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - aadpodidentity.k8s.io
+    resources:
+      - azureidentities
+      - azureidentities/status
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - aadpodidentity.k8s.io
+    resources:
+      - azureidentitybindings
+      - azureidentitybindings/status
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - cluster.x-k8s.io
+    resources:
+      - clusters
+      - clusters/status
+    verbs:
+      - get
+      - list
+      - patch
+      - watch
+  - apiGroups:
+      - cluster.x-k8s.io
+    resources:
+      - machines
+      - machines/status
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - ""
+    resources:
+      - nodes
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - exp.cluster.x-k8s.io
+    resources:
+      - machinepools
+      - machinepools/status
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - exp.infrastructure.cluster.x-k8s.io
+    resources:
+      - azuremachinepools
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - exp.infrastructure.cluster.x-k8s.io
+    resources:
+      - azuremachinepools/status
+    verbs:
+      - get
+      - patch
+      - update
+  - apiGroups:
+      - exp.infrastructure.cluster.x-k8s.io
+    resources:
+      - azuremanagedclusters
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - exp.infrastructure.cluster.x-k8s.io
+    resources:
+      - azuremanagedclusters/status
+    verbs:
+      - get
+      - patch
+      - update
+  - apiGroups:
+      - exp.infrastructure.cluster.x-k8s.io
+    resources:
+      - azuremanagedcontrolplanes
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - exp.infrastructure.cluster.x-k8s.io
+    resources:
+      - azuremanagedcontrolplanes/status
+    verbs:
+      - get
+      - patch
+      - update
+  - apiGroups:
+      - exp.infrastructure.cluster.x-k8s.io
+    resources:
+      - azuremanagedmachinepools
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - exp.infrastructure.cluster.x-k8s.io
+    resources:
+      - azuremanagedmachinepools/status
+    verbs:
+      - get
+      - patch
+      - update
+  - apiGroups:
+      - infrastructure.cluster.x-k8s.io
+    resources:
+      - azureclusteridentities
+      - azureclusteridentities/status
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - infrastructure.cluster.x-k8s.io
+    resources:
+      - azureclusters
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - infrastructure.cluster.x-k8s.io
+    resources:
+      - azureclusters/status
+    verbs:
+      - get
+      - patch
+      - update
+  - apiGroups:
+      - infrastructure.cluster.x-k8s.io
+    resources:
+      - azuremachines
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+  - apiGroups:
+      - infrastructure.cluster.x-k8s.io
+    resources:
+      - azuremachines/status
+    verbs:
+      - get
+      - patch
+      - update
+  - apiGroups:
+      - infrastructure.cluster.x-k8s.io
+    resources:
+      - azuremachinetemplates
+      - azuremachinetemplates/status
+    verbs:
+      - get
+      - list
+      - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    cluster.x-k8s.io/provider: infrastructure-azure
+  name: {{ include "resource.default.name" . }}-metrics-reader
+rules:
+  - nonResourceURLs:
+      - /metrics
+    verbs:
+      - get
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    cluster.x-k8s.io/provider: infrastructure-azure
+  name: {{ include "resource.default.name" . }}-proxy
+rules:
+  - apiGroups:
+      - authentication.k8s.io
+    resources:
+      - tokenreviews
+    verbs:
+      - create
+  - apiGroups:
+      - authorization.k8s.io
+    resources:
+      - subjectaccessreviews
+    verbs:
+      - create
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    cluster.x-k8s.io/provider: infrastructure-azure
+  name: {{ include "resource.default.name" . }}-leader-election
+  namespace: {{ include "resource.default.namespace" . }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ include "resource.default.name" . }}-leader-election
+subjects:
+- kind: ServiceAccount
+  name: {{ include "resource.default.name" . }}
+  namespace: {{ include "resource.default.namespace" . }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    cluster.x-k8s.io/provider: infrastructure-azure
+  name: {{ include "resource.default.name" . }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ include "resource.default.name" . }}
+subjects:
+- kind: ServiceAccount
+  name: {{ include "resource.default.name" . }}
+  namespace: {{ include "resource.default.namespace" . }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    cluster.x-k8s.io/provider: infrastructure-azure
+  name: {{ include "resource.default.name" . }}-proxy
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ include "resource.default.name" . }}-proxy
+subjects:
+- kind: ServiceAccount
+  name: {{ include "resource.default.name" . }}
+  namespace: {{ include "resource.default.namespace" . }}

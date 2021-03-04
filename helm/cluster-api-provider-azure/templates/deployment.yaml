@@ -1,0 +1,93 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    aadpodidbinding: capz-controller-aadpodidentity-selector
+    control-plane: capz-controller-manager
+    {{- include "labels.common" . | nindent 4 }}
+  name: capz-controller-manager
+  namespace: capz-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      control-plane: capz-controller-manager
+      {{- include "labels.selector" . | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/default-logs-container: manager
+      labels:
+        aadpodidbinding: capz-controller-aadpodidentity-selector
+        control-plane: capz-controller-manager
+        {{- include "labels.common" . | nindent 8 }}
+    spec:
+      containers:
+      - args:
+        - --metrics-addr=127.0.0.1:8080
+        - --enable-leader-election
+        - --feature-gates=MachinePool={{ .Values.featuregates.machinepool }},AKS={{ .Values.featuregates.aks }}
+        env:
+        - name: AZURE_ENVIRONMENT
+          valueFrom:
+            configMapKeyRef:
+              key: cloud-env
+              name: capz-manager-bootstrap-cloud-env
+        - name: AZURE_SUBSCRIPTION_ID
+          valueFrom:
+            secretKeyRef:
+              key: "azure.azureoperator.subscriptionid"
+              name: credential-default
+        - name: AZURE_TENANT_ID
+          valueFrom:
+            secretKeyRef:
+              key: "azure.azureoperator.tenantid"
+              name: credential-default
+        - name: AZURE_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              key: "azure.azureoperator.clientid"
+              name: credential-default
+        - name: AZURE_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              key: "azure.azureoperator.clientsecret"
+              name: credential-default
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        image: "{{ .Values.image.registry }}/{{ .Values.image.name }}:{{ .Values.image.tag }}"
+        imagePullPolicy: Always
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: healthz
+        name: manager
+        ports:
+        - containerPort: 9440
+          name: healthz
+          protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: healthz
+      - args:
+        - --secure-listen-address=0.0.0.0:8443
+        - --upstream=http://127.0.0.1:8080/
+        - --logtostderr=true
+        - --v=10
+        image: ""{{ .Values.kuberbacproxy.image.registry }}/{{ .Values.kuberbacproxy.image.name }}:{{ .Values.kuberbacproxy.image.tag }}""
+        name: kube-rbac-proxy
+        ports:
+        - containerPort: 8443
+          name: https
+      terminationGracePeriodSeconds: 10

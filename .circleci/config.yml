@@ -1,0 +1,16 @@
+version: 2.1
+
+orbs:
+  architect: giantswarm/architect@2.2.0
+
+workflows:
+  build:
+    jobs:
+      # Ensure that for every commit
+      # there is an app version in the test catalog.
+      - architect/push-to-app-catalog:
+          context: architect
+          name: push-to-app-catalog
+          app_catalog: "control-plane-test-catalog"
+          app_catalog_test: "control-plane-test-catalog"
+          chart: "cluster-api-provider-azure"
