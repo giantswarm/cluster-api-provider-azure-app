@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  cloud-env: "AzurePublicCloud"
+kind: ConfigMap
+metadata:
+  labels:
+    {{ include "labels.provider" . | nindent 4 }}
+  name: {{ include "resource.default.name" . }}-bootstrap-cloud-env
+  namespace: {{ include "resource.default.namespace" . }}

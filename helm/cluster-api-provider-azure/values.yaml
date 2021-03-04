@@ -1,0 +1,19 @@
+name: cluster-api-azure-controller
+image:
+  registry: gcr.io
+  name: k8s-staging-cluster-api-azure/cluster-api-azure-controller
+  tag: v0.4.12
+
+kuberbacproxy:
+  image:
+    registry: gcr.io
+    name: kubebuilder/kube-rbac-proxy
+    tag: v0.8.0
+
+featuregates:
+  machinepool: true
+  aks: false
+
+project:
+  branch: "[[ .Branch ]]"
+  commit: "[[ .SHA ]]"
