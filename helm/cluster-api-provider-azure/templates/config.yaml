@@ -5,5 +5,5 @@ kind: ConfigMap
 metadata:
   labels:
     {{ include "labels.provider" . | nindent 4 }}
-  name: capz-manager-bootstrap-cloud-env
+  name: {{ include "resource.default.name" . }}-bootstrap-cloud-env
   namespace: {{ include "resource.default.namespace" . }}
