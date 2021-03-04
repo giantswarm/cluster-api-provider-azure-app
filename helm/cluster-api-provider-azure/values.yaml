@@ -1,4 +1,4 @@
-name: cluster-api-core
+name: cluster-api-azure-controller
 image:
   registry: gcr.io
   name: k8s-staging-cluster-api-azure/cluster-api-azure-controller
