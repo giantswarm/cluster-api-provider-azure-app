@@ -22,6 +22,7 @@ spec:
         control-plane: capz-controller-manager
         {{- include "labels.common" . | nindent 8 }}
     spec:
+      serviceAccountName: {{ include "resource.default.name" . }}
       containers:
       - args:
         - --metrics-addr=127.0.0.1:8080
