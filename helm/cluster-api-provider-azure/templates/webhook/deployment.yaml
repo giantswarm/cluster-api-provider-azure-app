@@ -20,6 +20,7 @@ spec:
         kubectl.kubernetes.io/default-logs-container: manager
       labels:
         aadpodidbinding: capz-controller-aadpodidentity-selector
+        control-plane: capz-controller-manager
         {{- include "labels.common" . | nindent 8 }}
         {{- include "labels.provider" . | nindent 8 }}
     spec:
