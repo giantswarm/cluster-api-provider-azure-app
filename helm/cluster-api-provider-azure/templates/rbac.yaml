@@ -69,12 +69,24 @@ rules:
   - apiGroups:
       - aadpodidentity.k8s.io
     resources:
+      - azureidentities
+    verbs:
+      - create
+  - apiGroups:
+      - aadpodidentity.k8s.io
+    resources:
       - azureidentitybindings
       - azureidentitybindings/status
     verbs:
       - get
       - list
       - watch
+  - apiGroups:
+      - aadpodidentity.k8s.io
+    resources:
+      - azureidentitybindings
+    verbs:
+      - create
   - apiGroups:
       - cluster.x-k8s.io
     resources:
