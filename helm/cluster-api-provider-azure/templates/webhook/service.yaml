@@ -3,7 +3,6 @@ kind: Service
 metadata:
   labels:
     {{- include "labels.common" . | nindent 4 }}
-    {{- include "labels.provider" . | nindent 4 }}
   name: {{ include "resource.default.name" . }}-webhook
   namespace: {{ include "resource.default.namespace" . }}
 spec:
