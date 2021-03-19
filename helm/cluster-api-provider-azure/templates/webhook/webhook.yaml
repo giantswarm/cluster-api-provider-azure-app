@@ -17,6 +17,9 @@ webhooks:
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: default.azurecluster.infrastructure.cluster.x-k8s.io
+    objectSelector:
+    matchLabels:
+      cluster.x-k8s.io/watch-filter: {{ include "resource.app.version" . }}
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
@@ -37,6 +40,9 @@ webhooks:
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: default.azuremachine.infrastructure.cluster.x-k8s.io
+    objectSelector:
+    matchLabels:
+      cluster.x-k8s.io/watch-filter: {{ include "resource.app.version" . }}
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
@@ -56,6 +62,9 @@ webhooks:
       path: /mutate-exp-infrastructure-cluster-x-k8s-io-v1alpha3-azuremachinepool
   failurePolicy: Fail
   name: azuremachinepool.kb.io
+    objectSelector:
+    matchLabels:
+      cluster.x-k8s.io/watch-filter: {{ include "resource.app.version" . }}
   rules:
   - apiGroups:
     - exp.infrastructure.cluster.x-k8s.io
@@ -75,6 +84,9 @@ webhooks:
       path: /mutate-exp-infrastructure-cluster-x-k8s-io-v1alpha3-azuremanagedcontrolplane
   failurePolicy: Fail
   name: azuremanagedcontrolplane.kb.io
+    objectSelector:
+    matchLabels:
+      cluster.x-k8s.io/watch-filter: {{ include "resource.app.version" . }}
   rules:
   - apiGroups:
     - exp.infrastructure.cluster.x-k8s.io
@@ -104,6 +116,9 @@ webhooks:
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: validation.azurecluster.infrastructure.cluster.x-k8s.io
+    objectSelector:
+    matchLabels:
+      cluster.x-k8s.io/watch-filter: {{ include "resource.app.version" . }}
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
@@ -124,6 +139,9 @@ webhooks:
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: validation.azuremachine.infrastructure.cluster.x-k8s.io
+    objectSelector:
+    matchLabels:
+      cluster.x-k8s.io/watch-filter: {{ include "resource.app.version" . }}
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
@@ -143,6 +161,9 @@ webhooks:
       path: /validate-exp-infrastructure-cluster-x-k8s-io-v1alpha3-azuremachinepool
   failurePolicy: Fail
   name: azuremachinepool.kb.io
+    objectSelector:
+    matchLabels:
+      cluster.x-k8s.io/watch-filter: {{ include "resource.app.version" . }}
   rules:
   - apiGroups:
     - exp.infrastructure.cluster.x-k8s.io
@@ -162,6 +183,9 @@ webhooks:
       path: /validate-exp-infrastructure-cluster-x-k8s-io-v1alpha3-azuremanagedcontrolplane
   failurePolicy: Fail
   name: azuremanagedcontrolplane.kb.io
+    objectSelector:
+    matchLabels:
+      cluster.x-k8s.io/watch-filter: {{ include "resource.app.version" . }}
   rules:
   - apiGroups:
     - exp.infrastructure.cluster.x-k8s.io
