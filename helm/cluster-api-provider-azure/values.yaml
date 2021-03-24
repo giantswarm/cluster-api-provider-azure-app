@@ -1,8 +1,8 @@
 name: cluster-api-azure-controller
 image:
-    registry: quay.io
-    name: giantswarm/cluster-api-azure-controller
-    tag: ffb4ce34b9fdfd8c52f2429af4d4cd7f0e2ec1b7
+  registry: quay.io
+  name: giantswarm/cluster-api-azure-controller
+  tag: ffb4ce34b9fdfd8c52f2429af4d4cd7f0e2ec1b7
 
 kuberbacproxy:
   image:
