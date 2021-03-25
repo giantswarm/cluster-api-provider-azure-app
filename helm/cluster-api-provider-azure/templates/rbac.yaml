@@ -87,6 +87,7 @@ rules:
       - azureidentitybindings
     verbs:
       - create
+      - delete
   - apiGroups:
       - cluster.x-k8s.io
     resources:
