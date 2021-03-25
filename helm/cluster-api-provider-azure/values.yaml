@@ -1,8 +1,8 @@
 name: cluster-api-azure-controller
 image:
-  registry: gcr.io
-  name: k8s-staging-cluster-api-azure/cluster-api-azure-controller
-  tag: v0.4.13
+  registry: quay.io
+  name: giantswarm/cluster-api-azure-controller
+  tag: ffb4ce34b9fdfd8c52f2429af4d4cd7f0e2ec1b7
 
 kuberbacproxy:
   image:
