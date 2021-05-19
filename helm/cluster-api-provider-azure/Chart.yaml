@@ -4,3 +4,5 @@ description: "Helm chart for Cluster API Azure"
 home: "https://github.com/giantswarm/cluster-api-provider-azure-app"
 version: "[[ .Version ]]"
 appVersion: "[[ .AppVersion ]]"
+annotations:
+  application.giantswarm.io/team: "celestial"
