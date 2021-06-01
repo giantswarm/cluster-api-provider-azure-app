@@ -3,17 +3,17 @@ kind: Service
 metadata:
   annotations:
     prometheus.io/scrape: "true"
-  labels:
     giantswarm.io/monitoring: "true"
+  labels:
     control-plane: capz-controller-manager
     {{- include "labels.common" . | nindent 4 }}
   name: {{ include "resource.default.name" . }}-metrics
   namespace: {{ include "resource.default.namespace" . }}
 spec:
   ports:
-  - name: https
-    port: 8443
-    targetPort: https
+  - name: metrics
+    port: 8080
+    targetPort: metrics
   selector:
     {{- include "labels.selector" . | nindent 4 }}
     control-plane: capz-controller-manager

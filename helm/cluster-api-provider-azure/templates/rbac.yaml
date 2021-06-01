@@ -280,26 +280,6 @@ rules:
       - get
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  labels:
-    {{ include "labels.provider" . | nindent 4 }}
-  name: {{ include "resource.default.name" . }}-proxy
-rules:
-  - apiGroups:
-      - authentication.k8s.io
-    resources:
-      - tokenreviews
-    verbs:
-      - create
-  - apiGroups:
-      - authorization.k8s.io
-    resources:
-      - subjectaccessreviews
-    verbs:
-      - create
----
-apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   labels:
@@ -325,21 +305,6 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: {{ include "resource.default.name" . }}
-subjects:
-- kind: ServiceAccount
-  name: {{ include "resource.default.name" . }}
-  namespace: {{ include "resource.default.namespace" . }}
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  labels:
-    {{ include "labels.provider" . | nindent 4 }}
-  name: {{ include "resource.default.name" . }}-proxy
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: {{ include "resource.default.name" . }}-proxy
 subjects:
 - kind: ServiceAccount
   name: {{ include "resource.default.name" . }}
