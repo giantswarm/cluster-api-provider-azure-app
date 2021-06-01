@@ -4,6 +4,7 @@ metadata:
   annotations:
     prometheus.io/scrape: "true"
     giantswarm.io/monitoring: "true"
+    giantswarm.io/monitoring-port: "8080"
   labels:
     control-plane: capz-controller-manager
     {{- include "labels.common" . | nindent 4 }}
