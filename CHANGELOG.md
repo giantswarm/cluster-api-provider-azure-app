@@ -7,4 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Removed
+
+- Remove kube-rbac-proxy for the metrics endpoint.
+
+### Fixed
+
+- Fixed label selector for webhook and manager services.
+
 [Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/tree/main

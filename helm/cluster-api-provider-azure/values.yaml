@@ -4,12 +4,6 @@ image:
   name: giantswarm/cluster-api-azure-controller
   tag: ffb4ce34b9fdfd8c52f2429af4d4cd7f0e2ec1b7
 
-kuberbacproxy:
-  image:
-    registry: gcr.io
-    name: kubebuilder/kube-rbac-proxy
-    tag: v0.8.0
-
 featuregates:
   machinepool: true
   aks: false
