@@ -2,7 +2,7 @@ name: cluster-api-azure-controller
 image:
   registry: quay.io
   name: giantswarm/cluster-api-azure-controller
-  tag:  ce8baae98c1089e49994047b98416332af6bbf16
+  tag: ce8baae98c1089e49994047b98416332af6bbf16
 
 featuregates:
   machinepool: true
