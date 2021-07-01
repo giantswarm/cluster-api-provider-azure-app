@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Push app to azure app collection.
+- Route alerts to celestial.
+
 ### Removed
 
 - Remove kube-rbac-proxy for the metrics endpoint.
