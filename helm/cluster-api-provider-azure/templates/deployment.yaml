@@ -25,7 +25,7 @@ spec:
       serviceAccountName: {{ include "resource.default.name" . }}
       containers:
       - args:
-        - --metrics-addr=0.0.0.0:8080
+        - --metrics-bind-addr=0.0.0.0:8080
         - --feature-gates=MachinePool={{ .Values.featuregates.machinepool }},AKS={{ .Values.featuregates.aks }}
         - --watch-filter={{ include "resource.app.version" . }}
         env:
