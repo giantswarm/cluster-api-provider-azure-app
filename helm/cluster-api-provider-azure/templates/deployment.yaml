@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       annotations:
-        kubectl.kubernetes.io/default-logs-container: manager
+        kubectl.kubernetes.io/default-container: manager
       labels:
         aadpodidbinding: capz-controller-aadpodidentity-selector
         control-plane: capz-controller-manager
