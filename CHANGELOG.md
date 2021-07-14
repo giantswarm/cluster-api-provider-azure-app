@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Push app to azure app collection.
 - Route alerts to celestial.
 
+### Changed
+
+- Bumped `cluster-api-azure-controller` to version `v0.4.12-gsalpha3`.
+
 ### Removed
 
 - Remove kube-rbac-proxy for the metrics endpoint.
