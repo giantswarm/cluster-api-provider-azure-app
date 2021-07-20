@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - args:
-        - --metrics-bind-addr=0.0.0.0:8080
+        - --metrics-addr=0.0.0.0:8080
         - --webhook-port=9443
         - --feature-gates=MachinePool={{ .Values.featuregates.machinepool }},AKS={{ .Values.featuregates.aks }}
         env:
