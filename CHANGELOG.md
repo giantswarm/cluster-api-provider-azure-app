@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Bumped `cluster-api-azure-controller` to version `v0.5.0` (vanilla upstream version).
+- Removed dedicated container for the webhook.
+
 ## [0.4.12-gsalpha3] - 2021-07-14
 
 ### Added

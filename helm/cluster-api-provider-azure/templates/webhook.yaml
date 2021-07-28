@@ -11,9 +11,10 @@ webhooks:
 - clientConfig:
     caBundle: Cg==
     service:
-      name: {{ include "resource.default.name" . }}-webhook
+      name: {{ include "resource.default.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /mutate-infrastructure-cluster-x-k8s-io-v1alpha3-azurecluster
+      port: {{ .Values.webhook.port }}
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: default.azurecluster.infrastructure.cluster.x-k8s.io
@@ -34,9 +35,10 @@ webhooks:
 - clientConfig:
     caBundle: Cg==
     service:
-      name: {{ include "resource.default.name" . }}-webhook
+      name: {{ include "resource.default.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /mutate-infrastructure-cluster-x-k8s-io-v1alpha3-azuremachine
+      port: {{ .Values.webhook.port }}
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: default.azuremachine.infrastructure.cluster.x-k8s.io
@@ -57,9 +59,10 @@ webhooks:
 - clientConfig:
     caBundle: Cg==
     service:
-      name: {{ include "resource.default.name" . }}-webhook
+      name: {{ include "resource.default.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /mutate-exp-infrastructure-cluster-x-k8s-io-v1alpha3-azuremachinepool
+      port: {{ .Values.webhook.port }}
   failurePolicy: Fail
   name: azuremachinepool.kb.io
   objectSelector:
@@ -79,9 +82,10 @@ webhooks:
 - clientConfig:
     caBundle: Cg==
     service:
-      name: {{ include "resource.default.name" . }}-webhook
+      name: {{ include "resource.default.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /mutate-exp-infrastructure-cluster-x-k8s-io-v1alpha3-azuremanagedcontrolplane
+      port: {{ .Values.webhook.port }}
   failurePolicy: Fail
   name: azuremanagedcontrolplane.kb.io
   objectSelector:
@@ -110,9 +114,10 @@ webhooks:
 - clientConfig:
     caBundle: Cg==
     service:
-      name: {{ include "resource.default.name" . }}-webhook
+      name: {{ include "resource.default.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /validate-infrastructure-cluster-x-k8s-io-v1alpha3-azurecluster
+      port: {{ .Values.webhook.port }}
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: validation.azurecluster.infrastructure.cluster.x-k8s.io
@@ -133,9 +138,10 @@ webhooks:
 - clientConfig:
     caBundle: Cg==
     service:
-      name: {{ include "resource.default.name" . }}-webhook
+      name: {{ include "resource.default.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /validate-infrastructure-cluster-x-k8s-io-v1alpha3-azuremachine
+      port: {{ .Values.webhook.port }}
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: validation.azuremachine.infrastructure.cluster.x-k8s.io
@@ -156,9 +162,10 @@ webhooks:
 - clientConfig:
     caBundle: Cg==
     service:
-      name: {{ include "resource.default.name" . }}-webhook
+      name: {{ include "resource.default.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /validate-exp-infrastructure-cluster-x-k8s-io-v1alpha3-azuremachinepool
+      port: {{ .Values.webhook.port }}
   failurePolicy: Fail
   name: azuremachinepool.kb.io
   objectSelector:
@@ -178,9 +185,10 @@ webhooks:
 - clientConfig:
     caBundle: Cg==
     service:
-      name: {{ include "resource.default.name" . }}-webhook
+      name: {{ include "resource.default.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /validate-exp-infrastructure-cluster-x-k8s-io-v1alpha3-azuremanagedcontrolplane
+      port: {{ .Values.webhook.port }}
   failurePolicy: Fail
   name: azuremanagedcontrolplane.kb.io
   objectSelector:

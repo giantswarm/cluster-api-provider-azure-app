@@ -3,7 +3,6 @@ kind: Deployment
 metadata:
   labels:
     aadpodidbinding: capz-controller-aadpodidentity-selector
-    control-plane: capz-controller-manager
     {{- include "labels.common" . | nindent 4 }}
   name: {{ include "resource.default.name" . }}
   namespace: {{ include "resource.default.namespace" . }}
@@ -11,7 +10,6 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      control-plane: capz-controller-manager
       {{- include "labels.selector" . | nindent 6 }}
   template:
     metadata:
@@ -19,7 +17,6 @@ spec:
         kubectl.kubernetes.io/default-container: manager
       labels:
         aadpodidbinding: capz-controller-aadpodidentity-selector
-        control-plane: capz-controller-manager
         {{- include "labels.common" . | nindent 8 }}
     spec:
       serviceAccountName: {{ include "resource.default.name" . }}
@@ -28,6 +25,7 @@ spec:
         - --metrics-addr=0.0.0.0:8080
         - --feature-gates=MachinePool={{ .Values.featuregates.machinepool }},AKS={{ .Values.featuregates.aks }}
         - --watch-filter={{ include "resource.app.version" . }}
+        - --webhook-port={{ .Values.webhook.port }}
         env:
         - name: AZURE_ENVIRONMENT
           valueFrom:
@@ -79,6 +77,9 @@ spec:
           protocol: TCP
         - containerPort: 8080
           name: metrics
+          protocol: TCP
+        - containerPort: {{ .Values.webhook.port }}
+          name: webhook
           protocol: TCP
         readinessProbe:
           httpGet:

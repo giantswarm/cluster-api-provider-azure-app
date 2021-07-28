@@ -2,11 +2,14 @@ name: cluster-api-azure-controller
 image:
   registry: quay.io
   name: giantswarm/cluster-api-azure-controller
-  tag: v0.4.12-gsalpha3
+  tag: v0.5.0
 
 featuregates:
   machinepool: true
   aks: false
+
+webhook:
+  port: 9443
 
 project:
   branch: "[[ .Branch ]]"
