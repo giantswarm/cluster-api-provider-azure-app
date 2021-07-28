@@ -22,7 +22,7 @@ spec:
       serviceAccountName: {{ include "resource.default.name" . }}
       containers:
       - args:
-        - --metrics-addr=0.0.0.0:8080
+        - --metrics-bind-addr=0.0.0.0:8080
         - --feature-gates=MachinePool={{ .Values.featuregates.machinepool }},AKS={{ .Values.featuregates.aks }}
         - --watch-filter={{ include "resource.app.version" . }}
         - --webhook-port={{ .Values.webhook.port }}
@@ -81,8 +81,17 @@ spec:
         - containerPort: {{ .Values.webhook.port }}
           name: webhook
           protocol: TCP
+        volumeMounts:
+          - mountPath: /tmp/k8s-webhook-server/serving-certs
+            name: cert
+            readOnly: true
         readinessProbe:
           httpGet:
             path: /readyz
             port: healthz
       terminationGracePeriodSeconds: 10
+      volumes:
+      - name: cert
+        secret:
+          defaultMode: 420
+          secretName: {{ include "resource.default.name" . }}-cert
