@@ -15,9 +15,7 @@ workflows:
           app_catalog_test: "control-plane-test-catalog"
           chart: "cluster-api-provider-azure"
           filters:
-            # Only do this when a new tag is created.
-            branches:
-              ignore: /.*/
+            # Trigger the job also on git tag.
             tags:
               only: /^v.*/
 
