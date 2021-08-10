@@ -93,6 +93,7 @@ rules:
     resources:
       - clusters
       - clusters/status
+      - machinepools
     verbs:
       - get
       - list
@@ -241,6 +242,8 @@ rules:
       - infrastructure.cluster.x-k8s.io
     resources:
       - azuremachines
+      - azuremachinepools
+      - azuremachinepoolmachines
     verbs:
       - create
       - delete
