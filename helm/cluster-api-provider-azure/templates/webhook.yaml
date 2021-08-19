@@ -155,7 +155,7 @@ metadata:
     cert-manager.io/inject-ca-from: {{ include "resource.default.namespace" . }}/{{ include "resource.default.name" . }}-cert
   labels:
     {{- include "labels.common" . | nindent 4 }}
-  name: {{ include "resource.default.name" . }}-webhook
+  name: {{ include "resource.default.name" . }}
 webhooks:
 - clientConfig:
     caBundle: Cg==
