@@ -8,6 +8,8 @@ featuregates:
   machinepool: true
   aks: false
 
+watchfilter: capi
+
 webhook:
   port: 9443
 

@@ -13,19 +13,19 @@ webhooks:
     service:
       name: {{ include "resource.default.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
-      path: /mutate-infrastructure-cluster-x-k8s-io-v1alpha3-azurecluster
+      path: /mutate-infrastructure-cluster-x-k8s-io-v1alpha4-azurecluster
       port: {{ .Values.webhook.port }}
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: default.azurecluster.infrastructure.cluster.x-k8s.io
   objectSelector:
     matchLabels:
-      cluster.x-k8s.io/watch-filter: {{ include "resource.app.version" . }}
+      cluster.x-k8s.io/watch-filter: {{ .Values.watchfilter }}
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
     apiVersions:
-    - v1alpha3
+    - v1alpha4
     operations:
     - CREATE
     - UPDATE
@@ -37,19 +37,19 @@ webhooks:
     service:
       name: {{ include "resource.default.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
-      path: /mutate-infrastructure-cluster-x-k8s-io-v1alpha3-azuremachine
+      path: /mutate-infrastructure-cluster-x-k8s-io-v1alpha4-azuremachine
       port: {{ .Values.webhook.port }}
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: default.azuremachine.infrastructure.cluster.x-k8s.io
   objectSelector:
     matchLabels:
-      cluster.x-k8s.io/watch-filter: {{ include "resource.app.version" . }}
+      cluster.x-k8s.io/watch-filter: {{ .Values.watchfilter }}
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
     apiVersions:
-    - v1alpha3
+    - v1alpha4
     operations:
     - CREATE
     - UPDATE
@@ -61,18 +61,42 @@ webhooks:
     service:
       name: {{ include "resource.default.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
-      path: /mutate-exp-infrastructure-cluster-x-k8s-io-v1alpha3-azuremachinepool
+      path: /mutate-infrastructure-cluster-x-k8s-io-v1alpha4-azuremachinetemplate
       port: {{ .Values.webhook.port }}
   failurePolicy: Fail
-  name: azuremachinepool.kb.io
+  matchPolicy: Equivalent
+  name: default.azuremachinetemplate.infrastructure.cluster.x-k8s.io
   objectSelector:
     matchLabels:
-      cluster.x-k8s.io/watch-filter: {{ include "resource.app.version" . }}
+      cluster.x-k8s.io/watch-filter: {{ .Values.watchfilter }}
   rules:
   - apiGroups:
-    - exp.infrastructure.cluster.x-k8s.io
+    - infrastructure.cluster.x-k8s.io
     apiVersions:
-    - v1alpha3
+    - v1alpha4
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - azuremachinetemplates
+  sideEffects: None
+- clientConfig:
+    caBundle: Cg==
+    service:
+      name: {{ include "resource.default.name" . }}
+      namespace: {{ include "resource.default.namespace" . }}
+      path: /mutate-infrastructure-cluster-x-k8s-io-v1alpha4-azuremachinepool
+      port: {{ .Values.webhook.port }}
+  failurePolicy: Fail
+  name: default.azuremachinepool.infrastructure.cluster.x-k8s.io
+  objectSelector:
+    matchLabels:
+      cluster.x-k8s.io/watch-filter: {{ .Values.watchfilter }}
+  rules:
+  - apiGroups:
+    - infrastructure.cluster.x-k8s.io
+    apiVersions:
+    - v1alpha4
     operations:
     - CREATE
     - UPDATE
@@ -84,23 +108,45 @@ webhooks:
     service:
       name: {{ include "resource.default.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
-      path: /mutate-exp-infrastructure-cluster-x-k8s-io-v1alpha3-azuremanagedcontrolplane
+      path: /mutate-infrastructure-cluster-x-k8s-io-v1alpha4-azuremanagedcontrolplane
       port: {{ .Values.webhook.port }}
   failurePolicy: Fail
-  name: azuremanagedcontrolplane.kb.io
+  name: default.azuremanagedcontrolplanes.infrastructure.cluster.x-k8s.io
   objectSelector:
     matchLabels:
-      cluster.x-k8s.io/watch-filter: {{ include "resource.app.version" . }}
+      cluster.x-k8s.io/watch-filter: {{ .Values.watchfilter }}
   rules:
   - apiGroups:
-    - exp.infrastructure.cluster.x-k8s.io
+    - infrastructure.cluster.x-k8s.io
     apiVersions:
-    - v1alpha3
+    - v1alpha4
     operations:
     - CREATE
     - UPDATE
     resources:
     - azuremanagedcontrolplanes
+- clientConfig:
+    caBundle: Cg==
+    service:
+      name: {{ include "resource.default.name" . }}
+      namespace: {{ include "resource.default.namespace" . }}
+      path: /mutate-infrastructure-cluster-x-k8s-io-v1alpha4-azuremanagedmachinepool
+      port: {{ .Values.webhook.port }}
+  failurePolicy: Fail
+  name: default.azuremanagedmachinepools.infrastructure.cluster.x-k8s.io
+  objectSelector:
+    matchLabels:
+      cluster.x-k8s.io/watch-filter: {{ .Values.watchfilter }}
+  rules:
+  - apiGroups:
+    - infrastructure.cluster.x-k8s.io
+    apiVersions:
+    - v1alpha4
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - azuremanagedmachinepools
 ---
 apiVersion: admissionregistration.k8s.io/v1beta1
 kind: ValidatingWebhookConfiguration
@@ -116,19 +162,19 @@ webhooks:
     service:
       name: {{ include "resource.default.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
-      path: /validate-infrastructure-cluster-x-k8s-io-v1alpha3-azurecluster
+      path: /validate-infrastructure-cluster-x-k8s-io-v1alpha4-azurecluster
       port: {{ .Values.webhook.port }}
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: validation.azurecluster.infrastructure.cluster.x-k8s.io
   objectSelector:
     matchLabels:
-      cluster.x-k8s.io/watch-filter: {{ include "resource.app.version" . }}
+      cluster.x-k8s.io/watch-filter: {{ .Values.watchfilter }}
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
     apiVersions:
-    - v1alpha3
+    - v1alpha4
     operations:
     - CREATE
     - UPDATE
@@ -140,19 +186,19 @@ webhooks:
     service:
       name: {{ include "resource.default.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
-      path: /validate-infrastructure-cluster-x-k8s-io-v1alpha3-azuremachine
+      path: /validate-infrastructure-cluster-x-k8s-io-v1alpha4-azuremachine
       port: {{ .Values.webhook.port }}
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: validation.azuremachine.infrastructure.cluster.x-k8s.io
   objectSelector:
     matchLabels:
-      cluster.x-k8s.io/watch-filter: {{ include "resource.app.version" . }}
+      cluster.x-k8s.io/watch-filter: {{ .Values.watchfilter }}
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
     apiVersions:
-    - v1alpha3
+    - v1alpha4
     operations:
     - CREATE
     - UPDATE
@@ -164,18 +210,42 @@ webhooks:
     service:
       name: {{ include "resource.default.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
-      path: /validate-exp-infrastructure-cluster-x-k8s-io-v1alpha3-azuremachinepool
+      path: /validate-infrastructure-cluster-x-k8s-io-v1alpha4-azuremachinetemplate
       port: {{ .Values.webhook.port }}
   failurePolicy: Fail
-  name: azuremachinepool.kb.io
+  matchPolicy: Equivalent
+  name: validation.azuremachinetemplate.infrastructure.cluster.x-k8s.io
   objectSelector:
     matchLabels:
-      cluster.x-k8s.io/watch-filter: {{ include "resource.app.version" . }}
+      cluster.x-k8s.io/watch-filter: {{ .Values.watchfilter }}
   rules:
   - apiGroups:
-    - exp.infrastructure.cluster.x-k8s.io
+    - infrastructure.cluster.x-k8s.io
     apiVersions:
-    - v1alpha3
+    - v1alpha4
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - azuremachinetemplates
+  sideEffects: None
+- clientConfig:
+    caBundle: Cg==
+    service:
+      name: {{ include "resource.default.name" . }}
+      namespace: {{ include "resource.default.namespace" . }}
+      path: /validate-infrastructure-cluster-x-k8s-io-v1alpha4-azuremachinepool
+      port: {{ .Values.webhook.port }}
+  failurePolicy: Fail
+  name: validation.azuremachinepool.infrastructure.cluster.x-k8s.io
+  objectSelector:
+    matchLabels:
+      cluster.x-k8s.io/watch-filter: {{ .Values.watchfilter }}
+  rules:
+  - apiGroups:
+    - infrastructure.cluster.x-k8s.io
+    apiVersions:
+    - v1alpha4
     operations:
     - CREATE
     - UPDATE
@@ -187,20 +257,65 @@ webhooks:
     service:
       name: {{ include "resource.default.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
-      path: /validate-exp-infrastructure-cluster-x-k8s-io-v1alpha3-azuremanagedcontrolplane
+      path: /validate-infrastructure-cluster-x-k8s-io-v1alpha4-azuremachinepoolmachine
       port: {{ .Values.webhook.port }}
   failurePolicy: Fail
-  name: azuremanagedcontrolplane.kb.io
+  name: azuremachinepoolmachine.kb.io
   objectSelector:
     matchLabels:
-      cluster.x-k8s.io/watch-filter: {{ include "resource.app.version" . }}
+      cluster.x-k8s.io/watch-filter: {{ .Values.watchfilter }}
   rules:
   - apiGroups:
-    - exp.infrastructure.cluster.x-k8s.io
+      - infrastructure.cluster.x-k8s.io
     apiVersions:
-    - v1alpha3
+    - v1alpha4
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - azuremachinepoolmachines
+  sideEffects: None
+- clientConfig:
+    caBundle: Cg==
+    service:
+      name: {{ include "resource.default.name" . }}
+      namespace: {{ include "resource.default.namespace" . }}
+      path: /validate-infrastructure-cluster-x-k8s-io-v1alpha4-azuremanagedcontrolplane
+      port: {{ .Values.webhook.port }}
+  failurePolicy: Fail
+  name: validation.azuremanagedcontrolplanes.infrastructure.cluster.x-k8s.io
+  objectSelector:
+    matchLabels:
+      cluster.x-k8s.io/watch-filter: {{ .Values.watchfilter }}
+  rules:
+  - apiGroups:
+    - infrastructure.cluster.x-k8s.io
+    apiVersions:
+    - v1alpha4
     operations:
     - CREATE
     - UPDATE
     resources:
     - azuremanagedcontrolplanes
+- clientConfig:
+    caBundle: Cg==
+    service:
+      name: {{ include "resource.default.name" . }}
+      namespace: {{ include "resource.default.namespace" . }}
+      path: /validate-infrastructure-cluster-x-k8s-io-v1alpha4-azuremanagedmachinepool
+      port: {{ .Values.webhook.port }}
+  failurePolicy: Fail
+  name: validation.azuremanagedmachinepools.infrastructure.cluster.x-k8s.io
+  objectSelector:
+    matchLabels:
+      cluster.x-k8s.io/watch-filter: {{ .Values.watchfilter }}
+  rules:
+  - apiGroups:
+    - infrastructure.cluster.x-k8s.io
+    apiVersions:
+    - v1alpha4
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - azuremanagedmachinepools
