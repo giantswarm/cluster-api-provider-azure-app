@@ -2,7 +2,7 @@ name: cluster-api-azure-controller
 image:
   registry: quay.io
   name: giantswarm/cluster-api-azure-controller
-  tag: daily-202108171000
+  tag: daily-202108181013
 
 featuregates:
   machinepool: true
