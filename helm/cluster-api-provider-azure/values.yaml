@@ -16,3 +16,7 @@ webhook:
 project:
   branch: "[[ .Branch ]]"
   commit: "[[ .SHA ]]"
+
+tenant:
+  ssh:
+    ssoPublicKey: 'ssh-rsa AAASbn3n fake@giantswarm'
