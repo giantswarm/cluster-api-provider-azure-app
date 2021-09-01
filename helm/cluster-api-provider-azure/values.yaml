@@ -16,4 +16,3 @@ webhook:
 project:
   branch: "[[ .Branch ]]"
   commit: "[[ .SHA ]]"
-
