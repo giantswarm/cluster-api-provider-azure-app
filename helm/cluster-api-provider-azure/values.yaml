@@ -17,6 +17,6 @@ project:
   branch: "[[ .Branch ]]"
   commit: "[[ .SHA ]]"
 
-tenant:
+workloadCluster:
   ssh:
     ssoPublicKey: 'ssh-rsa AAASbn3n fake@giantswarm'
