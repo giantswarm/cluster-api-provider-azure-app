@@ -9,17 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.5.2] - 2021-09-29
 
-### Added
-
-- Added config annotation in chart.
-
-## [0.5.2] - 2021-09-29
-
 ### Changed
 
 - Bumped `cluster-api-azure-controller` to version `v0.5.0` (vanilla upstream version).
 - Removed dedicated container for the webhook.
 - Added `ssh-sso-public-key` secret.
+
+### Added
+
+- Added config annotation in chart.
 
 ## [0.4.12-gsalpha3] - 2021-07-14
 
