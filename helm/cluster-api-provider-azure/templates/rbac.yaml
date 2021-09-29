@@ -93,6 +93,7 @@ rules:
     resources:
       - clusters
       - clusters/status
+      - machinepools
     verbs:
       - get
       - list
@@ -128,87 +129,13 @@ rules:
       - exp.infrastructure.cluster.x-k8s.io
     resources:
       - azuremachinepools
-    verbs:
-      - create
-      - delete
-      - get
-      - list
-      - patch
-      - update
-      - watch
-  - apiGroups:
-      - exp.infrastructure.cluster.x-k8s.io
-    resources:
       - azuremachinepools/status
-    verbs:
-      - get
-      - patch
-      - update
-  - apiGroups:
-      - exp.infrastructure.cluster.x-k8s.io
-    resources:
       - azuremanagedclusters
-    verbs:
-      - create
-      - delete
-      - get
-      - list
-      - patch
-      - update
-      - watch
-  - apiGroups:
-      - exp.infrastructure.cluster.x-k8s.io
-    resources:
       - azuremanagedclusters/status
-    verbs:
-      - get
-      - patch
-      - update
-  - apiGroups:
-      - exp.infrastructure.cluster.x-k8s.io
-    resources:
-      - azuremanagedcontrolplanes
-    verbs:
-      - create
-      - delete
-      - get
-      - list
-      - patch
-      - update
-      - watch
-  - apiGroups:
-      - exp.infrastructure.cluster.x-k8s.io
-    resources:
-      - azuremanagedcontrolplanes/status
-    verbs:
-      - get
-      - patch
-      - update
-  - apiGroups:
-      - exp.infrastructure.cluster.x-k8s.io
-    resources:
       - azuremanagedmachinepools
-    verbs:
-      - create
-      - delete
-      - get
-      - list
-      - patch
-      - update
-      - watch
-  - apiGroups:
-      - exp.infrastructure.cluster.x-k8s.io
-    resources:
       - azuremanagedmachinepools/status
-    verbs:
-      - get
-      - patch
-      - update
-  - apiGroups:
-      - infrastructure.cluster.x-k8s.io
-    resources:
-      - azureclusteridentities
-      - azureclusteridentities/status
+      - azuremanagedcontrolplanes
+      - azuremanagedcontrolplanes/status
     verbs:
       - create
       - delete
@@ -221,50 +148,24 @@ rules:
       - infrastructure.cluster.x-k8s.io
     resources:
       - azureclusters
-    verbs:
-      - create
-      - delete
-      - get
-      - list
-      - patch
-      - update
-      - watch
-  - apiGroups:
-      - infrastructure.cluster.x-k8s.io
-    resources:
       - azureclusters/status
-    verbs:
-      - get
-      - patch
-      - update
-  - apiGroups:
-      - infrastructure.cluster.x-k8s.io
-    resources:
+      - azureclusteridentities
+      - azureclusteridentities/status
       - azuremachines
-    verbs:
-      - create
-      - delete
-      - get
-      - list
-      - patch
-      - update
-      - watch
-  - apiGroups:
-      - infrastructure.cluster.x-k8s.io
-    resources:
       - azuremachines/status
-    verbs:
-      - get
-      - patch
-      - update
-  - apiGroups:
-      - infrastructure.cluster.x-k8s.io
-    resources:
+      - azuremachinepools
+      - azuremachinepools/status
+      - azuremachinepoolmachines
+      - azuremachinepoolmachines/status
       - azuremachinetemplates
       - azuremachinetemplates/status
     verbs:
+      - create
+      - delete
       - get
       - list
+      - patch
+      - update
       - watch
 ---
 apiVersion: rbac.authorization.k8s.io/v1
