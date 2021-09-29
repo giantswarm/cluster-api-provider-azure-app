@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.2] - 2021-09-29
+
 ### Changed
 
 - Bumped `cluster-api-azure-controller` to version `v0.5.0` (vanilla upstream version).
@@ -32,5 +34,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed label selector for webhook and manager services.
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v0.4.12-gsalpha3...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v0.5.2...HEAD
+[0.5.2]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v0.4.12-gsalpha3...v0.5.2
 [0.4.12-gsalpha3]: https://github.com/giantswarm/cluster-api-provider-azure-app/releases/tag/v0.4.12-gsalpha3
