@@ -19,16 +19,3 @@ workflows:
             tags:
               only: /^v.*/
 
-      - architect/push-to-app-collection:
-          name: push-cluster-api-provider-azure-to-azure-app-collection
-          context: architect
-          app_name: "cluster-api-provider-azure"
-          app_collection_repo: "azure-app-collection"
-          requires:
-            - push-to-app-catalog
-          filters:
-            # Only do this when a new tag is created.
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v.*/
