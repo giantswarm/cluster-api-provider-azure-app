@@ -118,6 +118,7 @@ rules:
       - watch
   - apiGroups:
       - exp.cluster.x-k8s.io
+      - cluster.x-k8s.io
     resources:
       - machinepools
       - machinepools/status
@@ -127,6 +128,7 @@ rules:
       - watch
   - apiGroups:
       - exp.infrastructure.cluster.x-k8s.io
+      - infrastructure.cluster.x-k8s.io
     resources:
       - azuremachinepools
       - azuremachinepools/status

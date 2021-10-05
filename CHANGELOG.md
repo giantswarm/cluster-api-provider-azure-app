@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add non-exp apiGroups to ClusterRole.
+
 ### Changed
 
 - Bumped `cluster-api-azure-controller` to version `v0.5.3` (vanilla upstream version).
