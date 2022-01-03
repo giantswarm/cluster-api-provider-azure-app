@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Bumped `cluster-api-azure-controller` to version `v1.1.0` (vanilla upstream version).
+
 ## [0.5.2] - 2021-09-29
 
 ### Changed
