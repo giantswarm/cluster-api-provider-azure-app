@@ -94,6 +94,7 @@ rules:
       - clusters
       - clusters/status
       - machinepools
+      - machinepools/status
     verbs:
       - get
       - list
