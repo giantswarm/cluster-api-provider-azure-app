@@ -53,23 +53,23 @@ spec:
         - name: AZURE_SUBSCRIPTION_ID
           valueFrom:
             secretKeyRef:
-              key: subscription-id
-              name: capz-manager-bootstrap-credentials
+              key: azure.azureoperator.subscriptionid
+              name: credential-default
         - name: AZURE_TENANT_ID
           valueFrom:
             secretKeyRef:
-              key: tenant-id
-              name: capz-manager-bootstrap-credentials
+              key: azure.azureoperator.tenantid
+              name: credential-default
         - name: AZURE_CLIENT_ID
           valueFrom:
             secretKeyRef:
-              key: client-id
-              name: capz-manager-bootstrap-credentials
+              key: azure.azureoperator.clientid
+              name: credential-default
         - name: AZURE_CLIENT_SECRET
           valueFrom:
             secretKeyRef:
-              key: client-secret
-              name: capz-manager-bootstrap-credentials
+              key: azure.azureoperator.clientsecret
+              name: credential-default
         - name: NODE_NAME
           valueFrom:
             fieldRef:
@@ -82,8 +82,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        image: '{{ .Values.registry.domain }}/{{ .Values.image.name }}:{{ .Values.image.tag
-          }}'
+        image: '{{ .Values.registry.domain }}/{{ .Values.image.name }}:{{ .Values.image.tag }}'
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -93,6 +92,9 @@ spec:
           periodSeconds: 10
         name: manager
         ports:
+        - containerPort: 8080
+          name: metrics
+          protocol: TCP
         - containerPort: 9443
           name: webhook-server
           protocol: TCP

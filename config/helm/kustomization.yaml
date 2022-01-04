@@ -24,6 +24,8 @@ resources:
 
 patchesStrategicMerge:
   - deployment-args.yaml
+  - deployment-environment.yaml
+  - deployment-metrics-port.yaml
   - delete-ns.yaml
   - webhook-watchfilter.yaml
   - service-prometheus-annotations.yaml
