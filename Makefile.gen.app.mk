@@ -15,3 +15,8 @@ lint-chart: ## Runs ct against the default chart.
 	architect helm template --dir /tmp/$(APPLICATION)-test/helm/$(APPLICATION)
 	docker run -it --rm -v /tmp/$(APPLICATION)-test:/wd --workdir=/wd --name ct $(IMAGE) ct lint --validate-maintainers=false --charts="helm/$(APPLICATION)"
 	rm -rf /tmp/$(APPLICATION)-test
+
+.PHONY: generate-helm
+generate-helm:
+	kustomize build config/helm -o helm/cluster-api-provider-azure/templates
+	rm -rf helm/cluster-api-provider-azure/templates/apiextensions*
