@@ -1,0 +1,30 @@
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: capz-mutating-webhook-configuration
+webhooks:
+  - name: default.azurecluster.infrastructure.cluster.x-k8s.io
+    objectSelector:
+      matchLabels:
+        cluster.x-k8s.io/watch-filter: capi
+  - name: default.azuremachine.infrastructure.cluster.x-k8s.io
+    objectSelector:
+      matchLabels:
+        cluster.x-k8s.io/watch-filter: capi
+  - name: default.azuremachinetemplate.infrastructure.cluster.x-k8s.io
+    objectSelector:
+      matchLabels:
+        cluster.x-k8s.io/watch-filter: capi
+  - name: default.azuremachinepool.infrastructure.cluster.x-k8s.io
+    objectSelector:
+      matchLabels:
+        cluster.x-k8s.io/watch-filter: capi
+  - name: default.azuremanagedcontrolplanes.infrastructure.cluster.x-k8s.io
+    objectSelector:
+      matchLabels:
+        cluster.x-k8s.io/watch-filter: capi
+  - name: default.azuremanagedmachinepools.infrastructure.cluster.x-k8s.io
+    objectSelector:
+      matchLabels:
+        cluster.x-k8s.io/watch-filter: capi
