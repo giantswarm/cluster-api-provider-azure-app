@@ -8,11 +8,10 @@ metadata:
     app.giantswarm.io/commit: '{{ .Values.project.commit }}'
     app.kubernetes.io/instance: '{{ .Release.Name }}'
     app.kubernetes.io/managed-by: '{{ .Release.Service }}'
-    app.kubernetes.io/name: '{{ .Chart.Name | trunc 63 | trimSuffix "-" }}'
+    app.kubernetes.io/name: cluster-api-provider-azure
     app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
     cluster.x-k8s.io/provider: infrastructure-azure
-    helm.sh/chart: '{{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_"
-      | trunc 63 | trimSuffix "-" -}}'
+    helm.sh/chart: cluster-api-provider-azure
   name: zzz-capz-mutating-webhook-configuration
 webhooks:
 - admissionReviewVersions:

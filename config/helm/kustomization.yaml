@@ -10,8 +10,8 @@ commonLabels:
   app.giantswarm.io/commit: '{{ .Values.project.commit }}'
   app.kubernetes.io/managed-by: '{{ .Release.Service }}'
   app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
-  helm.sh/chart: '{{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}'
-  app.kubernetes.io/name: '{{ .Chart.Name | trunc 63 | trimSuffix "-" }}'
+  helm.sh/chart: cluster-api-provider-azure
+  app.kubernetes.io/name: cluster-api-provider-azure
   app.kubernetes.io/instance: '{{ .Release.Name }}'
 
 images:
@@ -28,6 +28,7 @@ patchesStrategicMerge:
   - webhook-watchfilter.yaml
   - service-prometheus-annotations.yaml
   - service-add-metrics-port.yaml
+  - certificate-issuer.yaml
 
 patches:
   - target:
