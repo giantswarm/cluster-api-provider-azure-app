@@ -29,7 +29,7 @@ patchesStrategicMerge:
   - webhook-certificate.yaml
   - service-prometheus-annotations.yaml
   - service-add-metrics-port.yaml
-  - certificate-issuer.yaml
+  - certificate.yaml
 
 patches:
   - target:

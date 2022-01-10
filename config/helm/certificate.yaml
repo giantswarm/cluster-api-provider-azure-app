@@ -4,6 +4,9 @@ metadata:
   name: capz-serving-cert
   namespace: capz-system
 spec:
+  dnsNames:
+  - capz-webhook-service.{{ .Release.Namespace }}.svc
+  - capz-webhook-service.{{ .Release.Namespace }}.svc.cluster.local
   issuerRef:
     group: cert-manager.io
     kind: ClusterIssuer
