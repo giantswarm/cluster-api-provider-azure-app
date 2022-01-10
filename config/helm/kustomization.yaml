@@ -16,7 +16,7 @@ commonLabels:
 
 images:
   - name: us.gcr.io/k8s-artifacts-prod/cluster-api-azure/cluster-api-azure-controller
-    newName: "{{ .Values.registry.domain }}/{{ .Values.image.name }}"
+    newName: "{{ .Values.image.registry }}/{{ .Values.image.name }}"
     newTag: "{{ .Values.image.tag }}"
 
 resources:
