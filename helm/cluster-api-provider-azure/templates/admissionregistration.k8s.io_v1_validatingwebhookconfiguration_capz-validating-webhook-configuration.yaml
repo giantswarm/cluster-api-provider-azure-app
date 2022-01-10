@@ -2,7 +2,7 @@ apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration
 metadata:
   annotations:
-    cert-manager.io/inject-ca-from: capz-system/capz-serving-cert
+    cert-manager.io/inject-ca-from: '{{ .Release.Namespace }}/capz-serving-cert'
   labels:
     app.giantswarm.io/branch: '{{ .Values.project.branch }}'
     app.giantswarm.io/commit: '{{ .Values.project.commit }}'
@@ -25,6 +25,9 @@ webhooks:
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: validation.azurecluster.infrastructure.cluster.x-k8s.io
+  objectSelector:
+    matchLabels:
+      cluster.x-k8s.io/watch-filter: capi
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
@@ -47,6 +50,9 @@ webhooks:
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: validation.azuremachine.infrastructure.cluster.x-k8s.io
+  objectSelector:
+    matchLabels:
+      cluster.x-k8s.io/watch-filter: capi
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
@@ -69,6 +75,9 @@ webhooks:
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: validation.azuremachinetemplate.infrastructure.cluster.x-k8s.io
+  objectSelector:
+    matchLabels:
+      cluster.x-k8s.io/watch-filter: capi
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
@@ -90,6 +99,9 @@ webhooks:
       path: /validate-infrastructure-cluster-x-k8s-io-v1beta1-azuremachinepool
   failurePolicy: Fail
   name: validation.azuremachinepool.infrastructure.cluster.x-k8s.io
+  objectSelector:
+    matchLabels:
+      cluster.x-k8s.io/watch-filter: capi
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
@@ -111,6 +123,9 @@ webhooks:
       path: /validate-infrastructure-cluster-x-k8s-io-v1beta1-azuremachinepoolmachine
   failurePolicy: Fail
   name: azuremachinepoolmachine.kb.io
+  objectSelector:
+    matchLabels:
+      cluster.x-k8s.io/watch-filter: capi
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
@@ -132,6 +147,9 @@ webhooks:
       path: /validate-infrastructure-cluster-x-k8s-io-v1beta1-azuremanagedcontrolplane
   failurePolicy: Fail
   name: validation.azuremanagedcontrolplanes.infrastructure.cluster.x-k8s.io
+  objectSelector:
+    matchLabels:
+      cluster.x-k8s.io/watch-filter: capi
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
@@ -154,6 +172,9 @@ webhooks:
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: validation.azuremanagedmachinepools.infrastructure.cluster.x-k8s.io
+  objectSelector:
+    matchLabels:
+      cluster.x-k8s.io/watch-filter: capi
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io

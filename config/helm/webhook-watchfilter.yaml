@@ -28,3 +28,37 @@ webhooks:
     objectSelector:
       matchLabels:
         cluster.x-k8s.io/watch-filter: capi
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  name: capz-validating-webhook-configuration
+webhooks:
+  - name: validation.azurecluster.infrastructure.cluster.x-k8s.io
+    objectSelector:
+      matchLabels:
+        cluster.x-k8s.io/watch-filter: capi
+  - name: validation.azuremachine.infrastructure.cluster.x-k8s.io
+    objectSelector:
+      matchLabels:
+        cluster.x-k8s.io/watch-filter: capi
+  - name: validation.azuremachinetemplate.infrastructure.cluster.x-k8s.io
+    objectSelector:
+      matchLabels:
+        cluster.x-k8s.io/watch-filter: capi
+  - name: validation.azuremachinepool.infrastructure.cluster.x-k8s.io
+    objectSelector:
+      matchLabels:
+        cluster.x-k8s.io/watch-filter: capi
+  - name: azuremachinepoolmachine.kb.io
+    objectSelector:
+      matchLabels:
+        cluster.x-k8s.io/watch-filter: capi
+  - name: validation.azuremanagedcontrolplanes.infrastructure.cluster.x-k8s.io
+    objectSelector:
+      matchLabels:
+        cluster.x-k8s.io/watch-filter: capi
+  - name: validation.azuremanagedmachinepools.infrastructure.cluster.x-k8s.io
+    objectSelector:
+      matchLabels:
+        cluster.x-k8s.io/watch-filter: capi

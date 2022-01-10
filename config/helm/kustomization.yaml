@@ -28,6 +28,7 @@ patchesStrategicMerge:
   - deployment-metrics-port.yaml
   - delete-ns.yaml
   - webhook-watchfilter.yaml
+  - webhook-certificate.yaml
   - service-prometheus-annotations.yaml
   - service-add-metrics-port.yaml
   - certificate-issuer.yaml
