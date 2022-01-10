@@ -1,9 +1,4 @@
 namespace: '{{ .Release.Namespace }}'
-#namePrefix: '{{- .Release.Name | replace "." "-" | trunc 33 | trimSuffix "-" -}}-'
-
-#commonAnnotations:
-#  meta.helm.sh/release-name: '{{ .Release.Name }}'
-#  meta.helm.sh/release-namespace: '{{ .Release.Namespace }}'
 
 commonLabels:
   app.giantswarm.io/branch: '{{ .Values.project.branch }}'
