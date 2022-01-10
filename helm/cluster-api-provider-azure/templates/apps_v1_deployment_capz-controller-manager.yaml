@@ -48,7 +48,7 @@ spec:
         - --metrics-bind-addr=0.0.0.0:8080
         - --feature-gates=MachinePool=true,AKS=false
         - --watch-filter=capi
-        - --webhook-port=9443
+        - --v=0
         env:
         - name: AZURE_SUBSCRIPTION_ID
           valueFrom:
