@@ -21,7 +21,8 @@ spec:
   - name: metrics
     port: 8080
     targetPort: metrics
-  - port: 443
+  - name: webhook-server
+    port: 443
     targetPort: webhook-server
   selector:
     app.giantswarm.io/branch: '{{ .Values.project.branch }}'

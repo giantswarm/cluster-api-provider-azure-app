@@ -8,3 +8,6 @@ spec:
     - name: metrics
       port: 8080
       targetPort: metrics
+    - name: webhook-server
+      port: 443
+      targetPort: webhook-server
