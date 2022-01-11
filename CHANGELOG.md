@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Helm manifests are generated from upstream assets attached to a release.
+
 ## [0.5.3-gs1] - 2021-10-05
 
 ### Changed
