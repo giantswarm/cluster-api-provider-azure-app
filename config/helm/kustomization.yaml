@@ -1,24 +1,16 @@
 namespace: '{{ .Release.Namespace }}'
 
-#commonLabels:
-#  app.giantswarm.io/branch: '{{ .Values.project.branch }}'
-#  app.giantswarm.io/commit: '{{ .Values.project.commit }}'
-#  app.kubernetes.io/managed-by: '{{ .Release.Service }}'
-#  app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
-#  helm.sh/chart: cluster-api-provider-azure
-#  app.kubernetes.io/name: cluster-api-provider-azure
-#  app.kubernetes.io/instance: '{{ .Release.Name }}'
+resources:
+  - https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/download/v1.0.1/infrastructure-components.yaml
 
 transformers:
   - common-labels.yaml
+  - webhook-prefix.yaml
 
 images:
   - name: us.gcr.io/k8s-artifacts-prod/cluster-api-azure/cluster-api-azure-controller
     newName: "{{ .Values.image.registry }}/{{ .Values.image.name }}"
     newTag: "{{ .Values.image.tag }}"
-
-resources:
-  - https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/download/v1.0.1/infrastructure-components.yaml
 
 patchesStrategicMerge:
   - deployment-args.yaml
@@ -30,11 +22,3 @@ patchesStrategicMerge:
   - service-prometheus-annotations.yaml
   - service-add-metrics-port.yaml
   - certificate.yaml
-
-patches:
-  - target:
-      group: admissionregistration.k8s.io
-      version: v1
-      kind: MutatingWebhookConfiguration
-      name: capz-mutating-webhook-configuration
-    path: mutating-webhook-prefix.yaml
