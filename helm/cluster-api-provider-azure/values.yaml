@@ -4,15 +4,6 @@ image:
   name: giantswarm/cluster-api-azure-controller
   tag: v0.5.3
 
-featuregates:
-  machinepool: true
-  aks: false
-
-watchfilter: capi
-
-webhook:
-  port: 9443
-
 project:
   branch: "[[ .Branch ]]"
   commit: "[[ .SHA ]]"
