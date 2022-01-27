@@ -1,0 +1,106 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    aadpodidbinding: capz-controller-aadpodidentity-selector
+    app.giantswarm.io/branch: '{{ .Values.project.branch }}'
+    app.giantswarm.io/commit: '{{ .Values.project.commit }}'
+    app.kubernetes.io/instance: '{{ .Release.Name }}'
+    app.kubernetes.io/managed-by: '{{ .Release.Service }}'
+    app.kubernetes.io/name: cluster-api-provider-azure
+    app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
+    cluster.x-k8s.io/provider: infrastructure-azure
+    control-plane: capz-controller-manager
+    helm.sh/chart: cluster-api-provider-azure
+  name: capz-controller-manager
+  namespace: '{{ .Release.Namespace }}'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      cluster.x-k8s.io/provider: infrastructure-azure
+      control-plane: capz-controller-manager
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/default-logs-container: manager
+      labels:
+        aadpodidbinding: capz-controller-aadpodidentity-selector
+        cluster.x-k8s.io/provider: infrastructure-azure
+        control-plane: capz-controller-manager
+    spec:
+      containers:
+      - args:
+        - --metrics-bind-addr=0.0.0.0:8080
+        - --feature-gates=MachinePool=true,AKS=false
+        - --watch-filter=capi
+        - --v=0
+        env:
+        - name: AZURE_SUBSCRIPTION_ID
+          valueFrom:
+            secretKeyRef:
+              key: azure.azureoperator.subscriptionid
+              name: credential-default
+        - name: AZURE_TENANT_ID
+          valueFrom:
+            secretKeyRef:
+              key: azure.azureoperator.tenantid
+              name: credential-default
+        - name: AZURE_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              key: azure.azureoperator.clientid
+              name: credential-default
+        - name: AZURE_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              key: azure.azureoperator.clientsecret
+              name: credential-default
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        image: '{{ .Values.image.registry }}/{{ .Values.image.name }}:{{ .Values.image.tag }}'
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: healthz
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        name: manager
+        ports:
+        - containerPort: 8080
+          name: metrics
+          protocol: TCP
+        - containerPort: 9443
+          name: webhook-server
+          protocol: TCP
+        - containerPort: 9440
+          name: healthz
+          protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: healthz
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        volumeMounts:
+        - mountPath: /tmp/k8s-webhook-server/serving-certs
+          name: cert
+          readOnly: true
+      serviceAccountName: capz-manager
+      terminationGracePeriodSeconds: 10
+      volumes:
+      - name: cert
+        secret:
+          defaultMode: 420
+          secretName: capz-webhook-service-cert
