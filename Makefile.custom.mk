@@ -1,8 +1,8 @@
 .PHONY: generate
 generate:
-	rm -rf helm/cluster-api-provider-azure/templates/*.yaml
-	kustomize build config/helm -o helm/cluster-api-provider-azure/templates
-	rm -rf helm/cluster-api-provider-azure/templates/apiextensions* helm/cluster-api-provider-azure/templates/v1_secret_capz-manager-bootstrap-credentials.yaml
+	@rm -rf helm/cluster-api-provider-azure/templates/*.yaml
+	@kustomize build config/helm -o helm/cluster-api-provider-azure/templates
+	@rm -rf helm/cluster-api-provider-azure/templates/apiextensions*.yaml helm/cluster-api-provider-azure/templates/v1_secret_capz-manager-bootstrap-credentials.yaml
 
 .PHONY: verify
 verify: generate
