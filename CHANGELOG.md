@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Use `delete` patches to delete manifests rather than `rm -rf`.
+- Delete manifests before generating them.
+- Use `kustomize` to render SSH SSO secret.
+- Remove leader election manifests.
+
+### Added
+
+- Add verify CI step to verify manifests have been generated and comitted.
+
 ## [1.0.0] - 2022-01-27
 
 ### Changed
