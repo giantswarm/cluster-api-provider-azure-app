@@ -2,6 +2,7 @@ namespace: '{{ .Release.Namespace }}'
 
 resources:
   - https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/download/v1.0.1/infrastructure-components.yaml
+  - ssh-sso-public-key-secret.yaml
 
 transformers:
   - common-labels.yaml
@@ -9,16 +10,19 @@ transformers:
 
 images:
   - name: us.gcr.io/k8s-artifacts-prod/cluster-api-azure/cluster-api-azure-controller
-    newName: "{{ .Values.image.registry }}/{{ .Values.image.name }}"
-    newTag: "{{ .Values.image.tag }}"
+    newName: "{{.Values.image.registry}}/{{.Values.image.name}}"
+    newTag: "{{.Values.image.tag}}"
 
 patchesStrategicMerge:
   - deployment-args.yaml
   - deployment-environment.yaml
   - deployment-metrics-port.yaml
-  - delete-ns.yaml
   - webhook-watchfilter.yaml
   - webhook-certificate.yaml
   - service-prometheus-annotations.yaml
   - service-add-metrics-port.yaml
   - certificate.yaml
+  - delete-leader-election.yaml
+  - delete-nmi.yaml
+  - delete-selfsigned-cert-issuer.yaml
+  - delete-ns.yaml
