@@ -1,7 +1,6 @@
 {
   "extends": [
-    "config:base",
-    ":reviewer(team:team-phoenix)"
+    "config:base"
   ],
   "dependencyDashboard": true,
   "ignorePaths": [
@@ -12,5 +11,5 @@
     "architect",
     "zricethezav/gitleaks-action"
   ],
-  "schedule": [ "after 9am on thursday" ]
+  "schedule": [ "after 6am on thursday" ]
 }
