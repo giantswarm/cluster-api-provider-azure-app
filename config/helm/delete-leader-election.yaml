@@ -1,0 +1,16 @@
+# We are not using leader election in our current release, since we are
+# only deploying a single webhook pod.
+---
+$patch: delete
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: capz-leader-election-role
+  namespace: capz-system
+---
+$patch: delete
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: capz-leader-election-rolebinding
+  namespace: capz-system

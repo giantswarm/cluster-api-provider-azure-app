@@ -1,0 +1,10 @@
+name: verify helm manifests are up to date
+on: pull_request
+jobs:
+  make-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'checkout'
+        uses: actions/checkout@v2
+      - name: verify
+        run: make verify
