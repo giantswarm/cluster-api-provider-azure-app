@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add verify CI step to verify manifests have been generated and comitted.
+- Installing CRDs via crd-install job.
 
 ## [1.0.0] - 2022-01-27
 
