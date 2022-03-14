@@ -1,8 +1,11 @@
 .PHONY: generate
 generate:
+	./hack/generate-kustomize-patches.sh
 	@rm -rf helm/cluster-api-provider-azure/templates/*.yaml
 	@kustomize build config/helm -o helm/cluster-api-provider-azure/templates
-	@rm -rf helm/cluster-api-provider-azure/templates/apiextensions*.yaml helm/cluster-api-provider-azure/templates/v1_secret_capz-manager-bootstrap-credentials.yaml
+	@rm -rf helm/cluster-api-provider-azure/templates/v1_secret_capz-manager-bootstrap-credentials.yaml
+	./hack/move-generated-crds.sh
+	./hack/generate-crd-version-patches.sh
 
 .PHONY: verify
 verify: generate

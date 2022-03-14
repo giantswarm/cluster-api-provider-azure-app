@@ -36,3 +36,22 @@ Provider labels
 {{- define "labels.provider" -}}
 cluster.x-k8s.io/provider: infrastructure-azure
 {{- end -}}
+
+{{- define "capz.crdInstall" -}}
+{{- printf "%s-%s" ( include "name" . ) "crd-install" | replace "+" "_" | trimSuffix "-" -}}
+{{- end -}}
+
+{{- define "capz.CRDInstallAnnotations" -}}
+"helm.sh/hook": "pre-install,pre-upgrade"
+"helm.sh/hook-delete-policy": "before-hook-creation,hook-succeeded,hook-failed"
+{{- end -}}
+
+{{- define "capz.selectorLabels" -}}
+app.kubernetes.io/name: "{{ template "name" . }}"
+app.kubernetes.io/instance: "{{ template "name" . }}"
+{{- end -}}
+
+{{/* Create a label which can be used to select any orphaned crd-install hook resources */}}
+{{- define "capz.CRDInstallSelector" -}}
+{{- printf "%s" "crd-install-hook" -}}
+{{- end -}}

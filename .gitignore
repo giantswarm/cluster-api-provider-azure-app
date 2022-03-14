@@ -1,0 +1,3 @@
+# exclude CRDs kustomize build output directory
+/config/helm/input
+/out
