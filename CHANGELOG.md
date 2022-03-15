@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Fix SSO Public key rendering so it comes from the `config` repo.
+
 ### Changed
 
 - Use `delete` patches to delete manifests rather than `rm -rf`.
