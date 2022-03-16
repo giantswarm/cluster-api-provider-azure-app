@@ -32,7 +32,6 @@ curl -L "$url" -o "$KUSTOMIZE_INPUT_DIR/$release_asset_filename"
 
 # First clear previous watchfilter patches
 true > "$KUSTOMIZE_DIR/webhook-watchfilter.yaml"
-watch_filter="$(yq e '.watchfilter' "$helm_values")"
 
 # For every CRD, add webhook label selector
 for webhook_cr_name in $(yq e -N 'select(.kind=="MutatingWebhookConfiguration" or .kind=="ValidatingWebhookConfiguration") | .metadata.name' "$KUSTOMIZE_INPUT_DIR/$release_asset_filename"); do
@@ -58,10 +57,9 @@ webhooks: null
     for webhook_name in $(webhook_cr_name="$webhook_cr_name" yq e 'select((.kind=="MutatingWebhookConfiguration" or .kind=="ValidatingWebhookConfiguration") and .metadata.name==env(webhook_cr_name)) | .webhooks[].name' "$KUSTOMIZE_INPUT_DIR/$release_asset_filename"); do
         object_selector_patch="$(
             webhook_name="$webhook_name" \
-            watch_filter="$watch_filter" \
             yq e --null-input \
                 '.name = env(webhook_name) |
-                .objectSelector.matchLabels["cluster.x-k8s.io/watch-filter"] = env(watch_filter)'
+                .objectSelector.matchLabels["cluster.x-k8s.io/watch-filter"] = "capi"'
             )"
 
         webhook_patch="$(
