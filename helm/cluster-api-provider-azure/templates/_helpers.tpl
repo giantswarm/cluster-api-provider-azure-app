@@ -43,7 +43,7 @@ cluster.x-k8s.io/provider: infrastructure-azure
 
 {{- define "capz.CRDInstallAnnotations" -}}
 "helm.sh/hook": "pre-install,pre-upgrade"
-"helm.sh/hook-delete-policy": "before-hook-creation,hook-succeeded,hook-failed"
+"helm.sh/hook-delete-policy": "before-hook-creation,hook-succeeded"
 {{- end -}}
 
 {{- define "capz.selectorLabels" -}}
