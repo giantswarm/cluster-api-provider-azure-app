@@ -9,7 +9,8 @@ HELM_DIR="helm/cluster-api-provider-azure"
 HELM_TEMPLATES_DIR="$HELM_DIR/templates"
 
 move-infrastructure-manifests() {
-    # move core plane CRDs to kustomize dir, because we are not deploying them with helm
+    # move CRDs to Helm files dir, because we are deploying them with helm hook
+    # and not with Helm directly
     CRD_BASE_DIR="$HELM_DIR/files/infrastructure/bases"
     rm -f "./$CRD_BASE_DIR"/*
     mkdir -p "./$CRD_BASE_DIR"
