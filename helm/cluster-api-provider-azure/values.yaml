@@ -15,3 +15,7 @@ crdInstall:
   kubectl:
     image: "giantswarm/docker-kubectl"
     tag: "1.23.3"
+
+workloadCluster:
+  ssh:
+    ssoPublicKey: ""
