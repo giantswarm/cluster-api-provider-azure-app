@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2022-03-21
+
 ### Added
 
 - Add VerticalPodAutoscaler CR.
@@ -72,7 +74,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed label selector for webhook and manager services.
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v0.5.3-gs1...v1.0.0
 [0.5.3-gs1]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v0.5.2...v0.5.3-gs1
