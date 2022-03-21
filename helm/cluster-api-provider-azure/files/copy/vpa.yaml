@@ -23,7 +23,7 @@ spec:
       mode: Auto
   targetRef:
     apiVersion: apps/v1
-    kind: DaemonSet
+    kind: Deployment
     name:  capz-controller-manager
   updatePolicy:
     updateMode: Auto
