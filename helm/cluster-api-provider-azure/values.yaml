@@ -19,3 +19,6 @@ crdInstall:
 workloadCluster:
   ssh:
     ssoPublicKey: ""
+
+verticalPodAutoscaler:
+  enabled: true
