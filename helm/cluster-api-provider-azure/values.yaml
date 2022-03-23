@@ -8,8 +8,6 @@ project:
   branch: "[[ .Branch ]]"
   commit: "[[ .SHA ]]"
 
-watchfilter: capi
-
 crdInstall:
   enable: true
   kubectl:
