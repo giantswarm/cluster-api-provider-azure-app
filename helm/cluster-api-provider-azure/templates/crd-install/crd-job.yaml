@@ -38,6 +38,12 @@ spec:
           # in the pod's logs.
 
           kubectl apply -k /files 2>&1
+
+          # After updating CRDs the azure-operator will sometimes stop reconciling CRDs,
+          # so here we mitigate that issue by restarting it.
+          for deployment in $(kubectl get deployment -l app.kubernetes.io/name=azure-operator -o name); do
+            kubectl rollout restart -n giantswarm "$deployment"
+          done
         volumeMounts:
 {{- range $path, $_ := $.Files.Glob "files/**.yaml" }}
         - name: {{ printf "%s-%s" (base (dir $path)) (trimSuffix "-yaml" (base $path | replace "." "-")) | trunc 63 | trimSuffix "-" }}
