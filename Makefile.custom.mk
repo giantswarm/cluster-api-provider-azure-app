@@ -1,5 +1,5 @@
 .PHONY: generate
-generate:
+generate: ## Builds the manifests to publish with a release
 	./hack/generate-kustomize-patches.sh
 	@rm -rf helm/cluster-api-provider-azure/templates/*.yaml
 	@cp helm/cluster-api-provider-azure/files/copy/* helm/cluster-api-provider-azure/templates/
