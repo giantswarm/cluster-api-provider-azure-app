@@ -14,6 +14,12 @@ crdInstall:
     image: "giantswarm/docker-kubectl"
     tag: "1.23.3"
 
+provider:
+  subscriptionId: ""
+  tenantId: ""
+  clientId: ""
+  clientSecret: ""
+
 workloadCluster:
   ssh:
     ssoPublicKey: ""

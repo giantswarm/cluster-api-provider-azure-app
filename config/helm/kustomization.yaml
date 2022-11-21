@@ -1,4 +1,4 @@
-namespace: '{{ .Release.Namespace }}'
+namespace: "{{ .Release.Namespace }}"
 
 resources:
   - input/infrastructure-components.yaml
@@ -15,12 +15,13 @@ images:
 
 patchesStrategicMerge:
   - deployment-args.yaml
-  - deployment-environment.yaml
+  #  - deployment-environment.yaml
   - deployment-metrics-port.yaml
   - webhook-watchfilter.yaml
   - webhook-certificate.yaml
   - service-prometheus-annotations.yaml
   - service-add-metrics-port.yaml
+  - secret.yaml
   - certificate.yaml
   - delete-leader-election.yaml
   - delete-nmi.yaml
@@ -28,15 +29,15 @@ patchesStrategicMerge:
   - delete-ns.yaml
 
 patches:
-- path: crd_cainjection.yaml
-  target:
-    kind: CustomResourceDefinition
-    labelSelector: cluster.x-k8s.io/provider=infrastructure-azure
-- path: crd_webhook.yaml
-  target:
-    kind: CustomResourceDefinition
-    labelSelector: cluster.x-k8s.io/provider=infrastructure-azure
-- path: delete_aadpodidentity_crds.yaml
-  target:
-    kind: CustomResourceDefinition
-    annotationSelector: api-approved.kubernetes.io=unapproved
+  - path: crd_cainjection.yaml
+    target:
+      kind: CustomResourceDefinition
+      labelSelector: cluster.x-k8s.io/provider=infrastructure-azure
+  - path: crd_webhook.yaml
+    target:
+      kind: CustomResourceDefinition
+      labelSelector: cluster.x-k8s.io/provider=infrastructure-azure
+  - path: delete_aadpodidentity_crds.yaml
+    target:
+      kind: CustomResourceDefinition
+      annotationSelector: api-approved.kubernetes.io=unapproved
