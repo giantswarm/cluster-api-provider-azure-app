@@ -4,7 +4,6 @@ generate: ## Builds the manifests to publish with a release
 	@rm -rf helm/cluster-api-provider-azure/templates/*.yaml
 	@cp helm/cluster-api-provider-azure/files/copy/* helm/cluster-api-provider-azure/templates/
 	@kustomize build config/helm -o helm/cluster-api-provider-azure/templates
-	@rm -rf helm/cluster-api-provider-azure/templates/v1_secret_capz-manager-bootstrap-credentials.yaml
 	./hack/move-generated-crds.sh
 	./hack/generate-crd-version-patches.sh
 
