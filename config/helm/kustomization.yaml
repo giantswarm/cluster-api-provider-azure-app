@@ -37,7 +37,3 @@ patches:
     target:
       kind: CustomResourceDefinition
       labelSelector: cluster.x-k8s.io/provider=infrastructure-azure
-  - path: delete_aadpodidentity_crds.yaml
-    target:
-      kind: CustomResourceDefinition
-      annotationSelector: api-approved.kubernetes.io=unapproved
