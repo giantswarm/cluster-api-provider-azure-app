@@ -33,6 +33,10 @@ patches:
     target:
       kind: CustomResourceDefinition
       labelSelector: cluster.x-k8s.io/provider=infrastructure-azure
+  - path: crd_clusterctl_labels.yaml
+    target:
+      kind: CustomResourceDefinition
+      labelSelector: cluster.x-k8s.io/provider=infrastructure-azure
   - path: crd_webhook.yaml
     target:
       kind: CustomResourceDefinition
