@@ -15,6 +15,15 @@
         spec:
           description: AzureManagedMachinePoolSpec defines the desired state of AzureManagedMachinePool.
           properties:
+            availabilityZones:
+              description: AvailabilityZones - Availability zones for nodes. Must use VirtualMachineScaleSets AgentPoolType.
+              items:
+                type: string
+              type: array
+            maxPods:
+              description: MaxPods specifies the kubelet --max-pods configuration for the node pool.
+              format: int32
+              type: integer
             mode:
               description: 'Mode - represents mode of an agent pool. Possible values include: System, User.'
               enum:
@@ -33,6 +42,16 @@
               items:
                 type: string
               type: array
+            scaling:
+              description: Scaling specifies the autoscaling parameters for the node pool.
+              properties:
+                maxSize:
+                  format: int32
+                  type: integer
+                minSize:
+                  format: int32
+                  type: integer
+              type: object
             sku:
               description: SKU is the size of the VMs in the node pool.
               type: string

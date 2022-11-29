@@ -205,7 +205,7 @@
           description: AzureManagedControlPlaneStatus defines the observed state of AzureManagedControlPlane.
           properties:
             initialized:
-              description: Initialized is true when the the control plane is available for initial contact. This may occur before the control plane is fully ready. In the AzureManagedControlPlane implementation, these are identical.
+              description: Initialized is true when the control plane is available for initial contact. This may occur before the control plane is fully ready. In the AzureManagedControlPlane implementation, these are identical.
               type: boolean
             longRunningOperationStates:
               description: LongRunningOperationStates saves the states for Azure long-running operations so they can be continued on the next reconciliation loop.

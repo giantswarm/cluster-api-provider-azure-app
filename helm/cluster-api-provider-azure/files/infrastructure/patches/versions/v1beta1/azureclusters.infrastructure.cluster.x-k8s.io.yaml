@@ -59,7 +59,7 @@
                           description: NatGateway associated with this subnet.
                           properties:
                             id:
-                              description: ID is the Azure resource ID of the nat gateway. READ-ONLY
+                              description: ID is the Azure resource ID of the NAT gateway. READ-ONLY
                               type: string
                             ip:
                               description: PublicIPSpec defines the inputs to create an Azure public IP address.
@@ -440,7 +440,7 @@
                         description: NatGateway associated with this subnet.
                         properties:
                           id:
-                            description: ID is the Azure resource ID of the nat gateway. READ-ONLY
+                            description: ID is the Azure resource ID of the NAT gateway. READ-ONLY
                             type: string
                           ip:
                             description: PublicIPSpec defines the inputs to create an Azure public IP address.

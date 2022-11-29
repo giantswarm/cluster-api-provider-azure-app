@@ -3,7 +3,7 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     cert-manager.io/inject-ca-from: '{{ .Release.Namespace }}/capz-serving-cert'
-    controller-gen.kubebuilder.io/version: v0.7.0
+    controller-gen.kubebuilder.io/version: v0.8.0
   labels:
     app.giantswarm.io/branch: '{{ .Values.project.branch }}'
     app.giantswarm.io/commit: '{{ .Values.project.commit }}'
@@ -110,9 +110,15 @@ spec:
       subresources:
         status: {}
     - additionalPrinterColumns:
-        - description: AzureMachine ready status
-          jsonPath: .status.ready
+        - jsonPath: .status.conditions[?(@.type=='Ready')].status
           name: Ready
+          type: string
+        - jsonPath: .status.conditions[?(@.type=='Ready')].reason
+          name: Reason
+          type: string
+        - jsonPath: .status.conditions[?(@.type=='Ready')].message
+          name: Message
+          priority: 1
           type: string
         - description: Azure VM provisioning state
           jsonPath: .status.vmState
