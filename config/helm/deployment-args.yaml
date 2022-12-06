@@ -11,5 +11,4 @@ spec:
           args:
             - --metrics-bind-addr=0.0.0.0:8080
             - --feature-gates=MachinePool=true,AKS=false
-            - --watch-filter=capi
             - --v=0
