@@ -5,8 +5,8 @@ image:
   tag: v1.6.0
 
 project:
-  branch: "[[ .Branch ]]"
-  commit: "[[ .SHA ]]"
+  branch: "capz_version_bump_1.6.0"
+  commit: "a55192a436ee367d22d69e0c649ed44461dd7093"
 
 crdInstall:
   enable: true
