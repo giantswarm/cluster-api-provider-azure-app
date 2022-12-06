@@ -20,9 +20,5 @@ provider:
   clientId: ""
   clientSecret: ""
 
-workloadCluster:
-  ssh:
-    ssoPublicKey: ""
-
 verticalPodAutoscaler:
   enabled: true

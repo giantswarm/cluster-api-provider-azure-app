@@ -2,7 +2,7 @@ namespace: "{{ .Release.Namespace }}"
 
 resources:
   - input/infrastructure-components.yaml
-  - ssh-sso-public-key-secret.yaml
+#  - ssh-sso-public-key-secret.yaml
 
 transformers:
   - common-labels.yaml
