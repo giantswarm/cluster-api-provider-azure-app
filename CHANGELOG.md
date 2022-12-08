@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - `PodSecurityPolicy` are removed on newer k8s versions, so only apply it in the `crd-install` job if object is registered in the k8s API.
+- Update upstream cluster-api-provider-azure version from v1.0.1 to v1.1.3 (see highlights bellow).
+- [CAPZ v1.1.3] Add new AzureClusterIdentity type - `ManualServicePrincipal`.
+- [CAPZ v1.1.3] Add namespace listing permission to `ClusterRole` `capz-manager-role`.
 
 ### Added
 
