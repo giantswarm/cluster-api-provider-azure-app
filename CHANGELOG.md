@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2022-12-08
+
 ### Changed
 
 - `PodSecurityPolicy` are removed on newer k8s versions, so only apply it in the `crd-install` job if object is registered in the k8s API.
@@ -85,7 +87,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed label selector for webhook and manager services.
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v0.5.3-gs1...v1.0.0
