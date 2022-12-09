@@ -24,7 +24,7 @@ version="$(yq e '.image.tag' "$helm_values")"
 release_asset_filename="infrastructure-components.yaml"
 url="https://github.com/$org/$repo/releases/download/$version/$release_asset_filename"
 mkdir -p "$KUSTOMIZE_INPUT_DIR"
-# curl -L "$url" -o "$KUSTOMIZE_INPUT_DIR/$release_asset_filename"
+curl -L "$url" -o "$KUSTOMIZE_INPUT_DIR/$release_asset_filename"
 
 # Update kustomize patches for webhooks. We do this for every CRD
 
