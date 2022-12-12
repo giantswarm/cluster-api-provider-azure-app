@@ -7,6 +7,7 @@ generate:
 	@rm -rf helm/cluster-api-provider-azure/templates/v1_secret_capz-manager-bootstrap-credentials.yaml
 	./hack/move-generated-crds.sh
 	./hack/generate-crd-version-patches.sh
+	./hack/generate-helm-helpers.sh
 
 .PHONY: verify
 verify: generate
