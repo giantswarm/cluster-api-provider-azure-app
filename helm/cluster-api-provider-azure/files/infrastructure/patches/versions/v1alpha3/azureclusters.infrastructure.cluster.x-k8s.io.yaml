@@ -107,7 +107,7 @@
                     description: SubnetSpec configures an Azure subnet.
                     properties:
                       cidrBlock:
-                        description: 'CidrBlock is the CIDR block to be used when the provider creates a managed Vnet. DEPRECATED: Use CIDRBlocks instead'
+                        description: 'CidrBlock is the CIDR block to be used when the provider creates a managed Vnet. Deprecated: Use CIDRBlocks instead'
                         type: string
                       cidrBlocks:
                         description: CIDRBlocks defines the subnet's address space, specified as one or more address prefixes in CIDR notation.
@@ -189,7 +189,7 @@
                   description: Vnet is the configuration for the Azure virtual network.
                   properties:
                     cidrBlock:
-                      description: 'CidrBlock is the CIDR block to be used when the provider creates a managed virtual network. DEPRECATED: Use CIDRBlocks instead'
+                      description: 'CidrBlock is the CIDR block to be used when the provider creates a managed virtual network. Deprecated: Use CIDRBlocks instead'
                       type: string
                     cidrBlocks:
                       description: CIDRBlocks defines the virtual network's address space, specified as one or more address prefixes in CIDR notation.

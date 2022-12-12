@@ -8,6 +8,10 @@ webhooks:
     objectSelector:
       matchLabels:
         cluster.x-k8s.io/watch-filter: capi
+  - name: default.azureclustertemplate.infrastructure.cluster.x-k8s.io
+    objectSelector:
+      matchLabels:
+        cluster.x-k8s.io/watch-filter: capi
   - name: default.azuremachine.infrastructure.cluster.x-k8s.io
     objectSelector:
       matchLabels:
@@ -38,6 +42,10 @@ webhooks:
     objectSelector:
       matchLabels:
         cluster.x-k8s.io/watch-filter: capi
+  - name: validation.azureclustertemplate.infrastructure.cluster.x-k8s.io
+    objectSelector:
+      matchLabels:
+        cluster.x-k8s.io/watch-filter: capi
   - name: validation.azuremachine.infrastructure.cluster.x-k8s.io
     objectSelector:
       matchLabels:
@@ -51,6 +59,10 @@ webhooks:
       matchLabels:
         cluster.x-k8s.io/watch-filter: capi
   - name: azuremachinepoolmachine.kb.io
+    objectSelector:
+      matchLabels:
+        cluster.x-k8s.io/watch-filter: capi
+  - name: validation.azuremanagedclusters.infrastructure.cluster.x-k8s.io
     objectSelector:
       matchLabels:
         cluster.x-k8s.io/watch-filter: capi
