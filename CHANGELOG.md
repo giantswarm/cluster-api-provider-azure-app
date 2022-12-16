@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Update upstream cluster-api-provider-azure version from v1.2.1 to v1.3.2 (highlights TBA).
+
 ## [1.3.0] - 2022-12-16
 
 ### Changed
