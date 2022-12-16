@@ -1,6 +1,7 @@
 resources:
   - bases/azureclusteridentities.infrastructure.cluster.x-k8s.io.yaml
   - bases/azureclusters.infrastructure.cluster.x-k8s.io.yaml
+  - bases/azureclustertemplates.infrastructure.cluster.x-k8s.io.yaml
   - bases/azuremachinepoolmachines.infrastructure.cluster.x-k8s.io.yaml
   - bases/azuremachinepools.infrastructure.cluster.x-k8s.io.yaml
   - bases/azuremachines.infrastructure.cluster.x-k8s.io.yaml
@@ -45,6 +46,12 @@ patches:
       version: v1
       kind: CustomResourceDefinition
       name: azureclusters.infrastructure.cluster.x-k8s.io
+  - path: patches/versions/v1beta1/azureclustertemplates.infrastructure.cluster.x-k8s.io.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: azureclustertemplates.infrastructure.cluster.x-k8s.io
   - path: patches/versions/v1alpha4/azuremachinepoolmachines.infrastructure.cluster.x-k8s.io.yaml
     target:
       group: apiextensions.k8s.io

@@ -78,6 +78,10 @@
                           type: object
                         role:
                           description: Role defines the subnet role (eg. Node, ControlPlane)
+                          enum:
+                            - node
+                            - control-plane
+                            - bastion
                           type: string
                         routeTable:
                           description: RouteTable defines the route table that should be attached to this subnet.
@@ -236,7 +240,7 @@
                   type: array
               type: object
             controlPlaneEndpoint:
-              description: ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
+              description: ControlPlaneEndpoint represents the endpoint used to communicate with the control plane. It is not recommended to set this when creating an AzureCluster as CAPZ will set this for you. However, if it is set, CAPZ will not change it.
               properties:
                 host:
                   description: The hostname on which the API server is serving.
@@ -459,6 +463,10 @@
                         type: object
                       role:
                         description: Role defines the subnet role (eg. Node, ControlPlane)
+                        enum:
+                          - node
+                          - control-plane
+                          - bastion
                         type: string
                       routeTable:
                         description: RouteTable defines the route table that should be attached to this subnet.
