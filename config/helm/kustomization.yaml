@@ -9,7 +9,7 @@ transformers:
   - webhook-prefix.yaml
 
 images:
-  - name: us.gcr.io/k8s-artifacts-prod/cluster-api-azure/cluster-api-azure-controller
+  - name: registry.k8s.io/cluster-api-azure/cluster-api-azure-controller
     newName: "{{.Values.image.registry}}/{{.Values.image.name}}"
     newTag: "{{.Values.image.tag}}"
 

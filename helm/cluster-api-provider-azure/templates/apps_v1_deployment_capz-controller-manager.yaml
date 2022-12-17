@@ -23,7 +23,7 @@ spec:
   template:
     metadata:
       annotations:
-        kubectl.kubernetes.io/default-logs-container: manager
+        kubectl.kubernetes.io/default-container: manager
       labels:
         aadpodidbinding: capz-controller-aadpodidentity-selector
         cluster.x-k8s.io/provider: infrastructure-azure
@@ -99,6 +99,11 @@ spec:
           readOnly: true
       serviceAccountName: capz-manager
       terminationGracePeriodSeconds: 10
+      tolerations:
+      - effect: NoSchedule
+        key: node-role.kubernetes.io/master
+      - effect: NoSchedule
+        key: node-role.kubernetes.io/control-plane
       volumes:
       - name: cert
         secret:
