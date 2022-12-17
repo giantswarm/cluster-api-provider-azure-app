@@ -9,7 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Update upstream cluster-api-provider-azure version from v1.2.1 to v1.3.2 (highlights TBA).
+- Update upstream cluster-api-provider-azure version from v1.2.1 to v1.3.2 (see highlighted changes below)
+- [CAPZ v1.3.0] [Add support for Service Principal with Certificate auth using AAD pod identity](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/2258). This looks like a breaking change in theory, since `AzureClusterIdentity` `UserAssignedMSI` type is removed, but in practice it is not, because UserAssignedMSI never worked, see [this comment for more details](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/2258/files#r859891486). In any case Giant Swarm workload clusters are not be affected, because all of them are using `ServicePrincipal` type.
+
+### cluster-api-provider-azure upstream release notes
+- [v1.3.0](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.3.0)
+- [v1.3.1](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.3.1)
+- [v1.3.2](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.3.2)
 
 ## [1.3.0] - 2022-12-16
 
