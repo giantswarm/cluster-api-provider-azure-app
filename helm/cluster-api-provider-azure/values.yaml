@@ -12,7 +12,7 @@ crdInstall:
   enable: true
   kubectl:
     image: "giantswarm/docker-kubectl"
-    tag: "1.23.6"
+    tag: "1.25.4"
 
 workloadCluster:
   ssh:
