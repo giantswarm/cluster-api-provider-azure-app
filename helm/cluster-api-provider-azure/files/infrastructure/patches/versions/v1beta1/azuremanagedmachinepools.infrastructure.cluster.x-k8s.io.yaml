@@ -20,6 +20,9 @@
               items:
                 type: string
               type: array
+            enableUltraSSD:
+              description: EnableUltraSSD enables the storage type UltraSSD_LRS for the agent pool.
+              type: boolean
             maxPods:
               description: MaxPods specifies the kubelet --max-pods configuration for the node pool.
               format: int32
