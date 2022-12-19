@@ -7,6 +7,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changes
+
+- Update upstream cluster-api-provider-azure version from v1.3.2 to v1.4.5 (see highlighted changes below)
+
+### Highlighted upstream changes that can be relevant for vintage workload clusters
+
+- N/A
+
+### Highlighted upstream changes
+
+(with specified upstream cluster-api-provider-azure versions)
+
+- `v1.4.0` [Add support for Ultra Disks as Persistent Volumes](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/2421)
+- `v1.4.0` [Add support for user-assigned identity as AzureClusterIdentity](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/2371)
+- `v1.4.0` [Add ComputeGallery field and add community galleries support](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/2277)
+- `v1.4.3` [Add `node-role.kubernetes.io/control-plane` toleration to CAPZ manager deployment](https://github.com/kubernetes-sigs/cluster-api-provider-azure/issues/2640) implemented in [this PR](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/2644)
+
+### Upstream release notes
+
+- [v1.4.0](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.4.0)
+- [v1.4.1](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.4.1)
+- [v1.4.2](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.4.2)
+- [v1.4.3](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.4.3)
+- [v1.4.4](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.4.4)
+- [v1.4.5](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.4.5)
+
 ## [1.4.0] - 2022-12-19
 
 ### Changed
