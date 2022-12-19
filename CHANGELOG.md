@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changes
 
 - Update upstream cluster-api-provider-azure version from v1.3.2 to v1.4.5 (see highlighted changes below)
+- Update docker-kubectl image version to v1.25.4.
 
 ### Highlighted upstream changes that can be relevant for vintage workload clusters
 
