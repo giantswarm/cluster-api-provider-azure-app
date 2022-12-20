@@ -94,6 +94,11 @@
                           - nameSuffix
                         type: object
                       type: array
+                    dnsServers:
+                      description: DNSServers adds a list of DNS Server IP addresses to the VM NICs.
+                      items:
+                        type: string
+                      type: array
                     enableIPForwarding:
                       description: EnableIPForwarding enables IP Forwarding in Azure which is required for some CNI's to send traffic from a pods on one machine to another. This is required for IpV6 with Calico in combination with User Defined Routes (set by the Azure Cloud Controller manager). Default is false for disabled.
                       type: boolean

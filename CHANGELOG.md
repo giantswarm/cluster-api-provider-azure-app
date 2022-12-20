@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changes
+
+- Update upstream cluster-api-provider-azure version from v1.4.5 to v1.5.4 (see highlighted changes below)
+
+### Highlighted upstream changes that can be relevant for vintage workload clusters
+
+- N/A
+
+### Highlighted upstream changes
+
+(with specified upstream cluster-api-provider-azure versions)
+
+- `v1.5.3` `controller-gen.kubebuilder.io/version` bump from v0.8.0 to v0.9.2. This caused removal of `Status` field and addition of `x-kubernetes-map-type` in CRDs. 
+
+### Upstream release notes
+
+- [v1.5.0](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.5.0)
+- [v1.5.1](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.5.1)
+- [v1.5.2](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.5.2)
+- [v1.5.3](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.5.3)
+- [v1.5.4](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.5.4)
+
 ## [1.5.0] - 2022-12-20
 
 ### Changes

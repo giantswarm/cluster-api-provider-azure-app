@@ -262,6 +262,7 @@
                   description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
                   type: string
               type: object
+              x-kubernetes-map-type: atomic
             location:
               type: string
             networkSpec:
