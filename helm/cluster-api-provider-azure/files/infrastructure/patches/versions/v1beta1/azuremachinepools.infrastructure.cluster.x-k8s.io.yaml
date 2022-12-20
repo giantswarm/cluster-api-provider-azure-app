@@ -308,6 +308,12 @@
                 spotVMOptions:
                   description: SpotVMOptions allows the ability to specify the Machine should use a Spot VM
                   properties:
+                    evictionPolicy:
+                      description: EvictionPolicy defines the behavior of the virtual machine when it is evicted. It can be either Delete or Deallocate.
+                      enum:
+                        - Deallocate
+                        - Delete
+                      type: string
                     maxPrice:
                       anyOf:
                         - type: integer
@@ -325,6 +331,36 @@
                 terminateNotificationTimeout:
                   description: TerminateNotificationTimeout enables or disables VMSS scheduled events termination notification with specified timeout allowed values are between 5 and 15 (mins)
                   type: integer
+                vmExtensions:
+                  description: VMExtensions specifies a list of extensions to be added to the scale set.
+                  items:
+                    description: VMExtension specifies the parameters for a custom VM extension.
+                    properties:
+                      name:
+                        description: Name is the name of the extension.
+                        type: string
+                      protectedSettings:
+                        additionalProperties:
+                          type: string
+                        description: ProtectedSettings is a JSON formatted protected settings for the extension.
+                        type: object
+                      publisher:
+                        description: Publisher is the name of the extension handler publisher.
+                        type: string
+                      settings:
+                        additionalProperties:
+                          type: string
+                        description: Settings is a JSON formatted public settings for the extension.
+                        type: object
+                      version:
+                        description: Version specifies the version of the script handler.
+                        type: string
+                    required:
+                      - name
+                      - publisher
+                      - version
+                    type: object
+                  type: array
                 vmSize:
                   description: VMSize is the size of the Virtual Machine to build. See https://docs.microsoft.com/en-us/rest/api/compute/virtualmachines/createorupdate#virtualmachinesizetypes
                   type: string

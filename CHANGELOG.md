@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changes
+
+- Update upstream cluster-api-provider-azure version from v1.5.4 to v1.6.0 (see highlighted changes below)
+
+### Highlighted upstream changes that can be relevant for vintage workload clusters
+
+- `v1.6.0` [Add evictionPolicy field for spot VMs](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/2689). Vintage workload clusters support node pools that are using spot instances with Azure's default `Deallocate` eviction policy. Changing eviction policy is not possible for vintage workload clusters. 
+
+### Highlighted upstream changes
+
+(with specified upstream cluster-api-provider-azure versions)
+
+- `v1.6.0` [Add support for custom vm extensions](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/2631)
+- `v1.6.0` [Add support for adding Virtual Network Service Endpoints to subnets created/managed by CAPZ](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/2635)
+
+### Upstream release notes
+
+- [v1.6.0](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.6.0)
+
 ## [1.6.0] - 2022-12-20
 
 ### Changes
