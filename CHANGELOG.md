@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.6.0] - 2022-12-20
+
 ### Changes
 
 - Update upstream cluster-api-provider-azure version from v1.4.5 to v1.5.4 (see highlighted changes below)
@@ -158,7 +160,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed label selector for webhook and manager services.
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.5.0...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.6.0...HEAD
+[1.6.0]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.5.0...v1.6.0
 [1.5.0]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.2.0...v1.3.0
