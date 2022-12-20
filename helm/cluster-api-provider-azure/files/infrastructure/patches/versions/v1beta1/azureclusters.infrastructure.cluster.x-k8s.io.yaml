@@ -180,6 +180,9 @@
                                   - protocol
                                 type: object
                               type: array
+                              x-kubernetes-list-map-keys:
+                                - name
+                              x-kubernetes-list-type: map
                             tags:
                               additionalProperties:
                                 type: string
@@ -308,6 +311,7 @@
                   description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
                   type: string
               type: object
+              x-kubernetes-map-type: atomic
             location:
               type: string
             networkSpec:
@@ -625,6 +629,9 @@
                                 - protocol
                               type: object
                             type: array
+                            x-kubernetes-list-map-keys:
+                              - name
+                            x-kubernetes-list-type: map
                           tags:
                             additionalProperties:
                               type: string
@@ -638,6 +645,9 @@
                       - role
                     type: object
                   type: array
+                  x-kubernetes-list-map-keys:
+                    - name
+                  x-kubernetes-list-type: map
                 vnet:
                   description: Vnet is the configuration for the Azure virtual network.
                   properties:

@@ -3,5 +3,5 @@ This file contains generated annotation values. All changes will be overwritten 
 */}}
 
 {{- define "annotations.kubebuilder_version" -}}
-v0.8.0
+v0.9.2
 {{- end -}}

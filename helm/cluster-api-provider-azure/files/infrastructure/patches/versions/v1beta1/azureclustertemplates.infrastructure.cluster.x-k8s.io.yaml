@@ -19,6 +19,7 @@
               description: AzureClusterTemplateResource describes the data needed to create an AzureCluster from a template.
               properties:
                 spec:
+                  description: AzureClusterTemplateResourceSpec specifies an Azure cluster template resource.
                   properties:
                     additionalTags:
                       additionalProperties:
@@ -32,14 +33,19 @@
                       description: BastionSpec encapsulates all things related to the Bastions in the cluster.
                       properties:
                         azureBastion:
+                          description: AzureBastionTemplateSpec specifies a template for an Azure Bastion host.
                           properties:
                             subnet:
+                              description: SubnetTemplateSpec specifies a template for a subnet.
                               properties:
                                 cidrBlocks:
                                   description: CIDRBlocks defines the subnet's address space, specified as one or more address prefixes in CIDR notation.
                                   items:
                                     type: string
                                   type: array
+                                name:
+                                  description: Name defines a name for the subnet resource.
+                                  type: string
                                 natGateway:
                                   description: NatGateway associated with this subnet.
                                   properties:
@@ -106,6 +112,9 @@
                                           - protocol
                                         type: object
                                       type: array
+                                      x-kubernetes-list-map-keys:
+                                        - name
+                                      x-kubernetes-list-type: map
                                     tags:
                                       additionalProperties:
                                         type: string
@@ -113,6 +122,7 @@
                                       type: object
                                   type: object
                               required:
+                                - name
                                 - role
                               type: object
                           type: object
@@ -217,6 +227,7 @@
                           description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
                           type: string
                       type: object
+                      x-kubernetes-map-type: atomic
                     location:
                       type: string
                     networkSpec:
@@ -270,12 +281,16 @@
                         subnets:
                           description: Subnets is the configuration for the control-plane subnet and the node subnet.
                           items:
+                            description: SubnetTemplateSpec specifies a template for a subnet.
                             properties:
                               cidrBlocks:
                                 description: CIDRBlocks defines the subnet's address space, specified as one or more address prefixes in CIDR notation.
                                 items:
                                   type: string
                                 type: array
+                              name:
+                                description: Name defines a name for the subnet resource.
+                                type: string
                               natGateway:
                                 description: NatGateway associated with this subnet.
                                 properties:
@@ -342,6 +357,9 @@
                                         - protocol
                                       type: object
                                     type: array
+                                    x-kubernetes-list-map-keys:
+                                      - name
+                                    x-kubernetes-list-type: map
                                   tags:
                                     additionalProperties:
                                       type: string
@@ -349,9 +367,13 @@
                                     type: object
                                 type: object
                             required:
+                              - name
                               - role
                             type: object
                           type: array
+                          x-kubernetes-list-map-keys:
+                            - name
+                          x-kubernetes-list-type: map
                         vnet:
                           description: Vnet is the configuration for the Azure virtual network.
                           properties:
@@ -363,9 +385,13 @@
                             peerings:
                               description: Peerings defines a list of peerings of the newly created virtual network with existing virtual networks.
                               items:
+                                description: VnetPeeringClassSpec specifies a virtual network peering class.
                                 properties:
                                   remoteVnetName:
                                     description: RemoteVnetName defines name of the remote virtual network.
+                                    type: string
+                                  resourceGroup:
+                                    description: ResourceGroup is the resource group name of the remote virtual network.
                                     type: string
                                 required:
                                   - remoteVnetName
