@@ -19,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 (with specified upstream cluster-api-provider-azure versions)
 
-- `v1.5.3` `controller-gen.kubebuilder.io/version` bump from v0.8.0 to v0.9.2.
+- `v1.5.3` `controller-gen.kubebuilder.io/version` bump from v0.8.0 to v0.9.2. This caused removal of `Status` field and addition of `x-kubernetes-map-type` in CRDs. 
 
 ### Upstream release notes
 
