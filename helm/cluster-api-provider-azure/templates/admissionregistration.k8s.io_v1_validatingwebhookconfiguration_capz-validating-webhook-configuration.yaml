@@ -1,3 +1,4 @@
+{{ if eq .Values.provider.flavor "capi" }}
 apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration
 metadata:
@@ -234,3 +235,4 @@ webhooks:
     resources:
     - azuremanagedmachinepools
   sideEffects: None
+{{ end }}

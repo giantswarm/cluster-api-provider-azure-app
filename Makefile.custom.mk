@@ -8,6 +8,7 @@ generate:
 	./hack/move-generated-crds.sh
 	./hack/generate-crd-version-patches.sh
 	./hack/generate-helm-helpers.sh
+	./hack/generate-helm-conditions.sh
 
 .PHONY: verify
 verify: generate
