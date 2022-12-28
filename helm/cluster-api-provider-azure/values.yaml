@@ -8,6 +8,9 @@ project:
   branch: "[[ .Branch ]]"
   commit: "[[ .SHA ]]"
 
+provider:
+  flavor: vintage
+
 crdInstall:
   enable: true
   kubectl:
