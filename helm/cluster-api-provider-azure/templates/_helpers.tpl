@@ -55,3 +55,15 @@ app.kubernetes.io/instance: "{{ template "name" . }}"
 {{- define "capz.CRDInstallSelector" -}}
 {{- printf "%s" "crd-install-hook" -}}
 {{- end -}}
+
+{{/*
+Watch filter value:
+  CAPI MCs: empty (controllers are reconciling all CRs on CAPI MCs)
+  Vintage MCs: capi (controllers are watching only labeled CRs and are not reconciling vintage WC CRs)
+*/}}
+{{- define "deployment.args.watchfiltervalue" -}}
+{{- if eq .Values.provider.flavor "capi" -}}
+{{- else -}}
+capi
+{{- end -}}
+{{- end -}}

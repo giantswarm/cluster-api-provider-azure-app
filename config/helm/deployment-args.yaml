@@ -11,5 +11,5 @@ spec:
           args:
             - --metrics-bind-addr=0.0.0.0:8080
             - --feature-gates=MachinePool=true,AKS=false
-            - --watch-filter=capi
+            - --watch-filter="{{- include "deployment.args.watchfiltervalue" . -}}"
             - --v=0
