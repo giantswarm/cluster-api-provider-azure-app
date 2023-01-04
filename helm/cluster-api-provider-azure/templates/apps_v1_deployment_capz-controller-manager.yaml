@@ -33,7 +33,7 @@ spec:
       - args:
         - --metrics-bind-addr=0.0.0.0:8080
         - --feature-gates=MachinePool=true,AKS=false
-        - --v=0
+        - --v={{ .Values.controller.verbosity }}
         env:
         - name: AZURE_SUBSCRIPTION_ID
           valueFrom:

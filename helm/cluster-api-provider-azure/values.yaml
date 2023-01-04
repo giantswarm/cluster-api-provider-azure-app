@@ -4,6 +4,9 @@ image:
   name: giantswarm/cluster-api-azure-controller
   tag: v1.6.0
 
+controller:
+  verbosity: 0
+
 project:
   branch: "capz_version_bump_1.6.0"
   commit: "a55192a436ee367d22d69e0c649ed44461dd7093"
