@@ -21,6 +21,7 @@ patchesStrategicMerge:
   - webhook-certificate.yaml
   - service-prometheus-annotations.yaml
   - service-add-metrics-port.yaml
+  - secret-bootstrap-credentials.yaml
   - certificate.yaml
   - delete-leader-election.yaml
   - delete-nmi.yaml
@@ -44,3 +45,10 @@ patches:
   target:
     kind: CustomResourceDefinition
     labelSelector: cluster.x-k8s.io/provider=infrastructure-azure
+- target:
+    kind: Secret
+    name: capz-manager-bootstrap-credentials
+  patch: |-
+    - op: replace
+      path: /metadata/name
+      value: credential-default

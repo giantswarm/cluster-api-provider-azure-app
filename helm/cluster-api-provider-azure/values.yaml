@@ -8,6 +8,13 @@ project:
   branch: "[[ .Branch ]]"
   commit: "[[ .SHA ]]"
 
+provider:
+  flavor: vintage
+  subscriptionId: ""
+  tenantId: ""
+  clientId: ""
+  clientSecret: ""
+
 crdInstall:
   enable: true
   kubectl:
