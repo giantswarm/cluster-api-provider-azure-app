@@ -9,6 +9,7 @@ spec:
       containers:
         - name: manager
           args:
+            - --leader-elect={{- if eq .Values.provider.flavor "capi" }}true{{ else }}false{{- end }}
             - --metrics-bind-addr=0.0.0.0:8080
             - --feature-gates=MachinePool=true,AKS=false
             - --watch-filter=capi

@@ -23,7 +23,6 @@ patchesStrategicMerge:
   - service-add-metrics-port.yaml
   - secret-bootstrap-credentials.yaml
   - certificate.yaml
-  - delete-leader-election.yaml
   - delete-nmi.yaml
   - delete-selfsigned-cert-issuer.yaml
   - delete-ns.yaml
