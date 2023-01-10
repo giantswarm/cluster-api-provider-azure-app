@@ -15,6 +15,9 @@ capi_only_templates+=("${HELM_DIR}/templates/rbac.authorization.k8s.io_v1_rolebi
 capi_only_templates+=("${HELM_DIR}/templates/apps_v1_daemonset_capz-nmi.yaml")
 capi_only_templates+=("${HELM_DIR}/templates/rbac.authorization.k8s.io_v1_clusterrole_capz-aad-pod-id-nmi-role.yaml")
 capi_only_templates+=("${HELM_DIR}/templates/rbac.authorization.k8s.io_v1_clusterrolebinding_capz-aad-pod-id-nmi-binding.yaml")
+capi_only_templates+=("${HELM_DIR}/templates/apiextensions.k8s.io_v1_customresourcedefinition_azureidentities.aadpodidentity.k8s.io.yaml")
+capi_only_templates+=("${HELM_DIR}/templates/apiextensions.k8s.io_v1_customresourcedefinition_azureidentitybindings.aadpodidentity.k8s.io.yaml")
+capi_only_templates+=("${HELM_DIR}/templates/apiextensions.k8s.io_v1_customresourcedefinition_azurepodidentityexceptions.aadpodidentity.k8s.io.yaml")
 
 for template_file in "${capi_only_templates[@]}"; do
     sed -i '1i {{ if eq .Values.provider.flavor "capi" }}' "$template_file"
