@@ -25,5 +25,8 @@ workloadCluster:
   ssh:
     ssoPublicKey: ""
 
+controller:
+  verbosity: 0
+
 verticalPodAutoscaler:
   enabled: true
