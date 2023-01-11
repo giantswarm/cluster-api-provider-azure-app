@@ -10,6 +10,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changes
 
 - Update upstream cluster-api-provider-azure version from v1.5.4 to v1.6.0 (see highlighted changes below)
+- add `provider.flavor` to values with default to _vintage_ , needed for all conditional rendering between capi and vintage
+- In CAPI keep the `capz-controller` secret 
+- In CAPI keep the `leader election` resources and flags
+- In CAPI keep the `NMI` daemonset and resources
+- Add `crd labels` patch to make `clusterctl move` work for CAPZ CRDs
+- Make the `watch-filter` conditional, disable it in CAPI
+- Make verbosity of the controller configurable
 
 ### Highlighted upstream changes that can be relevant for vintage workload clusters
 
