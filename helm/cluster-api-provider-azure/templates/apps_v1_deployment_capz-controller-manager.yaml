@@ -35,7 +35,7 @@ spec:
           end }}
         - --metrics-bind-addr=0.0.0.0:8080
         - --feature-gates=MachinePool=true,AKS=false
-        - --watch-filter=capi
+        - --watch-filter="{{- include "deployment.args.watchfiltervalue" . -}}"
         - --v={{ .Values.controller.verbosity }}
         env:
         - name: AZURE_SUBSCRIPTION_ID

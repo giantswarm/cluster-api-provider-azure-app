@@ -17,7 +17,6 @@ patchesStrategicMerge:
   - deployment-args.yaml
   - deployment-environment.yaml
   - deployment-metrics-port.yaml
-  - webhook-watchfilter.yaml
   - webhook-certificate.yaml
   - service-prometheus-annotations.yaml
   - service-add-metrics-port.yaml
@@ -39,6 +38,12 @@ patches:
   target:
     kind: CustomResourceDefinition
     labelSelector: cluster.x-k8s.io/provider=infrastructure-azure
+- target:
+    kind: ValidatingWebhookConfiguration
+  path: validating-webhook-watchfilter.yaml
+- target:
+    kind: MutatingWebhookConfiguration
+  path: mutating-webhook-watchfilter.yaml
 - target:
     kind: Secret
     name: capz-manager-bootstrap-credentials

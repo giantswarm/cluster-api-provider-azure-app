@@ -55,3 +55,27 @@ app.kubernetes.io/instance: "{{ template "name" . }}"
 {{- define "capz.CRDInstallSelector" -}}
 {{- printf "%s" "crd-install-hook" -}}
 {{- end -}}
+
+
+{{/* CAPI Filtering templates */}}
+{{/*
+Watch filter value:
+  CAPI MCs: empty (controllers are reconciling all CRs on CAPI MCs)
+  Vintage MCs: capi (controllers are watching only labeled CRs and are not reconciling vintage WC CRs)
+*/}}
+{{/* Define objectSelector for webhooks */}}
+{{- define "capz.webhookObjectSelector" -}}
+{{- if eq .Values.provider.flavor "capi" -}}
+{{- printf " %s" "{}" -}}
+{{- else }}
+    matchLabels:
+      cluster.x-k8s.io/watch-filter: capi
+{{- end -}}
+{{- end -}}
+
+{{- define "deployment.args.watchfiltervalue" -}}
+{{- if eq .Values.provider.flavor "capi" -}}
+{{- else -}}
+capi
+{{- end -}}
+{{- end -}}
