@@ -15,6 +15,8 @@ metadata:
     app.kubernetes.io/name: cluster-api-provider-azure
     app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
     cluster.x-k8s.io/provider: infrastructure-azure
+    clusterctl.cluster.x-k8s.io: ""
+    clusterctl.cluster.x-k8s.io/move: ""
     helm.sh/chart: cluster-api-provider-azure
   name: azureidentitybindings.aadpodidentity.k8s.io
 spec:
