@@ -49,7 +49,7 @@ spec:
               fieldPath: spec.nodeName
         - name: LOG_LEVEL
           value: DEBUG
-        image: mcr.microsoft.com/oss/azure/aad-pod-identity/nmi:v1.8.9
+        image: mcr.microsoft.com/oss/azure/aad-pod-identity/nmi:v1.8.14
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -88,6 +88,11 @@ spec:
       nodeSelector:
         kubernetes.io/os: linux
       serviceAccountName: capz-manager
+      tolerations:
+      - effect: NoSchedule
+        key: node-role.kubernetes.io/master
+      - effect: NoSchedule
+        key: node-role.kubernetes.io/control-plane
       volumes:
       - hostPath:
           path: /run/xtables.lock
