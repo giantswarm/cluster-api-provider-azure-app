@@ -55,3 +55,7 @@ patches:
     - op: replace
       path: /metadata/name
       value: credential-default
+- target:
+    kind: DaemonSet
+    name: capz-nmi
+  path: daemonset-nmi-args.yaml

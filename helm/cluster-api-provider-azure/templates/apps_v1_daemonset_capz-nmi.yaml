@@ -35,6 +35,7 @@ spec:
         - --operation-mode=managed
         - --forceNamespaced
         - --http-probe-port=8085
+        - --prometheus-port=9190
         env:
         - name: FORCENAMESPACED
           value: "true"
