@@ -31,10 +31,12 @@ spec:
     spec:
       containers:
       - args:
+        - --leader-elect={{- if eq .Values.provider.flavor "capi" }}true{{ else }}false{{-
+          end }}
         - --metrics-bind-addr=0.0.0.0:8080
         - --feature-gates=MachinePool=true,AKS=false
-        - --watch-filter=capi
-        - --v=0
+        - --watch-filter={{- include "deployment.args.watchfiltervalue" . }}
+        - --v={{ .Values.controller.verbosity }}
         env:
         - name: AZURE_SUBSCRIPTION_ID
           valueFrom:

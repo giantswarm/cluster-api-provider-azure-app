@@ -8,6 +8,13 @@ project:
   branch: "[[ .Branch ]]"
   commit: "[[ .SHA ]]"
 
+provider:
+  flavor: vintage
+  subscriptionId: ""
+  tenantId: ""
+  clientId: ""
+  clientSecret: ""
+
 crdInstall:
   enable: true
   kubectl:
@@ -17,6 +24,9 @@ crdInstall:
 workloadCluster:
   ssh:
     ssoPublicKey: ""
+
+controller:
+  verbosity: 0
 
 verticalPodAutoscaler:
   enabled: true

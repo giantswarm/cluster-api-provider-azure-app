@@ -17,13 +17,11 @@ patchesStrategicMerge:
   - deployment-args.yaml
   - deployment-environment.yaml
   - deployment-metrics-port.yaml
-  - webhook-watchfilter.yaml
   - webhook-certificate.yaml
   - service-prometheus-annotations.yaml
   - service-add-metrics-port.yaml
+  - secret-bootstrap-credentials.yaml
   - certificate.yaml
-  - delete-leader-election.yaml
-  - delete-nmi.yaml
   - delete-selfsigned-cert-issuer.yaml
   - delete-ns.yaml
 
@@ -36,11 +34,28 @@ patches:
   target:
     kind: CustomResourceDefinition
     labelSelector: cluster.x-k8s.io/provider=infrastructure-azure
-- path: delete_aadpodidentity_crds.yaml
-  target:
-    kind: CustomResourceDefinition
-    annotationSelector: api-approved.kubernetes.io=unapproved
 - path: crd_kubebuilder_version.yaml
   target:
     kind: CustomResourceDefinition
     labelSelector: cluster.x-k8s.io/provider=infrastructure-azure
+- path: crd_clusterctl_labels.yaml
+  target:
+    kind: CustomResourceDefinition
+    labelSelector: cluster.x-k8s.io/provider=infrastructure-azure
+- target:
+    kind: ValidatingWebhookConfiguration
+  path: validating-webhook-watchfilter.yaml
+- target:
+    kind: MutatingWebhookConfiguration
+  path: mutating-webhook-watchfilter.yaml
+- target:
+    kind: Secret
+    name: capz-manager-bootstrap-credentials
+  patch: |-
+    - op: replace
+      path: /metadata/name
+      value: credential-default
+- target:
+    kind: DaemonSet
+    name: capz-nmi
+  path: daemonset-nmi-args.yaml

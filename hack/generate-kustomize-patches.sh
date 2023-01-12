@@ -28,47 +28,22 @@ url="https://github.com/$org/$repo/releases/download/$version/$release_asset_fil
 mkdir -p "$KUSTOMIZE_INPUT_DIR"
 curl -L "$url" -o "$KUSTOMIZE_INPUT_DIR/$release_asset_filename"
 
-# Update kustomize patches for webhooks. We do this for every CRD
+# Update kustomize patches for webhooks to add the `objectSelector` helm template 
 
 # First clear previous watchfilter patches
-true > "$KUSTOMIZE_DIR/webhook-watchfilter.yaml"
+true > "$KUSTOMIZE_DIR/mutating-webhook-watchfilter.yaml"
+true > "$KUSTOMIZE_DIR/validating-webhook-watchfilter.yaml"
 
-# For every CRD, add webhook label selector
-for webhook_cr_name in $(yq e -N 'select(.kind=="MutatingWebhookConfiguration" or .kind=="ValidatingWebhookConfiguration") | .metadata.name' "$KUSTOMIZE_INPUT_DIR/$release_asset_filename"); do
-    webhook="$(
-        webhook_cr_name="$webhook_cr_name" \
-        yq e 'select((.kind=="MutatingWebhookConfiguration" or .kind=="ValidatingWebhookConfiguration") and .metadata.name==env(webhook_cr_name))' \
-            "$KUSTOMIZE_INPUT_DIR/$release_asset_filename"
-    )"
+mutating_webhook_items=$(yq -e -N 'select(.kind=="MutatingWebhookConfiguration") | .webhooks | length' "$KUSTOMIZE_INPUT_DIR/$release_asset_filename")
+for item in $(seq 0 $(($mutating_webhook_items-1))); do
+  echo "- op: add" >> "$KUSTOMIZE_DIR/mutating-webhook-watchfilter.yaml"
+  echo "  path: /webhooks/$item/objectSelector" >> "$KUSTOMIZE_DIR/mutating-webhook-watchfilter.yaml"
+  echo "  value: '{{- include \"capz.webhookObjectSelector\" $ }}'" >> "$KUSTOMIZE_DIR/mutating-webhook-watchfilter.yaml"
+done
 
-    webhook_api_version="$(echo "$webhook" | yq e ".apiVersion" -)"
-    webhook_kind="$(echo "$webhook" | yq e ".kind" -)"
-
-    webhook_patch="---
-apiVersion: $webhook_api_version
-kind: $webhook_kind
-metadata:
-  name: $webhook_cr_name
-webhooks: null
-"
-
-    echo "Generating watch-filter patches for $webhook_kind $webhook_cr_name"
-    # Get all CRDs for this provider
-    for webhook_name in $(webhook_cr_name="$webhook_cr_name" yq e 'select((.kind=="MutatingWebhookConfiguration" or .kind=="ValidatingWebhookConfiguration") and .metadata.name==env(webhook_cr_name)) | .webhooks[].name' "$KUSTOMIZE_INPUT_DIR/$release_asset_filename"); do
-        object_selector_patch="$(
-            webhook_name="$webhook_name" \
-            yq e --null-input \
-                '.name = env(webhook_name) |
-                .objectSelector.matchLabels["cluster.x-k8s.io/watch-filter"] = "capi"'
-            )"
-
-        webhook_patch="$(
-            echo "$webhook_patch" | \
-                object_selector_patch="$object_selector_patch" \
-                yq e '.webhooks += [env(object_selector_patch)]' -
-        )"
-    done
-
-    # Write webhook patch to file
-    echo "$webhook_patch" >> "$KUSTOMIZE_DIR"/webhook-watchfilter.yaml
+validating_webhook_items=$(yq -e -N 'select(.kind=="ValidatingWebhookConfiguration") | .webhooks | length' "$KUSTOMIZE_INPUT_DIR/$release_asset_filename")
+for item in $(seq 0 $(($validating_webhook_items-1))); do
+  echo "- op: add" >> "$KUSTOMIZE_DIR/validating-webhook-watchfilter.yaml"
+  echo "  path: /webhooks/$item/objectSelector" >> "$KUSTOMIZE_DIR/validating-webhook-watchfilter.yaml"
+  echo "  value: '{{- include \"capz.webhookObjectSelector\" $ }}'" >> "$KUSTOMIZE_DIR/validating-webhook-watchfilter.yaml"
 done

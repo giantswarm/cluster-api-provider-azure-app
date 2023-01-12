@@ -1,0 +1,106 @@
+{{ if eq .Values.provider.flavor "capi" }}
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  labels:
+    app.giantswarm.io/branch: '{{ .Values.project.branch }}'
+    app.giantswarm.io/commit: '{{ .Values.project.commit }}'
+    app.kubernetes.io/instance: '{{ .Release.Name }}'
+    app.kubernetes.io/managed-by: '{{ .Release.Service }}'
+    app.kubernetes.io/name: cluster-api-provider-azure
+    app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
+    cluster.x-k8s.io/provider: infrastructure-azure
+    component: nmi
+    helm.sh/chart: cluster-api-provider-azure
+    k8s-app: aad-pod-id
+    tier: node
+  name: capz-nmi
+  namespace: '{{ .Release.Namespace }}'
+spec:
+  selector:
+    matchLabels:
+      cluster.x-k8s.io/provider: infrastructure-azure
+      component: nmi
+      tier: node
+  template:
+    metadata:
+      labels:
+        cluster.x-k8s.io/provider: infrastructure-azure
+        component: nmi
+        tier: node
+    spec:
+      containers:
+      - args:
+        - --node=$(NODE_NAME)
+        - --operation-mode=managed
+        - --forceNamespaced
+        - --http-probe-port=8085
+        - --prometheus-port=9190
+        env:
+        - name: FORCENAMESPACED
+          value: "true"
+        - name: HOST_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: LOG_LEVEL
+          value: DEBUG
+        image: mcr.microsoft.com/oss/azure/aad-pod-identity/nmi:v1.8.9
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8085
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        name: nmi
+        resources:
+          limits:
+            cpu: 200m
+            memory: 512Mi
+          requests:
+            cpu: 100m
+            memory: 256Mi
+        securityContext:
+          capabilities:
+            add:
+            - DAC_READ_SEARCH
+            - NET_ADMIN
+            - NET_RAW
+            drop:
+            - ALL
+          runAsUser: 0
+        volumeMounts:
+        - mountPath: /run/xtables.lock
+          name: iptableslock
+        - mountPath: /etc/default
+          name: default-path
+          readOnly: true
+        - mountPath: /etc/default/kubelet
+          name: kubelet-config
+          readOnly: true
+      dnsPolicy: ClusterFirstWithHostNet
+      hostNetwork: true
+      nodeSelector:
+        kubernetes.io/os: linux
+      serviceAccountName: capz-manager
+      volumes:
+      - hostPath:
+          path: /run/xtables.lock
+          type: FileOrCreate
+        name: iptableslock
+      - hostPath:
+          path: /etc/default
+          type: DirectoryOrCreate
+        name: default-path
+      - hostPath:
+          path: /etc/default/kubelet
+          type: FileOrCreate
+        name: kubelet-config
+  updateStrategy:
+    type: RollingUpdate
+{{ end }}

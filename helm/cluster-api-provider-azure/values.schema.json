@@ -2,6 +2,14 @@
     "$schema": "http://json-schema.org/schema#",
     "type": "object",
     "properties": {
+        "controller": {
+            "type": "object",
+            "properties": {
+                "verbosity": {
+                    "type": "integer"
+                }
+            }
+        },
         "crdInstall": {
             "type": "object",
             "properties": {
@@ -45,6 +53,26 @@
                     "type": "string"
                 },
                 "commit": {
+                    "type": "string"
+                }
+            }
+        },
+        "provider": {
+            "type": "object",
+            "properties": {
+                "clientId": {
+                    "type": "string"
+                },
+                "clientSecret": {
+                    "type": "string"
+                },
+                "flavor": {
+                    "type": "string"
+                },
+                "subscriptionId": {
+                    "type": "string"
+                },
+                "tenantId": {
                     "type": "string"
                 }
             }
