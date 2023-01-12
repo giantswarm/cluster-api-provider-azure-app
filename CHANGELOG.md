@@ -17,10 +17,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add `crd labels` patch to make `clusterctl move` work for CAPZ CRDs
 - Make the `watch-filter` conditional, disable it in CAPI
 - Make verbosity of the controller configurable
+- Update upstream cluster-api-provider-azure version from v1.6.0 to v1.6.1 (see highlighted changes below)
 
 ### Highlighted upstream changes that can be relevant for vintage workload clusters
 
 - `v1.6.0` [Add evictionPolicy field for spot VMs](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/2689). Vintage workload clusters support node pools that are using spot instances with Azure's default `Deallocate` eviction policy. Changing eviction policy is not possible for vintage workload clusters. 
+- `v1.6.1` - Nothing
 
 ### Highlighted upstream changes
 
@@ -28,10 +30,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `v1.6.0` [Add support for custom vm extensions](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/2631)
 - `v1.6.0` [Add support for adding Virtual Network Service Endpoints to subnets created/managed by CAPZ](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/2635)
+- `v1.6.1` [Fix Machinepool reconciliation when resourceGroupName has capital letters in it](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/2894)
 
 ### Upstream release notes
 
 - [v1.6.0](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.6.0)
+- [v1.6.1](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.6.1)
 
 ## [1.6.0] - 2022-12-20
 
