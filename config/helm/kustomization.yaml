@@ -24,6 +24,7 @@ patchesStrategicMerge:
   - certificate.yaml
   - delete-selfsigned-cert-issuer.yaml
   - delete-ns.yaml
+  - delete-nmi.yaml
 
 patches:
 - path: crd_cainjection.yaml
