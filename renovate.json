@@ -1,7 +1,7 @@
 {
   "extends": [
     "config:base",
-    ":reviewer(team:team-hydra)"
+    ":reviewer(team:team-clippy)"
   ],
   "labels": ["dependencies", "renovate"],
   "dependencyDashboard": true,
