@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add `provider.flavor` to values with default to _vintage_ , needed for all conditional rendering between capi and vintage
 - In CAPI keep the `capz-controller` secret 
 - In CAPI keep the `leader election` resources and flags
-- In CAPI keep the `NMI` daemonset and resources
+- In CAPI keep the `NMI` RBAC resources to make it work with the `azure-ad-pod-identity-app`
 - Add `crd labels` patch to make `clusterctl move` work for CAPZ CRDs
 - Make the `watch-filter` conditional, disable it in CAPI
 - Make verbosity of the controller configurable
