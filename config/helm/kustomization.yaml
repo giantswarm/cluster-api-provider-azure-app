@@ -27,6 +27,10 @@ patchesStrategicMerge:
   - delete-nmi.yaml
 
 patches:
+- path: delete_aadpodidentity_crds.yaml
+  target:
+    kind: CustomResourceDefinition
+    annotationSelector: api-approved.kubernetes.io=unapproved
 - path: crd_cainjection.yaml
   target:
     kind: CustomResourceDefinition
