@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changes
+
+- Remove the AKS FeatureFlag since is not supported anymore
+
 ## [1.8.0] - 2023-03-09
 
 ### Changes
