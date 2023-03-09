@@ -53,7 +53,16 @@ spec:
       storage: false
       subresources:
         status: {}
-    - name: v1beta1
+    - additionalPrinterColumns:
+        - description: Type of Azure Identity
+          jsonPath: .spec.type
+          name: Type
+          type: string
+        - description: Time duration since creation of this AzureClusterIdentity
+          jsonPath: .metadata.creationTimestamp
+          name: Age
+          type: date
+      name: v1beta1
       schema: {}
       served: true
       storage: true

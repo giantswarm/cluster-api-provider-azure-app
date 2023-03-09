@@ -98,6 +98,7 @@
                   description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
                   type: string
               type: object
+              x-kubernetes-map-type: atomic
             loadBalancerProfile:
               description: LoadBalancerProfile is the profile of the cluster load balancer.
               properties:
@@ -152,7 +153,7 @@
               description: ResourceGroupName is the name of the Azure resource group for this AKS Cluster.
               type: string
             sku:
-              description: SKU is the SKU of the AKS to be provisioned.
+              description: SKU is the AKSSku of the AKS to be provisioned.
               properties:
                 tier:
                   description: Tier - Tier of a managed cluster SKU.

@@ -142,6 +142,10 @@ spec:
           name: Endpoint
           priority: 1
           type: string
+        - description: Time duration since creation of this AzureCluster
+          jsonPath: .metadata.creationTimestamp
+          name: Age
+          type: date
       name: v1beta1
       schema: {}
       served: true
