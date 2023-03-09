@@ -2,7 +2,7 @@ name: cluster-api-azure-controller
 image:
   registry: quay.io
   name: giantswarm/cluster-api-azure-controller
-  tag: v1.8.0
+  tag: v1.7.0
 
 project:
   branch: "[[ .Branch ]]"
