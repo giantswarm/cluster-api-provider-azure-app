@@ -44,29 +44,6 @@ webhooks:
     service:
       name: capz-webhook-service
       namespace: '{{ .Release.Namespace }}'
-      path: /validate-infrastructure-cluster-x-k8s-io-v1beta1-azureclusteridentity
-  failurePolicy: Fail
-  matchPolicy: Equivalent
-  name: validation.azureclusteridentity.infrastructure.cluster.x-k8s.io
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
-  rules:
-  - apiGroups:
-    - infrastructure.cluster.x-k8s.io
-    apiVersions:
-    - v1beta1
-    operations:
-    - CREATE
-    - UPDATE
-    resources:
-    - azureclusteridentities
-  sideEffects: None
-- admissionReviewVersions:
-  - v1
-  - v1beta1
-  clientConfig:
-    service:
-      name: capz-webhook-service
-      namespace: '{{ .Release.Namespace }}'
       path: /validate-infrastructure-cluster-x-k8s-io-v1beta1-azureclustertemplate
   failurePolicy: Fail
   matchPolicy: Equivalent
@@ -136,6 +113,50 @@ webhooks:
     service:
       name: capz-webhook-service
       namespace: '{{ .Release.Namespace }}'
+      path: /validate-infrastructure-cluster-x-k8s-io-v1beta1-azuremachinepool
+  failurePolicy: Fail
+  name: validation.azuremachinepool.infrastructure.cluster.x-k8s.io
+  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
+  rules:
+  - apiGroups:
+    - infrastructure.cluster.x-k8s.io
+    apiVersions:
+    - v1beta1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - azuremachinepools
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  - v1beta1
+  clientConfig:
+    service:
+      name: capz-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /validate-infrastructure-cluster-x-k8s-io-v1beta1-azuremachinepoolmachine
+  failurePolicy: Fail
+  name: azuremachinepoolmachine.kb.io
+  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
+  rules:
+  - apiGroups:
+    - infrastructure.cluster.x-k8s.io
+    apiVersions:
+    - v1beta1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - azuremachinepoolmachines
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  - v1beta1
+  clientConfig:
+    service:
+      name: capz-webhook-service
+      namespace: '{{ .Release.Namespace }}'
       path: /validate-infrastructure-cluster-x-k8s-io-v1beta1-azuremanagedcluster
   failurePolicy: Fail
   name: validation.azuremanagedclusters.infrastructure.cluster.x-k8s.io
@@ -194,48 +215,4 @@ webhooks:
     - DELETE
     resources:
     - azuremanagedmachinepools
-  sideEffects: None
-- admissionReviewVersions:
-  - v1
-  - v1beta1
-  clientConfig:
-    service:
-      name: capz-webhook-service
-      namespace: '{{ .Release.Namespace }}'
-      path: /validate-infrastructure-cluster-x-k8s-io-v1beta1-azuremachinepool
-  failurePolicy: Fail
-  name: validation.azuremachinepool.infrastructure.cluster.x-k8s.io
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
-  rules:
-  - apiGroups:
-    - infrastructure.cluster.x-k8s.io
-    apiVersions:
-    - v1beta1
-    operations:
-    - CREATE
-    - UPDATE
-    resources:
-    - azuremachinepools
-  sideEffects: None
-- admissionReviewVersions:
-  - v1
-  - v1beta1
-  clientConfig:
-    service:
-      name: capz-webhook-service
-      namespace: '{{ .Release.Namespace }}'
-      path: /validate-infrastructure-cluster-x-k8s-io-v1beta1-azuremachinepoolmachine
-  failurePolicy: Fail
-  name: azuremachinepoolmachine.kb.io
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
-  rules:
-  - apiGroups:
-    - infrastructure.cluster.x-k8s.io
-    apiVersions:
-    - v1beta1
-    operations:
-    - CREATE
-    - UPDATE
-    resources:
-    - azuremachinepoolmachines
   sideEffects: None

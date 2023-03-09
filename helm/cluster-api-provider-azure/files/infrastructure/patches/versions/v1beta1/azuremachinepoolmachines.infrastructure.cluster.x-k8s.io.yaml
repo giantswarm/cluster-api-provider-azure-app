@@ -22,6 +22,7 @@
               description: ProviderID is the identification ID of the Virtual Machine Scale Set
               type: string
           required:
+            - instanceID
             - providerID
           type: object
         status:
@@ -130,5 +131,7 @@
             version:
               description: Version defines the Kubernetes version for the VM Instance
               type: string
+          required:
+            - latestModelApplied
           type: object
       type: object
