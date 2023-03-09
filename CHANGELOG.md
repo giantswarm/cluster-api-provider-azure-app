@@ -7,6 +7,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changes
+
+
+- Update upstream cluster-api-provider-azure version from v1.6.1 to v1.8.0 (see highlighted changes below)
+
+
+### Highlighted upstream changes that can be relevant for vintage workload clusters
+
+- `v1.6.2` - Nothing relevant
+- `v1.6.3` - Nothing relevant
+- `v1.7.0` - [Add webhook for AzureClusterIdentity resource](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/2862)
+- `v1.7.1` - Nothing relevant
+- `v1.7.2` - Nothing relevant
+- `v1.8.0` - Nothing relevant
+
+### Highlighted upstream changes that can be relevant for CAPZ workload clusters
+
+- `v1.6.2` - Nothing relevant
+- `v1.6.3` - [Fixes not routable issue of service type of load balancer when AzureClusterName and ClusterName are different](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/3154)
+- `v1.7.0` - [Replace deprecated ADAL authentication with MSAL](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/2748) - no impact other than users relying on certificate authentication
+- `v1.7.0` - [Add "VMIdentitiesReadyCondition" AzureMachine condition](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/2743) - no impact
+- `v1.7.0` - [Adds additional fields for AzureMachine, AzureMachineTemplate, and AzureMachinePool to configure multiple NetworkInterfaces](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/2411)
+- `v1.7.0` - [Default Ubuntu to 22.04 for new k8s versions](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/2807) - No impact on clusters-azure app 0.0.14+ which switched to flatcar
+- `v1.7.0` - [Add webhook for AzureClusterIdentity resource](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/2862)
+- `v1.7.0` - [VMSS Flex support for MachinePools ](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/2813)
+- `v1.7.0` - [Cleanup remote peerings when resource group is deleted](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/2767)
+- `v1.7.1` - Nothing relevant
+- `v1.7.2` - [Fix idleTimeoutInMinutes for Control Plane Outbound LB to use the right LB spec](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/3140)
+- `v1.8.0` - [Graduate AKS APIs from experimental ](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/2959)
+- `v1.8.0` - [Add support for private endpoints](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/3044)
+- `v1.8.0` - [Allow configurable scope and role assignment for SystemAssigned identities ](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/2965)
+- `v1.8.0` - [Allow configurable scope and role assignment for SystemAssigned identities ](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/2965)
+- `v1.8.0` - [AzureMachinePool Controller will no watch KubeadmConfig to ensure AzureMachinePool Bootstrap data is updated on the VMSS](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/3134)
+
+### Upstream release notes
+
+- [v1.6.2](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.6.2)
+- [v1.6.3](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.6.3)
+- [v1.7.0](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.7.0)
+- [v1.7.1](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.7.1)
+- [v1.7.2](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.7.2)
+- [v1.8.0](https://github.com/kubernetes-sigs/cluster-api-provider-azure/releases/tag/v1.8.0)
+
 ## [1.7.0] - 2023-01-24
 
 ### Changes
