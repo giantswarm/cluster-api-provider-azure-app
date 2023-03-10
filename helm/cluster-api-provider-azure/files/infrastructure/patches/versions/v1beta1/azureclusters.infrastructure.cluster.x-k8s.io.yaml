@@ -864,12 +864,34 @@
                       items:
                         description: VnetPeeringSpec specifies an existing remote virtual network to peer with the AzureCluster's virtual network.
                         properties:
+                          forwardPeeringProperties:
+                            properties:
+                              allowForwardedTraffic:
+                                type: boolean
+                              allowGatewayTransit:
+                                type: boolean
+                              allowVirtualNetworkAccess:
+                                type: boolean
+                              useRemoteGateways:
+                                type: boolean
+                            type: object
                           remoteVnetName:
                             description: RemoteVnetName defines name of the remote virtual network.
                             type: string
                           resourceGroup:
                             description: ResourceGroup is the resource group name of the remote virtual network.
                             type: string
+                          reversePeeringProperties:
+                            properties:
+                              allowForwardedTraffic:
+                                type: boolean
+                              allowGatewayTransit:
+                                type: boolean
+                              allowVirtualNetworkAccess:
+                                type: boolean
+                              useRemoteGateways:
+                                type: boolean
+                            type: object
                         required:
                           - remoteVnetName
                         type: object
