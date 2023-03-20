@@ -20,7 +20,7 @@ KUSTOMIZE_INPUT_DIR="$ROOT_DIR/config/helm/input"
 
 # Download upstream manifests
 helm_values="$HELM_DIR/values.yaml"
-org="kubernetes-sigs"
+org="giantswarm"
 repo="cluster-api-provider-azure"
 version="$(yq e '.image.tag' "$helm_values")"
 release_asset_filename="infrastructure-components.yaml"

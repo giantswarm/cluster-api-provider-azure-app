@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Update upstream CAPZ to use version from the fork to get gateway transit feature.
+
 ## [1.8.1] - 2023-03-09
 
 ### Changes
