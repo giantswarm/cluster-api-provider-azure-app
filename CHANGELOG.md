@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.9.0-gs.alpha.1] - 2023-03-20
 
 - Update upstream CAPZ to use version from the fork to get gateway transit feature.
+- Revert the creationTimestamp null since it breaks installing the CRDs in a brand new cluster.
 
 ## [1.8.1] - 2023-03-09
 
