@@ -7,7 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.9.0-gs.alpha.1] - 2023-03-20
+
 - Update upstream CAPZ to use version from the fork to get gateway transit feature.
+- Revert the creationTimestamp null since it breaks installing the CRDs in a brand new cluster.
 
 ## [1.8.1] - 2023-03-09
 
@@ -245,7 +248,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed label selector for webhook and manager services.
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.8.1...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-gs.alpha.1...HEAD
+[1.9.0-gs.alpha.1]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.8.1...v1.9.0-gs.alpha.1
 [1.8.1]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.8.0...v1.8.1
 [1.8.0]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.7.0...v1.8.0
 [1.7.0]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.6.0...v1.7.0
