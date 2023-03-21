@@ -4,7 +4,6 @@ metadata:
   annotations:
     cert-manager.io/inject-ca-from: '{{ .Release.Namespace }}/capz-serving-cert'
     controller-gen.kubebuilder.io/version: '{{- include "annotations.kubebuilder_version" . -}}'
-  creationTimestamp: "null"
   labels:
     app.giantswarm.io/branch: '{{ .Values.project.branch }}'
     app.giantswarm.io/commit: '{{ .Values.project.commit }}'
