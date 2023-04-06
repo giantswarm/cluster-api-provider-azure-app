@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.9.0-gs.alpha.2] - 2023-04-06
+
 ### Changes
 
 - Update CAPZ version to v1.9.0-gs.alpha.5 built from Giant Swarm fork (based on upstream CAPZ v1.8.2).
@@ -254,7 +256,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed label selector for webhook and manager services.
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-gs.alpha.1...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-gs.alpha.2...HEAD
+[1.9.0-gs.alpha.1]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-gs.alpha.1...v1.9.0-gs.alpha.2
 [1.9.0-gs.alpha.1]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.8.1...v1.9.0-gs.alpha.1
 [1.8.1]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.8.0...v1.8.1
 [1.8.0]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.7.0...v1.8.0
