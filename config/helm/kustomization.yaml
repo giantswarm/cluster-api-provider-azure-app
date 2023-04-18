@@ -68,6 +68,5 @@ patches:
     kind: CustomResourceDefinition
     name: (azuremanagedmachinepools|azuremanagedcontrolplanes|azuremanagedclusters).infrastructure.cluster.x-k8s.io
   patch: |-
-    - op: add
+    - op: remove
       path: /metadata/creationTimestamp
-      value: "null"
