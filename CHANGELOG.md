@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Update CAPZ version to fork build with private links support.
+
 ## [1.9.0-gs.alpha.2] - 2023-04-06
 
 ### Changes
