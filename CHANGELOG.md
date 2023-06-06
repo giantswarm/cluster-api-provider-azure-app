@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add new toleration for the `node-role.kubernetes.io/control-plane` taint.
+
 ## [1.9.0-alpha.4] - 2023-04-27
 
 - Update CAPZ version to fork build with private links support.
