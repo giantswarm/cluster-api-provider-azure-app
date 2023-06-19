@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Update CAPZ version to newer alpha version (from our fork) with private endpoints deletion fixed.
+
 ### Added
 
 - Add new toleration for the `node-role.kubernetes.io/control-plane` taint.
