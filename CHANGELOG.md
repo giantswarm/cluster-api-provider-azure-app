@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.9.0-alpha.5] - 2023-06-19
+
 - Update CAPZ version to newer alpha version (from our fork) with private endpoints deletion fixed.
 
 ### Added
@@ -266,7 +268,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed label selector for webhook and manager services.
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-alpha.4...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-alpha.5...HEAD
+[1.9.0-alpha.5]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-alpha.4...v1.9.0-alpha.5
 [1.9.0-alpha.4]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-gs.alpha.2...v1.9.0-alpha.4
 [1.9.0-gs.alpha.1]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-gs.alpha.1...v1.9.0-gs.alpha.2
 [1.9.0-gs.alpha.1]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.8.1...v1.9.0-gs.alpha.1
