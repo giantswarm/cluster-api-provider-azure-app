@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: capz-controller-manager
+  namespace: capz-system
+spec:
+  template:
+    spec:
+      seccompProfile:
+        type: RuntimeDefault
+      securityContext:
+        runAsNonRoot: true
+      containers:
+        - name: manager
+          securityContext:
+            seccompProfile:
+              type: RuntimeDefault
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
