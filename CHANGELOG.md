@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.10.0] - 2023-07-17
+
 ### Fixed
 
 - Add required values for pss policies.
@@ -272,7 +274,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed label selector for webhook and manager services.
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-alpha.5...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.10.0...HEAD
+[1.10.0]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-alpha.5...v1.10.0
 [1.9.0-alpha.5]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-alpha.4...v1.9.0-alpha.5
 [1.9.0-alpha.4]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-gs.alpha.2...v1.9.0-alpha.4
 [1.9.0-gs.alpha.1]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-gs.alpha.1...v1.9.0-gs.alpha.2
