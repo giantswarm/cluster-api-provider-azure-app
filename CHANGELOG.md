@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Add required values for pss policies.
+
 ## [1.9.0-alpha.5] - 2023-06-19
 
 - Update CAPZ version to newer alpha version (from our fork) with private endpoints deletion fixed.
