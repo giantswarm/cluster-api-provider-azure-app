@@ -7,10 +7,10 @@ metadata:
 spec:
   template:
     spec:
-      seccompProfile:
-        type: RuntimeDefault
       securityContext:
         runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: manager
           securityContext:
