@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Update CAPZ to v1.11.0-gs.alpha.2 from our fork. This update the app to deploy the latest CAPZ v1.10.0 plus custom Giant Swarm changes (private links and private endpoint deletion fixes).
+
 ## [1.9.0-alpha.7] - 2023-08-17
 
 ### Fixed
