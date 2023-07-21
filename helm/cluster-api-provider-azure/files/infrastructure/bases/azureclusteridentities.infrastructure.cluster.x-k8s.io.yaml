@@ -41,18 +41,6 @@ spec:
     singular: azureclusteridentity
   scope: Namespaced
   versions:
-    - name: v1alpha3
-      schema: {}
-      served: true
-      storage: false
-      subresources:
-        status: {}
-    - name: v1alpha4
-      schema: {}
-      served: true
-      storage: false
-      subresources:
-        status: {}
     - additionalPrinterColumns:
         - description: Type of Azure Identity
           jsonPath: .spec.type

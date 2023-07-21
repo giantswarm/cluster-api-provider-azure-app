@@ -43,18 +43,6 @@ spec:
     singular: azuremanagedcluster
   scope: Namespaced
   versions:
-    - name: v1alpha3
-      schema: {}
-      served: true
-      storage: false
-      subresources:
-        status: {}
-    - name: v1alpha4
-      schema: {}
-      served: true
-      storage: false
-      subresources:
-        status: {}
     - name: v1beta1
       schema: {}
       served: true

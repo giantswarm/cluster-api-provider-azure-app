@@ -1,5 +1,5 @@
 - op: replace
-  path: /spec/versions/2/schema
+  path: /spec/versions/0/schema
   value:
     openAPIV3Schema:
       description: AzureClusterIdentity is the Schema for the azureclustersidentities API.
@@ -84,6 +84,7 @@
                 - UserAssignedMSI
                 - ManualServicePrincipal
                 - ServicePrincipalCertificate
+                - WorkloadIdentity
               type: string
           required:
             - clientID
