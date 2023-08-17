@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.9.0-alpha.7] - 2023-08-17
+
 ### Fixed
 
 - Update CAPZ version to fix private links NAT IP configuration. 
@@ -279,7 +281,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed label selector for webhook and manager services.
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-alpha.6...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-alpha.7...HEAD
+[1.9.0-alpha.7]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-alpha.6...v1.9.0-alpha.7
 [1.9.0-alpha.6]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-alpha.5...v1.9.0-alpha.6
 [1.9.0-alpha.5]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-alpha.4...v1.9.0-alpha.5
 [1.9.0-alpha.4]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-gs.alpha.2...v1.9.0-alpha.4
