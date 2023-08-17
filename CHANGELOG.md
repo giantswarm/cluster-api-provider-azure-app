@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Update CAPZ version to fix private links NAT IP configuration. 
+
 ## [1.9.0-alpha.6] - 2023-07-21
 
 ### Fixed
