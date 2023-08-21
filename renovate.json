@@ -1,13 +1,13 @@
 {
   "extends": [
-    "config:base",
-    ":reviewer(team:team-clippy)"
+    "config:base"
   ],
   "labels": ["dependencies", "renovate"],
   "dependencyDashboard": true,
   "ignorePaths": [
     ".github/workflows/zz_generated.*",
-    ".github/workflows/codeql-analysis.yml"
+    ".github/workflows/codeql-analysis.yml",
+    ".github/workflows/pre_commit_*.yaml"
   ],
   "ignoreDeps": [
     "architect",
