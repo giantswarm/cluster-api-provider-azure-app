@@ -482,6 +482,7 @@
                     privateLinks:
                       description: PrivateLinks to the load balancer (max 8 private links).
                       items:
+                        description: PrivateLink configures an Azure Private Link Service.
                         properties:
                           allowedSubscriptions:
                             description: AllowedSubscriptions is a list of subscriptions from which the private link can be accessed.
@@ -507,6 +508,7 @@
                           natIpConfigurations:
                             description: NATIPConfigurations specify up to 8 NAT IP configurations for the private link.
                             items:
+                              description: PrivateLinkNATIPConfiguration specifies NAT IP configuration for the private link service.
                               properties:
                                 allocationMethod:
                                   type: string
@@ -596,6 +598,7 @@
                     privateLinks:
                       description: PrivateLinks to the load balancer (max 8 private links).
                       items:
+                        description: PrivateLink configures an Azure Private Link Service.
                         properties:
                           allowedSubscriptions:
                             description: AllowedSubscriptions is a list of subscriptions from which the private link can be accessed.
@@ -621,6 +624,7 @@
                           natIpConfigurations:
                             description: NATIPConfigurations specify up to 8 NAT IP configurations for the private link.
                             items:
+                              description: PrivateLinkNATIPConfiguration specifies NAT IP configuration for the private link service.
                               properties:
                                 allocationMethod:
                                   type: string
@@ -710,6 +714,7 @@
                     privateLinks:
                       description: PrivateLinks to the load balancer (max 8 private links).
                       items:
+                        description: PrivateLink configures an Azure Private Link Service.
                         properties:
                           allowedSubscriptions:
                             description: AllowedSubscriptions is a list of subscriptions from which the private link can be accessed.
@@ -735,6 +740,7 @@
                           natIpConfigurations:
                             description: NATIPConfigurations specify up to 8 NAT IP configurations for the private link.
                             items:
+                              description: PrivateLinkNATIPConfiguration specifies NAT IP configuration for the private link service.
                               properties:
                                 allocationMethod:
                                   type: string
