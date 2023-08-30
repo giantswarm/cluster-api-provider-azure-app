@@ -10,36 +10,12 @@ resources:
   - bases/azuremanagedcontrolplanes.infrastructure.cluster.x-k8s.io.yaml
   - bases/azuremanagedmachinepools.infrastructure.cluster.x-k8s.io.yaml
 patches:
-  - path: patches/versions/v1alpha3/azureclusteridentities.infrastructure.cluster.x-k8s.io.yaml
-    target:
-      group: apiextensions.k8s.io
-      version: v1
-      kind: CustomResourceDefinition
-      name: azureclusteridentities.infrastructure.cluster.x-k8s.io
-  - path: patches/versions/v1alpha4/azureclusteridentities.infrastructure.cluster.x-k8s.io.yaml
-    target:
-      group: apiextensions.k8s.io
-      version: v1
-      kind: CustomResourceDefinition
-      name: azureclusteridentities.infrastructure.cluster.x-k8s.io
   - path: patches/versions/v1beta1/azureclusteridentities.infrastructure.cluster.x-k8s.io.yaml
     target:
       group: apiextensions.k8s.io
       version: v1
       kind: CustomResourceDefinition
       name: azureclusteridentities.infrastructure.cluster.x-k8s.io
-  - path: patches/versions/v1alpha3/azureclusters.infrastructure.cluster.x-k8s.io.yaml
-    target:
-      group: apiextensions.k8s.io
-      version: v1
-      kind: CustomResourceDefinition
-      name: azureclusters.infrastructure.cluster.x-k8s.io
-  - path: patches/versions/v1alpha4/azureclusters.infrastructure.cluster.x-k8s.io.yaml
-    target:
-      group: apiextensions.k8s.io
-      version: v1
-      kind: CustomResourceDefinition
-      name: azureclusters.infrastructure.cluster.x-k8s.io
   - path: patches/versions/v1beta1/azureclusters.infrastructure.cluster.x-k8s.io.yaml
     target:
       group: apiextensions.k8s.io
@@ -52,120 +28,42 @@ patches:
       version: v1
       kind: CustomResourceDefinition
       name: azureclustertemplates.infrastructure.cluster.x-k8s.io
-  - path: patches/versions/v1alpha4/azuremachinepoolmachines.infrastructure.cluster.x-k8s.io.yaml
-    target:
-      group: apiextensions.k8s.io
-      version: v1
-      kind: CustomResourceDefinition
-      name: azuremachinepoolmachines.infrastructure.cluster.x-k8s.io
   - path: patches/versions/v1beta1/azuremachinepoolmachines.infrastructure.cluster.x-k8s.io.yaml
     target:
       group: apiextensions.k8s.io
       version: v1
       kind: CustomResourceDefinition
       name: azuremachinepoolmachines.infrastructure.cluster.x-k8s.io
-  - path: patches/versions/v1alpha3/azuremachinepools.infrastructure.cluster.x-k8s.io.yaml
-    target:
-      group: apiextensions.k8s.io
-      version: v1
-      kind: CustomResourceDefinition
-      name: azuremachinepools.infrastructure.cluster.x-k8s.io
-  - path: patches/versions/v1alpha4/azuremachinepools.infrastructure.cluster.x-k8s.io.yaml
-    target:
-      group: apiextensions.k8s.io
-      version: v1
-      kind: CustomResourceDefinition
-      name: azuremachinepools.infrastructure.cluster.x-k8s.io
   - path: patches/versions/v1beta1/azuremachinepools.infrastructure.cluster.x-k8s.io.yaml
     target:
       group: apiextensions.k8s.io
       version: v1
       kind: CustomResourceDefinition
       name: azuremachinepools.infrastructure.cluster.x-k8s.io
-  - path: patches/versions/v1alpha3/azuremachines.infrastructure.cluster.x-k8s.io.yaml
-    target:
-      group: apiextensions.k8s.io
-      version: v1
-      kind: CustomResourceDefinition
-      name: azuremachines.infrastructure.cluster.x-k8s.io
-  - path: patches/versions/v1alpha4/azuremachines.infrastructure.cluster.x-k8s.io.yaml
-    target:
-      group: apiextensions.k8s.io
-      version: v1
-      kind: CustomResourceDefinition
-      name: azuremachines.infrastructure.cluster.x-k8s.io
   - path: patches/versions/v1beta1/azuremachines.infrastructure.cluster.x-k8s.io.yaml
     target:
       group: apiextensions.k8s.io
       version: v1
       kind: CustomResourceDefinition
       name: azuremachines.infrastructure.cluster.x-k8s.io
-  - path: patches/versions/v1alpha3/azuremachinetemplates.infrastructure.cluster.x-k8s.io.yaml
-    target:
-      group: apiextensions.k8s.io
-      version: v1
-      kind: CustomResourceDefinition
-      name: azuremachinetemplates.infrastructure.cluster.x-k8s.io
-  - path: patches/versions/v1alpha4/azuremachinetemplates.infrastructure.cluster.x-k8s.io.yaml
-    target:
-      group: apiextensions.k8s.io
-      version: v1
-      kind: CustomResourceDefinition
-      name: azuremachinetemplates.infrastructure.cluster.x-k8s.io
   - path: patches/versions/v1beta1/azuremachinetemplates.infrastructure.cluster.x-k8s.io.yaml
     target:
       group: apiextensions.k8s.io
       version: v1
       kind: CustomResourceDefinition
       name: azuremachinetemplates.infrastructure.cluster.x-k8s.io
-  - path: patches/versions/v1alpha3/azuremanagedclusters.infrastructure.cluster.x-k8s.io.yaml
-    target:
-      group: apiextensions.k8s.io
-      version: v1
-      kind: CustomResourceDefinition
-      name: azuremanagedclusters.infrastructure.cluster.x-k8s.io
-  - path: patches/versions/v1alpha4/azuremanagedclusters.infrastructure.cluster.x-k8s.io.yaml
-    target:
-      group: apiextensions.k8s.io
-      version: v1
-      kind: CustomResourceDefinition
-      name: azuremanagedclusters.infrastructure.cluster.x-k8s.io
   - path: patches/versions/v1beta1/azuremanagedclusters.infrastructure.cluster.x-k8s.io.yaml
     target:
       group: apiextensions.k8s.io
       version: v1
       kind: CustomResourceDefinition
       name: azuremanagedclusters.infrastructure.cluster.x-k8s.io
-  - path: patches/versions/v1alpha3/azuremanagedcontrolplanes.infrastructure.cluster.x-k8s.io.yaml
-    target:
-      group: apiextensions.k8s.io
-      version: v1
-      kind: CustomResourceDefinition
-      name: azuremanagedcontrolplanes.infrastructure.cluster.x-k8s.io
-  - path: patches/versions/v1alpha4/azuremanagedcontrolplanes.infrastructure.cluster.x-k8s.io.yaml
-    target:
-      group: apiextensions.k8s.io
-      version: v1
-      kind: CustomResourceDefinition
-      name: azuremanagedcontrolplanes.infrastructure.cluster.x-k8s.io
   - path: patches/versions/v1beta1/azuremanagedcontrolplanes.infrastructure.cluster.x-k8s.io.yaml
     target:
       group: apiextensions.k8s.io
       version: v1
       kind: CustomResourceDefinition
       name: azuremanagedcontrolplanes.infrastructure.cluster.x-k8s.io
-  - path: patches/versions/v1alpha3/azuremanagedmachinepools.infrastructure.cluster.x-k8s.io.yaml
-    target:
-      group: apiextensions.k8s.io
-      version: v1
-      kind: CustomResourceDefinition
-      name: azuremanagedmachinepools.infrastructure.cluster.x-k8s.io
-  - path: patches/versions/v1alpha4/azuremanagedmachinepools.infrastructure.cluster.x-k8s.io.yaml
-    target:
-      group: apiextensions.k8s.io
-      version: v1
-      kind: CustomResourceDefinition
-      name: azuremanagedmachinepools.infrastructure.cluster.x-k8s.io
   - path: patches/versions/v1beta1/azuremanagedmachinepools.infrastructure.cluster.x-k8s.io.yaml
     target:
       group: apiextensions.k8s.io

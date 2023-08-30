@@ -1,5 +1,5 @@
 - op: replace
-  path: /spec/versions/1/schema
+  path: /spec/versions/0/schema
   value:
     openAPIV3Schema:
       description: AzureMachinePoolMachine is the Schema for the azuremachinepoolmachines API.
