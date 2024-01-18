@@ -22,6 +22,7 @@ spec:
       securityContext:
         runAsUser: 65534
         runAsGroup: 65534
+        runAsNonRoot: true
       tolerations:
       - key: node-role.kubernetes.io/master
         effect: NoSchedule
@@ -46,6 +47,13 @@ spec:
           for deployment in $(kubectl get deployment -l app.kubernetes.io/name=azure-operator -o name); do
             kubectl rollout restart -n giantswarm "$deployment"
           done
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          seccompProfile:
+            type: RuntimeDefault
         volumeMounts:
 {{- range $path, $_ := $.Files.Glob "files/**.yaml" }}
         - name: {{ printf "%s-%s" (base (dir $path)) (trimSuffix "-yaml" (base $path | replace "." "-")) | trunc 63 | trimSuffix "-" }}
