@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Update CAPZ version to fix private links NAT IP configuration. 
+- Fix issues in crd-install reported by kyverno.
 
 ## [1.9.0-alpha.6] - 2023-07-21
 
