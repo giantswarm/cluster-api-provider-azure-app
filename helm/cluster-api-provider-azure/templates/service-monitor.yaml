@@ -1,6 +1,8 @@
-apiVersion: v1
-kind: Service
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
 metadata:
+  name: capz-controller-manager
+  namespace: '{{ .Release.Namespace }}'
   labels:
     app.giantswarm.io/branch: '{{ .Values.project.branch }}'
     app.giantswarm.io/commit: '{{ .Values.project.commit }}'
@@ -9,16 +11,11 @@ metadata:
     app.kubernetes.io/name: cluster-api-provider-azure
     app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
     cluster.x-k8s.io/provider: infrastructure-azure
+    control-plane: capz-controller-manager
     helm.sh/chart: cluster-api-provider-azure
-  name: capz-webhook-service
-  namespace: '{{ .Release.Namespace }}'
 spec:
-  ports:
-  - name: metrics
-    port: 8080
-    targetPort: metrics
-  - name: webhook-server
-    port: 443
-    targetPort: webhook-server
+  endpoints:
+    - port: metrics
   selector:
-    cluster.x-k8s.io/provider: infrastructure-azure
+    matchLabels:
+      cluster.x-k8s.io/provider: infrastructure-azure
