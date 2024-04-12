@@ -15,9 +15,11 @@ images:
 
 patchesStrategicMerge:
   - deployment-args.yaml
+  - deployment-affinity.yaml
   - deployment-environment.yaml
   - deployment-metrics-port.yaml
   - deployment-securitycontext.yaml
+  - deployment-toleration.yaml
   - webhook-certificate.yaml
   - service-prometheus-annotations.yaml
   - service-add-metrics-port.yaml
@@ -65,9 +67,3 @@ patches:
     kind: DaemonSet
     name: capz-nmi
   path: daemonset-nmi-args.yaml
-- target:
-    kind: CustomResourceDefinition
-    name: (azuremanagedmachinepools|azuremanagedcontrolplanes|azuremanagedclusters).infrastructure.cluster.x-k8s.io
-  patch: |-
-    - op: remove
-      path: /metadata/creationTimestamp
