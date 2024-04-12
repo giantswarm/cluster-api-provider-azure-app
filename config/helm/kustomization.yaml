@@ -1,4 +1,4 @@
-Gnamespace: '{{ .Release.Namespace }}'
+namespace: '{{ .Release.Namespace }}'
 
 resources:
   - input/infrastructure-components.yaml
