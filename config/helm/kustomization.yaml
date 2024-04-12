@@ -67,7 +67,7 @@ patches:
     kind: DaemonSet
     name: capz-nmi
   path: daemonset-nmi-args.yaml
-  - target:
+- target:
     kind: CustomResourceDefinition
     name: (azuremanagedmachinepools|azuremanagedcontrolplanes|azuremanagedclusters).infrastructure.cluster.x-k8s.io
   patch: |-
