@@ -15,9 +15,11 @@ images:
 
 patchesStrategicMerge:
   - deployment-args.yaml
+  - deployment-affinity.yaml
   - deployment-environment.yaml
   - deployment-metrics-port.yaml
   - deployment-securitycontext.yaml
+  - deployment-toleration.yaml
   - webhook-certificate.yaml
   - service-prometheus-annotations.yaml
   - service-add-metrics-port.yaml
