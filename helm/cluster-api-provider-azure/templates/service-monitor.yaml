@@ -1,3 +1,4 @@
+{{- if .Values.serviceMonitor.enabled }}
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
@@ -20,3 +21,4 @@ spec:
   selector:
     matchLabels:
       cluster.x-k8s.io/provider: infrastructure-azure
+{{- end }}
