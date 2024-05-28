@@ -41,14 +41,6 @@ spec:
     singular: azuremachinetemplate
   scope: Namespaced
   versions:
-    - name: v1alpha3
-      schema: {}
-      served: true
-      storage: false
-    - name: v1alpha4
-      schema: {}
-      served: true
-      storage: false
     - name: v1beta1
       schema: {}
       served: true

@@ -1,5 +1,5 @@
 - op: replace
-  path: /spec/versions/2/schema
+  path: /spec/versions/0/schema
   value:
     openAPIV3Schema:
       description: AzureManagedControlPlane is the Schema for the azuremanagedcontrolplanes API.
@@ -57,7 +57,7 @@
                 type: object
               type: array
             apiServerAccessProfile:
-              description: APIServerAccessProfile is the access profile for AKS API server.
+              description: APIServerAccessProfile is the access profile for AKS API server. Immutable except for `authorizedIPRanges`.
               properties:
                 authorizedIPRanges:
                   description: AuthorizedIPRanges - Authorized IP Ranges to kubernetes API server.
@@ -65,13 +65,13 @@
                     type: string
                   type: array
                 enablePrivateCluster:
-                  description: EnablePrivateCluster - Whether to create the cluster as a private cluster or not.
+                  description: EnablePrivateCluster indicates whether to create the cluster as a private cluster or not.
                   type: boolean
                 enablePrivateClusterPublicFQDN:
-                  description: EnablePrivateClusterPublicFQDN - Whether to create additional public FQDN for private cluster or not.
+                  description: EnablePrivateClusterPublicFQDN indicates whether to create additional public FQDN for private cluster or not.
                   type: boolean
                 privateDNSZone:
-                  description: PrivateDNSZone - Private dns zone mode for private cluster.
+                  description: PrivateDNSZone enables private dns zone mode for private cluster.
                   enum:
                     - System
                     - None
@@ -158,8 +158,11 @@
                     - "false"
                   type: string
               type: object
+            azureEnvironment:
+              description: 'AzureEnvironment is the name of the AzureCloud to be used. The default value that would be used by most users is "AzurePublicCloud", other values are: - ChinaCloud: "AzureChinaCloud" - PublicCloud: "AzurePublicCloud" - USGovernmentCloud: "AzureUSGovernmentCloud"'
+              type: string
             controlPlaneEndpoint:
-              description: ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
+              description: ControlPlaneEndpoint represents the endpoint used to communicate with the control plane. Immutable, populated by the AKS API at create.
               properties:
                 host:
                   description: The hostname on which the API server is serving.
@@ -172,9 +175,46 @@
                 - host
                 - port
               type: object
-            dnsServiceIP:
-              description: DNSServiceIP is an IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
+            disableLocalAccounts:
+              description: DisableLocalAccounts disables getting static credentials for this cluster when set. Expected to only be used for AAD clusters.
+              type: boolean
+            dnsPrefix:
+              description: DNSPrefix allows the user to customize dns prefix. Immutable.
               type: string
+            dnsServiceIP:
+              description: DNSServiceIP is an IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr. Immutable.
+              type: string
+            httpProxyConfig:
+              description: HTTPProxyConfig is the HTTP proxy configuration for the cluster. Immutable.
+              properties:
+                httpProxy:
+                  description: HTTPProxy is the HTTP proxy server endpoint to use.
+                  type: string
+                httpsProxy:
+                  description: HTTPSProxy is the HTTPS proxy server endpoint to use.
+                  type: string
+                noProxy:
+                  description: NoProxy indicates the endpoints that should not go through proxy.
+                  items:
+                    type: string
+                  type: array
+                trustedCa:
+                  description: TrustedCA is the alternative CA cert to use for connecting to proxy servers.
+                  type: string
+              type: object
+            identity:
+              description: Identity configuration used by the AKS control plane.
+              properties:
+                type:
+                  description: Type - The Identity type to use.
+                  enum:
+                    - SystemAssigned
+                    - UserAssigned
+                  type: string
+                userAssignedIdentityResourceID:
+                  description: UserAssignedIdentityResourceID - Identity ARM resource ID when using user-assigned identity.
+                  type: string
+              type: object
             identityRef:
               description: IdentityRef is a reference to a AzureClusterIdentity to be used when reconciling this cluster
               properties:
@@ -201,20 +241,20 @@
                   type: string
               type: object
               x-kubernetes-map-type: atomic
+            kubeletUserAssignedIdentity:
+              description: KubeletUserAssignedIdentity is the user-assigned identity for kubelet. For authentication with Azure Container Registry.
+              type: string
             loadBalancerProfile:
               description: LoadBalancerProfile is the profile of the cluster load balancer.
               properties:
                 allocatedOutboundPorts:
                   description: AllocatedOutboundPorts - Desired number of allocated SNAT ports per VM. Allowed values must be in the range of 0 to 64000 (inclusive). The default value is 0 which results in Azure dynamically allocating ports.
-                  format: int32
                   type: integer
                 idleTimeoutInMinutes:
                   description: IdleTimeoutInMinutes - Desired outbound flow idle timeout in minutes. Allowed values must be in the range of 4 to 120 (inclusive). The default value is 30 minutes.
-                  format: int32
                   type: integer
                 managedOutboundIPs:
                   description: ManagedOutboundIPs - Desired managed outbound IPs for the cluster load balancer.
-                  format: int32
                   type: integer
                 outboundIPPrefixes:
                   description: OutboundIPPrefixes - Desired outbound IP Prefix resources for the cluster load balancer.
@@ -228,7 +268,8 @@
                   type: array
               type: object
             loadBalancerSKU:
-              description: LoadBalancerSKU is the SKU of the loadBalancer to be provisioned.
+              default: Standard
+              description: LoadBalancerSKU is the SKU of the loadBalancer to be provisioned. Immutable.
               enum:
                 - Basic
                 - Standard
@@ -236,11 +277,19 @@
             location:
               description: 'Location is a string matching one of the canonical Azure region names. Examples: "westus2", "eastus".'
               type: string
+            machineTemplate:
+              description: MachineTemplate contains information about how machines should be shaped when creating or updating a control plane. For the AzureManagedControlPlaneTemplate, this field is used only to fulfill the CAPI contract.
+              type: object
             networkPlugin:
               description: NetworkPlugin used for building Kubernetes network.
               enum:
                 - azure
                 - kubenet
+              type: string
+            networkPluginMode:
+              description: NetworkPluginMode is the mode the network plugin should use. Allowed value is "overlay".
+              enum:
+                - overlay
               type: string
             networkPolicy:
               description: NetworkPolicy used for building Kubernetes network.
@@ -249,8 +298,15 @@
                 - calico
               type: string
             nodeResourceGroupName:
-              description: NodeResourceGroupName is the name of the resource group containing cluster IaaS resources. Will be populated to default in webhook.
+              description: NodeResourceGroupName is the name of the resource group containing cluster IaaS resources. Will be populated to default in webhook. Immutable.
               type: string
+            oidcIssuerProfile:
+              description: OIDCIssuerProfile is the OIDC issuer profile of the Managed Cluster.
+              properties:
+                enabled:
+                  description: Enabled is whether the OIDC issuer is enabled.
+                  type: boolean
+              type: object
             outboundType:
               description: Outbound configuration used by Nodes.
               enum:
@@ -260,7 +316,7 @@
                 - userDefinedRouting
               type: string
             resourceGroupName:
-              description: ResourceGroupName is the name of the Azure resource group for this AKS Cluster.
+              description: ResourceGroupName is the name of the Azure resource group for this AKS Cluster. Immutable.
               type: string
             sku:
               description: SKU is the SKU of the AKS to be provisioned.
@@ -270,22 +326,23 @@
                   enum:
                     - Free
                     - Paid
+                    - Standard
                   type: string
               required:
                 - tier
               type: object
             sshPublicKey:
-              description: SSHPublicKey is a string literal containing an ssh public key base64 encoded.
+              description: SSHPublicKey is a string literal containing an ssh public key base64 encoded. Use empty string to autogenerate new key. Use null value to not set key. Immutable.
               type: string
             subscriptionID:
-              description: SubscriptionID is the GUID of the Azure subscription to hold this cluster.
+              description: SubscriptionID is the GUID of the Azure subscription that owns this cluster.
               type: string
             version:
               description: Version defines the desired Kubernetes version.
               minLength: 2
               type: string
             virtualNetwork:
-              description: VirtualNetwork describes the vnet for the AKS cluster. Will be created if it does not exist.
+              description: VirtualNetwork describes the virtual network for the AKS cluster. It will be created if it does not already exist.
               properties:
                 cidrBlock:
                   type: string
@@ -385,9 +442,9 @@
                 - name
               type: object
           required:
+            - identityRef
             - location
             - resourceGroupName
-            - sshPublicKey
             - version
           type: object
         status:
@@ -453,8 +510,18 @@
                   - type
                 type: object
               type: array
+            oidcIssuerProfile:
+              description: OIDCIssuerProfile is the OIDC issuer profile of the Managed Cluster.
+              properties:
+                issuerURL:
+                  description: IssuerURL is the OIDC issuer url of the Managed Cluster.
+                  type: string
+              type: object
             ready:
               description: Ready is true when the provider resource is ready.
               type: boolean
+            version:
+              description: Version defines the Kubernetes version for the control plane instance.
+              type: string
           type: object
       type: object

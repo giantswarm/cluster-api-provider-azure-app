@@ -26,6 +26,7 @@ spec:
         kubectl.kubernetes.io/default-container: manager
       labels:
         aadpodidbinding: capz-controller-aadpodidentity-selector
+        azure.workload.identity/use: "true"
         cluster.x-k8s.io/provider: infrastructure-azure
         control-plane: capz-controller-manager
     spec:
@@ -46,26 +47,6 @@ spec:
         - --watch-filter={{- include "deployment.args.watchfiltervalue" . }}
         - --v={{ .Values.controller.verbosity }}
         env:
-        - name: AZURE_SUBSCRIPTION_ID
-          valueFrom:
-            secretKeyRef:
-              key: azure.azureoperator.subscriptionid
-              name: credential-default
-        - name: AZURE_TENANT_ID
-          valueFrom:
-            secretKeyRef:
-              key: azure.azureoperator.tenantid
-              name: credential-default
-        - name: AZURE_CLIENT_ID
-          valueFrom:
-            secretKeyRef:
-              key: azure.azureoperator.clientid
-              name: credential-default
-        - name: AZURE_CLIENT_SECRET
-          valueFrom:
-            secretKeyRef:
-              key: azure.azureoperator.clientsecret
-              name: credential-default
         - name: NODE_NAME
           valueFrom:
             fieldRef:
@@ -108,11 +89,16 @@ spec:
           capabilities:
             drop:
             - ALL
+          runAsGroup: 65532
+          runAsUser: 65532
           seccompProfile:
             type: RuntimeDefault
         volumeMounts:
         - mountPath: /tmp/k8s-webhook-server/serving-certs
           name: cert
+          readOnly: true
+        - mountPath: /var/run/secrets/azure/tokens
+          name: azure-identity-token
           readOnly: true
       securityContext:
         runAsNonRoot: true
@@ -131,3 +117,11 @@ spec:
         secret:
           defaultMode: 420
           secretName: capz-webhook-service-cert
+      - name: azure-identity-token
+        projected:
+          defaultMode: 420
+          sources:
+          - serviceAccountToken:
+              audience: api://AzureADTokenExchange
+              expirationSeconds: 3600
+              path: azure-identity-token
