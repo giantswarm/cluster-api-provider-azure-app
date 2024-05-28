@@ -28,3 +28,12 @@
 - op: add
   path: /webhooks/9/objectSelector
   value: '{{- include "capz.webhookObjectSelector" $ }}'
+- op: add
+  path: /webhooks/10/objectSelector
+  value: '{{- include "capz.webhookObjectSelector" $ }}'
+- op: add
+  path: /webhooks/11/objectSelector
+  value: '{{- include "capz.webhookObjectSelector" $ }}'
+- op: add
+  path: /webhooks/12/objectSelector
+  value: '{{- include "capz.webhookObjectSelector" $ }}'

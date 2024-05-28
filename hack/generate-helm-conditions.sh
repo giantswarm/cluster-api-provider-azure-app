@@ -9,7 +9,6 @@ HELM_DIR="$ROOT_DIR/helm/cluster-api-provider-azure"
 # if .Values.provider.flavor is equal to "capi".
 
 capi_only_templates=()
-capi_only_templates+=("${HELM_DIR}/templates/v1_secret_credential-default.yaml")
 capi_only_templates+=("${HELM_DIR}/templates/rbac.authorization.k8s.io_v1_role_capz-leader-election-role.yaml")
 capi_only_templates+=("${HELM_DIR}/templates/rbac.authorization.k8s.io_v1_rolebinding_capz-leader-election-rolebinding.yaml")
 capi_only_templates+=("${HELM_DIR}/templates/rbac.authorization.k8s.io_v1_clusterrole_capz-aad-pod-id-nmi-role.yaml")
