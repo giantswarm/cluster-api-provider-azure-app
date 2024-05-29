@@ -77,6 +77,15 @@
                 }
             }
         },
+        "serviceMonitor": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "default": true
+        },
         "verticalPodAutoscaler": {
             "type": "object",
             "properties": {

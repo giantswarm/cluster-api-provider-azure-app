@@ -11,6 +11,7 @@ labels:
   helm.sh/chart: cluster-api-provider-azure
   app.kubernetes.io/name: cluster-api-provider-azure
   app.kubernetes.io/instance: '{{ .Release.Name }}'
+  application.giantswarm.io/team: '{{ index .Chart.Annotations "application.giantswarm.io/team" }}'
 fieldSpecs:
   - path: metadata/labels
     create: true
