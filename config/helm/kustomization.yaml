@@ -21,7 +21,6 @@ patchesStrategicMerge:
   - deployment-securitycontext.yaml
   - deployment-toleration.yaml
   - webhook-certificate.yaml
-  - service-prometheus-annotations.yaml
   - service-add-metrics-port.yaml
   - secret-bootstrap-credentials.yaml
   - certificate.yaml

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add ServiceMonitor for monitoring.
+
 ### Changed
 
 - Add node affinity to prefer scheduling on `control-plane` nodes.
