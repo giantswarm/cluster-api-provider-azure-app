@@ -4,6 +4,7 @@ metadata:
   annotations:
     cert-manager.io/inject-ca-from: '{{ .Release.Namespace }}/capz-serving-cert'
     controller-gen.kubebuilder.io/version: '{{- include "annotations.kubebuilder_version" . -}}'
+  creationTimestamp: null
   labels:
     app.giantswarm.io/branch: '{{ .Values.project.branch }}'
     app.giantswarm.io/commit: '{{ .Values.project.commit }}'
@@ -17,7 +18,7 @@ metadata:
     clusterctl.cluster.x-k8s.io: ""
     clusterctl.cluster.x-k8s.io/move: ""
     helm.sh/chart: cluster-api-provider-azure
-  name: azuremachinetemplates.infrastructure.cluster.x-k8s.io
+  name: azuremanagedclustertemplates.infrastructure.cluster.x-k8s.io
 spec:
   conversion:
     strategy: Webhook
@@ -36,10 +37,12 @@ spec:
   names:
     categories:
       - cluster-api
-    kind: AzureMachineTemplate
-    listKind: AzureMachineTemplateList
-    plural: azuremachinetemplates
-    singular: azuremachinetemplate
+    kind: AzureManagedClusterTemplate
+    listKind: AzureManagedClusterTemplateList
+    plural: azuremanagedclustertemplates
+    shortNames:
+      - amct
+    singular: azuremanagedclustertemplate
   scope: Namespaced
   versions:
     - name: v1beta1

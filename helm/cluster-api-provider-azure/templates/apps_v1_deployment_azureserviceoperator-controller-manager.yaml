@@ -1,0 +1,204 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.giantswarm.io/branch: '{{ .Values.project.branch }}'
+    app.giantswarm.io/commit: '{{ .Values.project.commit }}'
+    app.kubernetes.io/instance: '{{ .Release.Name }}'
+    app.kubernetes.io/managed-by: '{{ .Release.Service }}'
+    app.kubernetes.io/name: cluster-api-provider-azure
+    app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
+    application.giantswarm.io/team: '{{ index .Chart.Annotations "application.giantswarm.io/team"
+      }}'
+    control-plane: controller-manager
+    helm.sh/chart: cluster-api-provider-azure
+  name: azureserviceoperator-controller-manager
+  namespace: '{{ .Release.Namespace }}'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      control-plane: controller-manager
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/default-container: manager
+      labels:
+        aadpodidbinding: aso-manager-binding
+        app.kubernetes.io/name: azure-service-operator
+        app.kubernetes.io/version: v2.4.0
+        control-plane: controller-manager
+    spec:
+      containers:
+      - args:
+        - --metrics-addr=:8080
+        - --health-addr=:8081
+        - --enable-leader-election
+        - --v=2
+        - --crd-pattern=
+        - --webhook-port=9443
+        - --webhook-cert-dir=/tmp/k8s-webhook-server/serving-certs
+        env:
+        - name: AZURE_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              key: AZURE_CLIENT_ID
+              name: aso-controller-settings
+        - name: AZURE_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              key: AZURE_CLIENT_SECRET
+              name: aso-controller-settings
+              optional: true
+        - name: AZURE_TENANT_ID
+          valueFrom:
+            secretKeyRef:
+              key: AZURE_TENANT_ID
+              name: aso-controller-settings
+        - name: AZURE_SUBSCRIPTION_ID
+          valueFrom:
+            secretKeyRef:
+              key: AZURE_SUBSCRIPTION_ID
+              name: aso-controller-settings
+        - name: AZURE_CLIENT_CERTIFICATE
+          valueFrom:
+            secretKeyRef:
+              key: AZURE_CLIENT_CERTIFICATE
+              name: aso-controller-settings
+              optional: true
+        - name: AZURE_CLIENT_CERTIFICATE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: AZURE_CLIENT_CERTIFICATE_PASSWORD
+              name: aso-controller-settings
+              optional: true
+        - name: AZURE_AUTHORITY_HOST
+          valueFrom:
+            secretKeyRef:
+              key: AZURE_AUTHORITY_HOST
+              name: aso-controller-settings
+              optional: true
+        - name: AZURE_RESOURCE_MANAGER_ENDPOINT
+          valueFrom:
+            secretKeyRef:
+              key: AZURE_RESOURCE_MANAGER_ENDPOINT
+              name: aso-controller-settings
+              optional: true
+        - name: AZURE_RESOURCE_MANAGER_AUDIENCE
+          valueFrom:
+            secretKeyRef:
+              key: AZURE_RESOURCE_MANAGER_AUDIENCE
+              name: aso-controller-settings
+              optional: true
+        - name: AZURE_TARGET_NAMESPACES
+          valueFrom:
+            secretKeyRef:
+              key: AZURE_TARGET_NAMESPACES
+              name: aso-controller-settings
+              optional: true
+        - name: AZURE_OPERATOR_MODE
+          valueFrom:
+            secretKeyRef:
+              key: AZURE_OPERATOR_MODE
+              name: aso-controller-settings
+              optional: true
+        - name: AZURE_SYNC_PERIOD
+          valueFrom:
+            secretKeyRef:
+              key: AZURE_SYNC_PERIOD
+              name: aso-controller-settings
+              optional: true
+        - name: USE_WORKLOAD_IDENTITY_AUTH
+          valueFrom:
+            secretKeyRef:
+              key: USE_WORKLOAD_IDENTITY_AUTH
+              name: aso-controller-settings
+              optional: true
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        image: mcr.microsoft.com/k8s/azureserviceoperator:v2.4.0
+        imagePullPolicy: Always
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8081
+          initialDelaySeconds: 60
+        name: manager
+        ports:
+        - containerPort: 9443
+          name: webhook-server
+          protocol: TCP
+        - containerPort: 8081
+          name: health-port
+          protocol: TCP
+        - containerPort: 8080
+          name: metrics-port
+          protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: 8081
+          initialDelaySeconds: 60
+        resources:
+          limits:
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 200m
+            memory: 256Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
+          seccompProfile:
+            type: RuntimeDefault
+        volumeMounts:
+        - mountPath: /var/run/secrets/tokens
+          name: azure-identity
+          readOnly: true
+        - mountPath: /tmp/k8s-webhook-server/serving-certs
+          name: cert
+          readOnly: true
+      - args:
+        - --secure-listen-address=0.0.0.0:8443
+        - --upstream=http://127.0.0.1:8080/
+        - --logtostderr=true
+        - --v=10
+        image: gcr.io/kubebuilder/kube-rbac-proxy:v0.13.1
+        name: kube-rbac-proxy
+        ports:
+        - containerPort: 8443
+          name: https
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
+          seccompProfile:
+            type: RuntimeDefault
+      nodeSelector:
+        kubernetes.io/os: linux
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      serviceAccountName: azureserviceoperator-default
+      terminationGracePeriodSeconds: 10
+      volumes:
+      - name: cert
+        secret:
+          defaultMode: 420
+          secretName: webhook-server-cert
+      - name: azure-identity
+        projected:
+          defaultMode: 420
+          sources:
+          - serviceAccountToken:
+              audience: api://AzureADTokenExchange
+              expirationSeconds: 3600
+              path: azure-identity
