@@ -184,7 +184,6 @@ spec:
       nodeSelector:
         kubernetes.io/os: linux
       securityContext:
-        runAsNonRoot: true
         seccompProfile:
           type: RuntimeDefault
       serviceAccountName: azureserviceoperator-default
