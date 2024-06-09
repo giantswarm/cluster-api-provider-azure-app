@@ -25,6 +25,7 @@ patchesStrategicMerge:
   - webhook-certificate.yaml
   - service-add-metrics-port.yaml
   - certificate.yaml
+  - certificate-serviceoperator.yaml
   - delete-selfsigned-cert-issuer.yaml
   - delete-ns.yaml
   - delete-nmi.yaml

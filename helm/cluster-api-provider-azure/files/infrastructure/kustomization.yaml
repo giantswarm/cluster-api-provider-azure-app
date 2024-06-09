@@ -7,8 +7,11 @@ resources:
   - bases/azuremachines.infrastructure.cluster.x-k8s.io.yaml
   - bases/azuremachinetemplates.infrastructure.cluster.x-k8s.io.yaml
   - bases/azuremanagedclusters.infrastructure.cluster.x-k8s.io.yaml
+  - bases/azuremanagedclustertemplates.infrastructure.cluster.x-k8s.io.yaml
   - bases/azuremanagedcontrolplanes.infrastructure.cluster.x-k8s.io.yaml
+  - bases/azuremanagedcontrolplanetemplates.infrastructure.cluster.x-k8s.io.yaml
   - bases/azuremanagedmachinepools.infrastructure.cluster.x-k8s.io.yaml
+  - bases/azuremanagedmachinepooltemplates.infrastructure.cluster.x-k8s.io.yaml
 patches:
   - path: patches/versions/v1beta1/azureclusteridentities.infrastructure.cluster.x-k8s.io.yaml
     target:
@@ -58,15 +61,33 @@ patches:
       version: v1
       kind: CustomResourceDefinition
       name: azuremanagedclusters.infrastructure.cluster.x-k8s.io
+  - path: patches/versions/v1beta1/azuremanagedclustertemplates.infrastructure.cluster.x-k8s.io.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: azuremanagedclustertemplates.infrastructure.cluster.x-k8s.io
   - path: patches/versions/v1beta1/azuremanagedcontrolplanes.infrastructure.cluster.x-k8s.io.yaml
     target:
       group: apiextensions.k8s.io
       version: v1
       kind: CustomResourceDefinition
       name: azuremanagedcontrolplanes.infrastructure.cluster.x-k8s.io
+  - path: patches/versions/v1beta1/azuremanagedcontrolplanetemplates.infrastructure.cluster.x-k8s.io.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: azuremanagedcontrolplanetemplates.infrastructure.cluster.x-k8s.io
   - path: patches/versions/v1beta1/azuremanagedmachinepools.infrastructure.cluster.x-k8s.io.yaml
     target:
       group: apiextensions.k8s.io
       version: v1
       kind: CustomResourceDefinition
       name: azuremanagedmachinepools.infrastructure.cluster.x-k8s.io
+  - path: patches/versions/v1beta1/azuremanagedmachinepooltemplates.infrastructure.cluster.x-k8s.io.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: azuremanagedmachinepooltemplates.infrastructure.cluster.x-k8s.io

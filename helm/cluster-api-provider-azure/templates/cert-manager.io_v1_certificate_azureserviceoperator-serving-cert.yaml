@@ -15,9 +15,10 @@ metadata:
   namespace: '{{ .Release.Namespace }}'
 spec:
   dnsNames:
-  - azureserviceoperator-webhook-service.capz-system.svc
-  - azureserviceoperator-webhook-service.capz-system.svc.cluster.local
+  - azureserviceoperator-webhook-service.{{ .Release.Namespace }}.svc
+  - azureserviceoperator-webhook-service.{{ .Release.Namespace }}.svc.cluster.local
   issuerRef:
-    kind: Issuer
-    name: azureserviceoperator-selfsigned-issuer
-  secretName: webhook-server-cert
+    group: cert-manager.io
+    kind: ClusterIssuer
+    name: selfsigned-giantswarm
+  secretName: webhook-service-cert
