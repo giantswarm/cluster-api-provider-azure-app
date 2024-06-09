@@ -8,7 +8,6 @@ spec:
   template:
     spec:
       securityContext:
-        runAsNonRoot: true
         seccompProfile:
           type: RuntimeDefault
       containers:

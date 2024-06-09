@@ -23,6 +23,7 @@ patchesStrategicMerge:
   - deployment-toleration.yaml
   - deployment-aso-securitycontext.yaml
   - webhook-certificate.yaml
+  - webhook-certificate-aso.yaml
   - service-add-metrics-port.yaml
   - certificate.yaml
   - certificate-serviceoperator.yaml
