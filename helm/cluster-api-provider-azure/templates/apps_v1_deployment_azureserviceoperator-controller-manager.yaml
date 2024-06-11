@@ -192,7 +192,7 @@ spec:
       - name: cert
         secret:
           defaultMode: 420
-          secretName: webhook-server-cert
+          secretName: aso-webhook-service-cert
       - name: azure-identity
         projected:
           defaultMode: 420

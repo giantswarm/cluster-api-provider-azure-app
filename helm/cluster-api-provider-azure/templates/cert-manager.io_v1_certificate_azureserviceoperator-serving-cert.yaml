@@ -21,4 +21,4 @@ spec:
     group: cert-manager.io
     kind: ClusterIssuer
     name: selfsigned-giantswarm
-  secretName: webhook-service-cert
+  secretName: aso-webhook-service-cert
