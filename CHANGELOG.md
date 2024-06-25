@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add ServiceMonitor for monitoring.
+
+### Changed
+
+- Add node affinity to prefer scheduling on `control-plane` nodes.
+- Add toleration for `node.cluster.x-k8s.io/uninitialized` taint.
+- Remove toleration for old `node-role.kubernetes.io/master` taint.
+
 ## [1.9.0-alpha.8] - 2024-01-18
 
 ### Added

@@ -28,6 +28,9 @@ workloadCluster:
 controller:
   verbosity: 0
 
+serviceMonitor:
+  enabled: true
+
 verticalPodAutoscaler:
   enabled: true
 
