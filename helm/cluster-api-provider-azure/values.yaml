@@ -15,6 +15,9 @@ provider:
   clientId: ""
   clientSecret: ""
 
+ciliumNetworkPolicy:
+  enabled: false
+
 crdInstall:
   enable: true
   kubectl:

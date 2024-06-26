@@ -1,0 +1,23 @@
+{{- if .Values.ciliumNetworkPolicy.enabled }}
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: {{ include "capz.crdInstall" . }}
+  namespace: {{ .Release.Namespace | quote }}
+  annotations:
+    # create hook dependencies in the right order
+    "helm.sh/hook-weight": "-2"
+    {{- include "capz.CRDInstallAnnotations" . | nindent 4 }}
+  labels:
+    app.kubernetes.io/component: {{ include "capz.crdInstall" . | quote }}
+    {{- include "capz.selectorLabels" . | nindent 4 }}
+    role: {{ include "capz.CRDInstallSelector" . | quote }}
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/component: {{ include "capz.crdInstall" . | quote }}
+      {{- include "capz.selectorLabels" . | nindent 6 }}
+  egress:
+    - toEntities:
+        - kube-apiserver
+{{- end }}
