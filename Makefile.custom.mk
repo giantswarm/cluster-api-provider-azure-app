@@ -2,7 +2,7 @@
 generate:
 	./hack/generate-kustomize-patches.sh
 	@rm -rf helm/cluster-api-provider-azure/templates/*.yaml
-	@cp helm/cluster-api-provider-azure/files/copy/* helm/cluster-api-provider-azure/templates/
+	@cp config/helm/copy/* helm/cluster-api-provider-azure/templates/
 	@kustomize build config/helm -o helm/cluster-api-provider-azure/templates
 	./hack/move-generated-crds.sh
 	./hack/generate-crd-version-patches.sh
