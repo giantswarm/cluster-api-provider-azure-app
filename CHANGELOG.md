@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.9.0-alpha.9] - 2024-06-26
+
 ### Added
 
 - Add ServiceMonitor for monitoring.
@@ -300,7 +302,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed label selector for webhook and manager services.
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-alpha.8...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-alpha.9...HEAD
+[1.9.0-alpha.9]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-alpha.8...v1.9.0-alpha.9
 [1.9.0-alpha.8]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-alpha.7...v1.9.0-alpha.8
 [1.9.0-alpha.7]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-alpha.6...v1.9.0-alpha.7
 [1.9.0-alpha.6]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-alpha.5...v1.9.0-alpha.6
