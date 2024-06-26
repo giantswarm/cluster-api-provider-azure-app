@@ -2,8 +2,8 @@ apiVersion: "v1"
 name: cluster-api-provider-azure
 description: "Helm chart for Cluster API Azure"
 home: "https://github.com/giantswarm/cluster-api-provider-azure-app"
-version: "[[ .Version ]]"
-appVersion: "[[ .AppVersion ]]"
+version: "1.9.0-alpha.8"
+appVersion: "1.9.0-alpha.8"
 annotations:
-  application.giantswarm.io/team: "celestial"
+  application.giantswarm.io/team: "phoenix"
   config.giantswarm.io/version: 1.x.x

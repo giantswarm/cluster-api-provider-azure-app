@@ -1,0 +1,14 @@
+ciliumNetworkPolicy:
+  enabled: true
+controller:
+  verbosity: 4
+global:
+  podSecurityStandards:
+    enforced: true
+provider:
+  flavor: capi
+  subscriptionId: 6b1f6e4a-6d0e-4aa4-9a5a-fbaca65a23b3
+  tenantId: 31f75bf9-3d8c-4691-95c0-83dd71613db8
+workloadCluster:
+  ssh:
+    ssoPublicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9AYjjOyVgvInTU9vUrBMU0+Zso0dBcHm9sOxjI4CJkmXL2kV+Fpcd4eWH1XSNqbsgaQehUaTwnDRyOpHz3+u5C0fabhyZjFmpnEgl2j9h5DPL8g2btytY83anSX5HBP2gFzAdoXZb93oyffyzpL/xqzsY5eSpGXmZRYJ54i26UJSgr2UaXPrGcUD8fsNce1LU/MOJeEUTvj+UgDRzAJkfG6ZzyXS37RlYT3xF+FwjAALTUyzzyvJ5XnKyQ9nmJbbIkchKs7X+wMTEjccHWF4r/BXWGlyXSI+Gd0QBh84iP9WLLkhe46R6sYAHxzCXB5vjzqrA2sl+kS9x2GYo75px

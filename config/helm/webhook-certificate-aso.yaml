@@ -1,0 +1,14 @@
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: azureserviceoperator-mutating-webhook-configuration
+  annotations:
+    cert-manager.io/inject-ca-from: '{{ .Release.Namespace }}/azureserviceoperator-serving-cert'
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  name: azureserviceoperator-validating-webhook-configuration
+  annotations:
+    cert-manager.io/inject-ca-from: '{{ .Release.Namespace }}/azureserviceoperator-serving-cert'

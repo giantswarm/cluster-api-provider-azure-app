@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: azureserviceoperator-serving-cert
+  namespace: capz-system
+spec:
+  dnsNames:
+  - azureserviceoperator-webhook-service.{{ .Release.Namespace }}.svc
+  - azureserviceoperator-webhook-service.{{ .Release.Namespace }}.svc.cluster.local
+  issuerRef:
+    group: cert-manager.io
+    kind: ClusterIssuer
+    name: selfsigned-giantswarm
+  secretName: aso-webhook-service-cert
