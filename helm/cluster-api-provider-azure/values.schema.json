@@ -10,6 +10,15 @@
                 }
             }
         },
+        "ciliumNetworkPolicy": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "default": false
+        },
         "crdInstall": {
             "type": "object",
             "properties": {
