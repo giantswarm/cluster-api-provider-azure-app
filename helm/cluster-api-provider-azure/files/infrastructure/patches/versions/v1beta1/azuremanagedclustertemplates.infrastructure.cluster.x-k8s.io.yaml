@@ -2,7 +2,7 @@
   path: /spec/versions/0/schema
   value:
     openAPIV3Schema:
-      description: AzureManagedCluster is the Schema for the azuremanagedclusters API.
+      description: AzureManagedClusterTemplate is the Schema for the AzureManagedClusterTemplates API.
       properties:
         apiVersion:
           description: 'APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
@@ -13,28 +13,18 @@
         metadata:
           type: object
         spec:
-          description: AzureManagedClusterSpec defines the desired state of AzureManagedCluster.
+          description: AzureManagedClusterTemplateSpec defines the desired state of AzureManagedClusterTemplate.
           properties:
-            controlPlaneEndpoint:
-              description: ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
+            template:
+              description: AzureManagedClusterTemplateResource describes the data needed to create an AzureManagedCluster from a template.
               properties:
-                host:
-                  description: The hostname on which the API server is serving.
-                  type: string
-                port:
-                  description: The port on which the API server is serving.
-                  format: int32
-                  type: integer
+                spec:
+                  description: AzureManagedClusterTemplateResourceSpec specifies an Azure managed cluster template resource.
+                  type: object
               required:
-                - host
-                - port
+                - spec
               type: object
-          type: object
-        status:
-          description: AzureManagedClusterStatus defines the observed state of AzureManagedCluster.
-          properties:
-            ready:
-              description: Ready is true when the provider resource is ready.
-              type: boolean
+          required:
+            - template
           type: object
       type: object
