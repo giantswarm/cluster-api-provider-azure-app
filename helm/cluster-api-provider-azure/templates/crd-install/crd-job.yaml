@@ -40,7 +40,8 @@ spec:
           # piping stderr to stdout means kubectl's errors are surfaced
           # in the pod's logs.
 
-          kubectl apply -k /files 2>&1
+          # we hit size limits because of kubectl.kubernetes.io/last-applied-configuration annotation
+          kubectl apply --server-side=true --force-conflicts=true -k /files 2>&1
 
           # After updating CRDs the azure-operator will sometimes stop reconciling CRDs,
           # so here we mitigate that issue by restarting it.
@@ -74,7 +75,7 @@ spec:
     {{- with $currentScope }}
       - name: {{ printf "%s-%s" (base (dir $path)) (trimSuffix "-yaml" (base $path | replace "." "-")) | trunc 63 | trimSuffix "-" }}
         configMap:
-          name: {{ include "capz.crdInstall" . }}-{{ printf "%s-%s" (base (dir $path)) (trimSuffix ".yaml" (base $path) | trunc 63) }}
+          name: {{ include "capz.crdInstall" . }}-{{- include "capz.CRDInstallConfigmapNameGenerate" $path }}
           items:
           - key: content
             path: {{ $path | base }}

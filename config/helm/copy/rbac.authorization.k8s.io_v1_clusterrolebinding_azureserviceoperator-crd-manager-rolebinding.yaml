@@ -1,0 +1,26 @@
+# We run azure-service-operator with --crd-management=auto
+# This RBAC exists in original ASO manifests but it is being remove by CAPZ.
+# This will be part of CAPZ manifests in 1.14.0 and newer versions.
+# See https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/4547/files
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    app.kubernetes.io/instance: '{{ .Release.Name }}'
+    app.kubernetes.io/managed-by: '{{ .Release.Service }}'
+    app.kubernetes.io/name: cluster-api-provider-azure
+    app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
+    application.giantswarm.io/branch: '{{ .Values.project.branch }}'
+    application.giantswarm.io/commit: '{{ .Values.project.commit }}'
+    application.giantswarm.io/team: '{{ index .Chart.Annotations "application.giantswarm.io/team"
+      }}'
+    helm.sh/chart: cluster-api-provider-azure
+  name: azureserviceoperator-crd-manager-rolebinding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: azureserviceoperator-crd-manager-role
+subjects:
+- kind: ServiceAccount
+  name: azureserviceoperator-default
+  namespace: '{{ .Release.Namespace }}'

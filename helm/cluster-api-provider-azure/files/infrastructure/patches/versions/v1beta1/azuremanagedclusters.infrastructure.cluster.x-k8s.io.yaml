@@ -1,5 +1,5 @@
 - op: replace
-  path: /spec/versions/2/schema
+  path: /spec/versions/0/schema
   value:
     openAPIV3Schema:
       description: AzureManagedCluster is the Schema for the azuremanagedclusters API.
@@ -16,7 +16,7 @@
           description: AzureManagedClusterSpec defines the desired state of AzureManagedCluster.
           properties:
             controlPlaneEndpoint:
-              description: ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
+              description: ControlPlaneEndpoint represents the endpoint used to communicate with the control plane. Immutable, populated by the AKS API at create.
               properties:
                 host:
                   description: The hostname on which the API server is serving.
