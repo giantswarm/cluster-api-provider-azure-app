@@ -1,0 +1,24 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  labels:
+    app.kubernetes.io/instance: '{{ .Release.Name }}'
+    app.kubernetes.io/managed-by: '{{ .Release.Service }}'
+    app.kubernetes.io/name: cluster-api-provider-azure
+    app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
+    application.giantswarm.io/branch: '{{ .Values.project.branch }}'
+    application.giantswarm.io/commit: '{{ .Values.project.commit }}'
+    application.giantswarm.io/team: '{{ index .Chart.Annotations "application.giantswarm.io/team"
+      }}'
+    helm.sh/chart: cluster-api-provider-azure
+  name: azureserviceoperator-serving-cert
+  namespace: '{{ .Release.Namespace }}'
+spec:
+  dnsNames:
+  - azureserviceoperator-webhook-service.{{ .Release.Namespace }}.svc
+  - azureserviceoperator-webhook-service.{{ .Release.Namespace }}.svc.cluster.local
+  issuerRef:
+    group: cert-manager.io
+    kind: ClusterIssuer
+    name: selfsigned-giantswarm
+  secretName: aso-webhook-service-cert

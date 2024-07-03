@@ -14,10 +14,10 @@ move-infrastructure-manifests() {
     CRD_BASE_DIR="$HELM_DIR/files/infrastructure/bases"
     rm -f "./$CRD_BASE_DIR"/*
     mkdir -p "./$CRD_BASE_DIR"
-    mv ${HELM_TEMPLATES_DIR}/apiextensions.k8s.io_v1_customresourcedefinition_*.infrastructure.cluster.x-k8s.io.yaml "./$CRD_BASE_DIR/"
+    mv ${HELM_TEMPLATES_DIR}/apiextensions.k8s.io_v1_customresourcedefinition_*.yaml "./$CRD_BASE_DIR/"
 
     cd "$CRD_BASE_DIR"
-    for crd_file in apiextensions.k8s.io_v1_customresourcedefinition_*.cluster.x-k8s.io.yaml; do
+    for crd_file in apiextensions.k8s.io_v1_customresourcedefinition_*.yaml; do
         new_crd_file="$(echo "$crd_file" | cut -c50-)" # remove first 50 chars
         mv "$crd_file" "$new_crd_file"
     done

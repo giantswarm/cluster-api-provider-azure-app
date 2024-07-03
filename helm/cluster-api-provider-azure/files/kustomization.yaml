@@ -1,2 +1,13 @@
 resources:
 - infrastructure
+
+# we need to set this label since azure-service-operator lists CRDs by this label.
+# see https://github.com/Azure/azure-service-operator/blob/51edbbe2e40f88f5dee65131c2937c447c94f9a9/v2/internal/crdmanagement/manager.go#L57
+patches:
+  - target:
+      kind: CustomResourceDefinition
+      labelSelector: cluster.x-k8s.io/provider!=infrastructure-azure
+    patch: |
+      - op: replace
+        path: /metadata/labels/app.kubernetes.io~1name
+        value: azure-service-operator

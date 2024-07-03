@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/instance: '{{ .Release.Name }}'
+    app.kubernetes.io/managed-by: '{{ .Release.Service }}'
+    app.kubernetes.io/name: cluster-api-provider-azure
+    app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
+    application.giantswarm.io/branch: '{{ .Values.project.branch }}'
+    application.giantswarm.io/commit: '{{ .Values.project.commit }}'
+    application.giantswarm.io/team: '{{ index .Chart.Annotations "application.giantswarm.io/team"
+      }}'
+    control-plane: controller-manager
+    helm.sh/chart: cluster-api-provider-azure
+  name: azureserviceoperator-controller-manager-metrics-service
+  namespace: '{{ .Release.Namespace }}'
+spec:
+  ports:
+  - name: metrics
+    port: 8080
+  selector:
+    app.kubernetes.io/name: azure-service-operator

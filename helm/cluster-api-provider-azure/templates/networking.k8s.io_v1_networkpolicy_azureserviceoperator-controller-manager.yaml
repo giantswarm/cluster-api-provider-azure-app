@@ -1,0 +1,51 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  labels:
+    app.giantswarm.io/branch: '{{ .Values.project.branch }}'
+    app.giantswarm.io/commit: '{{ .Values.project.commit }}'
+    app.kubernetes.io/instance: '{{ .Release.Name }}'
+    app.kubernetes.io/managed-by: '{{ .Release.Service }}'
+    app.kubernetes.io/name: '{{ .Chart.Name }}'
+    app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
+    control-plane: controller-manager
+    helm.sh/chart: '{{ .Chart.Name }}'
+  name: azure-service-operator-controller-manager
+  namespace: '{{ .Release.Namespace }}'
+spec:
+  egress:
+  - ports:
+    - port: 443
+      protocol: TCP
+    - port: 6443
+      protocol: TCP
+    to:
+    - ipBlock:
+        cidr: 0.0.0.0/0
+  - ports:
+    - port: 53
+      protocol: UDP
+    - port: 1053
+      protocol: UDP
+    - port: 53
+      protocol: TCP
+    - port: 1053
+      protocol: TCP
+    to:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: kube-system
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: coredns
+  - ports:
+    - port: 80
+      protocol: TCP
+    to:
+    - ipBlock:
+        cidr: 169.254.169.254/32
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: azure-service-operator
+  policyTypes:
+  - Egress
