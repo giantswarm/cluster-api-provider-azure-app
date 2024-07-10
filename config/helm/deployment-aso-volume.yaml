@@ -1,0 +1,26 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: azureserviceoperator-controller-manager
+  namespace: capz-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      control-plane: controller-manager
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/default-container: manager
+      labels:
+        aadpodidbinding: aso-manager-binding
+        app.kubernetes.io/name: azure-service-operator
+        app.kubernetes.io/version: v2.4.0
+        control-plane: controller-manager
+    spec:
+      volumes:
+      - name: cert
+        secret:
+          defaultMode: 420
+          secretName: aso-webhook-service-cert

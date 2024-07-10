@@ -3,7 +3,7 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     cert-manager.io/inject-ca-from: '{{ .Release.Namespace }}/capz-serving-cert'
-    controller-gen.kubebuilder.io/version: '{{- include "annotations.kubebuilder_version" . -}}'
+    controller-gen.kubebuilder.io/version: v0.9.2
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
     app.kubernetes.io/managed-by: '{{ .Release.Service }}'
@@ -42,14 +42,6 @@ spec:
     singular: azuremachinetemplate
   scope: Namespaced
   versions:
-    - name: v1alpha3
-      schema: {}
-      served: true
-      storage: false
-    - name: v1alpha4
-      schema: {}
-      served: true
-      storage: false
     - name: v1beta1
       schema: {}
       served: true

@@ -17,6 +17,7 @@ metadata:
 spec:
   egress:
   - toEntities:
+    - cluster
     - kube-apiserver
   endpointSelector:
     matchLabels:

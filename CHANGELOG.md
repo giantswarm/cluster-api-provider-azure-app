@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Bump CAPZ version to `1.12.4`.
+
 ## [1.9.0-alpha.9] - 2024-06-26
 
 ### Added

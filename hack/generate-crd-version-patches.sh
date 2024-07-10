@@ -69,8 +69,9 @@ EOF
   value:
 " > "$patch_file"
 
-            version_obj="$(yq e ".spec.versions[$version_index].schema" "$crd")" \
-                yq e -i '.[0].value = env(version_obj)' "$patch_file"
+            rm -f "/tmp/version_obj"
+            yq e ".spec.versions[$version_index].schema" "$crd" > /tmp/version_obj
+            yq e -i '.[0].value = load("/tmp/version_obj")' "$patch_file"
 
             # Add CRD version patches to kustomization.yaml
             version_patch_entry="path: patches/versions/$version/$crd_filename
