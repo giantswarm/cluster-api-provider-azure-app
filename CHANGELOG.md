@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.12.4-gs2] - 2024-07-17
+
 ### Changed
 
 - Remove kube-rbac-proxy from azure-service-operator.
@@ -313,7 +315,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed label selector for webhook and manager services.
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.12.4-gs1...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.12.4-gs2...HEAD
+[1.12.4-gs2]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.12.4-gs1...v1.12.4-gs2
 [1.12.4-gs1]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-alpha.9...v1.12.4-gs1
 [1.9.0-alpha.9]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-alpha.8...v1.9.0-alpha.9
 [1.9.0-alpha.8]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-alpha.7...v1.9.0-alpha.8
