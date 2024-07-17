@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Remove kube-rbac-proxy from azure-service-operator.
+- Use image of azure-service-operator from `gsoci.azurecr.io`.
 
 ## [1.12.4-gs1] - 2024-07-10
 
