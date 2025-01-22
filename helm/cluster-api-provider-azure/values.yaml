@@ -1,4 +1,5 @@
 name: cluster-api-azure-controller
+serviceType: managed
 image:
   registry: gsoci.azurecr.io
   name: giantswarm/cluster-api-azure-controller
