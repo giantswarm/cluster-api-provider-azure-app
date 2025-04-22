@@ -18,11 +18,11 @@
                 }
             }
         },
-        "controller": {
+        "azureWorkloadIdentity": {
             "type": "object",
             "properties": {
-                "verbosity": {
-                    "type": "integer"
+                "clientId": {
+                    "type": "string"
                 }
             }
         },
@@ -32,8 +32,15 @@
                 "enabled": {
                     "type": "boolean"
                 }
-            },
-            "default": false
+            }
+        },
+        "controller": {
+            "type": "object",
+            "properties": {
+                "verbosity": {
+                    "type": "integer"
+                }
+            }
         },
         "crdInstall": {
             "type": "object",
@@ -49,6 +56,19 @@
                         },
                         "tag": {
                             "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "global": {
+            "type": "object",
+            "properties": {
+                "podSecurityStandards": {
+                    "type": "object",
+                    "properties": {
+                        "enforced": {
+                            "type": "boolean"
                         }
                     }
                 }
@@ -108,8 +128,7 @@
                 "enabled": {
                     "type": "boolean"
                 }
-            },
-            "default": true
+            }
         },
         "verticalPodAutoscaler": {
             "type": "object",
@@ -127,19 +146,6 @@
                     "properties": {
                         "ssoPublicKey": {
                             "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "global": {
-            "type": "object",
-            "properties": {
-                "podSecurityStandards": {
-                    "type": "object",
-                    "properties": {
-                        "enforced": {
-                            "type": "boolean"
                         }
                     }
                 }
