@@ -1,7 +1,8 @@
-[![CircleCI](https://circleci.com/gh/giantswarm/cluster-api-provider-azure-app.svg?style=shield)](https://circleci.com/gh/giantswarm/cluster-api-provider-azure-app)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/giantswarm/cluster-api-provider-azure-app/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/giantswarm/cluster-api-provider-azure-app/tree/main)
 
-# cluster-api-provider-azure-app
-Cluster API Azure controller packaged as a Giant Swarm app
+# cluster-api-provider-azure
+
+Cluster API Azure controller packaged as a Giant Swarm app.
 
 ## Azure credentials
 
@@ -66,7 +67,7 @@ Azure subscription, you can deploy your clusters to other Azure subscriptions.
 > CRs so you can use them and create clusters for existing organizations, and
 > the cluster's will be deployed to the organization's Azure subscription.
 
-How to use other, non-default, credentials for your workload clusters?  You need
+How to use other, non-default, credentials for your workload clusters? You need
 AzureClusterIdentity and Secret where Azure credentials are stored.
 
 AzureClusterIdentity object has the following:
