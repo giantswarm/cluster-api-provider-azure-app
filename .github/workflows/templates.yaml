@@ -1,0 +1,13 @@
+name: Templates
+on: pull_request
+jobs:
+  verify:
+    name: Verify
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Generate templates
+      run: make generate
+    - name: Verify templates
+      run: git diff --exit-code
