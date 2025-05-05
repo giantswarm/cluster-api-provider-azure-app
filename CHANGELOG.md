@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Repository: Rework sync. ([#30](https://github.com/giantswarm/cluster-api-provider-azure/pull/30))
+  - Hack: Extract `fetch-manifest.sh`.
+
 ## [1.12.4-gs2] - 2024-07-17
 
 ### Changed
