@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Config: Move `secret-bootstrap-credentials.yaml` to `bases/secrets/credential-default.yaml`.
   - Config: Transform `common-labels.yaml` into `labels`.
   - Config: Move `webhook-prefix.yaml` to `patches/mutatingwebhooks/zzz-prefix.yaml`.
+  - Config: Rework `images`.
 
 ## [1.12.4-gs2] - 2024-07-17
 
