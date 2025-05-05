@@ -6,8 +6,19 @@ metadata:
 spec:
   template:
     spec:
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
       containers:
       - name: manager
+        securityContext:
+          allowPrivilegeEscalation: false
+          seccompProfile:
+            type: RuntimeDefault
+          capabilities:
+            drop:
+            - ALL
         args:
         - --leader-elect={{- if eq .Values.provider.flavor "capi" }}true{{ else }}false{{- end }}
         - --metrics-bind-addr=0.0.0.0:8080

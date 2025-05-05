@@ -36,7 +36,6 @@ transformers:
 - patches/mutatingwebhooks/zzz-prefix.yaml
 
 patchesStrategicMerge:
-  - deployment-securitycontext.yaml
   - deployment-toleration.yaml
   - deployment-aso-securitycontext.yaml
   - deployment-aso-volume.yaml
