@@ -1,10 +1,14 @@
-namespace: '{{ .Release.Namespace }}'
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
 
 resources:
 # Cluster API Provider Azure components
 - bases/infrastructure-components.yaml
-- ssh-sso-public-key-secret.yaml
+# Secrets
+- bases/secrets/cluster-api-provider-azure-ssh-sso-pub-key.yaml
 - secret-bootstrap-credentials.yaml
+
+namespace: "{{ .Release.Namespace }}"
 
 transformers:
   - common-labels.yaml
