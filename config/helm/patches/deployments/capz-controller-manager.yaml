@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: capz-controller-manager
+  namespace: capz-system
+spec:
+  template:
+    spec:
+      containers:
+      - name: manager
+        args:
+        - --leader-elect={{- if eq .Values.provider.flavor "capi" }}true{{ else }}false{{- end }}
+        - --metrics-bind-addr=0.0.0.0:8080
+        - --feature-gates=MachinePool=true
+        - --watch-filter={{- include "deployment.args.watchfiltervalue" . }}
+        - --v={{ .Values.controller.verbosity }}

@@ -36,7 +36,6 @@ transformers:
 - patches/mutatingwebhooks/zzz-prefix.yaml
 
 patchesStrategicMerge:
-  - deployment-capz-args.yaml
   - deployment-affinity.yaml
   - deployment-environment.yaml
   - deployment-metrics-port.yaml
@@ -110,3 +109,6 @@ patches:
       value: null
     - op: remove
       path: /metadata/creationTimestamp
+
+# Deployments
+- path: patches/deployments/capz-controller-manager.yaml
