@@ -1,9 +1,10 @@
 namespace: '{{ .Release.Namespace }}'
 
 resources:
-  - input/infrastructure-components.yaml
-  - ssh-sso-public-key-secret.yaml
-  - secret-bootstrap-credentials.yaml
+# Cluster API Provider Azure components
+- bases/infrastructure-components.yaml
+- ssh-sso-public-key-secret.yaml
+- secret-bootstrap-credentials.yaml
 
 transformers:
   - common-labels.yaml
