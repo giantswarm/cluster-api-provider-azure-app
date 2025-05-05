@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Config: Move `webhook-prefix.yaml` to `patches/mutatingwebhooks/zzz-prefix.yaml`.
   - Config: Rework `images`.
   - Config: Move `deployment-capz-args.yaml` to `patches/deployments/capz-controller-manager.yaml`.
+  - Config: Move `deployment-affinity.yaml` to `patches/deployments/capz-controller-manager.yaml`.
 
 ## [1.12.4-gs2] - 2024-07-17
 

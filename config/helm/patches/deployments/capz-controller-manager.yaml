@@ -14,3 +14,11 @@ spec:
         - --feature-gates=MachinePool=true
         - --watch-filter={{- include "deployment.args.watchfiltervalue" . }}
         - --v={{ .Values.controller.verbosity }}
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - preference:
+              matchExpressions:
+              - key: node-role.kubernetes.io/control-plane
+                operator: Exists
+            weight: 10

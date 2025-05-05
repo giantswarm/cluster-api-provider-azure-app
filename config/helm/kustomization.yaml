@@ -36,7 +36,6 @@ transformers:
 - patches/mutatingwebhooks/zzz-prefix.yaml
 
 patchesStrategicMerge:
-  - deployment-affinity.yaml
   - deployment-environment.yaml
   - deployment-metrics-port.yaml
   - deployment-securitycontext.yaml
