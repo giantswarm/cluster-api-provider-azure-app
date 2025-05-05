@@ -1,1 +1,3 @@
 config/helm/bases/infrastructure-components.yaml
+config/helm/mutating-webhook-watchfilter.yaml
+config/helm/validating-webhook-watchfilter.yaml
