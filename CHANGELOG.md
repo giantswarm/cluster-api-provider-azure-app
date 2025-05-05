@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Config: Move `deployment-environment.yaml` to `patches/deployments/capz-controller-manager.yaml`.
   - Config: Move `deployment-metrics-port.yaml` to `patches/deployments/capz-controller-manager.yaml`.
   - Config: Move `deployment-securitycontext.yaml` to `patches/deployments/capz-controller-manager.yaml`.
+  - Config: Move `deployment-toleration.yaml` to `patches/deployments/capz-controller-manager.yaml`.
 
 ## [1.12.4-gs2] - 2024-07-17
 
