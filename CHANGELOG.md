@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Hack: Extract `fetch-manifest.sh`.
   - Hack: Rework `generate-kustomize-patches.sh` into `generate-webhook-patches.sh`.
   - Config: Move `ssh-sso-public-key-secret.yaml` to `bases/secrets/cluster-api-provider-azure-ssh-sso-pub-key.yaml`.
+  - Config: Move `secret-bootstrap-credentials.yaml` to `bases/secrets/credential-default.yaml`.
 
 ## [1.12.4-gs2] - 2024-07-17
 

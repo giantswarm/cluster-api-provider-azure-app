@@ -6,7 +6,7 @@ resources:
 - bases/infrastructure-components.yaml
 # Secrets
 - bases/secrets/cluster-api-provider-azure-ssh-sso-pub-key.yaml
-- secret-bootstrap-credentials.yaml
+- bases/secrets/credential-default.yaml
 
 namespace: "{{ .Release.Namespace }}"
 
@@ -68,13 +68,6 @@ patches:
 - target:
     kind: MutatingWebhookConfiguration
   path: mutating-webhook-watchfilter.yaml
-- target:
-    kind: Secret
-    name: capz-manager-bootstrap-credentials
-  patch: |-
-    - op: replace
-      path: /metadata/name
-      value: credential-default
 - target:
     kind: DaemonSet
     name: capz-nmi
