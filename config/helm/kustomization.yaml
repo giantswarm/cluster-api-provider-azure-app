@@ -23,7 +23,8 @@ labels:
     application.giantswarm.io/team: "{{ index .Chart.Annotations \"application.giantswarm.io/team\" }}"
 
 transformers:
-  - webhook-prefix.yaml
+# Mutating webhooks
+- patches/mutatingwebhooks/zzz-prefix.yaml
 
 images:
   - name: registry.k8s.io/cluster-api-azure/cluster-api-azure-controller

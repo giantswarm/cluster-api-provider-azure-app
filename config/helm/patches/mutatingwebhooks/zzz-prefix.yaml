@@ -1,0 +1,11 @@
+# https://intranet.giantswarm.io/docs/product/architecture-specs-adrs/adr/017_webhook-ordering
+apiVersion: builtin
+kind: PrefixSuffixTransformer
+metadata:
+  name: zzz-prefix
+prefix: zzz-
+fieldSpecs:
+- group: admissionregistration.k8s.io
+  version: v1
+  kind: MutatingWebhookConfiguration
+  path: metadata/name
