@@ -8,7 +8,6 @@ generate:
 
 	# Kustomize templates.
 	rm -f helm/cluster-api-provider-azure/templates/*.yaml
-	cp config/helm/copy/*.yaml helm/cluster-api-provider-azure/templates/
 	kubectl kustomize config/helm --output helm/cluster-api-provider-azure/templates
 
 	./hack/move-generated-crds.sh
