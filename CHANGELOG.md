@@ -40,6 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Config: Move `aso_crd_cainjection.yaml` to `patches/crds/azureserviceoperator.yaml`.
   - Config: Move `crd_webhook.yaml` to `patches/crds/capz.yaml`.
   - Config: Move `crd_clusterctl_labels.yaml` to `patches/crds/capz.yaml`.
+  - Config: Move `mutating-webhook-watchfilter.yaml` to `patches/mutatingwebhooks/capz-mutating-webhook-configuration-object-selector.yaml`.
 
 ### Removed
 
