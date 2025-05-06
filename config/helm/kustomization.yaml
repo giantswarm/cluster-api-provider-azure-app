@@ -36,10 +36,6 @@ transformers:
 - patches/mutatingwebhooks/zzz-prefix.yaml
 
 patches:
-- path: delete_aadpodidentity_crds.yaml
-  target:
-    kind: CustomResourceDefinition
-    annotationSelector: api-approved.kubernetes.io=unapproved
 - path: crd_cainjection.yaml
   target:
     kind: CustomResourceDefinition
@@ -90,6 +86,14 @@ patches:
       value: null
     - op: remove
       path: /metadata/creationTimestamp
+
+# CRDs
+- path: patches/crds/unapproved.yaml
+  target:
+    group: apiextensions.k8s.io
+    version: v1
+    kind: CustomResourceDefinition
+    annotationSelector: api-approved.kubernetes.io=unapproved
 
 # Namespaces
 - path: patches/namespaces/capz-system.yaml
