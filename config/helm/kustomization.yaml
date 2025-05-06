@@ -37,14 +37,6 @@ transformers:
 
 patches:
 - target:
-    kind: Service
-    name: azureserviceoperator-proxy-service
-  patch: |-
-    - op: replace
-      path: /spec/selector
-      value:
-        app.kubernetes.io/name: azure-service-operator
-- target:
     kind: CustomResourceDefinition
   patch: |-
     - op: add
@@ -94,6 +86,7 @@ patches:
 - path: patches/deployments/capz-controller-manager.yaml
 
 # Services
+- path: patches/services/azureserviceoperator-proxy-service.yaml
 - path: patches/services/azureserviceoperator.yaml
   target:
     version: v1

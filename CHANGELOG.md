@@ -44,6 +44,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Config: Move `validating-webhook-watchfilter.yaml` to `patches/validatingwebhooks/capz-validating-webhook-configuration-object-selector.yaml`.
   - Config: Move `config/helm/copy` to `helm/cluster-api-provider-azure/templates/static`.
   - Config: Extract inline patch into `patches/services/azureserviceoperator.yaml`.
+  - Config: Extract inline patch into `patches/services/azureserviceoperator-proxy-service.yaml`.
 
 ### Removed
 
