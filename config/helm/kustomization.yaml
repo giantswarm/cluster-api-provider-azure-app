@@ -36,7 +36,6 @@ transformers:
 - patches/mutatingwebhooks/zzz-prefix.yaml
 
 patchesStrategicMerge:
-  - delete-ns.yaml
   - delete-nmi.yaml
   - secret-aso-controller-settings.yaml
 
@@ -96,6 +95,9 @@ patches:
       value: null
     - op: remove
       path: /metadata/creationTimestamp
+
+# Namespaces
+- path: patches/namespaces/capz-system.yaml
 
 # Issuers
 - path: patches/issuers/capz-selfsigned-issuer.yaml
