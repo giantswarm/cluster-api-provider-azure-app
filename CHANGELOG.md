@@ -41,6 +41,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Config: Move `crd_webhook.yaml` to `patches/crds/capz.yaml`.
   - Config: Move `crd_clusterctl_labels.yaml` to `patches/crds/capz.yaml`.
 
+### Removed
+
+- Repository: Rework sync. ([#182](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/182))
+  - Config: Remove obsolete `daemonset-nmi-args.yaml`.
+
 ## [1.12.4-gs2] - 2024-07-17
 
 ### Changed

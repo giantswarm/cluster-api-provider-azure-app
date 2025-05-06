@@ -43,10 +43,6 @@ patches:
     kind: MutatingWebhookConfiguration
   path: mutating-webhook-watchfilter.yaml
 - target:
-    kind: DaemonSet
-    name: capz-nmi
-  path: daemonset-nmi-args.yaml
-- target:
     kind: Service
     labelSelector: app.kubernetes.io/name=azure-service-operator
   patch: |-
