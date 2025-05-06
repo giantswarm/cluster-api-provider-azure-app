@@ -36,10 +36,6 @@ transformers:
 - patches/mutatingwebhooks/zzz-prefix.yaml
 
 patches:
-- path: crd_cainjection.yaml
-  target:
-    kind: CustomResourceDefinition
-    labelSelector: cluster.x-k8s.io/provider=infrastructure-azure
 - path: aso_crd_cainjection.yaml
   target:
     kind: CustomResourceDefinition
@@ -88,6 +84,12 @@ patches:
       path: /metadata/creationTimestamp
 
 # CRDs
+- path: patches/crds/capz.yaml
+  target:
+    group: apiextensions.k8s.io
+    version: v1
+    kind: CustomResourceDefinition
+    labelSelector: cluster.x-k8s.io/provider=infrastructure-azure
 - path: patches/crds/unapproved.yaml
   target:
     group: apiextensions.k8s.io
