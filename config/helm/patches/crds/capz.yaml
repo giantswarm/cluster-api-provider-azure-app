@@ -3,4 +3,18 @@ kind: CustomResourceDefinition
 metadata:
   name: ignored
   annotations:
-    cert-manager.io/inject-ca-from: '{{ .Release.Namespace }}/capz-serving-cert'
+    cert-manager.io/inject-ca-from: "{{ .Release.Namespace }}/capz-serving-cert"
+spec:
+  conversion:
+    strategy: Webhook
+    webhook:
+      conversionReviewVersions:
+      - v1
+      - v1beta1
+      clientConfig:
+        caBundle: Cg==
+        service:
+          name: capz-webhook-service
+          namespace: "{{ .Release.Namespace }}"
+          port: 443
+          path: /convert
