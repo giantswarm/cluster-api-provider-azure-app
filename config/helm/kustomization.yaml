@@ -36,7 +36,6 @@ transformers:
 - patches/mutatingwebhooks/zzz-prefix.yaml
 
 patchesStrategicMerge:
-  - deployment-aso-securitycontext.yaml
   - deployment-aso-volume.yaml
   - webhook-certificate.yaml
   - webhook-certificate-aso.yaml
@@ -106,4 +105,5 @@ patches:
       path: /metadata/creationTimestamp
 
 # Deployments
+- path: patches/deployments/azureserviceoperator-controller-manager.yaml
 - path: patches/deployments/capz-controller-manager.yaml
