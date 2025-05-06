@@ -20,3 +20,8 @@ spec:
           capabilities:
             drop:
             - ALL
+      volumes:
+      - name: cert
+        secret:
+          secretName: aso-webhook-service-cert
+          defaultMode: 420

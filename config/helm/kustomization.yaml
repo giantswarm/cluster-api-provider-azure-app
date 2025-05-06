@@ -36,7 +36,6 @@ transformers:
 - patches/mutatingwebhooks/zzz-prefix.yaml
 
 patchesStrategicMerge:
-  - deployment-aso-volume.yaml
   - webhook-certificate.yaml
   - webhook-certificate-aso.yaml
   - service-add-metrics-port.yaml
