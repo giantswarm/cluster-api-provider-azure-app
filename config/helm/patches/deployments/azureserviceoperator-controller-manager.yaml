@@ -20,6 +20,8 @@ spec:
           capabilities:
             drop:
             - ALL
+      - $patch: delete
+        name: kube-rbac-proxy
       volumes:
       - name: cert
         secret:

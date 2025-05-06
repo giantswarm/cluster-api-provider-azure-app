@@ -36,7 +36,6 @@ transformers:
 - patches/mutatingwebhooks/zzz-prefix.yaml
 
 patches:
-- path: deployment-aso-remove-kube-proxy.yaml
 - path: delete_aadpodidentity_crds.yaml
   target:
     kind: CustomResourceDefinition
