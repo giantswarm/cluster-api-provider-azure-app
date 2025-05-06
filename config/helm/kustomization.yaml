@@ -36,7 +36,6 @@ transformers:
 - patches/mutatingwebhooks/zzz-prefix.yaml
 
 patchesStrategicMerge:
-  - delete-selfsigned-cert-issuer.yaml
   - delete-ns.yaml
   - delete-nmi.yaml
   - secret-aso-controller-settings.yaml
@@ -97,6 +96,9 @@ patches:
       value: null
     - op: remove
       path: /metadata/creationTimestamp
+
+# Issuers
+- path: patches/issuers/capz-selfsigned-issuer.yaml
 
 # Certificates
 - path: patches/certificates/azureserviceoperator-serving-cert.yaml
