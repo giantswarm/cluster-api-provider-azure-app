@@ -38,14 +38,6 @@ transformers:
 patches:
 - target:
     kind: Service
-    labelSelector: app.kubernetes.io/name=azure-service-operator
-  patch: |-
-    - op: replace
-      path: /spec/selector
-      value:
-        app.kubernetes.io/name: azure-service-operator
-- target:
-    kind: Service
     name: azureserviceoperator-proxy-service
   patch: |-
     - op: replace
@@ -102,6 +94,11 @@ patches:
 - path: patches/deployments/capz-controller-manager.yaml
 
 # Services
+- path: patches/services/azureserviceoperator.yaml
+  target:
+    version: v1
+    kind: Service
+    labelSelector: app.kubernetes.io/name=azure-service-operator
 - path: patches/services/capz-webhook-service.yaml
 
 # Mutating webhooks
