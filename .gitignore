@@ -1,3 +1,3 @@
 config/helm/bases/infrastructure-components.yaml
 config/helm/patches/mutatingwebhooks/capz-mutating-webhook-configuration-object-selector.yaml
-config/helm/validating-webhook-watchfilter.yaml
+config/helm/patches/validatingwebhooks/capz-validating-webhook-configuration-object-selector.yaml

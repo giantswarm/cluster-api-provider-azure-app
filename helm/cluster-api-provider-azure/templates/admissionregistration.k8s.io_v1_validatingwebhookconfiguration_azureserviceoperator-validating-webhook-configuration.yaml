@@ -25,7 +25,6 @@ webhooks:
   failurePolicy: Fail
   matchPolicy: Exact
   name: validate.v1api20220801.apis.apimanagement.azure.com
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
   rules:
   - apiGroups:
     - apimanagement.azure.com
@@ -47,7 +46,6 @@ webhooks:
   failurePolicy: Fail
   matchPolicy: Exact
   name: validate.v1api20220801.apiversionsets.apimanagement.azure.com
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
   rules:
   - apiGroups:
     - apimanagement.azure.com
@@ -69,7 +67,6 @@ webhooks:
   failurePolicy: Fail
   matchPolicy: Exact
   name: validate.v1api20220801.backends.apimanagement.azure.com
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
   rules:
   - apiGroups:
     - apimanagement.azure.com
@@ -91,7 +88,6 @@ webhooks:
   failurePolicy: Fail
   matchPolicy: Exact
   name: validate.v1api20220801.namedvalues.apimanagement.azure.com
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
   rules:
   - apiGroups:
     - apimanagement.azure.com
@@ -113,7 +109,6 @@ webhooks:
   failurePolicy: Fail
   matchPolicy: Exact
   name: validate.v1api20220801.policies.apimanagement.azure.com
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
   rules:
   - apiGroups:
     - apimanagement.azure.com
@@ -135,7 +130,6 @@ webhooks:
   failurePolicy: Fail
   matchPolicy: Exact
   name: validate.v1api20220801.policyfragments.apimanagement.azure.com
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
   rules:
   - apiGroups:
     - apimanagement.azure.com
@@ -157,7 +151,6 @@ webhooks:
   failurePolicy: Fail
   matchPolicy: Exact
   name: validate.v1api20220801.products.apimanagement.azure.com
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
   rules:
   - apiGroups:
     - apimanagement.azure.com
@@ -179,7 +172,6 @@ webhooks:
   failurePolicy: Fail
   matchPolicy: Exact
   name: validate.v1api20220801.services.apimanagement.azure.com
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
   rules:
   - apiGroups:
     - apimanagement.azure.com
@@ -201,7 +193,6 @@ webhooks:
   failurePolicy: Fail
   matchPolicy: Exact
   name: validate.v1api20220801.subscriptions.apimanagement.azure.com
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
   rules:
   - apiGroups:
     - apimanagement.azure.com
@@ -223,7 +214,6 @@ webhooks:
   failurePolicy: Fail
   matchPolicy: Exact
   name: validate.v1api20220501.configurationstores.appconfiguration.azure.com
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
   rules:
   - apiGroups:
     - appconfiguration.azure.com
@@ -245,7 +235,6 @@ webhooks:
   failurePolicy: Fail
   matchPolicy: Exact
   name: validate.v1api20200801preview.roleassignments.authorization.azure.com
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
   rules:
   - apiGroups:
     - authorization.azure.com
@@ -267,7 +256,6 @@ webhooks:
   failurePolicy: Fail
   matchPolicy: Exact
   name: validate.v1api20220401.roleassignments.authorization.azure.com
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
   rules:
   - apiGroups:
     - authorization.azure.com
@@ -289,7 +277,6 @@ webhooks:
   failurePolicy: Fail
   matchPolicy: Exact
   name: validate.v1api20210101.batchaccounts.batch.azure.com
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
   rules:
   - apiGroups:
     - batch.azure.com

@@ -37,9 +37,6 @@ transformers:
 
 patches:
 - target:
-    kind: ValidatingWebhookConfiguration
-  path: validating-webhook-watchfilter.yaml
-- target:
     kind: Service
     labelSelector: app.kubernetes.io/name=azure-service-operator
   patch: |-
@@ -119,4 +116,10 @@ patches:
 
 # Validating webhooks
 - path: patches/validatingwebhooks/azureserviceoperator-validating-webhook-configuration.yaml
+- path: patches/validatingwebhooks/capz-validating-webhook-configuration-object-selector.yaml
+  target:
+    group: admissionregistration.k8s.io
+    version: v1
+    kind: ValidatingWebhookConfiguration
+    name: capz-validating-webhook-configuration
 - path: patches/validatingwebhooks/capz-validating-webhook-configuration.yaml

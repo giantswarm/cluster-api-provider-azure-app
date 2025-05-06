@@ -39,4 +39,4 @@ EOF
 
 # Generate patches.
 generate_patch "${config}/bases/infrastructure-components.yaml" "MutatingWebhookConfiguration"   "capz-mutating-webhook-configuration"   "${config}/patches/mutatingwebhooks/capz-mutating-webhook-configuration-object-selector.yaml"
-generate_patch "${config}/bases/infrastructure-components.yaml" "ValidatingWebhookConfiguration" "capz-validating-webhook-configuration" "${config}/validating-webhook-watchfilter.yaml"
+generate_patch "${config}/bases/infrastructure-components.yaml" "ValidatingWebhookConfiguration" "capz-validating-webhook-configuration" "${config}/patches/validatingwebhooks/capz-validating-webhook-configuration-object-selector.yaml"

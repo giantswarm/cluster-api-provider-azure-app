@@ -41,6 +41,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Config: Move `crd_webhook.yaml` to `patches/crds/capz.yaml`.
   - Config: Move `crd_clusterctl_labels.yaml` to `patches/crds/capz.yaml`.
   - Config: Move `mutating-webhook-watchfilter.yaml` to `patches/mutatingwebhooks/capz-mutating-webhook-configuration-object-selector.yaml`.
+  - Config: Move `validating-webhook-watchfilter.yaml` to `patches/validatingwebhooks/capz-validating-webhook-configuration-object-selector.yaml`.
 
 ### Removed
 
