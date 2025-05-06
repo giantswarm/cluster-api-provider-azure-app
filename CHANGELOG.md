@@ -39,6 +39,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Config: Move `crd_cainjection.yaml` to `patches/crds/capz.yaml`.
   - Config: Move `aso_crd_cainjection.yaml` to `patches/crds/azureserviceoperator.yaml`.
   - Config: Move `crd_webhook.yaml` to `patches/crds/capz.yaml`.
+  - Config: Move `crd_clusterctl_labels.yaml` to `patches/crds/capz.yaml`.
 
 ## [1.12.4-gs2] - 2024-07-17
 

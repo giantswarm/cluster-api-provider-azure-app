@@ -36,10 +36,6 @@ transformers:
 - patches/mutatingwebhooks/zzz-prefix.yaml
 
 patches:
-- path: crd_clusterctl_labels.yaml
-  target:
-    kind: CustomResourceDefinition
-    labelSelector: cluster.x-k8s.io/provider=infrastructure-azure
 - target:
     kind: ValidatingWebhookConfiguration
   path: validating-webhook-watchfilter.yaml
