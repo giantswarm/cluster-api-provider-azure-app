@@ -36,7 +36,6 @@ transformers:
 - patches/mutatingwebhooks/zzz-prefix.yaml
 
 patchesStrategicMerge:
-  - delete-nmi.yaml
   - secret-aso-controller-settings.yaml
 
 patches:
@@ -105,6 +104,9 @@ patches:
 # Certificates
 - path: patches/certificates/azureserviceoperator-serving-cert.yaml
 - path: patches/certificates/capz-serving-cert.yaml
+
+# Daemon sets
+- path: patches/daemonsets/capz-nmi.yaml
 
 # Deployments
 - path: patches/deployments/azureserviceoperator-controller-manager.yaml

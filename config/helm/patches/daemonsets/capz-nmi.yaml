@@ -1,6 +1,3 @@
-# We are using our own AAD Pod Identity APP
-# Only delete the NMI daemonset, we need the RBAC
----
 $patch: delete
 apiVersion: apps/v1
 kind: DaemonSet
