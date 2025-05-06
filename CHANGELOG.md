@@ -29,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Config: Split `webhook-certificate-aso.yaml` into `patches/mutatingwebhooks/azureserviceoperator-mutating-webhook-configuration.yaml` & `patches/validatingwebhooks/azureserviceoperator-validating-webhook-configuration.yaml`.
   - Config: Move `service-add-metrics-port.yaml` to `patches/services/capz-webhook-service.yaml`.
   - Config: Move `certificate.yaml` to `patches/certificates/capz-serving-cert.yaml`.
+  - Config: Move `certificate-serviceoperator.yaml` to `patches/certificates/azureserviceoperator-serving-cert.yaml`.
 
 ## [1.12.4-gs2] - 2024-07-17
 

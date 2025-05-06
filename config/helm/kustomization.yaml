@@ -36,7 +36,6 @@ transformers:
 - patches/mutatingwebhooks/zzz-prefix.yaml
 
 patchesStrategicMerge:
-  - certificate-serviceoperator.yaml
   - delete-selfsigned-cert-issuer.yaml
   - delete-ns.yaml
   - delete-nmi.yaml
@@ -100,6 +99,7 @@ patches:
       path: /metadata/creationTimestamp
 
 # Certificates
+- path: patches/certificates/azureserviceoperator-serving-cert.yaml
 - path: patches/certificates/capz-serving-cert.yaml
 
 # Deployments
