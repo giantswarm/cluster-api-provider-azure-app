@@ -35,9 +35,6 @@ transformers:
 # Mutating webhooks
 - patches/mutatingwebhooks/zzz-prefix.yaml
 
-patchesStrategicMerge:
-  - secret-aso-controller-settings.yaml
-
 patches:
 - path: deployment-aso-remove-kube-proxy.yaml
 - path: delete_aadpodidentity_crds.yaml
@@ -104,6 +101,9 @@ patches:
 # Certificates
 - path: patches/certificates/azureserviceoperator-serving-cert.yaml
 - path: patches/certificates/capz-serving-cert.yaml
+
+# Secrets
+- path: patches/secrets/aso-controller-settings.yaml
 
 # Daemon sets
 - path: patches/daemonsets/capz-nmi.yaml

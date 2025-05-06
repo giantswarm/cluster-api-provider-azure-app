@@ -33,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Config: Move `delete-selfsigned-cert-issuer.yaml` to `patches/issuers/capz-selfsigned-issuer.yaml`.
   - Config: Move `delete-ns.yaml` to `patches/namespaces/capz-system.yaml`.
   - Config: Move `delete-nmi.yaml` to `patches/daemonsets/capz-nmi.yaml`.
+  - Config: Move `secret-aso-controller-settings.yaml` to `patches/secrets/aso-controller-settings.yaml`.
 
 ## [1.12.4-gs2] - 2024-07-17
 
