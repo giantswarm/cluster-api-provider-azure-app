@@ -36,7 +36,6 @@ transformers:
 - patches/mutatingwebhooks/zzz-prefix.yaml
 
 patchesStrategicMerge:
-  - webhook-certificate-aso.yaml
   - service-add-metrics-port.yaml
   - certificate.yaml
   - certificate-serviceoperator.yaml
@@ -107,7 +106,9 @@ patches:
 - path: patches/deployments/capz-controller-manager.yaml
 
 # Mutating webhooks
+- path: patches/mutatingwebhooks/azureserviceoperator-mutating-webhook-configuration.yaml
 - path: patches/mutatingwebhooks/capz-mutating-webhook-configuration.yaml
 
 # Validating webhooks
+- path: patches/validatingwebhooks/azureserviceoperator-validating-webhook-configuration.yaml
 - path: patches/validatingwebhooks/capz-validating-webhook-configuration.yaml
