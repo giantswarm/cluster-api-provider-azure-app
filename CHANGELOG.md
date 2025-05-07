@@ -47,6 +47,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Config: Extract inline patch into `patches/services/azureserviceoperator-proxy-service.yaml`.
   - Config: Extract inline patch into `patches/crds/all.yaml`.
   - Hack: Rework `move-generated-crds.sh` into `move-crds.sh`.
+  - Hack: Rename `generate-crd-version-patches.sh` into `generate-crd-patches.sh`.
 
 ### Removed
 

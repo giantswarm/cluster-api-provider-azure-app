@@ -13,6 +13,8 @@ generate:
 	# Move CRDs.
 	hack/move-crds.sh
 
-	./hack/generate-crd-version-patches.sh
+	# Generate CRD patches.
+	hack/generate-crd-patches.sh
+
 	./hack/cleanup-helm-templates.sh
 	./hack/generate-helm-conditions.sh
