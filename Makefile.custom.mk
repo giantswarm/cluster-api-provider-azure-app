@@ -19,4 +19,5 @@ generate:
 	# Wrap templates in conditions.
 	hack/wrap-in-conditions.sh
 
-	./hack/cleanup-helm-templates.sh
+	# Remove quotes.
+	hack/remove-quotes.sh

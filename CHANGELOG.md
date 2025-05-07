@@ -49,6 +49,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Hack: Rework `move-generated-crds.sh` into `move-crds.sh`.
   - Hack: Rename `generate-crd-version-patches.sh` into `generate-crd-patches.sh`.
   - Hack: Rework `generate-helm-conditions.sh` into `wrap-in-conditions.sh`.
+  - Hack: Rework `cleanup-helm-templates.sh` into `remove-quotes.sh`.
 
 ### Removed
 
