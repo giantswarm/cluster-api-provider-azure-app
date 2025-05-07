@@ -16,5 +16,7 @@ generate:
 	# Generate CRD patches.
 	hack/generate-crd-patches.sh
 
+	# Wrap templates in conditions.
+	hack/wrap-in-conditions.sh
+
 	./hack/cleanup-helm-templates.sh
-	./hack/generate-helm-conditions.sh
