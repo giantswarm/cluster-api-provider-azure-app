@@ -49,12 +49,6 @@ app.kubernetes.io/name: "{{ template "name" . }}"
 app.kubernetes.io/instance: "{{ template "name" . }}"
 {{- end -}}
 
-{{/* Create a label which can be used to select any orphaned crd-install hook resources */}}
-{{- define "capz.CRDInstallSelector" -}}
-{{- printf "%s" "crd-install-hook" -}}
-{{- end -}}
-
-
 {{/* CAPI Filtering templates */}}
 {{/*
 Watch filter value:

@@ -18,7 +18,6 @@ metadata:
   labels:
     app.kubernetes.io/component: {{ include "crd-install.name" . | quote }}
     {{- include "capz.selectorLabels" . | nindent 4 }}
-    role: {{ include "capz.CRDInstallSelector" . | quote }}
 data:
   content: |
 {{ tpl ($.Files.Get $path) . | indent 4 }}

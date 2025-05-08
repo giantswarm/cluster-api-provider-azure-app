@@ -10,7 +10,6 @@ metadata:
   labels:
     app.kubernetes.io/component: {{ include "crd-install.name" . | quote }}
     {{- include "capz.selectorLabels" . | nindent 4 }}
-    role: {{ include "capz.CRDInstallSelector" . | quote }}
 spec:
   privileged: false
   runAsUser:
