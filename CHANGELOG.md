@@ -63,6 +63,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Chart: Remove unused CI values.
   - Helpers: Remove `capz.CRDInstallConfigmapNameGenerate`.
   - Helpers: Remove `capz.CRDInstallSelector`.
+  - Helpers: Remove unused `labels.common`, `labels.selector` & `labels.provider`.
 
 ## [1.12.4-gs2] - 2024-07-17
 
