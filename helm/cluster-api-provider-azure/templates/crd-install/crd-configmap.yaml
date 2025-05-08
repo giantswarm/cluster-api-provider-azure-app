@@ -9,7 +9,7 @@ allowed length for a configmap if they are combined.
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ include "crd-install.name" . }}-{{ include "capz.CRDInstallConfigmapNameGenerate" $path }}
+  name: {{ include "crd-install.name" . }}-{{ dir $path | base }}-{{ base $path | trimSuffix ".yaml" }}
   namespace: {{ .Release.Namespace | quote }}
   annotations:
     # create hook dependencies in the right order

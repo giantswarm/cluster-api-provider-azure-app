@@ -44,12 +44,6 @@ helm.sh/hook: pre-install,pre-upgrade
 helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded
 {{- end -}}
 
-{{- define "capz.CRDInstallConfigmapNameGenerate" -}}
-{{- $cmName := printf "%s-%s" (base (dir .)) (trimSuffix ".yaml" (base .) | trunc 63) -}}
-{{- $cmName = $cmName | trimSuffix "." -}}
-{{- $cmName -}}
-{{- end -}}
-
 {{- define "capz.selectorLabels" -}}
 app.kubernetes.io/name: "{{ template "name" . }}"
 app.kubernetes.io/instance: "{{ template "name" . }}"

@@ -60,6 +60,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Config: Remove obsolete `daemonset-nmi-args.yaml`.
 - Chart: Some chores. ([#183](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/183))
   - Chart: Remove unused CI values.
+  - Helpers: Remove `capz.CRDInstallConfigmapNameGenerate`.
 
 ## [1.12.4-gs2] - 2024-07-17
 
