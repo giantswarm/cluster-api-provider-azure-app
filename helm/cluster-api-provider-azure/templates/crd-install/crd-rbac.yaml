@@ -3,13 +3,11 @@ kind: ClusterRole
 metadata:
   name: {{ include "crd-install.name" . }}
   namespace: {{ .Release.Namespace | quote }}
+  labels: {{- include "crd-install.labels" . | nindent 4 }}
   annotations:
     # create hook dependencies in the right order
     "helm.sh/hook-weight": "-3"
     {{- include "crd-install.annotations" . | nindent 4 }}
-  labels:
-    app.kubernetes.io/component: {{ include "crd-install.name" . | quote }}
-    {{- include "capz.selectorLabels" . | nindent 4 }}
 rules:
 - apiGroups:
   - ""
@@ -52,13 +50,11 @@ kind: ClusterRoleBinding
 metadata:
   name: {{ include "crd-install.name" . }}
   namespace: {{ .Release.Namespace | quote }}
+  labels: {{- include "crd-install.labels" . | nindent 4 }}
   annotations:
     # create hook dependencies in the right order
     "helm.sh/hook-weight": "-2"
     {{- include "crd-install.annotations" . | nindent 4 }}
-  labels:
-    app.kubernetes.io/component: {{ include "crd-install.name" . | quote }}
-    {{- include "capz.selectorLabels" . | nindent 4 }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole

@@ -3,13 +3,11 @@ apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
   name: {{ include "crd-install.name" . }}
+  labels: {{- include "crd-install.labels" . | nindent 4 }}
   annotations:
     # create hook dependencies in the right order
     "helm.sh/hook-weight": "-6"
     {{- include "crd-install.annotations" . | nindent 4 }}
-  labels:
-    app.kubernetes.io/component: {{ include "crd-install.name" . | quote }}
-    {{- include "capz.selectorLabels" . | nindent 4 }}
 spec:
   privileged: false
   runAsUser:

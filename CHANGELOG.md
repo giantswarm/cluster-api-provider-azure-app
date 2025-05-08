@@ -53,6 +53,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Chart: Some chores. ([#183](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/183))
   - Helpers: Rename `capz.crdInstall` into `crd-install.name`.
   - Helpers: Rename `capz.CRDInstallAnnotations` into `crd-install.annotations`.
+  - Helpers: Rework `capz.selectorLabels` into `crd-install.labels`.
 
 ### Removed
 

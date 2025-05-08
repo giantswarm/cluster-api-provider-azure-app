@@ -39,14 +39,15 @@ cluster.x-k8s.io/provider: infrastructure-azure
 {{- printf "%s-%s" (include "name" .) "crd-install" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
+{{- define "crd-install.labels" -}}
+app.kubernetes.io/name: {{ include "name" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/component: crd-install
+{{- end -}}
+
 {{- define "crd-install.annotations" -}}
 helm.sh/hook: pre-install,pre-upgrade
 helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded
-{{- end -}}
-
-{{- define "capz.selectorLabels" -}}
-app.kubernetes.io/name: "{{ template "name" . }}"
-app.kubernetes.io/instance: "{{ template "name" . }}"
 {{- end -}}
 
 {{/* CAPI Filtering templates */}}

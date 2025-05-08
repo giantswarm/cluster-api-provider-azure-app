@@ -11,13 +11,11 @@ kind: ConfigMap
 metadata:
   name: {{ include "crd-install.name" . }}-{{ dir $path | base }}-{{ base $path | trimSuffix ".yaml" }}
   namespace: {{ .Release.Namespace | quote }}
+  labels: {{- include "crd-install.labels" . | nindent 4 }}
   annotations:
     # create hook dependencies in the right order
     "helm.sh/hook-weight": "-5"
     {{- include "crd-install.annotations" . | nindent 4 }}
-  labels:
-    app.kubernetes.io/component: {{ include "crd-install.name" . | quote }}
-    {{- include "capz.selectorLabels" . | nindent 4 }}
 data:
   content: |
 {{ tpl ($.Files.Get $path) . | indent 4 }}
