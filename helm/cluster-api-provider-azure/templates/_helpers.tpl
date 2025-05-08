@@ -1,6 +1,3 @@
-{{/*
-Create chart name and version as used by the chart label.
-*/}}
 {{- define "chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
@@ -38,8 +35,8 @@ Provider labels
 cluster.x-k8s.io/provider: infrastructure-azure
 {{- end -}}
 
-{{- define "capz.crdInstall" -}}
-{{- printf "%s-%s" ( include "name" . ) "crd-install" | replace "+" "_" | trimSuffix "-" -}}
+{{- define "crd-install.name" -}}
+{{- printf "%s-%s" (include "name" .) "crd-install" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 {{- define "capz.CRDInstallAnnotations" -}}
