@@ -39,9 +39,9 @@ cluster.x-k8s.io/provider: infrastructure-azure
 {{- printf "%s-%s" (include "name" .) "crd-install" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
-{{- define "capz.CRDInstallAnnotations" -}}
-"helm.sh/hook": "pre-install,pre-upgrade"
-"helm.sh/hook-delete-policy": "before-hook-creation,hook-succeeded"
+{{- define "crd-install.annotations" -}}
+helm.sh/hook: pre-install,pre-upgrade
+helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded
 {{- end -}}
 
 {{- define "capz.CRDInstallConfigmapNameGenerate" -}}

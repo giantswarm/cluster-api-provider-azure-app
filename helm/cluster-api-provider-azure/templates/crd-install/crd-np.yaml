@@ -6,7 +6,7 @@ metadata:
   annotations:
     # create hook dependencies in the right order
     "helm.sh/hook-weight": "-7"
-    {{- include "capz.CRDInstallAnnotations" . | nindent 4 }}
+    {{- include "crd-install.annotations" . | nindent 4 }}
   labels:
     app.kubernetes.io/component: {{ include "crd-install.name" . | quote }}
     {{- include "capz.selectorLabels" . | nindent 4 }}
