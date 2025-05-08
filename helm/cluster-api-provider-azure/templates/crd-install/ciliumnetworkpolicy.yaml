@@ -3,16 +3,15 @@ apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
   name: {{ include "crd-install.name" . }}
-  namespace: {{ .Release.Namespace | quote }}
+  namespace: {{ .Release.Namespace }}
   labels: {{- include "crd-install.labels" . | nindent 4 }}
   annotations:
-    # create hook dependencies in the right order
-    "helm.sh/hook-weight": "-2"
     {{- include "crd-install.annotations" . | nindent 4 }}
+    helm.sh/hook-weight: "-2"
 spec:
   endpointSelector:
     matchLabels: {{- include "crd-install.labels" . | nindent 6 }}
   egress:
-    - toEntities:
-        - kube-apiserver
+  - toEntities:
+    - kube-apiserver
 {{- end }}
