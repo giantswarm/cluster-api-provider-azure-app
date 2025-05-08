@@ -55,6 +55,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Helpers: Rename `capz.CRDInstallAnnotations` into `crd-install.annotations`.
   - Helpers: Rework `capz.selectorLabels` into `crd-install.labels`.
   - CRD Install: Rework `crd-ciliumnetworkpolicy.yaml` into `ciliumnetworkpolicy.yaml`.
+  - CRD Install: Rework `crd-configmap.yaml` into `configmap.yaml`.
 
 ### Removed
 
