@@ -1,8 +1,0 @@
-apiVersion: builtin
-kind: PrefixSuffixTransformer
-metadata:
-  name: webhook-prefix
-prefix: "zzz-"
-fieldSpecs:
-  - kind: MutatingWebhookConfiguration
-    path: metadata/name

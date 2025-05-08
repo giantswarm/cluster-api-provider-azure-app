@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: capz-controller-manager
+  namespace: capz-system
+spec:
+  template:
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: manager
+        securityContext:
+          allowPrivilegeEscalation: false
+          seccompProfile:
+            type: RuntimeDefault
+          capabilities:
+            drop:
+            - ALL
+        args:
+        - --leader-elect={{- if eq .Values.provider.flavor "capi" }}true{{ else }}false{{- end }}
+        - --metrics-bind-addr=0.0.0.0:8080
+        - --feature-gates=MachinePool=true
+        - --watch-filter={{- include "deployment.args.watchfiltervalue" . }}
+        - --v={{ .Values.controller.verbosity }}
+        env:
+        - name: AZURE_SUBSCRIPTION_ID
+          valueFrom:
+            secretKeyRef:
+              name: credential-default
+              key: azure.azureoperator.subscriptionid
+        - name: AZURE_TENANT_ID
+          valueFrom:
+            secretKeyRef:
+              name: credential-default
+              key: azure.azureoperator.tenantid
+        - name: AZURE_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: credential-default
+              key: azure.azureoperator.clientid
+        - name: AZURE_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: credential-default
+              key: azure.azureoperator.clientsecret
+        ports:
+        - name: metrics
+          protocol: TCP
+          containerPort: 8080
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - preference:
+              matchExpressions:
+              - key: node-role.kubernetes.io/control-plane
+                operator: Exists
+            weight: 10
+      tolerations:
+      - key: node-role.kubernetes.io/control-plane
+        effect: NoSchedule
+      - key: node.cluster.x-k8s.io/uninitialized
+        effect: NoSchedule
+        operator: Exists

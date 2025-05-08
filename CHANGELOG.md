@@ -7,6 +7,55 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Repository: Rework sync. ([#182](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/182))
+  - Hack: Extract `fetch-manifest.sh`.
+  - Hack: Rework `generate-kustomize-patches.sh` into `generate-webhook-patches.sh`.
+  - Config: Move `ssh-sso-public-key-secret.yaml` to `bases/secrets/cluster-api-provider-azure-ssh-sso-pub-key.yaml`.
+  - Config: Move `secret-bootstrap-credentials.yaml` to `bases/secrets/credential-default.yaml`.
+  - Config: Transform `common-labels.yaml` into `labels`.
+  - Config: Move `webhook-prefix.yaml` to `patches/mutatingwebhooks/zzz-prefix.yaml`.
+  - Config: Rework `images`.
+  - Config: Move `deployment-capz-args.yaml` to `patches/deployments/capz-controller-manager.yaml`.
+  - Config: Move `deployment-affinity.yaml` to `patches/deployments/capz-controller-manager.yaml`.
+  - Config: Move `deployment-environment.yaml` to `patches/deployments/capz-controller-manager.yaml`.
+  - Config: Move `deployment-metrics-port.yaml` to `patches/deployments/capz-controller-manager.yaml`.
+  - Config: Move `deployment-securitycontext.yaml` to `patches/deployments/capz-controller-manager.yaml`.
+  - Config: Move `deployment-toleration.yaml` to `patches/deployments/capz-controller-manager.yaml`.
+  - Config: Move `deployment-aso-securitycontext.yaml` to `patches/deployments/azureserviceoperator-controller-manager.yaml`.
+  - Config: Move `deployment-aso-volume.yaml` to `patches/deployments/azureserviceoperator-controller-manager.yaml`.
+  - Config: Split `webhook-certificate.yaml` into `patches/mutatingwebhooks/capz-mutating-webhook-configuration.yaml` & `patches/validatingwebhooks/capz-validating-webhook-configuration.yaml`.
+  - Config: Split `webhook-certificate-aso.yaml` into `patches/mutatingwebhooks/azureserviceoperator-mutating-webhook-configuration.yaml` & `patches/validatingwebhooks/azureserviceoperator-validating-webhook-configuration.yaml`.
+  - Config: Move `service-add-metrics-port.yaml` to `patches/services/capz-webhook-service.yaml`.
+  - Config: Move `certificate.yaml` to `patches/certificates/capz-serving-cert.yaml`.
+  - Config: Move `certificate-serviceoperator.yaml` to `patches/certificates/azureserviceoperator-serving-cert.yaml`.
+  - Config: Move `delete-selfsigned-cert-issuer.yaml` to `patches/issuers/capz-selfsigned-issuer.yaml`.
+  - Config: Move `delete-ns.yaml` to `patches/namespaces/capz-system.yaml`.
+  - Config: Move `delete-nmi.yaml` to `patches/daemonsets/capz-nmi.yaml`.
+  - Config: Move `secret-aso-controller-settings.yaml` to `patches/secrets/aso-controller-settings.yaml`.
+  - Config: Move `deployment-aso-remove-kube-proxy.yaml` to `patches/deployments/azureserviceoperator-controller-manager.yaml`.
+  - Config: Move `delete_aadpodidentity_crds.yaml` to `patches/crds/unapproved.yaml`.
+  - Config: Move `crd_cainjection.yaml` to `patches/crds/capz.yaml`.
+  - Config: Move `aso_crd_cainjection.yaml` to `patches/crds/azureserviceoperator.yaml`.
+  - Config: Move `crd_webhook.yaml` to `patches/crds/capz.yaml`.
+  - Config: Move `crd_clusterctl_labels.yaml` to `patches/crds/capz.yaml`.
+  - Config: Move `mutating-webhook-watchfilter.yaml` to `patches/mutatingwebhooks/capz-mutating-webhook-configuration-object-selector.yaml`.
+  - Config: Move `validating-webhook-watchfilter.yaml` to `patches/validatingwebhooks/capz-validating-webhook-configuration-object-selector.yaml`.
+  - Config: Move `config/helm/copy` to `helm/cluster-api-provider-azure/templates/static`.
+  - Config: Extract inline patch into `patches/services/azureserviceoperator.yaml`.
+  - Config: Extract inline patch into `patches/services/azureserviceoperator-proxy-service.yaml`.
+  - Config: Extract inline patch into `patches/crds/all.yaml`.
+  - Hack: Rework `move-generated-crds.sh` into `move-crds.sh`.
+  - Hack: Rename `generate-crd-version-patches.sh` into `generate-crd-patches.sh`.
+  - Hack: Rework `generate-helm-conditions.sh` into `wrap-in-conditions.sh`.
+  - Hack: Rework `cleanup-helm-templates.sh` into `remove-quotes.sh`.
+
+### Removed
+
+- Repository: Rework sync. ([#182](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/182))
+  - Config: Remove obsolete `daemonset-nmi-args.yaml`.
+
 ## [1.12.4-gs2] - 2024-07-17
 
 ### Changed

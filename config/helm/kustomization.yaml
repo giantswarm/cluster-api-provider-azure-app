@@ -1,100 +1,111 @@
-namespace: '{{ .Release.Namespace }}'
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
 
 resources:
-  - input/infrastructure-components.yaml
-  - ssh-sso-public-key-secret.yaml
-  - secret-bootstrap-credentials.yaml
+# Cluster API Provider Azure components
+- bases/infrastructure-components.yaml
+# Secrets
+- bases/secrets/cluster-api-provider-azure-ssh-sso-pub-key.yaml
+- bases/secrets/credential-default.yaml
 
-transformers:
-  - common-labels.yaml
-  - webhook-prefix.yaml
+namespace: "{{ .Release.Namespace }}"
+
+labels:
+# Common labels
+- pairs:
+    helm.sh/chart: cluster-api-provider-azure
+    app.kubernetes.io/name: cluster-api-provider-azure
+    app.kubernetes.io/instance: "{{ .Release.Name }}"
+    app.kubernetes.io/version: "{{ .Chart.AppVersion }}"
+    app.kubernetes.io/managed-by: "{{ .Release.Service }}"
+    application.giantswarm.io/branch: "{{ .Values.project.branch }}"
+    application.giantswarm.io/commit: "{{ .Values.project.commit }}"
+    application.giantswarm.io/team: "{{ index .Chart.Annotations \"application.giantswarm.io/team\" }}"
 
 images:
-  - name: registry.k8s.io/cluster-api-azure/cluster-api-azure-controller
-    newName: "{{.Values.image.registry}}/{{.Values.image.name}}"
-    newTag: "{{.Values.image.tag}}"
-  - name: mcr.microsoft.com/k8s/azureserviceoperator:v2.4.0
-    newName: "{{.Values.aso.image.registry}}/{{.Values.aso.image.name}}"
+# Cluster API Provider Azure
+- name: registry.k8s.io/cluster-api-azure/cluster-api-azure-controller
+  newName: "{{ .Values.image.registry }}/{{ .Values.image.name }}"
+  newTag: "{{ .Values.image.tag }}"
+# Azure Service Operator
+- name: mcr.microsoft.com/k8s/azureserviceoperator
+  newName: "{{ .Values.aso.image.registry }}/{{ .Values.aso.image.name }}"
 
-patchesStrategicMerge:
-  - deployment-capz-args.yaml
-  - deployment-affinity.yaml
-  - deployment-environment.yaml
-  - deployment-metrics-port.yaml
-  - deployment-securitycontext.yaml
-  - deployment-toleration.yaml
-  - deployment-aso-securitycontext.yaml
-  - deployment-aso-volume.yaml
-  - webhook-certificate.yaml
-  - webhook-certificate-aso.yaml
-  - service-add-metrics-port.yaml
-  - certificate.yaml
-  - certificate-serviceoperator.yaml
-  - delete-selfsigned-cert-issuer.yaml
-  - delete-ns.yaml
-  - delete-nmi.yaml
-  - secret-aso-controller-settings.yaml
+transformers:
+# Mutating webhooks
+- patches/mutatingwebhooks/zzz-prefix.yaml
 
 patches:
-- path: deployment-aso-remove-kube-proxy.yaml
-- path: delete_aadpodidentity_crds.yaml
+# CRDs
+- path: patches/crds/all.yaml
   target:
+    group: apiextensions.k8s.io
+    version: v1
+    kind: CustomResourceDefinition
+- path: patches/crds/azureserviceoperator.yaml
+  target:
+    group: apiextensions.k8s.io
+    version: v1
+    kind: CustomResourceDefinition
+    labelSelector: app.kubernetes.io/name=azure-service-operator
+- path: patches/crds/capz.yaml
+  target:
+    group: apiextensions.k8s.io
+    version: v1
+    kind: CustomResourceDefinition
+    labelSelector: cluster.x-k8s.io/provider=infrastructure-azure
+- path: patches/crds/unapproved.yaml
+  target:
+    group: apiextensions.k8s.io
+    version: v1
     kind: CustomResourceDefinition
     annotationSelector: api-approved.kubernetes.io=unapproved
-- path: crd_cainjection.yaml
+
+# Namespaces
+- path: patches/namespaces/capz-system.yaml
+
+# Issuers
+- path: patches/issuers/capz-selfsigned-issuer.yaml
+
+# Certificates
+- path: patches/certificates/azureserviceoperator-serving-cert.yaml
+- path: patches/certificates/capz-serving-cert.yaml
+
+# Secrets
+- path: patches/secrets/aso-controller-settings.yaml
+
+# Daemon sets
+- path: patches/daemonsets/capz-nmi.yaml
+
+# Deployments
+- path: patches/deployments/azureserviceoperator-controller-manager.yaml
+- path: patches/deployments/capz-controller-manager.yaml
+
+# Services
+- path: patches/services/azureserviceoperator-proxy-service.yaml
+- path: patches/services/azureserviceoperator.yaml
   target:
-    kind: CustomResourceDefinition
-    labelSelector: cluster.x-k8s.io/provider=infrastructure-azure
-- path: aso_crd_cainjection.yaml
-  target:
-    kind: CustomResourceDefinition
+    version: v1
+    kind: Service
     labelSelector: app.kubernetes.io/name=azure-service-operator
-- path: crd_webhook.yaml
+- path: patches/services/capz-webhook-service.yaml
+
+# Mutating webhooks
+- path: patches/mutatingwebhooks/azureserviceoperator-mutating-webhook-configuration.yaml
+- path: patches/mutatingwebhooks/capz-mutating-webhook-configuration-object-selector.yaml
   target:
-    kind: CustomResourceDefinition
-    labelSelector: cluster.x-k8s.io/provider=infrastructure-azure
-- path: crd_clusterctl_labels.yaml
-  target:
-    kind: CustomResourceDefinition
-    labelSelector: cluster.x-k8s.io/provider=infrastructure-azure
-- target:
-    kind: ValidatingWebhookConfiguration
-  path: validating-webhook-watchfilter.yaml
-- target:
+    group: admissionregistration.k8s.io
+    version: v1
     kind: MutatingWebhookConfiguration
-  path: mutating-webhook-watchfilter.yaml
-- target:
-    kind: Secret
-    name: capz-manager-bootstrap-credentials
-  patch: |-
-    - op: replace
-      path: /metadata/name
-      value: credential-default
-- target:
-    kind: DaemonSet
-    name: capz-nmi
-  path: daemonset-nmi-args.yaml
-- target:
-    kind: Service
-    labelSelector: app.kubernetes.io/name=azure-service-operator
-  patch: |-
-    - op: replace
-      path: /spec/selector
-      value:
-        app.kubernetes.io/name: azure-service-operator
-- target:
-    kind: Service
-    name: azureserviceoperator-proxy-service
-  patch: |-
-    - op: replace
-      path: /spec/selector
-      value:
-        app.kubernetes.io/name: azure-service-operator
-- target:
-    kind: CustomResourceDefinition
-  patch: |-
-    - op: add
-      path: /metadata/creationTimestamp
-      value: null
-    - op: remove
-      path: /metadata/creationTimestamp
+    name: capz-mutating-webhook-configuration
+- path: patches/mutatingwebhooks/capz-mutating-webhook-configuration.yaml
+
+# Validating webhooks
+- path: patches/validatingwebhooks/azureserviceoperator-validating-webhook-configuration.yaml
+- path: patches/validatingwebhooks/capz-validating-webhook-configuration-object-selector.yaml
+  target:
+    group: admissionregistration.k8s.io
+    version: v1
+    kind: ValidatingWebhookConfiguration
+    name: capz-validating-webhook-configuration
+- path: patches/validatingwebhooks/capz-validating-webhook-configuration.yaml

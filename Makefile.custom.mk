@@ -1,10 +1,23 @@
 .PHONY: generate
 generate:
-	./hack/generate-kustomize-patches.sh
-	@rm -rf helm/cluster-api-provider-azure/templates/*.yaml
-	@cp config/helm/copy/* helm/cluster-api-provider-azure/templates/
-	@kubectl kustomize config/helm --output helm/cluster-api-provider-azure/templates
-	./hack/move-generated-crds.sh
-	./hack/generate-crd-version-patches.sh
-	./hack/cleanup-helm-templates.sh
-	./hack/generate-helm-conditions.sh
+	# Fetch Cluster API Provider Azure components.
+	hack/fetch-manifest.sh
+
+	# Generate webhook patches.
+	hack/generate-webhook-patches.sh
+
+	# Kustomize templates.
+	rm -f helm/cluster-api-provider-azure/templates/*.yaml
+	kubectl kustomize config/helm --output helm/cluster-api-provider-azure/templates
+
+	# Move CRDs.
+	hack/move-crds.sh
+
+	# Generate CRD patches.
+	hack/generate-crd-patches.sh
+
+	# Wrap templates in conditions.
+	hack/wrap-in-conditions.sh
+
+	# Remove quotes.
+	hack/remove-quotes.sh
