@@ -45,3 +45,6 @@ verticalPodAutoscaler:
 global:
   podSecurityStandards:
     enforced: false
+
+azureWorkloadIdentity:
+  clientId: ""
