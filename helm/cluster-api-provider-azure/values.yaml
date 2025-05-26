@@ -43,6 +43,11 @@ workloadCluster:
     # -- SSO public key.
     ssoPublicKey: ""
 
+# -- Controller settings.
+controller:
+  # -- Log verbosity.
+  verbosity: 0
+
 # -- Cilium Network Policy settings.
 ciliumNetworkPolicy:
   # -- Whether to enable Cilium Network Policy or not.
@@ -52,9 +57,6 @@ ciliumNetworkPolicy:
 crds:
   # -- Whether to install CRDs or not.
   install: true
-
-controller:
-  verbosity: 0
 
 serviceMonitor:
   enabled: true
