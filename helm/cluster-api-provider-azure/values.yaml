@@ -1,3 +1,10 @@
+# -- Project information.
+project:
+  # -- Branch this chart has been built from.
+  branch: "[[ .Branch ]]"
+  # -- Commit this chart has been built from.
+  commit: "[[ .SHA ]]"
+
 # -- Image settings.
 image:
   # -- Image registry.
@@ -15,10 +22,6 @@ aso:
     registry: gsoci.azurecr.io
     # -- Image repository.
     name: giantswarm/azureserviceoperator
-
-project:
-  branch: "[[ .Branch ]]"
-  commit: "[[ .SHA ]]"
 
 provider:
   flavor: vintage
