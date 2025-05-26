@@ -68,6 +68,9 @@ crds:
   # -- Whether to install CRDs or not.
   install: true
 
+# -- Global settings.
 global:
+  # -- Pod Security Standards settings.
   podSecurityStandards:
+    # -- Whether to enforce Pod Security Standards or not.
     enforced: false
