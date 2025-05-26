@@ -7,9 +7,13 @@ image:
   # -- Image tag.
   tag: v1.12.4-gs.alpha.2
 
+# -- Azure Service Operator settings.
 aso:
+  # -- Image settings.
   image:
+    # -- Image registry.
     registry: gsoci.azurecr.io
+    # -- Image repository.
     name: giantswarm/azureserviceoperator
 
 project:
