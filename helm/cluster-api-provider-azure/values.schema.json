@@ -18,6 +18,14 @@
                 }
             }
         },
+        "ciliumNetworkPolicy": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            }
+        },
         "controller": {
             "type": "object",
             "properties": {
@@ -25,15 +33,6 @@
                     "type": "integer"
                 }
             }
-        },
-        "ciliumNetworkPolicy": {
-            "type": "object",
-            "properties": {
-                "enabled": {
-                    "type": "boolean"
-                }
-            },
-            "default": false
         },
         "crdInstall": {
             "type": "object",
@@ -49,6 +48,19 @@
                         },
                         "tag": {
                             "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "global": {
+            "type": "object",
+            "properties": {
+                "podSecurityStandards": {
+                    "type": "object",
+                    "properties": {
+                        "enforced": {
+                            "type": "boolean"
                         }
                     }
                 }
@@ -108,8 +120,7 @@
                 "enabled": {
                     "type": "boolean"
                 }
-            },
-            "default": true
+            }
         },
         "verticalPodAutoscaler": {
             "type": "object",
@@ -127,19 +138,6 @@
                     "properties": {
                         "ssoPublicKey": {
                             "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "global": {
-            "type": "object",
-            "properties": {
-                "podSecurityStandards": {
-                    "type": "object",
-                    "properties": {
-                        "enforced": {
-                            "type": "boolean"
                         }
                     }
                 }

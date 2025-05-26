@@ -52,6 +52,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Hack: Rework `cleanup-helm-templates.sh` into `remove-quotes.sh`.
 - Chart: Some chores. ([#186](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/186))
   - Chart: Rework `Chart.yaml`.
+  - Values: Update `values.schema.json`.
 
 ### Removed
 
