@@ -72,6 +72,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Chart: Some chores. ([#186](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/186))
   - CI: Remove values.
   - Values: Remove `name`.
+  - Helpers: Remove `_resource.tpl`.
 
 ## [1.12.4-gs2] - 2024-07-17
 
