@@ -36,7 +36,9 @@ provider:
   # -- Provider client secret.
   clientSecret: ""
 
+# -- Cilium Network Policy settings.
 ciliumNetworkPolicy:
+  # -- Whether to enable Cilium Network Policy or not.
   enabled: false
 
 crdInstall:
