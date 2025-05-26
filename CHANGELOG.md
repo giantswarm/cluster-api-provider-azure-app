@@ -53,6 +53,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Chart: Some chores. ([#186](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/186))
   - Chart: Rework `Chart.yaml`.
   - Values: Update `values.schema.json`.
+  - Values: Rework `image`.
 
 ### Removed
 
