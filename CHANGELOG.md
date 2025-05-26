@@ -56,6 +56,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Values: Rework `image`.
   - Values: Rework `aso`.
   - Values: Rework `project`.
+  - Values: Rework `provider`.
 
 ### Removed
 

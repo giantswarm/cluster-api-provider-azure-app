@@ -23,11 +23,17 @@ aso:
     # -- Image repository.
     name: giantswarm/azureserviceoperator
 
+# -- Provider settings.
 provider:
+  # -- Provider flavor.
   flavor: vintage
+  # -- Provider subscription ID.
   subscriptionId: ""
+  # -- Provider tenant ID.
   tenantId: ""
+  # -- Provider client ID.
   clientId: ""
+  # -- Provider client secret.
   clientSecret: ""
 
 ciliumNetworkPolicy:
