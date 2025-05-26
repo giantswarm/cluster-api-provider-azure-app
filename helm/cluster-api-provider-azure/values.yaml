@@ -1,4 +1,3 @@
-name: cluster-api-azure-controller
 image:
   registry: gsoci.azurecr.io
   name: giantswarm/cluster-api-azure-controller
