@@ -48,6 +48,11 @@ controller:
   # -- Log verbosity.
   verbosity: 0
 
+# -- Vertical Pod Autoscaler settings.
+verticalPodAutoscaler:
+  # -- Whether to enable Vertical Pod Autoscaler or not.
+  enabled: true
+
 # -- Cilium Network Policy settings.
 ciliumNetworkPolicy:
   # -- Whether to enable Cilium Network Policy or not.
@@ -59,9 +64,6 @@ crds:
   install: true
 
 serviceMonitor:
-  enabled: true
-
-verticalPodAutoscaler:
   enabled: true
 
 global:
