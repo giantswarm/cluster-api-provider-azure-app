@@ -5,9 +5,12 @@ Create chart name and version as used by the chart label.
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
-{{- define "name" -}}
-{{- .Chart.Name | trunc 63 | trimSuffix "-" -}}
-{{- end -}}
+{{/*
+Expand the name of the chart.
+*/}}
+{{- define "cluster-api-provider-azure.name" -}}
+{{- .Chart.Name | trunc 63 | trimSuffix "-" }}
+{{- end }}
 
 {{/*
 Common labels
@@ -27,7 +30,7 @@ Selector labels
 */}}
 {{- define "labels.selector" -}}
 {{ include "labels.provider" . }}
-app.kubernetes.io/name: {{ include "name" . | quote }}
+app.kubernetes.io/name: {{ include "cluster-api-provider-azure.name" . | quote }}
 app.kubernetes.io/instance: {{ .Release.Name | quote }}
 {{- end -}}
 
@@ -39,7 +42,7 @@ cluster.x-k8s.io/provider: infrastructure-azure
 {{- end -}}
 
 {{- define "capz.crdInstall" -}}
-{{- printf "%s-%s" ( include "name" . ) "crd-install" | replace "+" "_" | trimSuffix "-" -}}
+{{- printf "%s-%s" ( include "cluster-api-provider-azure.name" . ) "crd-install" | replace "+" "_" | trimSuffix "-" -}}
 {{- end -}}
 
 {{- define "capz.CRDInstallAnnotations" -}}
@@ -54,8 +57,8 @@ cluster.x-k8s.io/provider: infrastructure-azure
 {{- end -}}
 
 {{- define "capz.selectorLabels" -}}
-app.kubernetes.io/name: "{{ template "name" . }}"
-app.kubernetes.io/instance: "{{ template "name" . }}"
+app.kubernetes.io/name: "{{ template "cluster-api-provider-azure.name" . }}"
+app.kubernetes.io/instance: "{{ template "cluster-api-provider-azure.name" . }}"
 {{- end -}}
 
 {{/* Create a label which can be used to select any orphaned crd-install hook resources */}}

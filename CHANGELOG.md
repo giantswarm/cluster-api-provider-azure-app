@@ -64,6 +64,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Values: Rework `verticalPodAutoscaler`.
   - Values: Rework `serviceMonitor`.
   - Values: Rework `global.podSecurityStandards`.
+  - Helpers: Rework `name` into `cluster-api-provider-azure.name`.
 
 ### Removed
 
