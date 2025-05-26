@@ -36,6 +36,13 @@ provider:
   # -- Provider client secret.
   clientSecret: ""
 
+# -- Workload cluster settings.
+workloadCluster:
+  # -- SSH settings.
+  ssh:
+    # -- SSO public key.
+    ssoPublicKey: ""
+
 # -- Cilium Network Policy settings.
 ciliumNetworkPolicy:
   # -- Whether to enable Cilium Network Policy or not.
@@ -45,10 +52,6 @@ ciliumNetworkPolicy:
 crds:
   # -- Whether to install CRDs or not.
   install: true
-
-workloadCluster:
-  ssh:
-    ssoPublicKey: ""
 
 controller:
   verbosity: 0
