@@ -34,22 +34,11 @@
                 }
             }
         },
-        "crdInstall": {
+        "crds": {
             "type": "object",
             "properties": {
-                "enable": {
+                "install": {
                     "type": "boolean"
-                },
-                "kubectl": {
-                    "type": "object",
-                    "properties": {
-                        "image": {
-                            "type": "string"
-                        },
-                        "tag": {
-                            "type": "string"
-                        }
-                    }
                 }
             }
         },

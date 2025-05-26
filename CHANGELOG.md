@@ -58,6 +58,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Values: Rework `project`.
   - Values: Rework `provider`.
   - Values: Rework `ciliumNetworkPolicy`.
+  - Values: Rework `crdInstall`.
 
 ### Removed
 

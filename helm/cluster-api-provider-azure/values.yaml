@@ -41,11 +41,10 @@ ciliumNetworkPolicy:
   # -- Whether to enable Cilium Network Policy or not.
   enabled: false
 
-crdInstall:
-  enable: true
-  kubectl:
-    image: "giantswarm/docker-kubectl"
-    tag: "1.25.4"
+# -- CRD install job settings.
+crds:
+  # -- Whether to install CRDs or not.
+  install: true
 
 workloadCluster:
   ssh:
