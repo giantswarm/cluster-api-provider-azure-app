@@ -62,6 +62,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Values: Rework `workloadCluster`.
   - Values: Rework `controller`.
   - Values: Rework `verticalPodAutoscaler`.
+  - Values: Rework `serviceMonitor`.
 
 ### Removed
 

@@ -58,13 +58,15 @@ ciliumNetworkPolicy:
   # -- Whether to enable Cilium Network Policy or not.
   enabled: false
 
+# -- Service Monitor settings.
+serviceMonitor:
+  # -- Whether to enable Service Monitor or not.
+  enabled: true
+
 # -- CRD install job settings.
 crds:
   # -- Whether to install CRDs or not.
   install: true
-
-serviceMonitor:
-  enabled: true
 
 global:
   podSecurityStandards:
