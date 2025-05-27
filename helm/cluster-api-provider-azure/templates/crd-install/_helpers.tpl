@@ -6,6 +6,14 @@ Create a default fully qualified app name.
 {{- end }}
 
 {{/*
+Common labels
+*/}}
+{{- define "cluster-api-provider-azure.crd-install.labels" -}}
+{{- include "cluster-api-provider-azure.labels" . }}
+app.kubernetes.io/component: crd-install
+{{- end }}
+
+{{/*
 Selector labels
 */}}
 {{- define "cluster-api-provider-azure.crd-install.selectorLabels" -}}

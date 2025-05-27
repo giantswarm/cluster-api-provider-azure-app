@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Chart: Some chores. ([#186](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/186))
   - Helpers: Add `cluster-api-provider-azure.fullname`.
+  - Helpers: Add `cluster-api-provider-azure.crd-install.labels`.
 
 ### Changed
 
