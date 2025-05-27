@@ -57,9 +57,12 @@ Webhook object selector
 {{- end }}
 {{- end }}
 
-{{- define "deployment.args.watchfiltervalue" -}}
-{{- if eq .Values.provider.flavor "capi" -}}
+{{/*
+Controller watch filter
+*/}}
+{{- define "cluster-api-provider-azure.watchFilter" -}}
+{{- if eq .Values.provider.flavor "capi" }}
 {{- else -}}
 capi
-{{- end -}}
-{{- end -}}
+{{- end }}
+{{- end }}
