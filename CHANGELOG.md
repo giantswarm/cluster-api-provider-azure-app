@@ -84,6 +84,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - CRD Install: Rework `crd-serviceaccount.yaml` into `serviceaccount.yaml`.
   - CRD Install: Extract ClusterRole into `clusterrole.yaml`.
   - CRD Install: Extract ClusterRoleBinding into `clusterrolebinding.yaml`.
+  - CRD Install: Rework `crd-job.yaml` into `job.yaml`.
 
 ### Removed
 
