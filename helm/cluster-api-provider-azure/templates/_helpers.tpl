@@ -24,7 +24,7 @@ Common labels
 */}}
 {{- define "cluster-api-provider-azure.labels" -}}
 helm.sh/chart: {{ include "cluster-api-provider-azure.chart" . }}
-{{ include "labels.selector" . }}
+{{ include "cluster-api-provider-azure.selectorLabels" . }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 application.giantswarm.io/team: {{ index .Chart.Annotations "application.giantswarm.io/team" | quote }}
@@ -33,11 +33,10 @@ application.giantswarm.io/team: {{ index .Chart.Annotations "application.giantsw
 {{/*
 Selector labels
 */}}
-{{- define "labels.selector" -}}
-{{ include "labels.provider" . }}
-app.kubernetes.io/name: {{ include "cluster-api-provider-azure.name" . | quote }}
-app.kubernetes.io/instance: {{ .Release.Name | quote }}
-{{- end -}}
+{{- define "cluster-api-provider-azure.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "cluster-api-provider-azure.name" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
 
 {{/*
 Provider labels
