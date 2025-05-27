@@ -75,7 +75,7 @@ spec:
     {{- with $currentScope }}
       - name: {{ printf "%s-%s" (base (dir $path)) (trimSuffix "-yaml" (base $path | replace "." "-")) | trunc 63 | trimSuffix "-" }}
         configMap:
-          name: {{ include "cluster-api-provider-azure.crd-install.fullname" . }}-{{- include "capz.CRDInstallConfigmapNameGenerate" $path }}
+          name: {{ include "cluster-api-provider-azure.crd-install.fullname" . }}-{{ dir $path | base }}-{{ base $path | trimSuffix ".yaml" }}
           items:
           - key: content
             path: {{ $path | base }}

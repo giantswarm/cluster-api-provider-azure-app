@@ -38,12 +38,6 @@ app.kubernetes.io/name: {{ include "cluster-api-provider-azure.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
-{{- define "capz.CRDInstallConfigmapNameGenerate" -}}
-{{- $cmName := printf "%s-%s" (base (dir .)) (trimSuffix ".yaml" (base .) | trunc 63) -}}
-{{- $cmName = $cmName | trimSuffix "." -}}
-{{- $cmName -}}
-{{- end -}}
-
 {{- define "capz.selectorLabels" -}}
 app.kubernetes.io/name: "{{ template "cluster-api-provider-azure.name" . }}"
 app.kubernetes.io/instance: "{{ template "cluster-api-provider-azure.name" . }}"
