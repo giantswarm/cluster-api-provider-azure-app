@@ -10,13 +10,13 @@ metadata:
     {{- include "cluster-api-provider-azure.crd-install.annotations" . | nindent 4 }}
   labels:
     app.kubernetes.io/component: {{ include "cluster-api-provider-azure.crd-install.fullname" . | quote }}
-    {{- include "capz.selectorLabels" . | nindent 4 }}
+    {{- include "cluster-api-provider-azure.crd-install.selectorLabels" . | nindent 4 }}
     role: {{ include "capz.CRDInstallSelector" . | quote }}
 spec:
   endpointSelector:
     matchLabels:
       app.kubernetes.io/component: {{ include "cluster-api-provider-azure.crd-install.fullname" . | quote }}
-      {{- include "capz.selectorLabels" . | nindent 6 }}
+      {{- include "cluster-api-provider-azure.crd-install.selectorLabels" . | nindent 6 }}
   egress:
     - toEntities:
         - kube-apiserver
