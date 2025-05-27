@@ -82,6 +82,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - CRD Install: Rework `crd-np.yaml` into `networkpolicy.yaml`.
   - CRD Install: Rework `crd-configmap.yaml` into `configmap.yaml`.
   - CRD Install: Rework `crd-serviceaccount.yaml` into `serviceaccount.yaml`.
+  - CRD Install: Extract ClusterRole into `clusterrole.yaml`.
 
 ### Removed
 
