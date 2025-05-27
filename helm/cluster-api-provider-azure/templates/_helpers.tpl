@@ -38,22 +38,24 @@ app.kubernetes.io/name: {{ include "cluster-api-provider-azure.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
-
-{{/* CAPI Filtering templates */}}
 {{/*
-Watch filter value:
-  CAPI MCs: empty (controllers are reconciling all CRs on CAPI MCs)
-  Vintage MCs: capi (controllers are watching only labeled CRs and are not reconciling vintage WC CRs)
+Watch filter templates
+
+On CAPI MCs, the controllers reconcile all CRs.
+On Vintage MCs, the controllers reconcile labeled CRs only.
 */}}
-{{/* Define objectSelector for webhooks */}}
-{{- define "capz.webhookObjectSelector" -}}
-{{- if eq .Values.provider.flavor "capi" -}}
-{{- printf " %s" "{}" -}}
+
+{{/*
+Webhook object selector
+*/}}
+{{- define "cluster-api-provider-azure.objectSelector" -}}
+{{- if eq .Values.provider.flavor "capi" }}
+{{- printf " %s" "{}" }}
 {{- else }}
     matchLabels:
       cluster.x-k8s.io/watch-filter: capi
-{{- end -}}
-{{- end -}}
+{{- end }}
+{{- end }}
 
 {{- define "deployment.args.watchfiltervalue" -}}
 {{- if eq .Values.provider.flavor "capi" -}}

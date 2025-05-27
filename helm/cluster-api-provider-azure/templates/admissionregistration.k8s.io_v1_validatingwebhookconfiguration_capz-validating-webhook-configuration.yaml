@@ -27,7 +27,7 @@ webhooks:
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: validation.azurecluster.infrastructure.cluster.x-k8s.io
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
+  objectSelector: {{- include "cluster-api-provider-azure.objectSelector" $ }}
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
@@ -50,7 +50,7 @@ webhooks:
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: validation.azureclusteridentity.infrastructure.cluster.x-k8s.io
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
+  objectSelector: {{- include "cluster-api-provider-azure.objectSelector" $ }}
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
@@ -73,7 +73,7 @@ webhooks:
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: validation.azureclustertemplate.infrastructure.cluster.x-k8s.io
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
+  objectSelector: {{- include "cluster-api-provider-azure.objectSelector" $ }}
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
@@ -96,7 +96,7 @@ webhooks:
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: validation.azuremachine.infrastructure.cluster.x-k8s.io
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
+  objectSelector: {{- include "cluster-api-provider-azure.objectSelector" $ }}
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
@@ -119,7 +119,7 @@ webhooks:
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: validation.azuremachinetemplate.infrastructure.cluster.x-k8s.io
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
+  objectSelector: {{- include "cluster-api-provider-azure.objectSelector" $ }}
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
@@ -141,7 +141,7 @@ webhooks:
       path: /validate-infrastructure-cluster-x-k8s-io-v1beta1-azuremanagedcluster
   failurePolicy: Fail
   name: validation.azuremanagedclusters.infrastructure.cluster.x-k8s.io
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
+  objectSelector: {{- include "cluster-api-provider-azure.objectSelector" $ }}
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
@@ -163,7 +163,7 @@ webhooks:
       path: /validate-infrastructure-cluster-x-k8s-io-v1beta1-azuremanagedclustertemplate
   failurePolicy: Fail
   name: validation.azuremanagedclustertemplates.infrastructure.cluster.x-k8s.io
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
+  objectSelector: {{- include "cluster-api-provider-azure.objectSelector" $ }}
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
@@ -184,7 +184,7 @@ webhooks:
       path: /validate-infrastructure-cluster-x-k8s-io-v1beta1-azuremanagedcontrolplane
   failurePolicy: Fail
   name: validation.azuremanagedcontrolplanes.infrastructure.cluster.x-k8s.io
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
+  objectSelector: {{- include "cluster-api-provider-azure.objectSelector" $ }}
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
@@ -206,7 +206,7 @@ webhooks:
       path: /validate-infrastructure-cluster-x-k8s-io-v1beta1-azuremanagedcontrolplanetemplate
   failurePolicy: Fail
   name: validation.azuremanagedcontrolplanetemplates.infrastructure.cluster.x-k8s.io
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
+  objectSelector: {{- include "cluster-api-provider-azure.objectSelector" $ }}
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
@@ -229,7 +229,7 @@ webhooks:
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: validation.azuremanagedmachinepools.infrastructure.cluster.x-k8s.io
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
+  objectSelector: {{- include "cluster-api-provider-azure.objectSelector" $ }}
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
@@ -252,7 +252,7 @@ webhooks:
       path: /validate-infrastructure-cluster-x-k8s-io-v1beta1-azuremanagedmachinepooltemplate
   failurePolicy: Fail
   name: validation.azuremanagedmachinepooltemplates.infrastructure.cluster.x-k8s.io
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
+  objectSelector: {{- include "cluster-api-provider-azure.objectSelector" $ }}
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
@@ -275,7 +275,7 @@ webhooks:
       path: /validate-infrastructure-cluster-x-k8s-io-v1beta1-azuremachinepool
   failurePolicy: Fail
   name: validation.azuremachinepool.infrastructure.cluster.x-k8s.io
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
+  objectSelector: {{- include "cluster-api-provider-azure.objectSelector" $ }}
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
@@ -297,7 +297,7 @@ webhooks:
       path: /validate-infrastructure-cluster-x-k8s-io-v1beta1-azuremachinepoolmachine
   failurePolicy: Fail
   name: azuremachinepoolmachine.kb.io
-  objectSelector: {{- include "capz.webhookObjectSelector" $ }}
+  objectSelector: {{- include "cluster-api-provider-azure.objectSelector" $ }}
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
