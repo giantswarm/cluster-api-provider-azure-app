@@ -38,11 +38,6 @@ app.kubernetes.io/name: {{ include "cluster-api-provider-azure.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
-{{/* Create a label which can be used to select any orphaned crd-install hook resources */}}
-{{- define "capz.CRDInstallSelector" -}}
-{{- printf "%s" "crd-install-hook" -}}
-{{- end -}}
-
 
 {{/* CAPI Filtering templates */}}
 {{/*

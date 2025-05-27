@@ -18,7 +18,6 @@ metadata:
   labels:
     app.kubernetes.io/component: {{ include "cluster-api-provider-azure.crd-install.fullname" . | quote }}
     {{- include "cluster-api-provider-azure.crd-install.selectorLabels" . | nindent 4 }}
-    role: {{ include "capz.CRDInstallSelector" . | quote }}
 data:
   content: |
 {{ tpl ($.Files.Get $path) . | indent 4 }}

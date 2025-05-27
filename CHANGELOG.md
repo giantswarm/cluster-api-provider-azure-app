@@ -87,6 +87,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Helpers: Remove `_resource.tpl`.
   - Helpers: Remove `labels.provider`.
   - Helpers: Remove `capz.CRDInstallConfigmapNameGenerate`.
+  - Helpers: Remove `capz.CRDInstallSelector`.
 
 ## [1.12.4-gs2] - 2024-07-17
 
