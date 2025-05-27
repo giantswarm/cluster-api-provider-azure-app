@@ -38,10 +38,6 @@ app.kubernetes.io/name: {{ include "cluster-api-provider-azure.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
-{{- define "capz.crdInstall" -}}
-{{- printf "%s-%s" ( include "cluster-api-provider-azure.name" . ) "crd-install" | replace "+" "_" | trimSuffix "-" -}}
-{{- end -}}
-
 {{- define "capz.CRDInstallAnnotations" -}}
 "helm.sh/hook": "pre-install,pre-upgrade"
 "helm.sh/hook-delete-policy": "before-hook-creation,hook-succeeded"

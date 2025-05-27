@@ -1,20 +1,20 @@
 kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
 metadata:
-  name: {{ include "capz.crdInstall" . }}
+  name: {{ include "cluster-api-provider-azure.crd-install.fullname" . }}
   namespace: {{ .Release.Namespace | quote }}
   annotations:
     # create hook dependencies in the right order
     "helm.sh/hook-weight": "-7"
     {{- include "capz.CRDInstallAnnotations" . | nindent 4 }}
   labels:
-    app.kubernetes.io/component: {{ include "capz.crdInstall" . | quote }}
+    app.kubernetes.io/component: {{ include "cluster-api-provider-azure.crd-install.fullname" . | quote }}
     {{- include "capz.selectorLabels" . | nindent 4 }}
     role: {{ include "capz.CRDInstallSelector" . | quote }}
 spec:
   podSelector:
     matchLabels:
-      app.kubernetes.io/component: {{ include "capz.crdInstall" . | quote }}
+      app.kubernetes.io/component: {{ include "cluster-api-provider-azure.crd-install.fullname" . | quote }}
       {{- include "capz.selectorLabels" . | nindent 6 }}
   # allow egress traffic to the Kubernetes API
   egress:

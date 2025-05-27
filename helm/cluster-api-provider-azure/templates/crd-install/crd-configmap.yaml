@@ -9,14 +9,14 @@ allowed length for a configmap if they are combined.
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ include "capz.crdInstall" . }}-{{ include "capz.CRDInstallConfigmapNameGenerate" $path }}
+  name: {{ include "cluster-api-provider-azure.crd-install.fullname" . }}-{{ include "capz.CRDInstallConfigmapNameGenerate" $path }}
   namespace: {{ .Release.Namespace | quote }}
   annotations:
     # create hook dependencies in the right order
     "helm.sh/hook-weight": "-5"
     {{- include "capz.CRDInstallAnnotations" . | nindent 4 }}
   labels:
-    app.kubernetes.io/component: {{ include "capz.crdInstall" . | quote }}
+    app.kubernetes.io/component: {{ include "cluster-api-provider-azure.crd-install.fullname" . | quote }}
     {{- include "capz.selectorLabels" . | nindent 4 }}
     role: {{ include "capz.CRDInstallSelector" . | quote }}
 data:

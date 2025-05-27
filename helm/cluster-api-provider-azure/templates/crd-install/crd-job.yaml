@@ -1,24 +1,24 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "capz.crdInstall" . }}
+  name: {{ include "cluster-api-provider-azure.crd-install.fullname" . }}
   namespace: {{ .Release.Namespace | quote }}
   annotations:
     # create hook dependencies in the right order
     "helm.sh/hook-weight": "-1"
     {{- include "capz.CRDInstallAnnotations" . | nindent 4 }}
   labels:
-    app.kubernetes.io/component: {{ include "capz.crdInstall" . | quote }}
+    app.kubernetes.io/component: {{ include "cluster-api-provider-azure.crd-install.fullname" . | quote }}
     {{- include "capz.selectorLabels" . | nindent 4 }}
     role: {{ include "capz.CRDInstallSelector" . | quote }}
 spec:
   template:
     metadata:
       labels:
-        app.kubernetes.io/component: {{ include "capz.crdInstall" . | quote }}
+        app.kubernetes.io/component: {{ include "cluster-api-provider-azure.crd-install.fullname" . | quote }}
         {{- include "capz.selectorLabels" . | nindent 8 }}
     spec:
-      serviceAccountName: {{ include "capz.crdInstall" . }}
+      serviceAccountName: {{ include "cluster-api-provider-azure.crd-install.fullname" . }}
       securityContext:
         runAsUser: 65534
         runAsGroup: 65534
@@ -75,7 +75,7 @@ spec:
     {{- with $currentScope }}
       - name: {{ printf "%s-%s" (base (dir $path)) (trimSuffix "-yaml" (base $path | replace "." "-")) | trunc 63 | trimSuffix "-" }}
         configMap:
-          name: {{ include "capz.crdInstall" . }}-{{- include "capz.CRDInstallConfigmapNameGenerate" $path }}
+          name: {{ include "cluster-api-provider-azure.crd-install.fullname" . }}-{{- include "capz.CRDInstallConfigmapNameGenerate" $path }}
           items:
           - key: content
             path: {{ $path | base }}

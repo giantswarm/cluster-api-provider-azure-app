@@ -1,14 +1,14 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: {{ include "capz.crdInstall" . }}
+  name: {{ include "cluster-api-provider-azure.crd-install.fullname" . }}
   namespace: {{ .Release.Namespace | quote }}
   annotations:
     # create hook dependencies in the right order
     "helm.sh/hook-weight": "-3"
     {{- include "capz.CRDInstallAnnotations" . | nindent 4 }}
   labels:
-    app.kubernetes.io/component: {{ include "capz.crdInstall" . | quote }}
+    app.kubernetes.io/component: {{ include "cluster-api-provider-azure.crd-install.fullname" . | quote }}
     {{- include "capz.selectorLabels" . | nindent 4 }}
     role: {{ include "capz.CRDInstallSelector" . | quote }}
 rules:
@@ -34,7 +34,7 @@ rules:
   resources:
   - podsecuritypolicies
   resourceNames:
-  - {{ include "capz.crdInstall" . }}
+  - {{ include "cluster-api-provider-azure.crd-install.fullname" . }}
   verbs:
   - use
 {{- end }}
@@ -51,21 +51,21 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: {{ include "capz.crdInstall" . }}
+  name: {{ include "cluster-api-provider-azure.crd-install.fullname" . }}
   namespace: {{ .Release.Namespace | quote }}
   annotations:
     # create hook dependencies in the right order
     "helm.sh/hook-weight": "-2"
     {{- include "capz.CRDInstallAnnotations" . | nindent 4 }}
   labels:
-    app.kubernetes.io/component: {{ include "capz.crdInstall" . | quote }}
+    app.kubernetes.io/component: {{ include "cluster-api-provider-azure.crd-install.fullname" . | quote }}
     {{- include "capz.selectorLabels" . | nindent 4 }}
     role: {{ include "capz.CRDInstallSelector" . | quote }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: {{ include "capz.crdInstall" . }}
+  name: {{ include "cluster-api-provider-azure.crd-install.fullname" . }}
 subjects:
   - kind: ServiceAccount
-    name: {{ include "capz.crdInstall" . }}
+    name: {{ include "cluster-api-provider-azure.crd-install.fullname" . }}
     namespace: {{ .Release.Namespace | quote }}
