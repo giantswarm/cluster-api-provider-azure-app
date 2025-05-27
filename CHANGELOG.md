@@ -87,6 +87,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - CRD Install: Rework `crd-job.yaml` into `job.yaml`.
   - Static: Rework `vpa.yaml` into `capz-controller-manager-verticalpodautoscaler.yaml`.
   - Static: Rework `service-monitor.yaml` into `capz-controller-manager-servicemonitor.yaml`.
+  - Static: Rework `rbac.authorization.k8s.io_v1_clusterrolebinding_azureserviceoperator-crd-manager-rolebinding.yaml` into `azureserviceoperator-crd-manager-clusterrolebinding.yaml`.
 
 ### Removed
 
