@@ -80,6 +80,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Helpers: Rework `capz.webhookObjectSelector` into `cluster-api-provider-azure.objectSelector`.
   - Helpers: Rework `deployment.args.watchfiltervalue` into `cluster-api-provider-azure.watchFilter`.
   - CRD Install: Rework `crd-np.yaml` into `networkpolicy.yaml`.
+  - CRD Install: Rework `crd-configmap.yaml` into `configmap.yaml`.
 
 ### Removed
 
