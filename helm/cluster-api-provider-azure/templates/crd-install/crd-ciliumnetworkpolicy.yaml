@@ -7,7 +7,7 @@ metadata:
   annotations:
     # create hook dependencies in the right order
     "helm.sh/hook-weight": "-2"
-    {{- include "capz.CRDInstallAnnotations" . | nindent 4 }}
+    {{- include "cluster-api-provider-azure.crd-install.annotations" . | nindent 4 }}
   labels:
     app.kubernetes.io/component: {{ include "cluster-api-provider-azure.crd-install.fullname" . | quote }}
     {{- include "capz.selectorLabels" . | nindent 4 }}

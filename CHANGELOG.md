@@ -74,6 +74,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Helpers: Rework `labels.common` into `cluster-api-provider-azure.labels`.
   - Helpers: Rework `labels.selector` into `cluster-api-provider-azure.selectorLabels`.
   - Helpers: Rework `capz.crdInstall` into `cluster-api-provider-azure.crd-install.fullname`.
+  - Helpers: Rework `capz.CRDInstallAnnotations` into `cluster-api-provider-azure.crd-install.annotations`.
 
 ### Removed
 

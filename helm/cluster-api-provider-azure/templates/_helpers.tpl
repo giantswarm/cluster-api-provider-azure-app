@@ -38,11 +38,6 @@ app.kubernetes.io/name: {{ include "cluster-api-provider-azure.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
-{{- define "capz.CRDInstallAnnotations" -}}
-"helm.sh/hook": "pre-install,pre-upgrade"
-"helm.sh/hook-delete-policy": "before-hook-creation,hook-succeeded"
-{{- end -}}
-
 {{- define "capz.CRDInstallConfigmapNameGenerate" -}}
 {{- $cmName := printf "%s-%s" (base (dir .)) (trimSuffix ".yaml" (base .) | trunc 63) -}}
 {{- $cmName = $cmName | trimSuffix "." -}}
