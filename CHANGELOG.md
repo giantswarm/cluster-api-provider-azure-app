@@ -71,6 +71,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Values: Rework `global.podSecurityStandards`.
   - Helpers: Rework `name` into `cluster-api-provider-azure.name`.
   - Helpers: Rework `chart` into `cluster-api-provider-azure.chart`.
+  - Helpers: Rework `labels.common` into `cluster-api-provider-azure.labels`.
 
 ### Removed
 

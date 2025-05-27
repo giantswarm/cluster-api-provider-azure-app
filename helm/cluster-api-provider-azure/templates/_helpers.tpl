@@ -22,15 +22,13 @@ Create chart name and version as used by the chart label.
 {{/*
 Common labels
 */}}
-{{- define "labels.common" -}}
+{{- define "cluster-api-provider-azure.labels" -}}
+helm.sh/chart: {{ include "cluster-api-provider-azure.chart" . }}
 {{ include "labels.selector" . }}
-application.giantswarm.io/branch: {{ .Values.project.branch | quote }}
-application.giantswarm.io/commit: {{ .Values.project.commit | quote }}
-app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
-helm.sh/chart: {{ include "cluster-api-provider-azure.chart" . | quote }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
 application.giantswarm.io/team: {{ index .Chart.Annotations "application.giantswarm.io/team" | quote }}
-{{- end -}}
+{{- end }}
 
 {{/*
 Selector labels
