@@ -89,6 +89,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Static: Rework `service-monitor.yaml` into `capz-controller-manager-servicemonitor.yaml`.
   - Static: Rework `rbac.authorization.k8s.io_v1_clusterrolebinding_azureserviceoperator-crd-manager-rolebinding.yaml` into `azureserviceoperator-crd-manager-clusterrolebinding.yaml`.
   - Static: Rework `rbac.authorization.k8s.io_v1_clusterrole_azureserviceoperator-crd-manager-role.yaml` into `azureserviceoperator-crd-manager-clusterrole.yaml`.
+  - Static: Rework `networking.k8s.io_v1_networkpolicy_azureserviceoperator-controller-manager.yaml` into `azureserviceoperator-controller-manager-networkpolicy.yaml`.
 
 ### Removed
 
