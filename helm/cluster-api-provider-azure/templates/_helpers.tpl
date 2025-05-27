@@ -38,13 +38,6 @@ app.kubernetes.io/name: {{ include "cluster-api-provider-azure.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
-{{/*
-Provider labels
-*/}}
-{{- define "labels.provider" -}}
-cluster.x-k8s.io/provider: infrastructure-azure
-{{- end -}}
-
 {{- define "capz.crdInstall" -}}
 {{- printf "%s-%s" ( include "cluster-api-provider-azure.name" . ) "crd-install" | replace "+" "_" | trimSuffix "-" -}}
 {{- end -}}

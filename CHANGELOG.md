@@ -82,6 +82,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - CI: Remove values.
   - Values: Remove `name`.
   - Helpers: Remove `_resource.tpl`.
+  - Helpers: Remove `labels.provider`.
 
 ## [1.12.4-gs2] - 2024-07-17
 
