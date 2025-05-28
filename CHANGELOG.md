@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Chart: Some chores. ([#186](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/186))
+  - Helpers: Add `cluster-api-provider-azure.fullname`.
+  - Helpers: Add `cluster-api-provider-azure.crd-install.labels`.
+
 ### Changed
 
 - Repository: Rework sync. ([#182](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/182))
@@ -50,11 +56,57 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Hack: Rename `generate-crd-version-patches.sh` into `generate-crd-patches.sh`.
   - Hack: Rework `generate-helm-conditions.sh` into `wrap-in-conditions.sh`.
   - Hack: Rework `cleanup-helm-templates.sh` into `remove-quotes.sh`.
+- Chart: Some chores. ([#186](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/186))
+  - Chart: Rework `Chart.yaml`.
+  - Values: Update `values.schema.json`.
+  - Values: Rework `image`.
+  - Values: Rework `aso`.
+  - Values: Rework `project`.
+  - Values: Rework `provider`.
+  - Values: Rework `ciliumNetworkPolicy`.
+  - Values: Rework `crdInstall`.
+  - Values: Rework `workloadCluster`.
+  - Values: Rework `controller`.
+  - Values: Rework `verticalPodAutoscaler`.
+  - Values: Rework `serviceMonitor`.
+  - Values: Rework `global.podSecurityStandards`.
+  - Helpers: Rework `name` into `cluster-api-provider-azure.name`.
+  - Helpers: Rework `chart` into `cluster-api-provider-azure.chart`.
+  - Helpers: Rework `labels.common` into `cluster-api-provider-azure.labels`.
+  - Helpers: Rework `labels.selector` into `cluster-api-provider-azure.selectorLabels`.
+  - Helpers: Rework `capz.crdInstall` into `cluster-api-provider-azure.crd-install.fullname`.
+  - Helpers: Rework `capz.CRDInstallAnnotations` into `cluster-api-provider-azure.crd-install.annotations`.
+  - Helpers: Rework `capz.selectorLabels` into `cluster-api-provider-azure.crd-install.selectorLabels`.
+  - Helpers: Rework `capz.webhookObjectSelector` into `cluster-api-provider-azure.objectSelector`.
+  - Helpers: Rework `deployment.args.watchfiltervalue` into `cluster-api-provider-azure.watchFilter`.
+  - CRD Install: Rework `crd-np.yaml` into `networkpolicy.yaml`.
+  - CRD Install: Rework `crd-configmap.yaml` into `configmap.yaml`.
+  - CRD Install: Rework `crd-serviceaccount.yaml` into `serviceaccount.yaml`.
+  - CRD Install: Extract ClusterRole into `clusterrole.yaml`.
+  - CRD Install: Extract ClusterRoleBinding into `clusterrolebinding.yaml`.
+  - CRD Install: Rework `crd-job.yaml` into `job.yaml`.
+  - Static: Rework `vpa.yaml` into `capz-controller-manager-verticalpodautoscaler.yaml`.
+  - Static: Rework `service-monitor.yaml` into `capz-controller-manager-servicemonitor.yaml`.
+  - Static: Rework `rbac.authorization.k8s.io_v1_clusterrolebinding_azureserviceoperator-crd-manager-rolebinding.yaml` into `azureserviceoperator-crd-manager-clusterrolebinding.yaml`.
+  - Static: Rework `rbac.authorization.k8s.io_v1_clusterrole_azureserviceoperator-crd-manager-role.yaml` into `azureserviceoperator-crd-manager-clusterrole.yaml`.
+  - Static: Rework `networking.k8s.io_v1_networkpolicy_azureserviceoperator-controller-manager.yaml` into `azureserviceoperator-controller-manager-networkpolicy.yaml`.
+  - Static: Rework `networking.k8s.io_v1_networkpolicy_capz-controller-manager.yaml` into `capz-controller-manager-networkpolicy.yaml`.
+  - Static: Rework `cilium.io_v2_ciliumnetworkpolicy_azure-service-operator-controller-manager.yaml` into `azureserviceoperator-controller-manager-ciliumnetworkpolicy.yaml`.
+  - Static: Rework `cilium.io_v2_ciliumnetworkpolicy_capz-controller-manager.yaml` into `capz-controller-manager-ciliumnetworkpolicy.yaml`.
 
 ### Removed
 
 - Repository: Rework sync. ([#182](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/182))
   - Config: Remove obsolete `daemonset-nmi-args.yaml`.
+- Chart: Some chores. ([#186](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/186))
+  - CI: Remove values.
+  - Values: Remove `name`.
+  - Helpers: Remove `_resource.tpl`.
+  - Helpers: Remove `labels.provider`.
+  - Helpers: Remove `capz.CRDInstallConfigmapNameGenerate`.
+  - Helpers: Remove `capz.CRDInstallSelector`.
+  - CRD Install: Remove `crd-ciliumnetworkpolicy.yaml`.
+  - CRD Install: Remove `crd-psp.yaml`.
 
 ## [1.12.4-gs2] - 2024-07-17
 

@@ -18,6 +18,14 @@
                 }
             }
         },
+        "ciliumNetworkPolicy": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            }
+        },
         "controller": {
             "type": "object",
             "properties": {
@@ -26,31 +34,11 @@
                 }
             }
         },
-        "ciliumNetworkPolicy": {
+        "crds": {
             "type": "object",
             "properties": {
-                "enabled": {
+                "install": {
                     "type": "boolean"
-                }
-            },
-            "default": false
-        },
-        "crdInstall": {
-            "type": "object",
-            "properties": {
-                "enable": {
-                    "type": "boolean"
-                },
-                "kubectl": {
-                    "type": "object",
-                    "properties": {
-                        "image": {
-                            "type": "string"
-                        },
-                        "tag": {
-                            "type": "string"
-                        }
-                    }
                 }
             }
         },
@@ -67,9 +55,6 @@
                     "type": "string"
                 }
             }
-        },
-        "name": {
-            "type": "string"
         },
         "project": {
             "type": "object",
@@ -108,8 +93,7 @@
                 "enabled": {
                     "type": "boolean"
                 }
-            },
-            "default": true
+            }
         },
         "verticalPodAutoscaler": {
             "type": "object",
@@ -127,19 +111,6 @@
                     "properties": {
                         "ssoPublicKey": {
                             "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "global": {
-            "type": "object",
-            "properties": {
-                "podSecurityStandards": {
-                    "type": "object",
-                    "properties": {
-                        "enforced": {
-                            "type": "boolean"
                         }
                     }
                 }
