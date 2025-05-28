@@ -74,9 +74,6 @@ patches:
 # Secrets
 - path: patches/secrets/aso-controller-settings.yaml
 
-# Daemon sets
-- path: patches/daemonsets/capz-nmi.yaml
-
 # Deployments
 - path: patches/deployments/azureserviceoperator-controller-manager.yaml
 - path: patches/deployments/capz-controller-manager.yaml
