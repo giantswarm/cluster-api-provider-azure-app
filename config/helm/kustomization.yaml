@@ -73,6 +73,7 @@ patches:
 
 # Secrets
 - path: patches/secrets/aso-controller-settings.yaml
+- path: patches/secrets/capz-manager-bootstrap-credentials.yaml
 
 # Deployments
 - path: patches/deployments/azureserviceoperator-controller-manager.yaml

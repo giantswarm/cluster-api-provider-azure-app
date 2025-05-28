@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Hack: Remove `rbac.authorization.k8s.io_v1_clusterrolebinding_capz-aad-pod-id-nmi-binding.yaml`.
   - Chart: Remove `azureserviceoperator-crd-manager-clusterrole.yaml`.
   - Chart: Remove `azureserviceoperator-crd-manager-clusterrolebinding.yaml`.
+  - Chart: Remove `v1_secret_capz-manager-bootstrap-credentials.yaml`.
 
 ## [2.0.0] - 2025-05-28
 
