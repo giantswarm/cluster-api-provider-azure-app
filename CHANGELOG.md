@@ -92,6 +92,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Static: Rework `networking.k8s.io_v1_networkpolicy_azureserviceoperator-controller-manager.yaml` into `azureserviceoperator-controller-manager-networkpolicy.yaml`.
   - Static: Rework `networking.k8s.io_v1_networkpolicy_capz-controller-manager.yaml` into `capz-controller-manager-networkpolicy.yaml`.
   - Static: Rework `cilium.io_v2_ciliumnetworkpolicy_azure-service-operator-controller-manager.yaml` into `azureserviceoperator-controller-manager-ciliumnetworkpolicy.yaml`.
+  - Static: Rework `cilium.io_v2_ciliumnetworkpolicy_capz-controller-manager.yaml` into `capz-controller-manager-ciliumnetworkpolicy.yaml`.
 
 ### Removed
 
