@@ -6,13 +6,10 @@ metadata:
 spec:
   template:
     spec:
-      securityContext:
-        runAsNonRoot: true
-        seccompProfile:
-          type: RuntimeDefault
       containers:
       - name: manager
         securityContext:
+          runAsNonRoot: true
           allowPrivilegeEscalation: false
           seccompProfile:
             type: RuntimeDefault
@@ -50,6 +47,10 @@ spec:
         - name: metrics
           protocol: TCP
           containerPort: 8080
+        - $patch: delete
+          name: metrics
+          protocol: TCP
+          containerPort: 8443
       affinity:
         nodeAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:

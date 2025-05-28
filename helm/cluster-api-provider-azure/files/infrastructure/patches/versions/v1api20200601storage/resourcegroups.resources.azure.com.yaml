@@ -2,13 +2,26 @@
   path: /spec/versions/1/schema
   value:
     openAPIV3Schema:
-      description: 'Storage version of v1api20200601.ResourceGroup Generator information: - Generated from: /resources/resource-manager/Microsoft.Resources/stable/2020-06-01/resources.json - ARM URI: /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}'
+      description: |-
+        Storage version of v1api20200601.ResourceGroup
+        Generator information:
+        - Generated from: /resources/resource-manager/Microsoft.Resources/stable/2020-06-01/resources.json
+        - ARM URI: /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}
       properties:
         apiVersion:
-          description: 'APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+          description: |-
+            APIVersion defines the versioned schema of this representation of an object.
+            Servers should convert recognized schemas to the latest internal value, and
+            may reject unrecognized values.
+            More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
           type: string
         kind:
-          description: 'Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+          description: |-
+            Kind is a string value representing the REST resource this object represents.
+            Servers may infer this from the endpoint the client submits requests to.
+            Cannot be updated.
+            In CamelCase.
+            More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
           type: string
         metadata:
           type: object
@@ -18,12 +31,14 @@
             $propertyBag:
               additionalProperties:
                 type: string
-              description: PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage resources, allowing for full fidelity round trip conversions
+              description: |-
+                PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                resources, allowing for full fidelity round trip conversions
               type: object
             azureName:
-              description: 'AzureName: The name of the resource in Azure. This is often the same as the name of the resource in Kubernetes but it doesn''t have to be.'
-              maxLength: 90
-              minLength: 1
+              description: |-
+                AzureName: The name of the resource in Azure. This is often the same as the name of the resource in Kubernetes but it
+                doesn't have to be.
               type: string
             location:
               type: string
@@ -37,12 +52,16 @@
               type: object
           type: object
         status:
-          description: Storage version of v1api20200601.ResourceGroup_STATUS Resource group information.
+          description: |-
+            Storage version of v1api20200601.ResourceGroup_STATUS
+            Resource group information.
           properties:
             $propertyBag:
               additionalProperties:
                 type: string
-              description: PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage resources, allowing for full fidelity round trip conversions
+              description: |-
+                PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                resources, allowing for full fidelity round trip conversions
               type: object
             conditions:
               items:
@@ -56,14 +75,23 @@
                     description: Message is a human readable message indicating details about the transition. This field may be empty.
                     type: string
                   observedGeneration:
-                    description: ObservedGeneration is the .metadata.generation that the condition was set based upon. For instance, if .metadata.generation is currently 12, but the .status.condition[x].observedGeneration is 9, the condition is out of date with respect to the current state of the instance.
+                    description: |-
+                      ObservedGeneration is the .metadata.generation that the condition was set based upon. For instance, if
+                      .metadata.generation is currently 12, but the .status.condition[x].observedGeneration is 9, the condition is out of date
+                      with respect to the current state of the instance.
                     format: int64
                     type: integer
                   reason:
-                    description: Reason for the condition's last transition. Reasons are upper CamelCase (PascalCase) with no spaces. A reason is always provided, this field will not be empty.
+                    description: |-
+                      Reason for the condition's last transition.
+                      Reasons are upper CamelCase (PascalCase) with no spaces. A reason is always provided, this field will not be empty.
                     type: string
                   severity:
-                    description: Severity with which to treat failures of this type of condition. For conditions which have positive polarity (Status == True is their normal/healthy state), this will be omitted when Status == True For conditions which have negative polarity (Status == False is their normal/healthy state), this will be omitted when Status == False. This is omitted in all cases when Status == Unknown
+                    description: |-
+                      Severity with which to treat failures of this type of condition.
+                      For conditions which have positive polarity (Status == True is their normal/healthy state), this will be omitted when Status == True
+                      For conditions which have negative polarity (Status == False is their normal/healthy state), this will be omitted when Status == False.
+                      This is omitted in all cases when Status == Unknown
                     type: string
                   status:
                     description: Status of the condition, one of True, False, or Unknown.
@@ -87,12 +115,16 @@
             name:
               type: string
             properties:
-              description: Storage version of v1api20200601.ResourceGroupProperties_STATUS The resource group properties.
+              description: |-
+                Storage version of v1api20200601.ResourceGroupProperties_STATUS
+                The resource group properties.
               properties:
                 $propertyBag:
                   additionalProperties:
                     type: string
-                  description: PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage resources, allowing for full fidelity round trip conversions
+                  description: |-
+                    PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                    resources, allowing for full fidelity round trip conversions
                   type: object
                 provisioningState:
                   type: string

@@ -73,16 +73,13 @@ patches:
 
 # Secrets
 - path: patches/secrets/aso-controller-settings.yaml
-
-# Daemon sets
-- path: patches/daemonsets/capz-nmi.yaml
+- path: patches/secrets/capz-manager-bootstrap-credentials.yaml
 
 # Deployments
 - path: patches/deployments/azureserviceoperator-controller-manager.yaml
 - path: patches/deployments/capz-controller-manager.yaml
 
 # Services
-- path: patches/services/azureserviceoperator-proxy-service.yaml
 - path: patches/services/azureserviceoperator.yaml
   target:
     version: v1
