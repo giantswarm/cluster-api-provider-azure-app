@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Chart: Update CRDs.
   - Chart: Update webhook configurations.
   - Chart: Update RBAC.
+  - Chart: Update Azure Service Operator.
 
 ### Removed
 
