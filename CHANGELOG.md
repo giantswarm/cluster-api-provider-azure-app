@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Values: Update image to v1.16.5.
   - Chart: Update CRDs.
   - Chart: Update webhook configurations.
+  - Chart: Update RBAC.
 
 ### Removed
 
