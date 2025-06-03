@@ -42,32 +42,11 @@
                 }
             }
         },
-        "controller": {
-            "type": "object",
-            "properties": {
-                "verbosity": {
-                    "type": "integer"
-                }
-            }
-        },
         "crds": {
             "type": "object",
             "properties": {
                 "install": {
                     "type": "boolean"
-                }
-            }
-        },
-        "global": {
-            "type": "object",
-            "properties": {
-                "podSecurityStandards": {
-                    "type": "object",
-                    "properties": {
-                        "enforced": {
-                            "type": "boolean"
-                        }
-                    }
                 }
             }
         },
