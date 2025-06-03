@@ -42,22 +42,19 @@
                 }
             }
         },
-        "crdInstall": {
+        "controller": {
             "type": "object",
             "properties": {
-                "enable": {
+                "verbosity": {
+                    "type": "integer"
+                }
+            }
+        },
+        "crds": {
+            "type": "object",
+            "properties": {
+                "install": {
                     "type": "boolean"
-                },
-                "kubectl": {
-                    "type": "object",
-                    "properties": {
-                        "image": {
-                            "type": "string"
-                        },
-                        "tag": {
-                            "type": "string"
-                        }
-                    }
                 }
             }
         },
@@ -87,9 +84,6 @@
                     "type": "string"
                 }
             }
-        },
-        "name": {
-            "type": "string"
         },
         "project": {
             "type": "object",

@@ -1,50 +1,72 @@
-name: cluster-api-azure-controller
-image:
-  registry: gsoci.azurecr.io
-  name: giantswarm/cluster-api-azure-controller
-  tag: v1.12.4-gs.alpha.2
-
-aso:
-  image:
-    registry: gsoci.azurecr.io
-    name: giantswarm/azureserviceoperator
-
+# -- Project information.
 project:
+  # -- Branch this chart has been built from.
   branch: "[[ .Branch ]]"
+  # -- Commit this chart has been built from.
   commit: "[[ .SHA ]]"
 
+# -- Image settings.
+image:
+  # -- Image registry.
+  registry: gsoci.azurecr.io
+  # -- Image repository.
+  name: giantswarm/cluster-api-azure-controller
+  # -- Image tag.
+  tag: v1.12.4-gs.alpha.2
+
+# -- Azure Service Operator settings.
+aso:
+  # -- Image settings.
+  image:
+    # -- Image registry.
+    registry: gsoci.azurecr.io
+    # -- Image repository.
+    name: giantswarm/azureserviceoperator
+
+# -- Provider settings.
 provider:
+  # -- Provider flavor.
   flavor: vintage
+  # -- Provider subscription ID.
   subscriptionId: ""
+  # -- Provider tenant ID.
   tenantId: ""
+  # -- Provider client ID.
   clientId: ""
+  # -- Provider client secret.
   clientSecret: ""
 
-ciliumNetworkPolicy:
-  enabled: false
-
-crdInstall:
-  enable: true
-  kubectl:
-    image: "giantswarm/docker-kubectl"
-    tag: "1.25.4"
-
+# -- Workload cluster settings.
 workloadCluster:
+  # -- SSH settings.
   ssh:
+    # -- SSO public key.
     ssoPublicKey: ""
 
+# -- Controller settings.
 controller:
+  # -- Log verbosity.
   verbosity: 0
 
-serviceMonitor:
-  enabled: true
-
+# -- Vertical Pod Autoscaler settings.
 verticalPodAutoscaler:
+  # -- Whether to enable Vertical Pod Autoscaler or not.
   enabled: true
 
-global:
-  podSecurityStandards:
-    enforced: false
+# -- Cilium Network Policy settings.
+ciliumNetworkPolicy:
+  # -- Whether to enable Cilium Network Policy or not.
+  enabled: false
+
+# -- Service Monitor settings.
+serviceMonitor:
+  # -- Whether to enable Service Monitor or not.
+  enabled: true
 
 azureWorkloadIdentity:
   clientId: ""
+
+# -- CRD install job settings.
+crds:
+  # -- Whether to install CRDs or not.
+  install: true

@@ -32,7 +32,7 @@ function generate_patch() {
     cat << EOF >> "${patch}"
 - op: add
   path: /webhooks/${i}/objectSelector
-  value: '{{- include "capz.webhookObjectSelector" $ }}'
+  value: '{{- include "cluster-api-provider-azure.objectSelector" $ }}'
 EOF
   done
 }
