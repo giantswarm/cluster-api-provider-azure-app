@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    aadpodidbinding: capz-controller-aadpodidentity-selector
     app.kubernetes.io/instance: '{{ .Release.Name }}'
     app.kubernetes.io/managed-by: '{{ .Release.Service }}'
     app.kubernetes.io/name: cluster-api-provider-azure
@@ -27,7 +26,6 @@ spec:
       annotations:
         kubectl.kubernetes.io/default-container: manager
       labels:
-        aadpodidbinding: capz-controller-aadpodidentity-selector
         azure.workload.identity/use: "true"
         cluster.x-k8s.io/provider: infrastructure-azure
         control-plane: capz-controller-manager
@@ -44,7 +42,8 @@ spec:
       - args:
         - --leader-elect={{- if eq .Values.provider.flavor "capi" }}true{{ else }}false{{-
           end }}
-        - --metrics-bind-addr=0.0.0.0:8080
+        - --diagnostics-address=0.0.0.0:8080
+        - --insecure-diagnostics=true
         - --feature-gates=MachinePool=true
         - --watch-filter={{- include "cluster-api-provider-azure.watchFilter" . }}
         - --v={{ .Values.controller.verbosity }}
@@ -113,6 +112,7 @@ spec:
             drop:
             - ALL
           runAsGroup: 65532
+          runAsNonRoot: true
           runAsUser: 65532
           seccompProfile:
             type: RuntimeDefault

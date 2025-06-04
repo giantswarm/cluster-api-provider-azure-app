@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Chart: Update CRDs.
   - Chart: Update webhooks.
   - Chart: Update Azure Service Operator.
+  - Chart: Update CAPZ Controller.
 
 ### Removed
 

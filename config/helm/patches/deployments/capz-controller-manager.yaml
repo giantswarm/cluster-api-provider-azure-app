@@ -6,13 +6,10 @@ metadata:
 spec:
   template:
     spec:
-      securityContext:
-        runAsNonRoot: true
-        seccompProfile:
-          type: RuntimeDefault
       containers:
       - name: manager
         securityContext:
+          runAsNonRoot: true
           allowPrivilegeEscalation: false
           seccompProfile:
             type: RuntimeDefault
@@ -21,7 +18,8 @@ spec:
             - ALL
         args:
         - --leader-elect={{- if eq .Values.provider.flavor "capi" }}true{{ else }}false{{- end }}
-        - --metrics-bind-addr=0.0.0.0:8080
+        - --diagnostics-address=0.0.0.0:8080
+        - --insecure-diagnostics=true
         - --feature-gates=MachinePool=true
         - --watch-filter={{- include "cluster-api-provider-azure.watchFilter" . }}
         - --v={{ .Values.controller.verbosity }}
@@ -50,6 +48,10 @@ spec:
         - name: metrics
           protocol: TCP
           containerPort: 8080
+        - $patch: delete
+          name: metrics
+          protocol: TCP
+          containerPort: 8443
       affinity:
         nodeAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
