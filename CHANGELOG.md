@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Values: Update image to v1.16.5-gs-0a602128d.
   - Chart: Update CRDs.
   - Chart: Update webhooks.
+  - Chart: Update Azure Service Operator.
 
 ### Removed
 
