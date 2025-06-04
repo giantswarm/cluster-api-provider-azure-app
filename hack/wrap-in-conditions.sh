@@ -15,7 +15,6 @@ templates=(
     "${template_dir}/v1_secret_credential-default.yaml"
     "${template_dir}/rbac.authorization.k8s.io_v1_role_capz-leader-election-role.yaml"
     "${template_dir}/rbac.authorization.k8s.io_v1_rolebinding_capz-leader-election-rolebinding.yaml"
-    "${template_dir}/rbac.authorization.k8s.io_v1_clusterrolebinding_capz-aad-pod-id-nmi-binding.yaml"
 )
 
 # Iterate templates.
