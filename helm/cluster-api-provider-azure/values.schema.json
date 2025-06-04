@@ -18,6 +18,14 @@
                 }
             }
         },
+        "azureWorkloadIdentity": {
+            "type": "object",
+            "properties": {
+                "clientId": {
+                    "type": "string"
+                }
+            }
+        },
         "ciliumNetworkPolicy": {
             "type": "object",
             "properties": {

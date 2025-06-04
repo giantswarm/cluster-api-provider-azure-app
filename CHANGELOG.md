@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Chart: Add `azure.workload.identity/client-id` annotation to service accounts. ([#176](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/176))
+
 ## [2.0.0] - 2025-05-28
 
 ### Added

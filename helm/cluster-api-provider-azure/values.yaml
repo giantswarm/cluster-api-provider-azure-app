@@ -63,6 +63,9 @@ serviceMonitor:
   # -- Whether to enable Service Monitor or not.
   enabled: true
 
+azureWorkloadIdentity:
+  clientId: ""
+
 # -- CRD install job settings.
 crds:
   # -- Whether to install CRDs or not.
