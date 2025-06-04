@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Chart: Update CAPZ to v1.16.5. ([#188](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/188))
   - Values: Update image to v1.16.5-gs-0a602128d.
+  - Chart: Update CRDs.
 
 ### Removed
 

@@ -3,7 +3,7 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     cert-manager.io/inject-ca-from: '{{ .Release.Namespace }}/azureserviceoperator-serving-cert'
-    controller-gen.kubebuilder.io/version: v0.13.0
+    controller-gen.kubebuilder.io/version: v0.14.0
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
     app.kubernetes.io/managed-by: '{{ .Release.Service }}'
@@ -13,6 +13,8 @@ metadata:
     application.giantswarm.io/commit: '{{ .Values.project.commit }}'
     application.giantswarm.io/team: '{{ index .Chart.Annotations "application.giantswarm.io/team" }}'
     helm.sh/chart: cluster-api-provider-azure
+    visualizer.cluster.x-k8s.io: ""
+    visualizer.cluster.x-k8s.io/provider-type: infrastructure
   name: natgateways.network.azure.com
 spec:
   conversion:
