@@ -78,9 +78,6 @@ patches:
 - path: patches/serviceaccounts/azureserviceoperator-default.yaml
 - path: patches/serviceaccounts/capz-manager.yaml
 
-# Daemon sets
-- path: patches/daemonsets/capz-nmi.yaml
-
 # Deployments
 - path: patches/deployments/azureserviceoperator-controller-manager.yaml
 - path: patches/deployments/capz-controller-manager.yaml
