@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Chart: Update CAPZ to v1.16.5. ([#188](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/188))
   - Config: Remove `patches/daemonsets/capz-nmi.yaml`.
   - Config: Remove `patches/services/azureserviceoperator-proxy-service.yaml`.
+  - Hack: Remove `rbac.authorization.k8s.io_v1_clusterrole_capz-aad-pod-id-nmi-role.yaml`.
 
 ## [2.0.0] - 2025-05-28
 
