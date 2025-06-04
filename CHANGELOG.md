@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Config: Remove `patches/daemonsets/capz-nmi.yaml`.
   - Config: Remove `patches/services/azureserviceoperator-proxy-service.yaml`.
   - Hack: Remove `rbac.authorization.k8s.io_v1_clusterrole_capz-aad-pod-id-nmi-role.yaml`.
+  - Hack: Remove `rbac.authorization.k8s.io_v1_clusterrolebinding_capz-aad-pod-id-nmi-binding.yaml`.
 
 ## [2.0.0] - 2025-05-28
 
