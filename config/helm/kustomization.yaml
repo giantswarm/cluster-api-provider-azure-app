@@ -54,6 +54,12 @@ patches:
     version: v1
     kind: CustomResourceDefinition
     labelSelector: cluster.x-k8s.io/provider=infrastructure-azure
+- path: patches/crds/too-huge.yaml
+  target:
+    group: apiextensions.k8s.io
+    version: v1
+    kind: CustomResourceDefinition
+    name: ^.+\.containerservice\.azure\.com$
 - path: patches/crds/unapproved.yaml
   target:
     group: apiextensions.k8s.io
@@ -73,20 +79,17 @@ patches:
 
 # Secrets
 - path: patches/secrets/aso-controller-settings.yaml
+- path: patches/secrets/capz-manager-bootstrap-credentials.yaml
 
 # Service accounts
 - path: patches/serviceaccounts/azureserviceoperator-default.yaml
 - path: patches/serviceaccounts/capz-manager.yaml
-
-# Daemon sets
-- path: patches/daemonsets/capz-nmi.yaml
 
 # Deployments
 - path: patches/deployments/azureserviceoperator-controller-manager.yaml
 - path: patches/deployments/capz-controller-manager.yaml
 
 # Services
-- path: patches/services/azureserviceoperator-proxy-service.yaml
 - path: patches/services/azureserviceoperator.yaml
   target:
     version: v1

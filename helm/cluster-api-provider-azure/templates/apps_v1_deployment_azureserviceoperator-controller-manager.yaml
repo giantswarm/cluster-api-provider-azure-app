@@ -26,12 +26,14 @@ spec:
       labels:
         aadpodidbinding: aso-manager-binding
         app.kubernetes.io/name: azure-service-operator
-        app.kubernetes.io/version: v2.4.0
+        app.kubernetes.io/version: v2.8.0
         control-plane: controller-manager
     spec:
       containers:
       - args:
-        - --metrics-addr=:8080
+        - --metrics-addr=0.0.0.0:8443
+        - --secure-metrics=true
+        - --profiling-metrics=false
         - --health-addr=:8081
         - --enable-leader-election
         - --v=2
@@ -114,11 +116,17 @@ spec:
               key: USE_WORKLOAD_IDENTITY_AUTH
               name: aso-controller-settings
               optional: true
+        - name: AZURE_USER_AGENT_SUFFIX
+          valueFrom:
+            secretKeyRef:
+              key: AZURE_USER_AGENT_SUFFIX
+              name: aso-controller-settings
+              optional: true
         - name: POD_NAMESPACE
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        image: '{{ .Values.aso.image.registry }}/{{ .Values.aso.image.name }}:v2.4.0'
+        image: '{{ .Values.aso.image.registry }}/{{ .Values.aso.image.name }}:v2.8.0'
         imagePullPolicy: Always
         livenessProbe:
           httpGet:
@@ -133,7 +141,7 @@ spec:
         - containerPort: 8081
           name: health-port
           protocol: TCP
-        - containerPort: 8080
+        - containerPort: 8443
           name: metrics-port
           protocol: TCP
         readinessProbe:
@@ -167,9 +175,6 @@ spec:
           readOnly: true
       nodeSelector:
         kubernetes.io/os: linux
-      securityContext:
-        seccompProfile:
-          type: RuntimeDefault
       serviceAccountName: azureserviceoperator-default
       terminationGracePeriodSeconds: 10
       volumes:
