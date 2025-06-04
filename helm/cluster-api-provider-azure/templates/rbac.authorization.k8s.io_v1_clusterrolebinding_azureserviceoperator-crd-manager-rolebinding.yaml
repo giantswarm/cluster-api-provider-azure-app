@@ -11,11 +11,11 @@ metadata:
     application.giantswarm.io/team: '{{ index .Chart.Annotations "application.giantswarm.io/team"
       }}'
     helm.sh/chart: cluster-api-provider-azure
-  name: azureserviceoperator-proxy-rolebinding
+  name: azureserviceoperator-crd-manager-rolebinding
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: azureserviceoperator-proxy-role
+  name: azureserviceoperator-crd-manager-role
 subjects:
 - kind: ServiceAccount
   name: azureserviceoperator-default
