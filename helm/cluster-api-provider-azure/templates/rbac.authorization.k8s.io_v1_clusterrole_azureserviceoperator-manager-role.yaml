@@ -14,6 +14,27 @@ metadata:
   name: azureserviceoperator-manager-role
 rules:
 - apiGroups:
+  - alertsmanagement.azure.com
+  resources:
+  - prometheusrulegroups
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - alertsmanagement.azure.com
+  resources:
+  - prometheusrulegroups/finalizers
+  - prometheusrulegroups/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
   - apimanagement.azure.com
   resources:
   - apis
@@ -51,6 +72,69 @@ rules:
   resources:
   - apiversionsets/finalizers
   - apiversionsets/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - apimanagement.azure.com
+  resources:
+  - authorizationproviders
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - apimanagement.azure.com
+  resources:
+  - authorizationproviders/finalizers
+  - authorizationproviders/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - apimanagement.azure.com
+  resources:
+  - authorizationprovidersauthorizations
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - apimanagement.azure.com
+  resources:
+  - authorizationprovidersauthorizations/finalizers
+  - authorizationprovidersauthorizations/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - apimanagement.azure.com
+  resources:
+  - authorizationprovidersauthorizationsaccesspolicies
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - apimanagement.azure.com
+  resources:
+  - authorizationprovidersauthorizationsaccesspolicies/finalizers
+  - authorizationprovidersauthorizationsaccesspolicies/status
   verbs:
   - get
   - patch
@@ -135,6 +219,48 @@ rules:
   resources:
   - policyfragments/finalizers
   - policyfragments/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - apimanagement.azure.com
+  resources:
+  - productapis
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - apimanagement.azure.com
+  resources:
+  - productapis/finalizers
+  - productapis/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - apimanagement.azure.com
+  resources:
+  - productpolicies
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - apimanagement.azure.com
+  resources:
+  - productpolicies/finalizers
+  - productpolicies/status
   verbs:
   - get
   - patch
@@ -240,6 +366,27 @@ rules:
   resources:
   - roleassignments/finalizers
   - roleassignments/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - authorization.azure.com
+  resources:
+  - roledefinitions
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - authorization.azure.com
+  resources:
+  - roledefinitions/finalizers
+  - roledefinitions/status
   verbs:
   - get
   - patch
@@ -394,6 +541,90 @@ rules:
 - apiGroups:
   - cdn.azure.com
   resources:
+  - afdcustomdomains
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - cdn.azure.com
+  resources:
+  - afdcustomdomains/finalizers
+  - afdcustomdomains/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - cdn.azure.com
+  resources:
+  - afdendpoints
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - cdn.azure.com
+  resources:
+  - afdendpoints/finalizers
+  - afdendpoints/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - cdn.azure.com
+  resources:
+  - afdorigingroups
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - cdn.azure.com
+  resources:
+  - afdorigingroups/finalizers
+  - afdorigingroups/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - cdn.azure.com
+  resources:
+  - afdorigins
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - cdn.azure.com
+  resources:
+  - afdorigins/finalizers
+  - afdorigins/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - cdn.azure.com
+  resources:
   - profiles
   verbs:
   - create
@@ -429,6 +660,111 @@ rules:
   resources:
   - profilesendpoints/finalizers
   - profilesendpoints/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - cdn.azure.com
+  resources:
+  - routes
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - cdn.azure.com
+  resources:
+  - routes/finalizers
+  - routes/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - cdn.azure.com
+  resources:
+  - rules
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - cdn.azure.com
+  resources:
+  - rules/finalizers
+  - rules/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - cdn.azure.com
+  resources:
+  - rulesets
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - cdn.azure.com
+  resources:
+  - rulesets/finalizers
+  - rulesets/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - cdn.azure.com
+  resources:
+  - secrets
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - cdn.azure.com
+  resources:
+  - secrets/finalizers
+  - secrets/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - cdn.azure.com
+  resources:
+  - securitypolicies
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - cdn.azure.com
+  resources:
+  - securitypolicies/finalizers
+  - securitypolicies/status
   verbs:
   - get
   - patch
@@ -555,6 +891,48 @@ rules:
   resources:
   - virtualmachinescalesets/finalizers
   - virtualmachinescalesets/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - compute.azure.com
+  resources:
+  - virtualmachinescalesetsextensions
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - compute.azure.com
+  resources:
+  - virtualmachinescalesetsextensions/finalizers
+  - virtualmachinescalesetsextensions/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - compute.azure.com
+  resources:
+  - virtualmachinesextensions
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - compute.azure.com
+  resources:
+  - virtualmachinesextensions/finalizers
+  - virtualmachinesextensions/status
   verbs:
   - get
   - patch
@@ -812,6 +1190,27 @@ rules:
   resources:
   - backupvaults/finalizers
   - backupvaults/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - dataprotection.azure.com
+  resources:
+  - backupvaultsbackupinstances
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - dataprotection.azure.com
+  resources:
+  - backupvaultsbackupinstances/finalizers
+  - backupvaultsbackupinstances/status
   verbs:
   - get
   - patch
@@ -1888,6 +2287,27 @@ rules:
   - patch
   - update
 - apiGroups:
+  - monitor.azure.com
+  resources:
+  - accounts
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - monitor.azure.com
+  resources:
+  - accounts/finalizers
+  - accounts/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
   - network.azure.com
   resources:
   - applicationgateways
@@ -2875,6 +3295,27 @@ rules:
   - patch
   - update
 - apiGroups:
+  - network.frontdoor.azure.com
+  resources:
+  - webapplicationfirewallpolicies
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - network.frontdoor.azure.com
+  resources:
+  - webapplicationfirewallpolicies/finalizers
+  - webapplicationfirewallpolicies/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
   - operationalinsights.azure.com
   resources:
   - workspaces
@@ -3542,6 +3983,27 @@ rules:
   resources:
   - serversvulnerabilityassessments/finalizers
   - serversvulnerabilityassessments/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - sql.azure.com
+  resources:
+  - users
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - sql.azure.com
+  resources:
+  - users/finalizers
+  - users/status
   verbs:
   - get
   - patch

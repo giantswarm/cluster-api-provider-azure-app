@@ -22,3 +22,6 @@ spec:
     kind: ClusterIssuer
     name: selfsigned-giantswarm
   secretName: aso-webhook-service-cert
+  subject:
+    organizations:
+    - azure

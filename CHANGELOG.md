@@ -11,6 +11,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Chart: Add `azure.workload.identity/client-id` annotation to service accounts. ([#176](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/176))
 
+### Changed
+
+- Chart: Update CAPZ to v1.16.5. ([#188](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/188))
+  - Values: Update image to v1.16.5-gs-0a602128d.
+  - Chart: Update CRDs.
+  - Chart: Update webhooks.
+  - Chart: Update Azure Service Operator.
+  - Chart: Update CAPZ Controller.
+
+### Removed
+
+- Chart: Update CAPZ to v1.16.5. ([#188](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/188))
+  - Config: Remove `patches/daemonsets/capz-nmi.yaml`.
+  - Config: Remove `patches/services/azureserviceoperator-proxy-service.yaml`.
+  - Hack: Remove `rbac.authorization.k8s.io_v1_clusterrole_capz-aad-pod-id-nmi-role.yaml`.
+  - Hack: Remove `rbac.authorization.k8s.io_v1_clusterrolebinding_capz-aad-pod-id-nmi-binding.yaml`.
+
 ## [2.0.0] - 2025-05-28
 
 ### Added
