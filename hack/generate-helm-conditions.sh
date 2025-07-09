@@ -16,6 +16,11 @@ capi_only_templates+=("${HELM_DIR}/templates/rbac.authorization.k8s.io_v1_cluste
 capi_only_templates+=("${HELM_DIR}/templates/rbac.authorization.k8s.io_v1_clusterrolebinding_capz-aad-pod-id-nmi-binding.yaml")
 
 for template_file in "${capi_only_templates[@]}"; do
-    sed -i '1i {{ if eq .Values.provider.flavor "capi" }}' "$template_file"
+    if [ "$(uname)" = Darwin ]; then
+        # shellcheck disable=SC1003
+        sed -i '' '1i\'$'\n''{{ if eq .Values.provider.flavor "capi" }}'$'\n''' "$template_file"
+    else
+        sed -i '' '1i {{ if eq .Values.provider.flavor "capi" }}' "$template_file"
+    fi
     echo '{{ end }}' >> "$template_file"
 done

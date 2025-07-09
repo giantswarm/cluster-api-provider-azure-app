@@ -26,9 +26,9 @@ version="$(yq e '.image.tag' "$helm_values")"
 release_asset_filename="infrastructure-components.yaml"
 url="https://github.com/$org/$repo/releases/download/$version/$release_asset_filename"
 mkdir -p "$KUSTOMIZE_INPUT_DIR"
-curl -L "$url" -o "$KUSTOMIZE_INPUT_DIR/$release_asset_filename"
+curl -fsSL "$url" -o "$KUSTOMIZE_INPUT_DIR/$release_asset_filename"
 
-# Update kustomize patches for webhooks to add the `objectSelector` helm template 
+# Update kustomize patches for webhooks to add the `objectSelector` helm template
 
 # First clear previous watchfilter patches
 true > "$KUSTOMIZE_DIR/mutating-webhook-watchfilter.yaml"
