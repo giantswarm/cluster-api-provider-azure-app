@@ -15,7 +15,6 @@ spec:
       - v1
       - v1beta1
       clientConfig:
-        caBundle: Cg==
         service:
           name: capz-webhook-service
           namespace: "{{ .Release.Namespace }}"

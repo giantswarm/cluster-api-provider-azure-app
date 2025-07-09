@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Chart: Update webhooks.
   - Chart: Update Azure Service Operator.
   - Chart: Update CAPZ Controller.
+- Drop dummy `caBundle` field to support Kubernetes 1.31
 
 ### Removed
 
@@ -168,7 +169,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Update CAPZ version to fix private links NAT IP configuration. 
+- Update CAPZ version to fix private links NAT IP configuration.
 - Fix issues in crd-install reported by kyverno.
 
 ## [1.9.0-alpha.6] - 2023-07-21
@@ -260,7 +261,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Update upstream cluster-api-provider-azure version from v1.5.4 to v1.6.0 (see highlighted changes below)
 - add `provider.flavor` to values with default to _vintage_ , needed for all conditional rendering between capi and vintage
-- In CAPI keep the `capz-controller` secret 
+- In CAPI keep the `capz-controller` secret
 - In CAPI keep the `leader election` resources and flags
 - In CAPI keep the `NMI` RBAC resources to make it work with the `azure-ad-pod-identity-app`
 - Add `crd labels` patch to make `clusterctl move` work for CAPZ CRDs
@@ -270,7 +271,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Highlighted upstream changes that can be relevant for vintage workload clusters
 
-- `v1.6.0` [Add evictionPolicy field for spot VMs](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/2689). Vintage workload clusters support node pools that are using spot instances with Azure's default `Deallocate` eviction policy. Changing eviction policy is not possible for vintage workload clusters. 
+- `v1.6.0` [Add evictionPolicy field for spot VMs](https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/2689). Vintage workload clusters support node pools that are using spot instances with Azure's default `Deallocate` eviction policy. Changing eviction policy is not possible for vintage workload clusters.
 - `v1.6.1` - Nothing
 
 ### Highlighted upstream changes
@@ -300,7 +301,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 (with specified upstream cluster-api-provider-azure versions)
 
-- `v1.5.3` `controller-gen.kubebuilder.io/version` bump from v0.8.0 to v0.9.2. This caused removal of `Status` field and addition of `x-kubernetes-map-type` in CRDs. 
+- `v1.5.3` `controller-gen.kubebuilder.io/version` bump from v0.8.0 to v0.9.2. This caused removal of `Status` field and addition of `x-kubernetes-map-type` in CRDs.
 
 ### Upstream release notes
 
