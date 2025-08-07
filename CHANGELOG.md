@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Chart: Add `azure.workload.identity/client-id` annotation to service accounts. ([#176](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/176))
+- Chart: Add `azure.workload.identity/use: "true"` label to Azure Service Operator. ([#195](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/195))
 
 ### Changed
 
