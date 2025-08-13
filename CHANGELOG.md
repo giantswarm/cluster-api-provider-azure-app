@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.0] - 2025-08-13
+
 ### Added
 
 - Chart: Add `azure.workload.identity/client-id` annotation to service accounts. ([#176](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/176))
@@ -441,7 +443,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed label selector for webhook and manager services.
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v2.0.0...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v3.0.0...HEAD
+[3.0.0]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v2.0.0...v3.0.0
 [2.0.0]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.12.4-gs2...v2.0.0
 [1.12.4-gs2]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.12.4-gs1...v1.12.4-gs2
 [1.12.4-gs1]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.9.0-alpha.9...v1.12.4-gs1
