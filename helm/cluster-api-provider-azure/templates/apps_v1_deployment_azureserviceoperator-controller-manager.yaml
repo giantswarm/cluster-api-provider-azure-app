@@ -27,6 +27,7 @@ spec:
         aadpodidbinding: aso-manager-binding
         app.kubernetes.io/name: azure-service-operator
         app.kubernetes.io/version: v2.8.0
+        azure.workload.identity/use: "true"
         control-plane: controller-manager
     spec:
       containers:
