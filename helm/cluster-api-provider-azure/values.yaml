@@ -27,12 +27,6 @@ aso:
 provider:
   # -- Provider flavor.
   flavor: vintage
-  # -- Provider subscription ID.
-  subscriptionId: ""
-  # -- Provider tenant ID.
-  tenantId: ""
-  # -- Provider client ID.
-  clientId: ""
 
 # -- Workload cluster settings.
 workloadCluster:

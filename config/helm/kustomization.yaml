@@ -81,7 +81,6 @@ patches:
 - path: patches/secrets/capz-manager-bootstrap-credentials.yaml
 
 # Service accounts
-- path: patches/serviceaccounts/azureserviceoperator-default.yaml
 - path: patches/serviceaccounts/capz-manager.yaml
 
 # Deployments

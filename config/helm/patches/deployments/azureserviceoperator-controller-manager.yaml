@@ -5,9 +5,6 @@ metadata:
   namespace: capz-system
 spec:
   template:
-    metadata:
-      labels:
-        azure.workload.identity/use: "true"
     spec:
       containers:
       - name: manager

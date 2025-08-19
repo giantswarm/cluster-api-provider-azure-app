@@ -78,16 +78,7 @@
         "provider": {
             "type": "object",
             "properties": {
-                "clientId": {
-                    "type": "string"
-                },
                 "flavor": {
-                    "type": "string"
-                },
-                "subscriptionId": {
-                    "type": "string"
-                },
-                "tenantId": {
                     "type": "string"
                 }
             }
