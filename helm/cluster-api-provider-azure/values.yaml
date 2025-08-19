@@ -23,11 +23,6 @@ aso:
     # -- Image repository.
     name: giantswarm/azureserviceoperator
 
-# -- Provider settings.
-provider:
-  # -- Provider flavor.
-  flavor: vintage
-
 # -- Workload cluster settings.
 workloadCluster:
   # -- SSH settings.

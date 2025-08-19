@@ -94,20 +94,8 @@ patches:
 
 # Mutating webhooks
 - path: patches/mutatingwebhooks/azureserviceoperator-mutating-webhook-configuration.yaml
-- path: patches/mutatingwebhooks/capz-mutating-webhook-configuration-object-selector.yaml
-  target:
-    group: admissionregistration.k8s.io
-    version: v1
-    kind: MutatingWebhookConfiguration
-    name: capz-mutating-webhook-configuration
 - path: patches/mutatingwebhooks/capz-mutating-webhook-configuration.yaml
 
 # Validating webhooks
 - path: patches/validatingwebhooks/azureserviceoperator-validating-webhook-configuration.yaml
-- path: patches/validatingwebhooks/capz-validating-webhook-configuration-object-selector.yaml
-  target:
-    group: admissionregistration.k8s.io
-    version: v1
-    kind: ValidatingWebhookConfiguration
-    name: capz-validating-webhook-configuration
 - path: patches/validatingwebhooks/capz-validating-webhook-configuration.yaml

@@ -67,14 +67,6 @@
                 }
             }
         },
-        "provider": {
-            "type": "object",
-            "properties": {
-                "flavor": {
-                    "type": "string"
-                }
-            }
-        },
         "serviceMonitor": {
             "type": "object",
             "properties": {

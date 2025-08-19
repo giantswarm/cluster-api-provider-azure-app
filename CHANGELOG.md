@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Config: Remove default credentials.
   - Config: Remove Azure Service Operator credentials.
   - Config: Remove CAPZ Controller client ID.
+  - Config: Remove watch filter.
 
 ## [3.0.1] - 2025-08-20
 

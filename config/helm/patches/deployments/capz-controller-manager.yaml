@@ -17,11 +17,10 @@ spec:
             drop:
             - ALL
         args:
-        - --leader-elect={{- if eq .Values.provider.flavor "capi" }}true{{ else }}false{{- end }}
+        - --leader-elect
         - --diagnostics-address=0.0.0.0:8080
         - --insecure-diagnostics=true
         - --feature-gates=MachinePool=true
-        - --watch-filter={{- include "cluster-api-provider-azure.watchFilter" . }}
         - --v={{ .Values.controller.verbosity }}
         ports:
         - name: metrics
