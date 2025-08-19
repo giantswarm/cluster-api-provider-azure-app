@@ -10,12 +10,8 @@ spec:
       - name: manager
         securityContext:
           runAsNonRoot: true
-          allowPrivilegeEscalation: false
           seccompProfile:
             type: RuntimeDefault
-          capabilities:
-            drop:
-            - ALL
         args:
         - --leader-elect
         - --diagnostics-address=0.0.0.0:8080
@@ -43,4 +39,3 @@ spec:
         effect: NoSchedule
       - key: node.cluster.x-k8s.io/uninitialized
         effect: NoSchedule
-        operator: Exists
