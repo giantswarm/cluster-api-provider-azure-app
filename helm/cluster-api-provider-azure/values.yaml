@@ -33,8 +33,6 @@ provider:
   tenantId: ""
   # -- Provider client ID.
   clientId: ""
-  # -- Provider client secret.
-  clientSecret: ""
 
 # -- Workload cluster settings.
 workloadCluster:

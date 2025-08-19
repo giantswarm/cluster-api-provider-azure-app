@@ -23,27 +23,6 @@ spec:
         - --feature-gates=MachinePool=true
         - --watch-filter={{- include "cluster-api-provider-azure.watchFilter" . }}
         - --v={{ .Values.controller.verbosity }}
-        env:
-        - name: AZURE_SUBSCRIPTION_ID
-          valueFrom:
-            secretKeyRef:
-              name: credential-default
-              key: azure.azureoperator.subscriptionid
-        - name: AZURE_TENANT_ID
-          valueFrom:
-            secretKeyRef:
-              name: credential-default
-              key: azure.azureoperator.tenantid
-        - name: AZURE_CLIENT_ID
-          valueFrom:
-            secretKeyRef:
-              name: credential-default
-              key: azure.azureoperator.clientid
-        - name: AZURE_CLIENT_SECRET
-          valueFrom:
-            secretKeyRef:
-              name: credential-default
-              key: azure.azureoperator.clientsecret
         ports:
         - name: metrics
           protocol: TCP

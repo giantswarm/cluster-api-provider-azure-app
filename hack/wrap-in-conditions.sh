@@ -12,7 +12,6 @@ repository="$(realpath "$(dirname "${0}")/..")"
 # Define templates.
 template_dir="${repository}/helm/cluster-api-provider-azure/templates"
 templates=(
-    "${template_dir}/v1_secret_credential-default.yaml"
     "${template_dir}/rbac.authorization.k8s.io_v1_role_capz-leader-election-role.yaml"
     "${template_dir}/rbac.authorization.k8s.io_v1_rolebinding_capz-leader-election-rolebinding.yaml"
 )

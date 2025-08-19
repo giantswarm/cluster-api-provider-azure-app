@@ -81,9 +81,6 @@
                 "clientId": {
                     "type": "string"
                 },
-                "clientSecret": {
-                    "type": "string"
-                },
                 "flavor": {
                     "type": "string"
                 },

@@ -6,7 +6,6 @@ resources:
 - bases/infrastructure-components.yaml
 # Secrets
 - bases/secrets/cluster-api-provider-azure-ssh-sso-pub-key.yaml
-- bases/secrets/credential-default.yaml
 
 namespace: "{{ .Release.Namespace }}"
 
