@@ -12,7 +12,7 @@ image:
   # -- Image repository.
   name: giantswarm/cluster-api-azure-controller
   # -- Image tag.
-  tag: v1.16.5-gs-0a602128d
+  tag: v1.16.5-gs-9535f270d
 
 # -- Azure Service Operator settings.
 aso:
