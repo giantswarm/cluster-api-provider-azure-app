@@ -18,14 +18,6 @@
                 }
             }
         },
-        "azureWorkloadIdentity": {
-            "type": "object",
-            "properties": {
-                "clientId": {
-                    "type": "string"
-                }
-            }
-        },
         "ciliumNetworkPolicy": {
             "type": "object",
             "properties": {
@@ -71,26 +63,6 @@
                     "type": "string"
                 },
                 "commit": {
-                    "type": "string"
-                }
-            }
-        },
-        "provider": {
-            "type": "object",
-            "properties": {
-                "clientId": {
-                    "type": "string"
-                },
-                "clientSecret": {
-                    "type": "string"
-                },
-                "flavor": {
-                    "type": "string"
-                },
-                "subscriptionId": {
-                    "type": "string"
-                },
-                "tenantId": {
                     "type": "string"
                 }
             }

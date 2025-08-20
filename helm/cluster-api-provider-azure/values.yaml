@@ -23,19 +23,6 @@ aso:
     # -- Image repository.
     name: giantswarm/azureserviceoperator
 
-# -- Provider settings.
-provider:
-  # -- Provider flavor.
-  flavor: vintage
-  # -- Provider subscription ID.
-  subscriptionId: ""
-  # -- Provider tenant ID.
-  tenantId: ""
-  # -- Provider client ID.
-  clientId: ""
-  # -- Provider client secret.
-  clientSecret: ""
-
 # -- Workload cluster settings.
 workloadCluster:
   # -- SSH settings.
@@ -62,11 +49,6 @@ ciliumNetworkPolicy:
 serviceMonitor:
   # -- Whether to enable Service Monitor or not.
   enabled: true
-
-# -- Azure Workload Identity settings.
-azureWorkloadIdentity:
-  # -- Client ID.
-  clientId: ""
 
 # -- CRD install job settings.
 crds:

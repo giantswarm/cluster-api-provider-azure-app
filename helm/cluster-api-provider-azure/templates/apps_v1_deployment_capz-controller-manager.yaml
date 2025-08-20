@@ -40,34 +40,17 @@ spec:
             weight: 10
       containers:
       - args:
-        - --leader-elect={{- if eq .Values.provider.flavor "capi" }}true{{ else }}false{{-
-          end }}
+        - --leader-elect
         - --diagnostics-address=0.0.0.0:8080
         - --insecure-diagnostics=true
         - --feature-gates=MachinePool=true
-        - --watch-filter={{- include "cluster-api-provider-azure.watchFilter" . }}
         - --v={{ .Values.controller.verbosity }}
         env:
         - name: AZURE_SUBSCRIPTION_ID
           valueFrom:
             secretKeyRef:
-              key: azure.azureoperator.subscriptionid
-              name: credential-default
-        - name: AZURE_TENANT_ID
-          valueFrom:
-            secretKeyRef:
-              key: azure.azureoperator.tenantid
-              name: credential-default
-        - name: AZURE_CLIENT_ID
-          valueFrom:
-            secretKeyRef:
-              key: azure.azureoperator.clientid
-              name: credential-default
-        - name: AZURE_CLIENT_SECRET
-          valueFrom:
-            secretKeyRef:
-              key: azure.azureoperator.clientsecret
-              name: credential-default
+              key: subscription-id
+              name: capz-manager-bootstrap-credentials
         - name: NODE_NAME
           valueFrom:
             fieldRef:
@@ -134,7 +117,6 @@ spec:
         key: node-role.kubernetes.io/control-plane
       - effect: NoSchedule
         key: node.cluster.x-k8s.io/uninitialized
-        operator: Exists
       volumes:
       - name: cert
         secret:

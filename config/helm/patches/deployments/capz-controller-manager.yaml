@@ -10,40 +10,14 @@ spec:
       - name: manager
         securityContext:
           runAsNonRoot: true
-          allowPrivilegeEscalation: false
           seccompProfile:
             type: RuntimeDefault
-          capabilities:
-            drop:
-            - ALL
         args:
-        - --leader-elect={{- if eq .Values.provider.flavor "capi" }}true{{ else }}false{{- end }}
+        - --leader-elect
         - --diagnostics-address=0.0.0.0:8080
         - --insecure-diagnostics=true
         - --feature-gates=MachinePool=true
-        - --watch-filter={{- include "cluster-api-provider-azure.watchFilter" . }}
         - --v={{ .Values.controller.verbosity }}
-        env:
-        - name: AZURE_SUBSCRIPTION_ID
-          valueFrom:
-            secretKeyRef:
-              name: credential-default
-              key: azure.azureoperator.subscriptionid
-        - name: AZURE_TENANT_ID
-          valueFrom:
-            secretKeyRef:
-              name: credential-default
-              key: azure.azureoperator.tenantid
-        - name: AZURE_CLIENT_ID
-          valueFrom:
-            secretKeyRef:
-              name: credential-default
-              key: azure.azureoperator.clientid
-        - name: AZURE_CLIENT_SECRET
-          valueFrom:
-            secretKeyRef:
-              name: credential-default
-              key: azure.azureoperator.clientsecret
         ports:
         - name: metrics
           protocol: TCP
@@ -65,4 +39,3 @@ spec:
         effect: NoSchedule
       - key: node.cluster.x-k8s.io/uninitialized
         effect: NoSchedule
-        operator: Exists

@@ -37,32 +37,3 @@ Selector labels
 app.kubernetes.io/name: {{ include "cluster-api-provider-azure.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
-
-{{/*
-Watch filter templates
-
-On CAPI MCs, the controllers reconcile all CRs.
-On Vintage MCs, the controllers reconcile labeled CRs only.
-*/}}
-
-{{/*
-Webhook object selector
-*/}}
-{{- define "cluster-api-provider-azure.objectSelector" -}}
-{{- if eq .Values.provider.flavor "capi" }}
-{{- printf " %s" "{}" }}
-{{- else }}
-    matchLabels:
-      cluster.x-k8s.io/watch-filter: capi
-{{- end }}
-{{- end }}
-
-{{/*
-Controller watch filter
-*/}}
-{{- define "cluster-api-provider-azure.watchFilter" -}}
-{{- if eq .Values.provider.flavor "capi" }}
-{{- else -}}
-capi
-{{- end }}
-{{- end }}

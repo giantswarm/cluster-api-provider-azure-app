@@ -5,16 +5,12 @@ metadata:
   namespace: capz-system
 spec:
   template:
-    metadata:
-      labels:
-        azure.workload.identity/use: "true"
     spec:
       containers:
       - name: manager
         securityContext:
           runAsNonRoot: true
           runAsUser: 65532
-          allowPrivilegeEscalation: false
           seccompProfile:
             type: RuntimeDefault
           capabilities:
@@ -34,4 +30,3 @@ spec:
       - name: cert
         secret:
           secretName: aso-webhook-service-cert
-          defaultMode: 420

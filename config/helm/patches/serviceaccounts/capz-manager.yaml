@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: capz-manager
-  namespace: capz-system
-  annotations:
-    azure.workload.identity/client-id: "{{ .Values.azureWorkloadIdentity.clientId }}"

@@ -4,59 +4,6 @@
 
 Cluster API Azure controller packaged as a Giant Swarm app.
 
-## Azure credentials
-
-All Giant Swarm Azure management clusters are already configured with default
-credentials, i.e. with default service principal that is used for creating
-workload clusters by default in the same subscription where the management
-cluster is deployed.
-
-CAPZ controller deployment is configured to use those credentials, so you can
-start creating workload clusters without worrying about credentials
-configuration.
-
-Here is an excerpt from the controller deployment which demonstrates how the
-CAPZ controller is configured to use default service principal:
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  # ...
-spec:
-  # ...
-  template:
-    # ...
-    spec:
-      containers:
-      - args:
-        - --metrics-addr=127.0.0.1:8080
-        - --feature-gates=MachinePool={{ .Values.featuregates.machinepool }},AKS={{ .Values.featuregates.aks }}
-        env:
-        - name: AZURE_SUBSCRIPTION_ID
-          valueFrom:
-            secretKeyRef:
-              key: "azure.azureoperator.subscriptionid"
-              name: credential-default
-        - name: AZURE_TENANT_ID
-          valueFrom:
-            secretKeyRef:
-              key: "azure.azureoperator.tenantid"
-              name: credential-default
-        - name: AZURE_CLIENT_ID
-          valueFrom:
-            secretKeyRef:
-              key: "azure.azureoperator.clientid"
-              name: credential-default
-        - name: AZURE_CLIENT_SECRET
-          valueFrom:
-            secretKeyRef:
-              key: "azure.azureoperator.clientsecret"
-              name: credential-default
-```
-
-You can see complete code [here](https://github.com/giantswarm/cluster-api-provider-azure-app/blob/28dab15257a1155588e8f50877ebb60093637bf1/helm/cluster-api-provider-azure/templates/deployment.yaml#L36-L55).
-
 ### Multi-tenancy, aka multi-account, aka Bring Your Own Credentials (BYOC)
 
 In addition to using default credentials which use the management cluster's
