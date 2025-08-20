@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Chart: More chores. ([#200](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/200))
+  - Config: Reorder ports.
+
 ### Removed
 
 - Chart: More chores. ([#200](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/200))

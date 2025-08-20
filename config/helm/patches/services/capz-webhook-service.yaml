@@ -5,9 +5,9 @@ metadata:
   namespace: capz-system
 spec:
   ports:
-  - name: metrics
-    port: 8080
-    targetPort: metrics
   - name: webhook-server
     port: 443
     targetPort: webhook-server
+  - name: metrics
+    port: 8080
+    targetPort: metrics
