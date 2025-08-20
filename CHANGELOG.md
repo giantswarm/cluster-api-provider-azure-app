@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Chart: More chores. ([#200](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/200))
   - Config: Remove default credentials.
   - Config: Remove Azure Service Operator credentials.
+  - Config: Remove CAPZ Controller client ID.
 
 ## [3.0.1] - 2025-08-20
 

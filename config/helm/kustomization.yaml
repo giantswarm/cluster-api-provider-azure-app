@@ -80,9 +80,6 @@ patches:
 - path: patches/secrets/aso-controller-settings.yaml
 - path: patches/secrets/capz-manager-bootstrap-credentials.yaml
 
-# Service accounts
-- path: patches/serviceaccounts/capz-manager.yaml
-
 # Deployments
 - path: patches/deployments/azureserviceoperator-controller-manager.yaml
 - path: patches/deployments/capz-controller-manager.yaml
