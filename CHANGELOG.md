@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.2] - 2025-08-20
+
 ### Changed
 
 - Chart: More chores. ([#200](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/200))
@@ -464,7 +466,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed label selector for webhook and manager services.
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v3.0.1...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v3.0.2...HEAD
+[3.0.2]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v3.0.1...v3.0.2
 [3.0.1]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v3.0.0...v3.0.1
 [3.0.0]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v2.0.0...v3.0.0
 [2.0.0]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v1.12.4-gs2...v2.0.0
