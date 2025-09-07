@@ -1,0 +1,8 @@
+# -- Image settings.
+image:
+  # -- Image registry.
+  registry: gsoci.azurecr.io
+  # -- Image repository.
+  name: giantswarm/docker-kubectl
+  # -- Image tag.
+  tag: 1.33.4

@@ -10,7 +10,7 @@ set -o errexit -o nounset -o pipefail
 repository="$(realpath "$(dirname "${0}")/..")"
 
 # Remove existing CRDs.
-rm -f "${repository}/helm/cluster-api-provider-azure/files/infrastructure/bases/"*".yaml"
+rm -f "${repository}/helm/cluster-api-provider-azure/charts/crd-install/files/infrastructure/bases/"*".yaml"
 
 # Iterate generated CRDs.
 for crd_path in "${repository}/helm/cluster-api-provider-azure/templates/apiextensions.k8s.io_v1_customresourcedefinition_"*".yaml"
@@ -20,5 +20,5 @@ do
     crd_file="${crd_file#apiextensions.k8s.io_v1_customresourcedefinition_}"
 
     # Move generated CRD.
-    mv "${crd_path}" "${repository}/helm/cluster-api-provider-azure/files/infrastructure/bases/${crd_file}"
+    mv "${crd_path}" "${repository}/helm/cluster-api-provider-azure/charts/crd-install/files/infrastructure/bases/${crd_file}"
 done
