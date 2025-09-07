@@ -17,8 +17,6 @@ labels:
     app.kubernetes.io/instance: "{{ .Release.Name }}"
     app.kubernetes.io/version: "{{ .Chart.AppVersion }}"
     app.kubernetes.io/managed-by: "{{ .Release.Service }}"
-    application.giantswarm.io/branch: "{{ .Values.project.branch }}"
-    application.giantswarm.io/commit: "{{ .Values.project.commit }}"
     application.giantswarm.io/team: "{{ index .Chart.Annotations \"application.giantswarm.io/team\" }}"
 
 images:
