@@ -20,6 +20,9 @@ resources:
   - bases/azuremanagedmachinepooltemplates.infrastructure.cluster.x-k8s.io.yaml
   - bases/bastionhosts.network.azure.com.yaml
   - bases/extensions.kubernetesconfiguration.azure.com.yaml
+  - bases/fleetsmembers.containerservice.azure.com.yaml
+  - bases/managedclusters.containerservice.azure.com.yaml
+  - bases/managedclustersagentpools.containerservice.azure.com.yaml
   - bases/natgateways.network.azure.com.yaml
   - bases/privateendpoints.network.azure.com.yaml
   - bases/resourcegroups.resources.azure.com.yaml
@@ -164,6 +167,162 @@ patches:
       version: v1
       kind: CustomResourceDefinition
       name: extensions.kubernetesconfiguration.azure.com
+  - path: patches/versions/v1api20230315preview/fleetsmembers.containerservice.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: fleetsmembers.containerservice.azure.com
+  - path: patches/versions/v1api20230315previewstorage/fleetsmembers.containerservice.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: fleetsmembers.containerservice.azure.com
+  - path: patches/versions/v1api20210501/managedclusters.containerservice.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: managedclusters.containerservice.azure.com
+  - path: patches/versions/v1api20210501storage/managedclusters.containerservice.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: managedclusters.containerservice.azure.com
+  - path: patches/versions/v1api20230201/managedclusters.containerservice.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: managedclusters.containerservice.azure.com
+  - path: patches/versions/v1api20230201storage/managedclusters.containerservice.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: managedclusters.containerservice.azure.com
+  - path: patches/versions/v1api20230202preview/managedclusters.containerservice.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: managedclusters.containerservice.azure.com
+  - path: patches/versions/v1api20230202previewstorage/managedclusters.containerservice.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: managedclusters.containerservice.azure.com
+  - path: patches/versions/v1api20231001/managedclusters.containerservice.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: managedclusters.containerservice.azure.com
+  - path: patches/versions/v1api20231001storage/managedclusters.containerservice.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: managedclusters.containerservice.azure.com
+  - path: patches/versions/v1api20231102preview/managedclusters.containerservice.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: managedclusters.containerservice.azure.com
+  - path: patches/versions/v1api20231102previewstorage/managedclusters.containerservice.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: managedclusters.containerservice.azure.com
+  - path: patches/versions/v1api20240402preview/managedclusters.containerservice.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: managedclusters.containerservice.azure.com
+  - path: patches/versions/v1api20240402previewstorage/managedclusters.containerservice.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: managedclusters.containerservice.azure.com
+  - path: patches/versions/v1api20210501/managedclustersagentpools.containerservice.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: managedclustersagentpools.containerservice.azure.com
+  - path: patches/versions/v1api20210501storage/managedclustersagentpools.containerservice.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: managedclustersagentpools.containerservice.azure.com
+  - path: patches/versions/v1api20230201/managedclustersagentpools.containerservice.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: managedclustersagentpools.containerservice.azure.com
+  - path: patches/versions/v1api20230201storage/managedclustersagentpools.containerservice.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: managedclustersagentpools.containerservice.azure.com
+  - path: patches/versions/v1api20230202preview/managedclustersagentpools.containerservice.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: managedclustersagentpools.containerservice.azure.com
+  - path: patches/versions/v1api20230202previewstorage/managedclustersagentpools.containerservice.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: managedclustersagentpools.containerservice.azure.com
+  - path: patches/versions/v1api20231001/managedclustersagentpools.containerservice.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: managedclustersagentpools.containerservice.azure.com
+  - path: patches/versions/v1api20231001storage/managedclustersagentpools.containerservice.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: managedclustersagentpools.containerservice.azure.com
+  - path: patches/versions/v1api20231102preview/managedclustersagentpools.containerservice.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: managedclustersagentpools.containerservice.azure.com
+  - path: patches/versions/v1api20231102previewstorage/managedclustersagentpools.containerservice.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: managedclustersagentpools.containerservice.azure.com
+  - path: patches/versions/v1api20240402preview/managedclustersagentpools.containerservice.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: managedclustersagentpools.containerservice.azure.com
+  - path: patches/versions/v1api20240402previewstorage/managedclustersagentpools.containerservice.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: managedclustersagentpools.containerservice.azure.com
   - path: patches/versions/v1api20220701/natgateways.network.azure.com.yaml
     target:
       group: apiextensions.k8s.io
