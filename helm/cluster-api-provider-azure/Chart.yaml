@@ -8,3 +8,7 @@ icon: https://s.giantswarm.io/app-icons/giantswarm/1/dark.svg
 annotations:
   application.giantswarm.io/team: phoenix
   ui.giantswarm.io/logo: https://s.giantswarm.io/app-icons/giantswarm/1/dark.svg
+dependencies:
+- name: crd-install
+  version: 1.0.0
+  condition: crds.install

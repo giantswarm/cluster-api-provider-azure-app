@@ -1,0 +1,65 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "cluster-api-provider-azure.crd-install.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "cluster-api-provider-azure.crd-install.labels" . | nindent 4 }}
+  annotations:
+    {{- include "cluster-api-provider-azure.crd-install.annotations" . | nindent 4 }}
+spec:
+  template:
+    metadata:
+      labels:
+        {{- include "cluster-api-provider-azure.crd-install.labels" . | nindent 8 }}
+    spec:
+      serviceAccountName: {{ include "cluster-api-provider-azure.crd-install.fullname" . }}
+      containers:
+      - name: kubectl
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 1000
+          allowPrivilegeEscalation: false
+          seccompProfile:
+            type: RuntimeDefault
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
+        image: "{{ .Values.image.registry }}/{{ .Values.image.name }}:{{ .Values.image.tag }}"
+        args:
+        - apply
+        - --kustomize
+        - /files
+        - --server-side=true
+        - --force-conflicts=true
+        volumeMounts:
+        {{- range $path, $_ := .Files.Glob "files/**.yaml" }}
+        - name: {{ printf "%s-%s" (dir $path | base) (base $path | trimSuffix ".yaml" | replace "." "-") | trunc 63 | trimSuffix "-" }}
+          subPath: {{ base $path }}
+          mountPath: /{{ $path }}
+          readOnly: true
+        {{- end }}
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+      volumes:
+      {{- range $path, $_ := .Files.Glob "files/**.yaml" }}
+      - name: {{ printf "%s-%s" (dir $path | base) (base $path | trimSuffix ".yaml" | replace "." "-") | trunc 63 | trimSuffix "-" }}
+        configMap:
+          name: {{ include "cluster-api-provider-azure.crd-install.fullname" $ }}-{{ dir $path | base }}-{{ base $path | trimSuffix ".yaml" }}
+          items:
+          - key: content
+            path: {{ base $path }}
+      {{- end }}
+      tolerations:
+      - key: node-role.kubernetes.io/control-plane
+        effect: NoSchedule
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
+      restartPolicy: Never
+  backoffLimit: 4

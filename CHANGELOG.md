@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Chart: Include all CRDs. ([#207](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/207))
+  - Chart: Add `*.containerservice.azure.com` CRDs.
+
+### Changed
+
+- Chart: Include all CRDs. ([#207](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/207))
+  - Chart: Extract `crd-install` sub chart.
+
+### Removed
+
+- Chart: Include all CRDs. ([#207](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/207))
+  - Values: Remove `project`.
+
 ## [3.0.2] - 2025-08-20
 
 ### Changed
