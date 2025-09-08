@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.3] - 2025-09-08
+
 ### Added
 
 - Chart: Include all CRDs. ([#207](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/207))
@@ -481,7 +483,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed label selector for webhook and manager services.
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v3.0.2...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v3.0.3...HEAD
+[3.0.3]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v3.0.2...v3.0.3
 [3.0.2]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v3.0.1...v3.0.2
 [3.0.1]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v3.0.0...v3.0.1
 [3.0.0]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v2.0.0...v3.0.0
