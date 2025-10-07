@@ -1,5 +1,5 @@
 - op: replace
-  path: /spec/versions/8/schema
+  path: /spec/versions/6/schema
   value:
     openAPIV3Schema:
       description: |-
@@ -30,9 +30,6 @@
               description: 'ArtifactStreamingProfile: Configuration for using artifact streaming on AKS.'
               properties:
                 enabled:
-                  description: |-
-                    Enabled: Artifact streaming speeds up the cold-start of containers on a node through on-demand image loading. To use
-                    this feature, container images must also enable artifact streaming on ACR. If not specified, the default is false.
                   type: boolean
               type: object
             availabilityZones:
@@ -81,7 +78,7 @@
                 a snapshot.
               properties:
                 sourceResourceReference:
-                  description: 'SourceResourceReference: This is the ARM ID of the source object to be used to create the target object.'
+                  description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
                   properties:
                     armId:
                       description: |-
@@ -145,11 +142,6 @@
               description: 'GpuProfile: The GPU settings of an agent pool.'
               properties:
                 installGPUDriver:
-                  description: |-
-                    InstallGPUDriver: The default value is true when the vmSize of the agent pool contains a GPU, false otherwise. GPU
-                    Driver Installation can only be set true when VM has an associated GPU resource. Setting this field to false prevents
-                    automatic GPU driver installation. In that case, in order for the GPU to be usable, the user must perform GPU driver
-                    installation themselves.
                   type: boolean
               type: object
             hostGroupReference:
@@ -179,50 +171,29 @@
               description: 'KubeletConfig: The Kubelet configuration on the agent pool nodes.'
               properties:
                 allowedUnsafeSysctls:
-                  description: 'AllowedUnsafeSysctls: Allowed list of unsafe sysctls or unsafe sysctl patterns (ending in `*`).'
                   items:
                     type: string
                   type: array
                 containerLogMaxFiles:
-                  description: |-
-                    ContainerLogMaxFiles: The maximum number of container log files that can be present for a container. The number must be
-                    ≥ 2.
                   minimum: 2
                   type: integer
                 containerLogMaxSizeMB:
-                  description: 'ContainerLogMaxSizeMB: The maximum size (e.g. 10Mi) of container log file before it is rotated.'
                   type: integer
                 cpuCfsQuota:
-                  description: 'CpuCfsQuota: The default is true.'
                   type: boolean
                 cpuCfsQuotaPeriod:
-                  description: |-
-                    CpuCfsQuotaPeriod: The default is '100ms.' Valid values are a sequence of decimal numbers with an optional fraction and
-                    a unit suffix. For example: '300ms', '2h45m'. Supported units are 'ns', 'us', 'ms', 's', 'm', and 'h'.
                   type: string
                 cpuManagerPolicy:
-                  description: |-
-                    CpuManagerPolicy: The default is 'none'. See [Kubernetes CPU management
-                    policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/#cpu-management-policies) for more
-                    information. Allowed values are 'none' and 'static'.
                   type: string
                 failSwapOn:
-                  description: 'FailSwapOn: If set to true it will make the Kubelet fail to start if swap is enabled on the node.'
                   type: boolean
                 imageGcHighThreshold:
-                  description: 'ImageGcHighThreshold: To disable image garbage collection, set to 100. The default is 85%'
                   type: integer
                 imageGcLowThreshold:
-                  description: 'ImageGcLowThreshold: This cannot be set higher than imageGcHighThreshold. The default is 80%'
                   type: integer
                 podMaxPids:
-                  description: 'PodMaxPids: The maximum number of processes per pod.'
                   type: integer
                 topologyManagerPolicy:
-                  description: |-
-                    TopologyManagerPolicy: For more information see [Kubernetes Topology
-                    Manager](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager). The default is 'none'. Allowed values
-                    are 'none', 'best-effort', 'restricted', and 'single-numa-node'.
                   type: string
               type: object
             kubeletDiskType:
@@ -237,113 +208,75 @@
               description: 'LinuxOSConfig: The OS configuration of Linux agent nodes.'
               properties:
                 swapFileSizeMB:
-                  description: 'SwapFileSizeMB: The size in MB of a swap file that will be created on each node.'
                   type: integer
                 sysctls:
-                  description: 'Sysctls: Sysctl settings for Linux agent nodes.'
                   properties:
                     fsAioMaxNr:
-                      description: 'FsAioMaxNr: Sysctl setting fs.aio-max-nr.'
                       type: integer
                     fsFileMax:
-                      description: 'FsFileMax: Sysctl setting fs.file-max.'
                       type: integer
                     fsInotifyMaxUserWatches:
-                      description: 'FsInotifyMaxUserWatches: Sysctl setting fs.inotify.max_user_watches.'
                       type: integer
                     fsNrOpen:
-                      description: 'FsNrOpen: Sysctl setting fs.nr_open.'
                       type: integer
                     kernelThreadsMax:
-                      description: 'KernelThreadsMax: Sysctl setting kernel.threads-max.'
                       type: integer
                     netCoreNetdevMaxBacklog:
-                      description: 'NetCoreNetdevMaxBacklog: Sysctl setting net.core.netdev_max_backlog.'
                       type: integer
                     netCoreOptmemMax:
-                      description: 'NetCoreOptmemMax: Sysctl setting net.core.optmem_max.'
                       type: integer
                     netCoreRmemDefault:
-                      description: 'NetCoreRmemDefault: Sysctl setting net.core.rmem_default.'
                       type: integer
                     netCoreRmemMax:
-                      description: 'NetCoreRmemMax: Sysctl setting net.core.rmem_max.'
                       type: integer
                     netCoreSomaxconn:
-                      description: 'NetCoreSomaxconn: Sysctl setting net.core.somaxconn.'
                       type: integer
                     netCoreWmemDefault:
-                      description: 'NetCoreWmemDefault: Sysctl setting net.core.wmem_default.'
                       type: integer
                     netCoreWmemMax:
-                      description: 'NetCoreWmemMax: Sysctl setting net.core.wmem_max.'
                       type: integer
                     netIpv4IpLocalPortRange:
-                      description: 'NetIpv4IpLocalPortRange: Sysctl setting net.ipv4.ip_local_port_range.'
                       type: string
                     netIpv4NeighDefaultGcThresh1:
-                      description: 'NetIpv4NeighDefaultGcThresh1: Sysctl setting net.ipv4.neigh.default.gc_thresh1.'
                       type: integer
                     netIpv4NeighDefaultGcThresh2:
-                      description: 'NetIpv4NeighDefaultGcThresh2: Sysctl setting net.ipv4.neigh.default.gc_thresh2.'
                       type: integer
                     netIpv4NeighDefaultGcThresh3:
-                      description: 'NetIpv4NeighDefaultGcThresh3: Sysctl setting net.ipv4.neigh.default.gc_thresh3.'
                       type: integer
                     netIpv4TcpFinTimeout:
-                      description: 'NetIpv4TcpFinTimeout: Sysctl setting net.ipv4.tcp_fin_timeout.'
                       type: integer
                     netIpv4TcpKeepaliveProbes:
-                      description: 'NetIpv4TcpKeepaliveProbes: Sysctl setting net.ipv4.tcp_keepalive_probes.'
                       type: integer
                     netIpv4TcpKeepaliveTime:
-                      description: 'NetIpv4TcpKeepaliveTime: Sysctl setting net.ipv4.tcp_keepalive_time.'
                       type: integer
                     netIpv4TcpMaxSynBacklog:
-                      description: 'NetIpv4TcpMaxSynBacklog: Sysctl setting net.ipv4.tcp_max_syn_backlog.'
                       type: integer
                     netIpv4TcpMaxTwBuckets:
-                      description: 'NetIpv4TcpMaxTwBuckets: Sysctl setting net.ipv4.tcp_max_tw_buckets.'
                       type: integer
                     netIpv4TcpTwReuse:
-                      description: 'NetIpv4TcpTwReuse: Sysctl setting net.ipv4.tcp_tw_reuse.'
                       type: boolean
                     netIpv4TcpkeepaliveIntvl:
-                      description: 'NetIpv4TcpkeepaliveIntvl: Sysctl setting net.ipv4.tcp_keepalive_intvl.'
                       maximum: 90
                       minimum: 10
                       type: integer
                     netNetfilterNfConntrackBuckets:
-                      description: 'NetNetfilterNfConntrackBuckets: Sysctl setting net.netfilter.nf_conntrack_buckets.'
                       maximum: 524288
                       minimum: 65536
                       type: integer
                     netNetfilterNfConntrackMax:
-                      description: 'NetNetfilterNfConntrackMax: Sysctl setting net.netfilter.nf_conntrack_max.'
                       maximum: 2097152
                       minimum: 131072
                       type: integer
                     vmMaxMapCount:
-                      description: 'VmMaxMapCount: Sysctl setting vm.max_map_count.'
                       type: integer
                     vmSwappiness:
-                      description: 'VmSwappiness: Sysctl setting vm.swappiness.'
                       type: integer
                     vmVfsCachePressure:
-                      description: 'VmVfsCachePressure: Sysctl setting vm.vfs_cache_pressure.'
                       type: integer
                   type: object
                 transparentHugePageDefrag:
-                  description: |-
-                    TransparentHugePageDefrag: Valid values are 'always', 'defer', 'defer+madvise', 'madvise' and 'never'. The default is
-                    'madvise'. For more information see [Transparent
-                    Hugepages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge).
                   type: string
                 transparentHugePageEnabled:
-                  description: |-
-                    TransparentHugePageEnabled: Valid values are 'always', 'madvise', and 'never'. The default is 'always'. For more
-                    information see [Transparent
-                    Hugepages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge).
                   type: string
               type: object
             maxCount:
@@ -373,26 +306,17 @@
               description: 'NetworkProfile: Network-related settings of an agent pool.'
               properties:
                 allowedHostPorts:
-                  description: 'AllowedHostPorts: The port ranges that are allowed to access. The specified ranges are allowed to overlap.'
                   items:
-                    description: The port range.
                     properties:
                       portEnd:
-                        description: |-
-                          PortEnd: The maximum port that is included in the range. It should be ranged from 1 to 65535, and be greater than or
-                          equal to portStart.
                         maximum: 65535
                         minimum: 1
                         type: integer
                       portStart:
-                        description: |-
-                          PortStart: The minimum port that is included in the range. It should be ranged from 1 to 65535, and be less than or
-                          equal to portEnd.
                         maximum: 65535
                         minimum: 1
                         type: integer
                       protocol:
-                        description: 'Protocol: The network protocol of the port.'
                         enum:
                           - TCP
                           - UDP
@@ -400,9 +324,6 @@
                     type: object
                   type: array
                 applicationSecurityGroupsReferences:
-                  description: |-
-                    ApplicationSecurityGroupsReferences: The IDs of the application security groups which agent pool will associate when
-                    created.
                   items:
                     description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
                     properties:
@@ -425,15 +346,11 @@
                     type: object
                   type: array
                 nodePublicIPTags:
-                  description: 'NodePublicIPTags: IPTags of instance-level public IPs.'
                   items:
-                    description: Contains the IPTag associated with the object.
                     properties:
                       ipTagType:
-                        description: 'IpTagType: The IP tag type. Example: RoutingPreference.'
                         type: string
                       tag:
-                        description: 'Tag: The value of the IP tag associated with the public IP. Example: Internet.'
                         type: string
                     type: object
                   type: array
@@ -480,6 +397,72 @@
               items:
                 type: string
               type: array
+            operatorSpec:
+              description: |-
+                OperatorSpec: The specification for configuring operator behavior. This field is interpreted by the operator and not
+                passed directly to Azure
+              properties:
+                configMapExpressions:
+                  description: 'ConfigMapExpressions: configures where to place operator written dynamic ConfigMaps (created with CEL expressions).'
+                  items:
+                    description: |-
+                      DestinationExpression is a CEL expression and a destination to store the result in. The destination may
+                      be a secret or a configmap. The value of the expression is stored at the specified location in
+                      the destination.
+                    properties:
+                      key:
+                        description: |-
+                          Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string
+                          this is required to identify what key to write to. If the CEL expression in Value returns a map[string]string
+                          Key must not be set, instead the keys written will be determined dynamically based on the keys of the resulting
+                          map[string]string.
+                        type: string
+                      name:
+                        description: |-
+                          Name is the name of the Kubernetes configmap or secret to write to.
+                          The configmap or secret will be created in the same namespace as the resource.
+                        type: string
+                      value:
+                        description: |-
+                          Value is a CEL expression. The CEL expression may return a string or a map[string]string. For more information
+                          on CEL in ASO see https://azure.github.io/azure-service-operator/guide/expressions/
+                        type: string
+                    required:
+                      - name
+                      - value
+                    type: object
+                  type: array
+                secretExpressions:
+                  description: 'SecretExpressions: configures where to place operator written dynamic secrets (created with CEL expressions).'
+                  items:
+                    description: |-
+                      DestinationExpression is a CEL expression and a destination to store the result in. The destination may
+                      be a secret or a configmap. The value of the expression is stored at the specified location in
+                      the destination.
+                    properties:
+                      key:
+                        description: |-
+                          Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string
+                          this is required to identify what key to write to. If the CEL expression in Value returns a map[string]string
+                          Key must not be set, instead the keys written will be determined dynamically based on the keys of the resulting
+                          map[string]string.
+                        type: string
+                      name:
+                        description: |-
+                          Name is the name of the Kubernetes configmap or secret to write to.
+                          The configmap or secret will be created in the same namespace as the resource.
+                        type: string
+                      value:
+                        description: |-
+                          Value is a CEL expression. The CEL expression may return a string or a map[string]string. For more information
+                          on CEL in ASO see https://azure.github.io/azure-service-operator/guide/expressions/
+                        type: string
+                    required:
+                      - name
+                      - value
+                    type: object
+                  type: array
+              type: object
             orchestratorVersion:
               description: |-
                 OrchestratorVersion: Both patch version <major.minor.patch> and <major.minor> are supported. When <major.minor> is
@@ -566,7 +549,6 @@
                 be stopped if it is Running and provisioning state is Succeeded
               properties:
                 code:
-                  description: 'Code: Tells whether the cluster is Running or Stopped'
                   enum:
                     - Running
                     - Stopped
@@ -616,17 +598,10 @@
               description: 'SecurityProfile: The security settings of an agent pool.'
               properties:
                 enableSecureBoot:
-                  description: |-
-                    EnableSecureBoot: Secure Boot is a feature of Trusted Launch which ensures that only signed operating systems and
-                    drivers can boot. For more details, see aka.ms/aks/trustedlaunch.  If not specified, the default is false.
                   type: boolean
                 enableVTPM:
-                  description: |-
-                    EnableVTPM: vTPM is a Trusted Launch feature for configuring a dedicated secure vault for keys and measurements held
-                    locally on the node. For more details, see aka.ms/aks/trustedlaunch. If not specified, the default is false.
                   type: boolean
                 sshAccess:
-                  description: 'SshAccess: SSH access method of an agent pool.'
                   enum:
                     - Disabled
                     - LocalUser
@@ -654,37 +629,22 @@
               description: 'UpgradeSettings: Settings for upgrading the agentpool'
               properties:
                 drainTimeoutInMinutes:
-                  description: |-
-                    DrainTimeoutInMinutes: The amount of time (in minutes) to wait on eviction of pods and graceful termination per node.
-                    This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails. If not
-                    specified, the default is 30 minutes.
                   maximum: 1440
                   minimum: 1
                   type: integer
                 maxSurge:
-                  description: |-
-                    MaxSurge: This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it
-                    is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded
-                    up. If not specified, the default is 1. For more information, including best practices, see:
-                    https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
                   type: string
                 nodeSoakDurationInMinutes:
-                  description: |-
-                    NodeSoakDurationInMinutes: The amount of time (in minutes) to wait after draining a node and before reimaging it and
-                    moving on to next node. If not specified, the default is 0 minutes.
                   maximum: 30
                   minimum: 0
                   type: integer
               type: object
             virtualMachineNodesStatus:
               items:
-                description: Current status on a group of nodes of the same vm size.
                 properties:
                   count:
-                    description: 'Count: Number of nodes.'
                     type: integer
                   size:
-                    description: 'Size: The VM size of the agents used to host this group of nodes.'
                     type: string
                 type: object
               type: array
@@ -692,22 +652,15 @@
               description: 'VirtualMachinesProfile: Specifications on VirtualMachines agent pool.'
               properties:
                 scale:
-                  description: 'Scale: Specifications on how to scale a VirtualMachines agent pool.'
                   properties:
                     manual:
-                      description: 'Manual: Specifications on how to scale the VirtualMachines agent pool to a fixed size.'
                       items:
-                        description: Specifications on number of machines.
                         properties:
                           count:
-                            description: 'Count: Number of nodes.'
                             maximum: 1000
                             minimum: 0
                             type: integer
                           sizes:
-                            description: |-
-                              Sizes: The list of allowed vm sizes. AKS will use the first available one when scaling. If a VM size is unavailable
-                              (e.g. due to quota or regional capacity reasons), AKS will use the next size.
                             items:
                               type: string
                             type: array
@@ -748,9 +701,6 @@
               description: 'WindowsProfile: The Windows agent pool''s specific profile.'
               properties:
                 disableOutboundNat:
-                  description: |-
-                    DisableOutboundNat: The default value is false. Outbound NAT can only be disabled if the cluster outboundType is NAT
-                    Gateway and the Windows agent pool does not have node public IP enabled.
                   type: boolean
               type: object
             workloadRuntime:
@@ -769,9 +719,6 @@
               description: 'ArtifactStreamingProfile: Configuration for using artifact streaming on AKS.'
               properties:
                 enabled:
-                  description: |-
-                    Enabled: Artifact streaming speeds up the cold-start of containers on a node through on-demand image loading. To use
-                    this feature, container images must also enable artifact streaming on ACR. If not specified, the default is false.
                   type: boolean
               type: object
             availabilityZones:
@@ -839,7 +786,6 @@
                 a snapshot.
               properties:
                 sourceResourceId:
-                  description: 'SourceResourceId: This is the ARM ID of the source object to be used to create the target object.'
                   type: string
               type: object
             currentOrchestratorVersion:
@@ -886,11 +832,6 @@
               description: 'GpuProfile: The GPU settings of an agent pool.'
               properties:
                 installGPUDriver:
-                  description: |-
-                    InstallGPUDriver: The default value is true when the vmSize of the agent pool contains a GPU, false otherwise. GPU
-                    Driver Installation can only be set true when VM has an associated GPU resource. Setting this field to false prevents
-                    automatic GPU driver installation. In that case, in order for the GPU to be usable, the user must perform GPU driver
-                    installation themselves.
                   type: boolean
               type: object
             hostGroupID:
@@ -906,49 +847,28 @@
               description: 'KubeletConfig: The Kubelet configuration on the agent pool nodes.'
               properties:
                 allowedUnsafeSysctls:
-                  description: 'AllowedUnsafeSysctls: Allowed list of unsafe sysctls or unsafe sysctl patterns (ending in `*`).'
                   items:
                     type: string
                   type: array
                 containerLogMaxFiles:
-                  description: |-
-                    ContainerLogMaxFiles: The maximum number of container log files that can be present for a container. The number must be
-                    ≥ 2.
                   type: integer
                 containerLogMaxSizeMB:
-                  description: 'ContainerLogMaxSizeMB: The maximum size (e.g. 10Mi) of container log file before it is rotated.'
                   type: integer
                 cpuCfsQuota:
-                  description: 'CpuCfsQuota: The default is true.'
                   type: boolean
                 cpuCfsQuotaPeriod:
-                  description: |-
-                    CpuCfsQuotaPeriod: The default is '100ms.' Valid values are a sequence of decimal numbers with an optional fraction and
-                    a unit suffix. For example: '300ms', '2h45m'. Supported units are 'ns', 'us', 'ms', 's', 'm', and 'h'.
                   type: string
                 cpuManagerPolicy:
-                  description: |-
-                    CpuManagerPolicy: The default is 'none'. See [Kubernetes CPU management
-                    policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/#cpu-management-policies) for more
-                    information. Allowed values are 'none' and 'static'.
                   type: string
                 failSwapOn:
-                  description: 'FailSwapOn: If set to true it will make the Kubelet fail to start if swap is enabled on the node.'
                   type: boolean
                 imageGcHighThreshold:
-                  description: 'ImageGcHighThreshold: To disable image garbage collection, set to 100. The default is 85%'
                   type: integer
                 imageGcLowThreshold:
-                  description: 'ImageGcLowThreshold: This cannot be set higher than imageGcHighThreshold. The default is 80%'
                   type: integer
                 podMaxPids:
-                  description: 'PodMaxPids: The maximum number of processes per pod.'
                   type: integer
                 topologyManagerPolicy:
-                  description: |-
-                    TopologyManagerPolicy: For more information see [Kubernetes Topology
-                    Manager](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager). The default is 'none'. Allowed values
-                    are 'none', 'best-effort', 'restricted', and 'single-numa-node'.
                   type: string
               type: object
             kubeletDiskType:
@@ -960,107 +880,69 @@
               description: 'LinuxOSConfig: The OS configuration of Linux agent nodes.'
               properties:
                 swapFileSizeMB:
-                  description: 'SwapFileSizeMB: The size in MB of a swap file that will be created on each node.'
                   type: integer
                 sysctls:
-                  description: 'Sysctls: Sysctl settings for Linux agent nodes.'
                   properties:
                     fsAioMaxNr:
-                      description: 'FsAioMaxNr: Sysctl setting fs.aio-max-nr.'
                       type: integer
                     fsFileMax:
-                      description: 'FsFileMax: Sysctl setting fs.file-max.'
                       type: integer
                     fsInotifyMaxUserWatches:
-                      description: 'FsInotifyMaxUserWatches: Sysctl setting fs.inotify.max_user_watches.'
                       type: integer
                     fsNrOpen:
-                      description: 'FsNrOpen: Sysctl setting fs.nr_open.'
                       type: integer
                     kernelThreadsMax:
-                      description: 'KernelThreadsMax: Sysctl setting kernel.threads-max.'
                       type: integer
                     netCoreNetdevMaxBacklog:
-                      description: 'NetCoreNetdevMaxBacklog: Sysctl setting net.core.netdev_max_backlog.'
                       type: integer
                     netCoreOptmemMax:
-                      description: 'NetCoreOptmemMax: Sysctl setting net.core.optmem_max.'
                       type: integer
                     netCoreRmemDefault:
-                      description: 'NetCoreRmemDefault: Sysctl setting net.core.rmem_default.'
                       type: integer
                     netCoreRmemMax:
-                      description: 'NetCoreRmemMax: Sysctl setting net.core.rmem_max.'
                       type: integer
                     netCoreSomaxconn:
-                      description: 'NetCoreSomaxconn: Sysctl setting net.core.somaxconn.'
                       type: integer
                     netCoreWmemDefault:
-                      description: 'NetCoreWmemDefault: Sysctl setting net.core.wmem_default.'
                       type: integer
                     netCoreWmemMax:
-                      description: 'NetCoreWmemMax: Sysctl setting net.core.wmem_max.'
                       type: integer
                     netIpv4IpLocalPortRange:
-                      description: 'NetIpv4IpLocalPortRange: Sysctl setting net.ipv4.ip_local_port_range.'
                       type: string
                     netIpv4NeighDefaultGcThresh1:
-                      description: 'NetIpv4NeighDefaultGcThresh1: Sysctl setting net.ipv4.neigh.default.gc_thresh1.'
                       type: integer
                     netIpv4NeighDefaultGcThresh2:
-                      description: 'NetIpv4NeighDefaultGcThresh2: Sysctl setting net.ipv4.neigh.default.gc_thresh2.'
                       type: integer
                     netIpv4NeighDefaultGcThresh3:
-                      description: 'NetIpv4NeighDefaultGcThresh3: Sysctl setting net.ipv4.neigh.default.gc_thresh3.'
                       type: integer
                     netIpv4TcpFinTimeout:
-                      description: 'NetIpv4TcpFinTimeout: Sysctl setting net.ipv4.tcp_fin_timeout.'
                       type: integer
                     netIpv4TcpKeepaliveProbes:
-                      description: 'NetIpv4TcpKeepaliveProbes: Sysctl setting net.ipv4.tcp_keepalive_probes.'
                       type: integer
                     netIpv4TcpKeepaliveTime:
-                      description: 'NetIpv4TcpKeepaliveTime: Sysctl setting net.ipv4.tcp_keepalive_time.'
                       type: integer
                     netIpv4TcpMaxSynBacklog:
-                      description: 'NetIpv4TcpMaxSynBacklog: Sysctl setting net.ipv4.tcp_max_syn_backlog.'
                       type: integer
                     netIpv4TcpMaxTwBuckets:
-                      description: 'NetIpv4TcpMaxTwBuckets: Sysctl setting net.ipv4.tcp_max_tw_buckets.'
                       type: integer
                     netIpv4TcpTwReuse:
-                      description: 'NetIpv4TcpTwReuse: Sysctl setting net.ipv4.tcp_tw_reuse.'
                       type: boolean
                     netIpv4TcpkeepaliveIntvl:
-                      description: 'NetIpv4TcpkeepaliveIntvl: Sysctl setting net.ipv4.tcp_keepalive_intvl.'
                       type: integer
                     netNetfilterNfConntrackBuckets:
-                      description: 'NetNetfilterNfConntrackBuckets: Sysctl setting net.netfilter.nf_conntrack_buckets.'
                       type: integer
                     netNetfilterNfConntrackMax:
-                      description: 'NetNetfilterNfConntrackMax: Sysctl setting net.netfilter.nf_conntrack_max.'
                       type: integer
                     vmMaxMapCount:
-                      description: 'VmMaxMapCount: Sysctl setting vm.max_map_count.'
                       type: integer
                     vmSwappiness:
-                      description: 'VmSwappiness: Sysctl setting vm.swappiness.'
                       type: integer
                     vmVfsCachePressure:
-                      description: 'VmVfsCachePressure: Sysctl setting vm.vfs_cache_pressure.'
                       type: integer
                   type: object
                 transparentHugePageDefrag:
-                  description: |-
-                    TransparentHugePageDefrag: Valid values are 'always', 'defer', 'defer+madvise', 'madvise' and 'never'. The default is
-                    'madvise'. For more information see [Transparent
-                    Hugepages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge).
                   type: string
                 transparentHugePageEnabled:
-                  description: |-
-                    TransparentHugePageEnabled: Valid values are 'always', 'madvise', and 'never'. The default is 'always'. For more
-                    information see [Transparent
-                    Hugepages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge).
                   type: string
               type: object
             maxCount:
@@ -1090,40 +972,26 @@
               description: 'NetworkProfile: Network-related settings of an agent pool.'
               properties:
                 allowedHostPorts:
-                  description: 'AllowedHostPorts: The port ranges that are allowed to access. The specified ranges are allowed to overlap.'
                   items:
-                    description: The port range.
                     properties:
                       portEnd:
-                        description: |-
-                          PortEnd: The maximum port that is included in the range. It should be ranged from 1 to 65535, and be greater than or
-                          equal to portStart.
                         type: integer
                       portStart:
-                        description: |-
-                          PortStart: The minimum port that is included in the range. It should be ranged from 1 to 65535, and be less than or
-                          equal to portEnd.
                         type: integer
                       protocol:
-                        description: 'Protocol: The network protocol of the port.'
                         type: string
                     type: object
                   type: array
                 applicationSecurityGroups:
-                  description: 'ApplicationSecurityGroups: The IDs of the application security groups which agent pool will associate when created.'
                   items:
                     type: string
                   type: array
                 nodePublicIPTags:
-                  description: 'NodePublicIPTags: IPTags of instance-level public IPs.'
                   items:
-                    description: Contains the IPTag associated with the object.
                     properties:
                       ipTagType:
-                        description: 'IpTagType: The IP tag type. Example: RoutingPreference.'
                         type: string
                       tag:
-                        description: 'Tag: The value of the IP tag associated with the public IP. Example: Internet.'
                         type: string
                     type: object
                   type: array
@@ -1196,7 +1064,6 @@
                 be stopped if it is Running and provisioning state is Succeeded
               properties:
                 code:
-                  description: 'Code: Tells whether the cluster is Running or Stopped'
                   type: string
               type: object
             properties_type:
@@ -1223,17 +1090,10 @@
               description: 'SecurityProfile: The security settings of an agent pool.'
               properties:
                 enableSecureBoot:
-                  description: |-
-                    EnableSecureBoot: Secure Boot is a feature of Trusted Launch which ensures that only signed operating systems and
-                    drivers can boot. For more details, see aka.ms/aks/trustedlaunch.  If not specified, the default is false.
                   type: boolean
                 enableVTPM:
-                  description: |-
-                    EnableVTPM: vTPM is a Trusted Launch feature for configuring a dedicated secure vault for keys and measurements held
-                    locally on the node. For more details, see aka.ms/aks/trustedlaunch. If not specified, the default is false.
                   type: boolean
                 sshAccess:
-                  description: 'SshAccess: SSH access method of an agent pool.'
                   type: string
               type: object
             spotMaxPrice:
@@ -1254,33 +1114,18 @@
               description: 'UpgradeSettings: Settings for upgrading the agentpool'
               properties:
                 drainTimeoutInMinutes:
-                  description: |-
-                    DrainTimeoutInMinutes: The amount of time (in minutes) to wait on eviction of pods and graceful termination per node.
-                    This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails. If not
-                    specified, the default is 30 minutes.
                   type: integer
                 maxSurge:
-                  description: |-
-                    MaxSurge: This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it
-                    is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded
-                    up. If not specified, the default is 1. For more information, including best practices, see:
-                    https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
                   type: string
                 nodeSoakDurationInMinutes:
-                  description: |-
-                    NodeSoakDurationInMinutes: The amount of time (in minutes) to wait after draining a node and before reimaging it and
-                    moving on to next node. If not specified, the default is 0 minutes.
                   type: integer
               type: object
             virtualMachineNodesStatus:
               items:
-                description: Current status on a group of nodes of the same vm size.
                 properties:
                   count:
-                    description: 'Count: Number of nodes.'
                     type: integer
                   size:
-                    description: 'Size: The VM size of the agents used to host this group of nodes.'
                     type: string
                 type: object
               type: array
@@ -1288,20 +1133,13 @@
               description: 'VirtualMachinesProfile: Specifications on VirtualMachines agent pool.'
               properties:
                 scale:
-                  description: 'Scale: Specifications on how to scale a VirtualMachines agent pool.'
                   properties:
                     manual:
-                      description: 'Manual: Specifications on how to scale the VirtualMachines agent pool to a fixed size.'
                       items:
-                        description: Specifications on number of machines.
                         properties:
                           count:
-                            description: 'Count: Number of nodes.'
                             type: integer
                           sizes:
-                            description: |-
-                              Sizes: The list of allowed vm sizes. AKS will use the first available one when scaling. If a VM size is unavailable
-                              (e.g. due to quota or regional capacity reasons), AKS will use the next size.
                             items:
                               type: string
                             type: array
@@ -1325,9 +1163,6 @@
               description: 'WindowsProfile: The Windows agent pool''s specific profile.'
               properties:
                 disableOutboundNat:
-                  description: |-
-                    DisableOutboundNat: The default value is false. Outbound NAT can only be disabled if the cluster outboundType is NAT
-                    Gateway and the Windows agent pool does not have node public IP enabled.
                   type: boolean
               type: object
             workloadRuntime:

@@ -1,11 +1,11 @@
 - op: replace
-  path: /spec/versions/5/schema
+  path: /spec/versions/11/schema
   value:
     openAPIV3Schema:
       description: |-
-        Storage version of v1api20230202preview.ManagedCluster
+        Storage version of v1api20240901.ManagedCluster
         Generator information:
-        - Generated from: /containerservice/resource-manager/Microsoft.ContainerService/aks/preview/2023-02-02-preview/managedClusters.json
+        - Generated from: /containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2024-09-01/managedClusters.json
         - ARM URI: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}
       properties:
         apiVersion:
@@ -26,7 +26,7 @@
         metadata:
           type: object
         spec:
-          description: Storage version of v1api20230202preview.ManagedCluster_Spec
+          description: Storage version of v1api20240901.ManagedCluster_Spec
           properties:
             $propertyBag:
               additionalProperties:
@@ -37,7 +37,7 @@
               type: object
             aadProfile:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterAADProfile
+                Storage version of v1api20240901.ManagedClusterAADProfile
                 For more details see [managed AAD on AKS](https://docs.microsoft.com/azure/aks/managed-aad).
               properties:
                 $propertyBag:
@@ -67,7 +67,7 @@
             addonProfiles:
               additionalProperties:
                 description: |-
-                  Storage version of v1api20230202preview.ManagedClusterAddonProfile
+                  Storage version of v1api20240901.ManagedClusterAddonProfile
                   A Kubernetes add-on profile for a managed cluster.
                 properties:
                   $propertyBag:
@@ -88,7 +88,7 @@
             agentPoolProfiles:
               items:
                 description: |-
-                  Storage version of v1api20230202preview.ManagedClusterAgentPoolProfile
+                  Storage version of v1api20240901.ManagedClusterAgentPoolProfile
                   Profile for the container service agent pool.
                 properties:
                   $propertyBag:
@@ -102,13 +102,31 @@
                     items:
                       type: string
                     type: array
-                  capacityReservationGroupID:
-                    type: string
+                  capacityReservationGroupReference:
+                    description: 'CapacityReservationGroupReference: AKS will associate the specified agent pool with the Capacity Reservation Group.'
+                    properties:
+                      armId:
+                        description: |-
+                          ARMID is a string of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}.
+                          The /resourcegroups/{resourceGroupName} bit is optional as some resources are scoped at the subscription level
+                          ARMID is mutually exclusive with Group, Kind, Namespace and Name.
+                        pattern: (?i)(^(/subscriptions/([^/]+)(/resourcegroups/([^/]+))?)?/providers/([^/]+)/([^/]+/[^/]+)(/([^/]+/[^/]+))*$|^/subscriptions/([^/]+)(/resourcegroups/([^/]+))?$)
+                        type: string
+                      group:
+                        description: Group is the Kubernetes group of the resource.
+                        type: string
+                      kind:
+                        description: Kind is the Kubernetes kind of the resource.
+                        type: string
+                      name:
+                        description: Name is the Kubernetes name of the resource.
+                        type: string
+                    type: object
                   count:
                     type: integer
                   creationData:
                     description: |-
-                      Storage version of v1api20230202preview.CreationData
+                      Storage version of v1api20240901.CreationData
                       Data used when creating a target resource from a source resource.
                     properties:
                       $propertyBag:
@@ -140,8 +158,6 @@
                         type: object
                     type: object
                   enableAutoScaling:
-                    type: boolean
-                  enableCustomCATrust:
                     type: boolean
                   enableEncryptionAtHost:
                     type: boolean
@@ -178,7 +194,7 @@
                     type: object
                   kubeletConfig:
                     description: |-
-                      Storage version of v1api20230202preview.KubeletConfig
+                      Storage version of v1api20240901.KubeletConfig
                       See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
                     properties:
                       $propertyBag:
@@ -217,7 +233,7 @@
                     type: string
                   linuxOSConfig:
                     description: |-
-                      Storage version of v1api20230202preview.LinuxOSConfig
+                      Storage version of v1api20240901.LinuxOSConfig
                       See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
                     properties:
                       $propertyBag:
@@ -231,7 +247,7 @@
                         type: integer
                       sysctls:
                         description: |-
-                          Storage version of v1api20230202preview.SysctlConfig
+                          Storage version of v1api20240901.SysctlConfig
                           Sysctl settings for Linux agent nodes.
                         properties:
                           $propertyBag:
@@ -307,8 +323,6 @@
                     type: integer
                   maxPods:
                     type: integer
-                  messageOfTheDay:
-                    type: string
                   minCount:
                     type: integer
                   mode:
@@ -317,7 +331,7 @@
                     type: string
                   networkProfile:
                     description: |-
-                      Storage version of v1api20230202preview.AgentPoolNetworkProfile
+                      Storage version of v1api20240901.AgentPoolNetworkProfile
                       Network settings of an agent pool.
                     properties:
                       $propertyBag:
@@ -330,7 +344,7 @@
                       allowedHostPorts:
                         items:
                           description: |-
-                            Storage version of v1api20230202preview.PortRange
+                            Storage version of v1api20240901.PortRange
                             The port range.
                           properties:
                             $propertyBag:
@@ -373,7 +387,7 @@
                       nodePublicIPTags:
                         items:
                           description: |-
-                            Storage version of v1api20230202preview.IPTag
+                            Storage version of v1api20240901.IPTag
                             Contains the IPTag associated with the object.
                           properties:
                             $propertyBag:
@@ -455,7 +469,7 @@
                     type: object
                   powerState:
                     description: |-
-                      Storage version of v1api20230202preview.PowerState
+                      Storage version of v1api20240901.PowerState
                       Describes the Power State of the cluster
                     properties:
                       $propertyBag:
@@ -494,6 +508,23 @@
                     type: string
                   scaleSetPriority:
                     type: string
+                  securityProfile:
+                    description: |-
+                      Storage version of v1api20240901.AgentPoolSecurityProfile
+                      The security settings of an agent pool.
+                    properties:
+                      $propertyBag:
+                        additionalProperties:
+                          type: string
+                        description: |-
+                          PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                          resources, allowing for full fidelity round trip conversions
+                        type: object
+                      enableSecureBoot:
+                        type: boolean
+                      enableVTPM:
+                        type: boolean
+                    type: object
                   spotMaxPrice:
                     type: number
                   tags:
@@ -504,7 +535,7 @@
                     type: string
                   upgradeSettings:
                     description: |-
-                      Storage version of v1api20230202preview.AgentPoolUpgradeSettings
+                      Storage version of v1api20240901.AgentPoolUpgradeSettings
                       Settings for upgrading an agentpool
                     properties:
                       $propertyBag:
@@ -514,8 +545,12 @@
                           PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
                           resources, allowing for full fidelity round trip conversions
                         type: object
+                      drainTimeoutInMinutes:
+                        type: integer
                       maxSurge:
                         type: string
+                      nodeSoakDurationInMinutes:
+                        type: integer
                     type: object
                   vmSize:
                     type: string
@@ -544,7 +579,7 @@
                     type: object
                   windowsProfile:
                     description: |-
-                      Storage version of v1api20230202preview.AgentPoolWindowsProfile
+                      Storage version of v1api20240901.AgentPoolWindowsProfile
                       The Windows agent pool's specific profile.
                     properties:
                       $propertyBag:
@@ -563,7 +598,7 @@
               type: array
             apiServerAccessProfile:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterAPIServerAccessProfile
+                Storage version of v1api20240901.ManagedClusterAPIServerAccessProfile
                 Access profile for managed cluster API server.
               properties:
                 $propertyBag:
@@ -583,15 +618,11 @@
                   type: boolean
                 enablePrivateClusterPublicFQDN:
                   type: boolean
-                enableVnetIntegration:
-                  type: boolean
                 privateDNSZone:
-                  type: string
-                subnetId:
                   type: string
               type: object
             autoScalerProfile:
-              description: Storage version of v1api20230202preview.ManagedClusterProperties_AutoScalerProfile
+              description: Storage version of v1api20240901.ManagedClusterProperties_AutoScalerProfile
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -602,8 +633,14 @@
                   type: object
                 balance-similar-node-groups:
                   type: string
+                daemonset-eviction-for-empty-nodes:
+                  type: boolean
+                daemonset-eviction-for-occupied-nodes:
+                  type: boolean
                 expander:
                   type: string
+                ignore-daemonsets-utilization:
+                  type: boolean
                 max-empty-bulk-delete:
                   type: string
                 max-graceful-termination-sec:
@@ -637,7 +674,7 @@
               type: object
             autoUpgradeProfile:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterAutoUpgradeProfile
+                Storage version of v1api20240901.ManagedClusterAutoUpgradeProfile
                 Auto upgrade profile for a managed cluster.
               properties:
                 $propertyBag:
@@ -654,8 +691,8 @@
               type: object
             azureMonitorProfile:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterAzureMonitorProfile
-                Prometheus addon profile for the container service cluster
+                Storage version of v1api20240901.ManagedClusterAzureMonitorProfile
+                Azure Monitor addon profiles for monitoring the managed cluster.
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -666,8 +703,10 @@
                   type: object
                 metrics:
                   description: |-
-                    Storage version of v1api20230202preview.ManagedClusterAzureMonitorProfileMetrics
-                    Metrics profile for the prometheus service addon
+                    Storage version of v1api20240901.ManagedClusterAzureMonitorProfileMetrics
+                    Metrics profile for the Azure Monitor managed service for Prometheus addon. Collect out-of-the-box Kubernetes
+                    infrastructure metrics to send to an Azure Monitor Workspace and configure additional scraping for custom targets. See
+                    aka.ms/AzureManagedPrometheus for an overview.
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -680,8 +719,10 @@
                       type: boolean
                     kubeStateMetrics:
                       description: |-
-                        Storage version of v1api20230202preview.ManagedClusterAzureMonitorProfileKubeStateMetrics
-                        Kube State Metrics for prometheus addon profile for the container service cluster
+                        Storage version of v1api20240901.ManagedClusterAzureMonitorProfileKubeStateMetrics
+                        Kube State Metrics profile for the Azure Managed Prometheus addon. These optional settings are for the
+                        kube-state-metrics pod that is deployed with the addon. See aka.ms/AzureManagedPrometheus-optional-parameters for
+                        details.
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -702,39 +743,6 @@
                 AzureName: The name of the resource in Azure. This is often the same as the name of the resource in Kubernetes but it
                 doesn't have to be.
               type: string
-            creationData:
-              description: |-
-                Storage version of v1api20230202preview.CreationData
-                Data used when creating a target resource from a source resource.
-              properties:
-                $propertyBag:
-                  additionalProperties:
-                    type: string
-                  description: |-
-                    PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
-                    resources, allowing for full fidelity round trip conversions
-                  type: object
-                sourceResourceReference:
-                  description: 'SourceResourceReference: This is the ARM ID of the source object to be used to create the target object.'
-                  properties:
-                    armId:
-                      description: |-
-                        ARMID is a string of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}.
-                        The /resourcegroups/{resourceGroupName} bit is optional as some resources are scoped at the subscription level
-                        ARMID is mutually exclusive with Group, Kind, Namespace and Name.
-                      pattern: (?i)(^(/subscriptions/([^/]+)(/resourcegroups/([^/]+))?)?/providers/([^/]+)/([^/]+/[^/]+)(/([^/]+/[^/]+))*$|^/subscriptions/([^/]+)(/resourcegroups/([^/]+))?$)
-                      type: string
-                    group:
-                      description: Group is the Kubernetes group of the resource.
-                      type: string
-                    kind:
-                      description: Kind is the Kubernetes kind of the resource.
-                      type: string
-                    name:
-                      description: Name is the Kubernetes name of the resource.
-                      type: string
-                  type: object
-              type: object
             disableLocalAccounts:
               type: boolean
             diskEncryptionSetReference:
@@ -761,15 +769,13 @@
               type: object
             dnsPrefix:
               type: string
-            enableNamespaceResources:
-              type: boolean
             enablePodSecurityPolicy:
               type: boolean
             enableRBAC:
               type: boolean
             extendedLocation:
               description: |-
-                Storage version of v1api20230202preview.ExtendedLocation
+                Storage version of v1api20240901.ExtendedLocation
                 The complex type of the extended location.
               properties:
                 $propertyBag:
@@ -786,30 +792,9 @@
               type: object
             fqdnSubdomain:
               type: string
-            guardrailsProfile:
-              description: |-
-                Storage version of v1api20230202preview.GuardrailsProfile
-                The Guardrails profile.
-              properties:
-                $propertyBag:
-                  additionalProperties:
-                    type: string
-                  description: |-
-                    PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
-                    resources, allowing for full fidelity round trip conversions
-                  type: object
-                excludedNamespaces:
-                  items:
-                    type: string
-                  type: array
-                level:
-                  type: string
-                version:
-                  type: string
-              type: object
             httpProxyConfig:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterHTTPProxyConfig
+                Storage version of v1api20240901.ManagedClusterHTTPProxyConfig
                 Cluster HTTP proxy configuration.
               properties:
                 $propertyBag:
@@ -832,7 +817,7 @@
               type: object
             identity:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterIdentity
+                Storage version of v1api20240901.ManagedClusterIdentity
                 Identity for the managed cluster.
               properties:
                 $propertyBag:
@@ -842,12 +827,53 @@
                     PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
                     resources, allowing for full fidelity round trip conversions
                   type: object
+                delegatedResources:
+                  additionalProperties:
+                    description: |-
+                      Storage version of v1api20240901.DelegatedResource
+                      Delegated resource properties - internal use only.
+                    properties:
+                      $propertyBag:
+                        additionalProperties:
+                          type: string
+                        description: |-
+                          PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                          resources, allowing for full fidelity round trip conversions
+                        type: object
+                      location:
+                        type: string
+                      referralResource:
+                        type: string
+                      resourceReference:
+                        description: 'ResourceReference: The ARM resource id of the delegated resource - internal use only.'
+                        properties:
+                          armId:
+                            description: |-
+                              ARMID is a string of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}.
+                              The /resourcegroups/{resourceGroupName} bit is optional as some resources are scoped at the subscription level
+                              ARMID is mutually exclusive with Group, Kind, Namespace and Name.
+                            pattern: (?i)(^(/subscriptions/([^/]+)(/resourcegroups/([^/]+))?)?/providers/([^/]+)/([^/]+/[^/]+)(/([^/]+/[^/]+))*$|^/subscriptions/([^/]+)(/resourcegroups/([^/]+))?$)
+                            type: string
+                          group:
+                            description: Group is the Kubernetes group of the resource.
+                            type: string
+                          kind:
+                            description: Kind is the Kubernetes kind of the resource.
+                            type: string
+                          name:
+                            description: Name is the Kubernetes name of the resource.
+                            type: string
+                        type: object
+                      tenantId:
+                        type: string
+                    type: object
+                  type: object
                 type:
                   type: string
                 userAssignedIdentities:
                   items:
                     description: |-
-                      Storage version of v1api20230202preview.UserAssignedIdentityDetails
+                      Storage version of v1api20240901.UserAssignedIdentityDetails
                       Information about the user assigned identity for the resource
                     properties:
                       $propertyBag:
@@ -883,7 +909,7 @@
             identityProfile:
               additionalProperties:
                 description: |-
-                  Storage version of v1api20230202preview.UserAssignedIdentity
+                  Storage version of v1api20240901.UserAssignedIdentity
                   Details about a user assigned identity.
                 properties:
                   $propertyBag:
@@ -921,7 +947,7 @@
               type: object
             ingressProfile:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterIngressProfile
+                Storage version of v1api20240901.ManagedClusterIngressProfile
                 Ingress profile for the container service cluster.
               properties:
                 $propertyBag:
@@ -933,8 +959,8 @@
                   type: object
                 webAppRouting:
                   description: |-
-                    Storage version of v1api20230202preview.ManagedClusterIngressProfileWebAppRouting
-                    Web App Routing settings for the ingress profile.
+                    Storage version of v1api20240901.ManagedClusterIngressProfileWebAppRouting
+                    Application Routing add-on settings for the ingress profile.
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -943,28 +969,28 @@
                         PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
                         resources, allowing for full fidelity round trip conversions
                       type: object
-                    dnsZoneResourceReference:
-                      description: |-
-                        DnsZoneResourceReference: Resource ID of the DNS Zone to be associated with the web app. Used only when Web App Routing
-                        is enabled.
-                      properties:
-                        armId:
-                          description: |-
-                            ARMID is a string of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}.
-                            The /resourcegroups/{resourceGroupName} bit is optional as some resources are scoped at the subscription level
-                            ARMID is mutually exclusive with Group, Kind, Namespace and Name.
-                          pattern: (?i)(^(/subscriptions/([^/]+)(/resourcegroups/([^/]+))?)?/providers/([^/]+)/([^/]+/[^/]+)(/([^/]+/[^/]+))*$|^/subscriptions/([^/]+)(/resourcegroups/([^/]+))?$)
-                          type: string
-                        group:
-                          description: Group is the Kubernetes group of the resource.
-                          type: string
-                        kind:
-                          description: Kind is the Kubernetes kind of the resource.
-                          type: string
-                        name:
-                          description: Name is the Kubernetes name of the resource.
-                          type: string
-                      type: object
+                    dnsZoneResourceReferences:
+                      items:
+                        description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
+                        properties:
+                          armId:
+                            description: |-
+                              ARMID is a string of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}.
+                              The /resourcegroups/{resourceGroupName} bit is optional as some resources are scoped at the subscription level
+                              ARMID is mutually exclusive with Group, Kind, Namespace and Name.
+                            pattern: (?i)(^(/subscriptions/([^/]+)(/resourcegroups/([^/]+))?)?/providers/([^/]+)/([^/]+/[^/]+)(/([^/]+/[^/]+))*$|^/subscriptions/([^/]+)(/resourcegroups/([^/]+))?$)
+                            type: string
+                          group:
+                            description: Group is the Kubernetes group of the resource.
+                            type: string
+                          kind:
+                            description: Kind is the Kubernetes kind of the resource.
+                            type: string
+                          name:
+                            description: Name is the Kubernetes name of the resource.
+                            type: string
+                        type: object
+                      type: array
                     enabled:
                       type: boolean
                   type: object
@@ -973,7 +999,7 @@
               type: string
             linuxProfile:
               description: |-
-                Storage version of v1api20230202preview.ContainerServiceLinuxProfile
+                Storage version of v1api20240901.ContainerServiceLinuxProfile
                 Profile for Linux VMs in the container service cluster.
               properties:
                 $propertyBag:
@@ -987,7 +1013,7 @@
                   type: string
                 ssh:
                   description: |-
-                    Storage version of v1api20230202preview.ContainerServiceSshConfiguration
+                    Storage version of v1api20240901.ContainerServiceSshConfiguration
                     SSH configuration for Linux-based VMs running on Azure.
                   properties:
                     $propertyBag:
@@ -1000,7 +1026,7 @@
                     publicKeys:
                       items:
                         description: |-
-                          Storage version of v1api20230202preview.ContainerServiceSshPublicKey
+                          Storage version of v1api20240901.ContainerServiceSshPublicKey
                           Contains information about SSH certificate public key data.
                         properties:
                           $propertyBag:
@@ -1018,10 +1044,10 @@
               type: object
             location:
               type: string
-            networkProfile:
+            metricsProfile:
               description: |-
-                Storage version of v1api20230202preview.ContainerServiceNetworkProfile
-                Profile of network configuration.
+                Storage version of v1api20240901.ManagedClusterMetricsProfile
+                The metrics profile for the ManagedCluster.
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -1030,16 +1056,10 @@
                     PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
                     resources, allowing for full fidelity round trip conversions
                   type: object
-                dnsServiceIP:
-                  type: string
-                dockerBridgeCidr:
-                  type: string
-                ipFamilies:
-                  items:
-                    type: string
-                  type: array
-                kubeProxyConfig:
-                  description: Storage version of v1api20230202preview.ContainerServiceNetworkProfile_KubeProxyConfig
+                costAnalysis:
+                  description: |-
+                    Storage version of v1api20240901.ManagedClusterCostAnalysis
+                    The cost analysis configuration for the cluster
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -1050,8 +1070,39 @@
                       type: object
                     enabled:
                       type: boolean
-                    ipvsConfig:
-                      description: Storage version of v1api20230202preview.ContainerServiceNetworkProfile_KubeProxyConfig_IpvsConfig
+                  type: object
+              type: object
+            networkProfile:
+              description: |-
+                Storage version of v1api20240901.ContainerServiceNetworkProfile
+                Profile of network configuration.
+              properties:
+                $propertyBag:
+                  additionalProperties:
+                    type: string
+                  description: |-
+                    PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                    resources, allowing for full fidelity round trip conversions
+                  type: object
+                advancedNetworking:
+                  description: |-
+                    Storage version of v1api20240901.AdvancedNetworking
+                    Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see
+                    aka.ms/aksadvancednetworking.
+                  properties:
+                    $propertyBag:
+                      additionalProperties:
+                        type: string
+                      description: |-
+                        PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                        resources, allowing for full fidelity round trip conversions
+                      type: object
+                    enabled:
+                      type: boolean
+                    observability:
+                      description: |-
+                        Storage version of v1api20240901.AdvancedNetworkingObservability
+                        Observability profile to enable advanced network metrics and flow logs with historical contexts.
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -1060,21 +1111,34 @@
                             PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
                             resources, allowing for full fidelity round trip conversions
                           type: object
-                        scheduler:
-                          type: string
-                        tcpFinTimeoutSeconds:
-                          type: integer
-                        tcpTimeoutSeconds:
-                          type: integer
-                        udpTimeoutSeconds:
-                          type: integer
+                        enabled:
+                          type: boolean
                       type: object
-                    mode:
-                      type: string
+                    security:
+                      description: |-
+                        Storage version of v1api20240901.AdvancedNetworkingSecurity
+                        Security profile to enable security features on cilium based cluster.
+                      properties:
+                        $propertyBag:
+                          additionalProperties:
+                            type: string
+                          description: |-
+                            PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                            resources, allowing for full fidelity round trip conversions
+                          type: object
+                        enabled:
+                          type: boolean
+                      type: object
                   type: object
+                dnsServiceIP:
+                  type: string
+                ipFamilies:
+                  items:
+                    type: string
+                  type: array
                 loadBalancerProfile:
                   description: |-
-                    Storage version of v1api20230202preview.ManagedClusterLoadBalancerProfile
+                    Storage version of v1api20240901.ManagedClusterLoadBalancerProfile
                     Profile of the managed cluster load balancer.
                   properties:
                     $propertyBag:
@@ -1091,7 +1155,7 @@
                     effectiveOutboundIPs:
                       items:
                         description: |-
-                          Storage version of v1api20230202preview.ResourceReference
+                          Storage version of v1api20240901.ResourceReference
                           A reference to an Azure resource.
                         properties:
                           $propertyBag:
@@ -1128,7 +1192,7 @@
                     idleTimeoutInMinutes:
                       type: integer
                     managedOutboundIPs:
-                      description: Storage version of v1api20230202preview.ManagedClusterLoadBalancerProfile_ManagedOutboundIPs
+                      description: Storage version of v1api20240901.ManagedClusterLoadBalancerProfile_ManagedOutboundIPs
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -1143,7 +1207,7 @@
                           type: integer
                       type: object
                     outboundIPPrefixes:
-                      description: Storage version of v1api20230202preview.ManagedClusterLoadBalancerProfile_OutboundIPPrefixes
+                      description: Storage version of v1api20240901.ManagedClusterLoadBalancerProfile_OutboundIPPrefixes
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -1155,7 +1219,7 @@
                         publicIPPrefixes:
                           items:
                             description: |-
-                              Storage version of v1api20230202preview.ResourceReference
+                              Storage version of v1api20240901.ResourceReference
                               A reference to an Azure resource.
                             properties:
                               $propertyBag:
@@ -1189,7 +1253,7 @@
                           type: array
                       type: object
                     outboundIPs:
-                      description: Storage version of v1api20230202preview.ManagedClusterLoadBalancerProfile_OutboundIPs
+                      description: Storage version of v1api20240901.ManagedClusterLoadBalancerProfile_OutboundIPs
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -1201,7 +1265,7 @@
                         publicIPs:
                           items:
                             description: |-
-                              Storage version of v1api20230202preview.ResourceReference
+                              Storage version of v1api20240901.ResourceReference
                               A reference to an Azure resource.
                             properties:
                               $propertyBag:
@@ -1239,7 +1303,7 @@
                   type: string
                 natGatewayProfile:
                   description: |-
-                    Storage version of v1api20230202preview.ManagedClusterNATGatewayProfile
+                    Storage version of v1api20240901.ManagedClusterNATGatewayProfile
                     Profile of the managed cluster NAT gateway.
                   properties:
                     $propertyBag:
@@ -1252,7 +1316,7 @@
                     effectiveOutboundIPs:
                       items:
                         description: |-
-                          Storage version of v1api20230202preview.ResourceReference
+                          Storage version of v1api20240901.ResourceReference
                           A reference to an Azure resource.
                         properties:
                           $propertyBag:
@@ -1288,7 +1352,7 @@
                       type: integer
                     managedOutboundIPProfile:
                       description: |-
-                        Storage version of v1api20230202preview.ManagedClusterManagedOutboundIPProfile
+                        Storage version of v1api20240901.ManagedClusterManagedOutboundIPProfile
                         Profile of the managed outbound IP resources of the managed cluster.
                       properties:
                         $propertyBag:
@@ -1331,7 +1395,7 @@
               type: string
             nodeResourceGroupProfile:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterNodeResourceGroupProfile
+                Storage version of v1api20240901.ManagedClusterNodeResourceGroupProfile
                 Node resource group lockdown profile for a managed cluster.
               properties:
                 $propertyBag:
@@ -1346,7 +1410,7 @@
               type: object
             oidcIssuerProfile:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterOIDCIssuerProfile
+                Storage version of v1api20240901.ManagedClusterOIDCIssuerProfile
                 The OIDC issuer profile of the Managed Cluster.
               properties:
                 $propertyBag:
@@ -1361,7 +1425,7 @@
               type: object
             operatorSpec:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterOperatorSpec
+                Storage version of v1api20240901.ManagedClusterOperatorSpec
                 Details for configuring operator behavior. Fields in this struct are interpreted by the operator directly rather than being passed to Azure
               properties:
                 $propertyBag:
@@ -1371,8 +1435,37 @@
                     PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
                     resources, allowing for full fidelity round trip conversions
                   type: object
+                configMapExpressions:
+                  items:
+                    description: |-
+                      DestinationExpression is a CEL expression and a destination to store the result in. The destination may
+                      be a secret or a configmap. The value of the expression is stored at the specified location in
+                      the destination.
+                    properties:
+                      key:
+                        description: |-
+                          Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string
+                          this is required to identify what key to write to. If the CEL expression in Value returns a map[string]string
+                          Key must not be set, instead the keys written will be determined dynamically based on the keys of the resulting
+                          map[string]string.
+                        type: string
+                      name:
+                        description: |-
+                          Name is the name of the Kubernetes configmap or secret to write to.
+                          The configmap or secret will be created in the same namespace as the resource.
+                        type: string
+                      value:
+                        description: |-
+                          Value is a CEL expression. The CEL expression may return a string or a map[string]string. For more information
+                          on CEL in ASO see https://azure.github.io/azure-service-operator/guide/expressions/
+                        type: string
+                    required:
+                      - name
+                      - value
+                    type: object
+                  type: array
                 configMaps:
-                  description: Storage version of v1api20230202preview.ManagedClusterOperatorConfigMaps
+                  description: Storage version of v1api20240901.ManagedClusterOperatorConfigMaps
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -1384,40 +1477,53 @@
                     oidcIssuerProfile:
                       description: |-
                         ConfigMapDestination describes the location to store a single configmap value
-                        Note: This is similar to SecretDestination in secrets.go. Changes to one should likely also be made to the other.
+                        Note: This is similar to: SecretDestination in secrets.go.
+                        Changes to one may need to be made to the others as well.
                       properties:
                         key:
                           description: Key is the key in the ConfigMap being referenced
                           type: string
                         name:
                           description: |-
-                            Name is the name of the Kubernetes ConfigMap being referenced.
-                            The ConfigMap must be in the same namespace as the resource
-                          type: string
-                      required:
-                        - key
-                        - name
-                      type: object
-                    principalId:
-                      description: |-
-                        ConfigMapDestination describes the location to store a single configmap value
-                        Note: This is similar to SecretDestination in secrets.go. Changes to one should likely also be made to the other.
-                      properties:
-                        key:
-                          description: Key is the key in the ConfigMap being referenced
-                          type: string
-                        name:
-                          description: |-
-                            Name is the name of the Kubernetes ConfigMap being referenced.
-                            The ConfigMap must be in the same namespace as the resource
+                            Name is the name of the Kubernetes ConfigMap to write to.
+                            The ConfigMap will be created in the same namespace as the resource.
                           type: string
                       required:
                         - key
                         - name
                       type: object
                   type: object
+                secretExpressions:
+                  items:
+                    description: |-
+                      DestinationExpression is a CEL expression and a destination to store the result in. The destination may
+                      be a secret or a configmap. The value of the expression is stored at the specified location in
+                      the destination.
+                    properties:
+                      key:
+                        description: |-
+                          Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string
+                          this is required to identify what key to write to. If the CEL expression in Value returns a map[string]string
+                          Key must not be set, instead the keys written will be determined dynamically based on the keys of the resulting
+                          map[string]string.
+                        type: string
+                      name:
+                        description: |-
+                          Name is the name of the Kubernetes configmap or secret to write to.
+                          The configmap or secret will be created in the same namespace as the resource.
+                        type: string
+                      value:
+                        description: |-
+                          Value is a CEL expression. The CEL expression may return a string or a map[string]string. For more information
+                          on CEL in ASO see https://azure.github.io/azure-service-operator/guide/expressions/
+                        type: string
+                    required:
+                      - name
+                      - value
+                    type: object
+                  type: array
                 secrets:
-                  description: Storage version of v1api20230202preview.ManagedClusterOperatorSecrets
+                  description: Storage version of v1api20240901.ManagedClusterOperatorSecrets
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -1429,15 +1535,16 @@
                     adminCredentials:
                       description: |-
                         SecretDestination describes the location to store a single secret value.
-                        Note: This is similar to ConfigMapDestination in configmaps.go. Changes to one should likely also be made to the other.
+                        Note: This is similar to: ConfigMapDestination in configmaps.go.
+                        Changes to one may need to be made to the others as well.
                       properties:
                         key:
-                          description: Key is the key in the Kubernetes secret being referenced
+                          description: Key is the key in the Kubernetes secret being referenced.
                           type: string
                         name:
                           description: |-
-                            Name is the name of the Kubernetes secret being referenced.
-                            The secret must be in the same namespace as the resource
+                            Name is the name of the Kubernetes secret to write to.
+                            The secret will be created in the same namespace as the resource.
                           type: string
                       required:
                         - key
@@ -1446,15 +1553,16 @@
                     userCredentials:
                       description: |-
                         SecretDestination describes the location to store a single secret value.
-                        Note: This is similar to ConfigMapDestination in configmaps.go. Changes to one should likely also be made to the other.
+                        Note: This is similar to: ConfigMapDestination in configmaps.go.
+                        Changes to one may need to be made to the others as well.
                       properties:
                         key:
-                          description: Key is the key in the Kubernetes secret being referenced
+                          description: Key is the key in the Kubernetes secret being referenced.
                           type: string
                         name:
                           description: |-
-                            Name is the name of the Kubernetes secret being referenced.
-                            The secret must be in the same namespace as the resource
+                            Name is the name of the Kubernetes secret to write to.
+                            The secret will be created in the same namespace as the resource.
                           type: string
                       required:
                         - key
@@ -1479,7 +1587,7 @@
               type: object
             podIdentityProfile:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterPodIdentityProfile
+                Storage version of v1api20240901.ManagedClusterPodIdentityProfile
                 See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on pod
                 identity integration.
               properties:
@@ -1497,7 +1605,7 @@
                 userAssignedIdentities:
                   items:
                     description: |-
-                      Storage version of v1api20230202preview.ManagedClusterPodIdentity
+                      Storage version of v1api20240901.ManagedClusterPodIdentity
                       Details about the pod identity assigned to the Managed Cluster.
                     properties:
                       $propertyBag:
@@ -1511,7 +1619,7 @@
                         type: string
                       identity:
                         description: |-
-                          Storage version of v1api20230202preview.UserAssignedIdentity
+                          Storage version of v1api20240901.UserAssignedIdentity
                           Details about a user assigned identity.
                         properties:
                           $propertyBag:
@@ -1555,7 +1663,7 @@
                 userAssignedIdentityExceptions:
                   items:
                     description: |-
-                      Storage version of v1api20230202preview.ManagedClusterPodIdentityException
+                      Storage version of v1api20240901.ManagedClusterPodIdentityException
                       See [disable AAD Pod Identity for a specific
                       Pod/Application](https://azure.github.io/aad-pod-identity/docs/configure/application_exception/) for more details.
                     properties:
@@ -1580,7 +1688,7 @@
             privateLinkResources:
               items:
                 description: |-
-                  Storage version of v1api20230202preview.PrivateLinkResource
+                  Storage version of v1api20240901.PrivateLinkResource
                   A private link resource
                 properties:
                   $propertyBag:
@@ -1626,7 +1734,7 @@
               type: string
             securityProfile:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterSecurityProfile
+                Storage version of v1api20240901.ManagedClusterSecurityProfile
                 Security profile for the container service cluster.
               properties:
                 $propertyBag:
@@ -1638,7 +1746,7 @@
                   type: object
                 azureKeyVaultKms:
                   description: |-
-                    Storage version of v1api20230202preview.AzureKeyVaultKms
+                    Storage version of v1api20240901.AzureKeyVaultKms
                     Azure Key Vault key management service settings for the security profile.
                   properties:
                     $propertyBag:
@@ -1677,13 +1785,9 @@
                           type: string
                       type: object
                   type: object
-                customCATrustCertificates:
-                  items:
-                    type: string
-                  type: array
                 defender:
                   description: |-
-                    Storage version of v1api20230202preview.ManagedClusterSecurityProfileDefender
+                    Storage version of v1api20240901.ManagedClusterSecurityProfileDefender
                     Microsoft Defender settings for the security profile.
                   properties:
                     $propertyBag:
@@ -1718,7 +1822,7 @@
                       type: object
                     securityMonitoring:
                       description: |-
-                        Storage version of v1api20230202preview.ManagedClusterSecurityProfileDefenderSecurityMonitoring
+                        Storage version of v1api20240901.ManagedClusterSecurityProfileDefenderSecurityMonitoring
                         Microsoft Defender settings for the security profile threat detection.
                       properties:
                         $propertyBag:
@@ -1734,7 +1838,7 @@
                   type: object
                 imageCleaner:
                   description: |-
-                    Storage version of v1api20230202preview.ManagedClusterSecurityProfileImageCleaner
+                    Storage version of v1api20240901.ManagedClusterSecurityProfileImageCleaner
                     Image Cleaner removes unused images from nodes, freeing up disk space and helping to reduce attack surface area. Here
                     are settings for the security profile.
                   properties:
@@ -1750,24 +1854,9 @@
                     intervalHours:
                       type: integer
                   type: object
-                nodeRestriction:
-                  description: |-
-                    Storage version of v1api20230202preview.ManagedClusterSecurityProfileNodeRestriction
-                    Node Restriction settings for the security profile.
-                  properties:
-                    $propertyBag:
-                      additionalProperties:
-                        type: string
-                      description: |-
-                        PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
-                        resources, allowing for full fidelity round trip conversions
-                      type: object
-                    enabled:
-                      type: boolean
-                  type: object
                 workloadIdentity:
                   description: |-
-                    Storage version of v1api20230202preview.ManagedClusterSecurityProfileWorkloadIdentity
+                    Storage version of v1api20240901.ManagedClusterSecurityProfileWorkloadIdentity
                     Workload identity settings for the security profile.
                   properties:
                     $propertyBag:
@@ -1783,7 +1872,7 @@
               type: object
             serviceMeshProfile:
               description: |-
-                Storage version of v1api20230202preview.ServiceMeshProfile
+                Storage version of v1api20240901.ServiceMeshProfile
                 Service mesh profile for a managed cluster.
               properties:
                 $propertyBag:
@@ -1795,7 +1884,7 @@
                   type: object
                 istio:
                   description: |-
-                    Storage version of v1api20230202preview.IstioServiceMesh
+                    Storage version of v1api20240901.IstioServiceMesh
                     Istio service mesh configuration.
                   properties:
                     $propertyBag:
@@ -1805,9 +1894,64 @@
                         PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
                         resources, allowing for full fidelity round trip conversions
                       type: object
+                    certificateAuthority:
+                      description: |-
+                        Storage version of v1api20240901.IstioCertificateAuthority
+                        Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described
+                        here https://aka.ms/asm-plugin-ca
+                      properties:
+                        $propertyBag:
+                          additionalProperties:
+                            type: string
+                          description: |-
+                            PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                            resources, allowing for full fidelity round trip conversions
+                          type: object
+                        plugin:
+                          description: |-
+                            Storage version of v1api20240901.IstioPluginCertificateAuthority
+                            Plugin certificates information for Service Mesh.
+                          properties:
+                            $propertyBag:
+                              additionalProperties:
+                                type: string
+                              description: |-
+                                PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                                resources, allowing for full fidelity round trip conversions
+                              type: object
+                            certChainObjectName:
+                              type: string
+                            certObjectName:
+                              type: string
+                            keyObjectName:
+                              type: string
+                            keyVaultReference:
+                              description: 'KeyVaultReference: The resource ID of the Key Vault.'
+                              properties:
+                                armId:
+                                  description: |-
+                                    ARMID is a string of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}.
+                                    The /resourcegroups/{resourceGroupName} bit is optional as some resources are scoped at the subscription level
+                                    ARMID is mutually exclusive with Group, Kind, Namespace and Name.
+                                  pattern: (?i)(^(/subscriptions/([^/]+)(/resourcegroups/([^/]+))?)?/providers/([^/]+)/([^/]+/[^/]+)(/([^/]+/[^/]+))*$|^/subscriptions/([^/]+)(/resourcegroups/([^/]+))?$)
+                                  type: string
+                                group:
+                                  description: Group is the Kubernetes group of the resource.
+                                  type: string
+                                kind:
+                                  description: Kind is the Kubernetes kind of the resource.
+                                  type: string
+                                name:
+                                  description: Name is the Kubernetes name of the resource.
+                                  type: string
+                              type: object
+                            rootCertObjectName:
+                              type: string
+                          type: object
+                      type: object
                     components:
                       description: |-
-                        Storage version of v1api20230202preview.IstioComponents
+                        Storage version of v1api20240901.IstioComponents
                         Istio components configuration.
                       properties:
                         $propertyBag:
@@ -1817,10 +1961,27 @@
                             PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
                             resources, allowing for full fidelity round trip conversions
                           type: object
+                        egressGateways:
+                          items:
+                            description: |-
+                              Storage version of v1api20240901.IstioEgressGateway
+                              Istio egress gateway configuration.
+                            properties:
+                              $propertyBag:
+                                additionalProperties:
+                                  type: string
+                                description: |-
+                                  PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                                  resources, allowing for full fidelity round trip conversions
+                                type: object
+                              enabled:
+                                type: boolean
+                            type: object
+                          type: array
                         ingressGateways:
                           items:
                             description: |-
-                              Storage version of v1api20230202preview.IstioIngressGateway
+                              Storage version of v1api20240901.IstioIngressGateway
                               Istio ingress gateway configuration. For now, we support up to one external ingress gateway named
                               `aks-istio-ingressgateway-external` and one internal ingress gateway named `aks-istio-ingressgateway-internal`.
                             properties:
@@ -1838,13 +1999,17 @@
                             type: object
                           type: array
                       type: object
+                    revisions:
+                      items:
+                        type: string
+                      type: array
                   type: object
                 mode:
                   type: string
               type: object
             servicePrincipalProfile:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterServicePrincipalProfile
+                Storage version of v1api20240901.ManagedClusterServicePrincipalProfile
                 Information about a service principal identity for the cluster to use for manipulating Azure APIs.
               properties:
                 $propertyBag:
@@ -1876,7 +2041,7 @@
               type: object
             sku:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterSKU
+                Storage version of v1api20240901.ManagedClusterSKU
                 The SKU of a Managed Cluster.
               properties:
                 $propertyBag:
@@ -1893,7 +2058,7 @@
               type: object
             storageProfile:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterStorageProfile
+                Storage version of v1api20240901.ManagedClusterStorageProfile
                 Storage profile for the container service cluster.
               properties:
                 $propertyBag:
@@ -1905,7 +2070,7 @@
                   type: object
                 blobCSIDriver:
                   description: |-
-                    Storage version of v1api20230202preview.ManagedClusterStorageProfileBlobCSIDriver
+                    Storage version of v1api20240901.ManagedClusterStorageProfileBlobCSIDriver
                     AzureBlob CSI Driver settings for the storage profile.
                   properties:
                     $propertyBag:
@@ -1920,7 +2085,7 @@
                   type: object
                 diskCSIDriver:
                   description: |-
-                    Storage version of v1api20230202preview.ManagedClusterStorageProfileDiskCSIDriver
+                    Storage version of v1api20240901.ManagedClusterStorageProfileDiskCSIDriver
                     AzureDisk CSI Driver settings for the storage profile.
                   properties:
                     $propertyBag:
@@ -1932,12 +2097,10 @@
                       type: object
                     enabled:
                       type: boolean
-                    version:
-                      type: string
                   type: object
                 fileCSIDriver:
                   description: |-
-                    Storage version of v1api20230202preview.ManagedClusterStorageProfileFileCSIDriver
+                    Storage version of v1api20240901.ManagedClusterStorageProfileFileCSIDriver
                     AzureFile CSI Driver settings for the storage profile.
                   properties:
                     $propertyBag:
@@ -1952,7 +2115,7 @@
                   type: object
                 snapshotController:
                   description: |-
-                    Storage version of v1api20230202preview.ManagedClusterStorageProfileSnapshotController
+                    Storage version of v1api20240901.ManagedClusterStorageProfileSnapshotController
                     Snapshot Controller settings for the storage profile.
                   properties:
                     $propertyBag:
@@ -1966,13 +2129,15 @@
                       type: boolean
                   type: object
               type: object
+            supportPlan:
+              type: string
             tags:
               additionalProperties:
                 type: string
               type: object
             upgradeSettings:
               description: |-
-                Storage version of v1api20230202preview.ClusterUpgradeSettings
+                Storage version of v1api20240901.ClusterUpgradeSettings
                 Settings for upgrading a cluster.
               properties:
                 $propertyBag:
@@ -1984,7 +2149,7 @@
                   type: object
                 overrideSettings:
                   description: |-
-                    Storage version of v1api20230202preview.UpgradeOverrideSettings
+                    Storage version of v1api20240901.UpgradeOverrideSettings
                     Settings for overrides when upgrading a cluster.
                   properties:
                     $propertyBag:
@@ -1994,17 +2159,15 @@
                         PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
                         resources, allowing for full fidelity round trip conversions
                       type: object
-                    controlPlaneOverrides:
-                      items:
-                        type: string
-                      type: array
+                    forceUpgrade:
+                      type: boolean
                     until:
                       type: string
                   type: object
               type: object
             windowsProfile:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterWindowsProfile
+                Storage version of v1api20240901.ManagedClusterWindowsProfile
                 Profile for Windows VMs in the managed cluster.
               properties:
                 $propertyBag:
@@ -2037,7 +2200,7 @@
                   type: boolean
                 gmsaProfile:
                   description: |-
-                    Storage version of v1api20230202preview.WindowsGmsaProfile
+                    Storage version of v1api20240901.WindowsGmsaProfile
                     Windows gMSA Profile in the managed cluster.
                   properties:
                     $propertyBag:
@@ -2059,7 +2222,7 @@
               type: object
             workloadAutoScalerProfile:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterWorkloadAutoScalerProfile
+                Storage version of v1api20240901.ManagedClusterWorkloadAutoScalerProfile
                 Workload Auto-scaler profile for the managed cluster.
               properties:
                 $propertyBag:
@@ -2071,7 +2234,7 @@
                   type: object
                 keda:
                   description: |-
-                    Storage version of v1api20230202preview.ManagedClusterWorkloadAutoScalerProfileKeda
+                    Storage version of v1api20240901.ManagedClusterWorkloadAutoScalerProfileKeda
                     KEDA (Kubernetes Event-driven Autoscaling) settings for the workload auto-scaler profile.
                   properties:
                     $propertyBag:
@@ -2085,7 +2248,9 @@
                       type: boolean
                   type: object
                 verticalPodAutoscaler:
-                  description: Storage version of v1api20230202preview.ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler
+                  description: |-
+                    Storage version of v1api20240901.ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler
+                    VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile.
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -2094,12 +2259,8 @@
                         PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
                         resources, allowing for full fidelity round trip conversions
                       type: object
-                    controlledValues:
-                      type: string
                     enabled:
                       type: boolean
-                    updateMode:
-                      type: string
                   type: object
               type: object
           required:
@@ -2107,7 +2268,7 @@
           type: object
         status:
           description: |-
-            Storage version of v1api20230202preview.ManagedCluster_STATUS
+            Storage version of v1api20240901.ManagedCluster_STATUS
             Managed cluster.
           properties:
             $propertyBag:
@@ -2119,7 +2280,7 @@
               type: object
             aadProfile:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterAADProfile_STATUS
+                Storage version of v1api20240901.ManagedClusterAADProfile_STATUS
                 For more details see [managed AAD on AKS](https://docs.microsoft.com/azure/aks/managed-aad).
               properties:
                 $propertyBag:
@@ -2149,7 +2310,7 @@
             addonProfiles:
               additionalProperties:
                 description: |-
-                  Storage version of v1api20230202preview.ManagedClusterAddonProfile_STATUS
+                  Storage version of v1api20240901.ManagedClusterAddonProfile_STATUS
                   A Kubernetes add-on profile for a managed cluster.
                 properties:
                   $propertyBag:
@@ -2167,7 +2328,7 @@
                     type: boolean
                   identity:
                     description: |-
-                      Storage version of v1api20230202preview.UserAssignedIdentity_STATUS
+                      Storage version of v1api20240901.UserAssignedIdentity_STATUS
                       Details about a user assigned identity.
                     properties:
                       $propertyBag:
@@ -2189,7 +2350,7 @@
             agentPoolProfiles:
               items:
                 description: |-
-                  Storage version of v1api20230202preview.ManagedClusterAgentPoolProfile_STATUS
+                  Storage version of v1api20240901.ManagedClusterAgentPoolProfile_STATUS
                   Profile for the container service agent pool.
                 properties:
                   $propertyBag:
@@ -2209,7 +2370,7 @@
                     type: integer
                   creationData:
                     description: |-
-                      Storage version of v1api20230202preview.CreationData_STATUS
+                      Storage version of v1api20240901.CreationData_STATUS
                       Data used when creating a target resource from a source resource.
                     properties:
                       $propertyBag:
@@ -2224,9 +2385,9 @@
                     type: object
                   currentOrchestratorVersion:
                     type: string
+                  eTag:
+                    type: string
                   enableAutoScaling:
-                    type: boolean
-                  enableCustomCATrust:
                     type: boolean
                   enableEncryptionAtHost:
                     type: boolean
@@ -2242,7 +2403,7 @@
                     type: string
                   kubeletConfig:
                     description: |-
-                      Storage version of v1api20230202preview.KubeletConfig_STATUS
+                      Storage version of v1api20240901.KubeletConfig_STATUS
                       See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
                     properties:
                       $propertyBag:
@@ -2281,7 +2442,7 @@
                     type: string
                   linuxOSConfig:
                     description: |-
-                      Storage version of v1api20230202preview.LinuxOSConfig_STATUS
+                      Storage version of v1api20240901.LinuxOSConfig_STATUS
                       See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
                     properties:
                       $propertyBag:
@@ -2295,7 +2456,7 @@
                         type: integer
                       sysctls:
                         description: |-
-                          Storage version of v1api20230202preview.SysctlConfig_STATUS
+                          Storage version of v1api20240901.SysctlConfig_STATUS
                           Sysctl settings for Linux agent nodes.
                         properties:
                           $propertyBag:
@@ -2371,8 +2532,6 @@
                     type: integer
                   maxPods:
                     type: integer
-                  messageOfTheDay:
-                    type: string
                   minCount:
                     type: integer
                   mode:
@@ -2381,7 +2540,7 @@
                     type: string
                   networkProfile:
                     description: |-
-                      Storage version of v1api20230202preview.AgentPoolNetworkProfile_STATUS
+                      Storage version of v1api20240901.AgentPoolNetworkProfile_STATUS
                       Network settings of an agent pool.
                     properties:
                       $propertyBag:
@@ -2394,7 +2553,7 @@
                       allowedHostPorts:
                         items:
                           description: |-
-                            Storage version of v1api20230202preview.PortRange_STATUS
+                            Storage version of v1api20240901.PortRange_STATUS
                             The port range.
                           properties:
                             $propertyBag:
@@ -2419,7 +2578,7 @@
                       nodePublicIPTags:
                         items:
                           description: |-
-                            Storage version of v1api20230202preview.IPTag_STATUS
+                            Storage version of v1api20240901.IPTag_STATUS
                             Contains the IPTag associated with the object.
                           properties:
                             $propertyBag:
@@ -2462,7 +2621,7 @@
                     type: string
                   powerState:
                     description: |-
-                      Storage version of v1api20230202preview.PowerState_STATUS
+                      Storage version of v1api20240901.PowerState_STATUS
                       Describes the Power State of the cluster
                     properties:
                       $propertyBag:
@@ -2485,6 +2644,23 @@
                     type: string
                   scaleSetPriority:
                     type: string
+                  securityProfile:
+                    description: |-
+                      Storage version of v1api20240901.AgentPoolSecurityProfile_STATUS
+                      The security settings of an agent pool.
+                    properties:
+                      $propertyBag:
+                        additionalProperties:
+                          type: string
+                        description: |-
+                          PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                          resources, allowing for full fidelity round trip conversions
+                        type: object
+                      enableSecureBoot:
+                        type: boolean
+                      enableVTPM:
+                        type: boolean
+                    type: object
                   spotMaxPrice:
                     type: number
                   tags:
@@ -2495,7 +2671,7 @@
                     type: string
                   upgradeSettings:
                     description: |-
-                      Storage version of v1api20230202preview.AgentPoolUpgradeSettings_STATUS
+                      Storage version of v1api20240901.AgentPoolUpgradeSettings_STATUS
                       Settings for upgrading an agentpool
                     properties:
                       $propertyBag:
@@ -2505,8 +2681,12 @@
                           PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
                           resources, allowing for full fidelity round trip conversions
                         type: object
+                      drainTimeoutInMinutes:
+                        type: integer
                       maxSurge:
                         type: string
+                      nodeSoakDurationInMinutes:
+                        type: integer
                     type: object
                   vmSize:
                     type: string
@@ -2514,7 +2694,7 @@
                     type: string
                   windowsProfile:
                     description: |-
-                      Storage version of v1api20230202preview.AgentPoolWindowsProfile_STATUS
+                      Storage version of v1api20240901.AgentPoolWindowsProfile_STATUS
                       The Windows agent pool's specific profile.
                     properties:
                       $propertyBag:
@@ -2533,7 +2713,7 @@
               type: array
             apiServerAccessProfile:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterAPIServerAccessProfile_STATUS
+                Storage version of v1api20240901.ManagedClusterAPIServerAccessProfile_STATUS
                 Access profile for managed cluster API server.
               properties:
                 $propertyBag:
@@ -2553,15 +2733,11 @@
                   type: boolean
                 enablePrivateClusterPublicFQDN:
                   type: boolean
-                enableVnetIntegration:
-                  type: boolean
                 privateDNSZone:
-                  type: string
-                subnetId:
                   type: string
               type: object
             autoScalerProfile:
-              description: Storage version of v1api20230202preview.ManagedClusterProperties_AutoScalerProfile_STATUS
+              description: Storage version of v1api20240901.ManagedClusterProperties_AutoScalerProfile_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -2572,8 +2748,14 @@
                   type: object
                 balance-similar-node-groups:
                   type: string
+                daemonset-eviction-for-empty-nodes:
+                  type: boolean
+                daemonset-eviction-for-occupied-nodes:
+                  type: boolean
                 expander:
                   type: string
+                ignore-daemonsets-utilization:
+                  type: boolean
                 max-empty-bulk-delete:
                   type: string
                 max-graceful-termination-sec:
@@ -2607,7 +2789,7 @@
               type: object
             autoUpgradeProfile:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterAutoUpgradeProfile_STATUS
+                Storage version of v1api20240901.ManagedClusterAutoUpgradeProfile_STATUS
                 Auto upgrade profile for a managed cluster.
               properties:
                 $propertyBag:
@@ -2624,8 +2806,8 @@
               type: object
             azureMonitorProfile:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterAzureMonitorProfile_STATUS
-                Prometheus addon profile for the container service cluster
+                Storage version of v1api20240901.ManagedClusterAzureMonitorProfile_STATUS
+                Azure Monitor addon profiles for monitoring the managed cluster.
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -2636,8 +2818,10 @@
                   type: object
                 metrics:
                   description: |-
-                    Storage version of v1api20230202preview.ManagedClusterAzureMonitorProfileMetrics_STATUS
-                    Metrics profile for the prometheus service addon
+                    Storage version of v1api20240901.ManagedClusterAzureMonitorProfileMetrics_STATUS
+                    Metrics profile for the Azure Monitor managed service for Prometheus addon. Collect out-of-the-box Kubernetes
+                    infrastructure metrics to send to an Azure Monitor Workspace and configure additional scraping for custom targets. See
+                    aka.ms/AzureManagedPrometheus for an overview.
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -2650,8 +2834,10 @@
                       type: boolean
                     kubeStateMetrics:
                       description: |-
-                        Storage version of v1api20230202preview.ManagedClusterAzureMonitorProfileKubeStateMetrics_STATUS
-                        Kube State Metrics for prometheus addon profile for the container service cluster
+                        Storage version of v1api20240901.ManagedClusterAzureMonitorProfileKubeStateMetrics_STATUS
+                        Kube State Metrics profile for the Azure Managed Prometheus addon. These optional settings are for the
+                        kube-state-metrics pod that is deployed with the addon. See aka.ms/AzureManagedPrometheus-optional-parameters for
+                        details.
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -2712,21 +2898,6 @@
                   - type
                 type: object
               type: array
-            creationData:
-              description: |-
-                Storage version of v1api20230202preview.CreationData_STATUS
-                Data used when creating a target resource from a source resource.
-              properties:
-                $propertyBag:
-                  additionalProperties:
-                    type: string
-                  description: |-
-                    PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
-                    resources, allowing for full fidelity round trip conversions
-                  type: object
-                sourceResourceId:
-                  type: string
-              type: object
             currentKubernetesVersion:
               type: string
             disableLocalAccounts:
@@ -2735,15 +2906,15 @@
               type: string
             dnsPrefix:
               type: string
-            enableNamespaceResources:
-              type: boolean
+            eTag:
+              type: string
             enablePodSecurityPolicy:
               type: boolean
             enableRBAC:
               type: boolean
             extendedLocation:
               description: |-
-                Storage version of v1api20230202preview.ExtendedLocation_STATUS
+                Storage version of v1api20240901.ExtendedLocation_STATUS
                 The complex type of the extended location.
               properties:
                 $propertyBag:
@@ -2762,34 +2933,9 @@
               type: string
             fqdnSubdomain:
               type: string
-            guardrailsProfile:
-              description: |-
-                Storage version of v1api20230202preview.GuardrailsProfile_STATUS
-                The Guardrails profile.
-              properties:
-                $propertyBag:
-                  additionalProperties:
-                    type: string
-                  description: |-
-                    PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
-                    resources, allowing for full fidelity round trip conversions
-                  type: object
-                excludedNamespaces:
-                  items:
-                    type: string
-                  type: array
-                level:
-                  type: string
-                systemExcludedNamespaces:
-                  items:
-                    type: string
-                  type: array
-                version:
-                  type: string
-              type: object
             httpProxyConfig:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterHTTPProxyConfig_STATUS
+                Storage version of v1api20240901.ManagedClusterHTTPProxyConfig_STATUS
                 Cluster HTTP proxy configuration.
               properties:
                 $propertyBag:
@@ -2799,10 +2945,6 @@
                     PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
                     resources, allowing for full fidelity round trip conversions
                   type: object
-                effectiveNoProxy:
-                  items:
-                    type: string
-                  type: array
                 httpProxy:
                   type: string
                 httpsProxy:
@@ -2818,7 +2960,7 @@
               type: string
             identity:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterIdentity_STATUS
+                Storage version of v1api20240901.ManagedClusterIdentity_STATUS
                 Identity for the managed cluster.
               properties:
                 $propertyBag:
@@ -2828,6 +2970,29 @@
                     PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
                     resources, allowing for full fidelity round trip conversions
                   type: object
+                delegatedResources:
+                  additionalProperties:
+                    description: |-
+                      Storage version of v1api20240901.DelegatedResource_STATUS
+                      Delegated resource properties - internal use only.
+                    properties:
+                      $propertyBag:
+                        additionalProperties:
+                          type: string
+                        description: |-
+                          PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                          resources, allowing for full fidelity round trip conversions
+                        type: object
+                      location:
+                        type: string
+                      referralResource:
+                        type: string
+                      resourceId:
+                        type: string
+                      tenantId:
+                        type: string
+                    type: object
+                  type: object
                 principalId:
                   type: string
                 tenantId:
@@ -2836,7 +3001,7 @@
                   type: string
                 userAssignedIdentities:
                   additionalProperties:
-                    description: Storage version of v1api20230202preview.ManagedClusterIdentity_UserAssignedIdentities_STATUS
+                    description: Storage version of v1api20240901.ManagedClusterIdentity_UserAssignedIdentities_STATUS
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -2855,7 +3020,7 @@
             identityProfile:
               additionalProperties:
                 description: |-
-                  Storage version of v1api20230202preview.UserAssignedIdentity_STATUS
+                  Storage version of v1api20240901.UserAssignedIdentity_STATUS
                   Details about a user assigned identity.
                 properties:
                   $propertyBag:
@@ -2875,7 +3040,7 @@
               type: object
             ingressProfile:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterIngressProfile_STATUS
+                Storage version of v1api20240901.ManagedClusterIngressProfile_STATUS
                 Ingress profile for the container service cluster.
               properties:
                 $propertyBag:
@@ -2887,8 +3052,8 @@
                   type: object
                 webAppRouting:
                   description: |-
-                    Storage version of v1api20230202preview.ManagedClusterIngressProfileWebAppRouting_STATUS
-                    Web App Routing settings for the ingress profile.
+                    Storage version of v1api20240901.ManagedClusterIngressProfileWebAppRouting_STATUS
+                    Application Routing add-on settings for the ingress profile.
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -2897,13 +3062,15 @@
                         PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
                         resources, allowing for full fidelity round trip conversions
                       type: object
-                    dnsZoneResourceId:
-                      type: string
+                    dnsZoneResourceIds:
+                      items:
+                        type: string
+                      type: array
                     enabled:
                       type: boolean
                     identity:
                       description: |-
-                        Storage version of v1api20230202preview.UserAssignedIdentity_STATUS
+                        Storage version of v1api20240901.UserAssignedIdentity_STATUS
                         Details about a user assigned identity.
                       properties:
                         $propertyBag:
@@ -2926,7 +3093,7 @@
               type: string
             linuxProfile:
               description: |-
-                Storage version of v1api20230202preview.ContainerServiceLinuxProfile_STATUS
+                Storage version of v1api20240901.ContainerServiceLinuxProfile_STATUS
                 Profile for Linux VMs in the container service cluster.
               properties:
                 $propertyBag:
@@ -2940,7 +3107,7 @@
                   type: string
                 ssh:
                   description: |-
-                    Storage version of v1api20230202preview.ContainerServiceSshConfiguration_STATUS
+                    Storage version of v1api20240901.ContainerServiceSshConfiguration_STATUS
                     SSH configuration for Linux-based VMs running on Azure.
                   properties:
                     $propertyBag:
@@ -2953,7 +3120,7 @@
                     publicKeys:
                       items:
                         description: |-
-                          Storage version of v1api20230202preview.ContainerServiceSshPublicKey_STATUS
+                          Storage version of v1api20240901.ContainerServiceSshPublicKey_STATUS
                           Contains information about SSH certificate public key data.
                         properties:
                           $propertyBag:
@@ -2973,12 +3140,10 @@
               type: string
             maxAgentPools:
               type: integer
-            name:
-              type: string
-            networkProfile:
+            metricsProfile:
               description: |-
-                Storage version of v1api20230202preview.ContainerServiceNetworkProfile_STATUS
-                Profile of network configuration.
+                Storage version of v1api20240901.ManagedClusterMetricsProfile_STATUS
+                The metrics profile for the ManagedCluster.
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -2987,16 +3152,10 @@
                     PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
                     resources, allowing for full fidelity round trip conversions
                   type: object
-                dnsServiceIP:
-                  type: string
-                dockerBridgeCidr:
-                  type: string
-                ipFamilies:
-                  items:
-                    type: string
-                  type: array
-                kubeProxyConfig:
-                  description: Storage version of v1api20230202preview.ContainerServiceNetworkProfile_KubeProxyConfig_STATUS
+                costAnalysis:
+                  description: |-
+                    Storage version of v1api20240901.ManagedClusterCostAnalysis_STATUS
+                    The cost analysis configuration for the cluster
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -3007,8 +3166,41 @@
                       type: object
                     enabled:
                       type: boolean
-                    ipvsConfig:
-                      description: Storage version of v1api20230202preview.ContainerServiceNetworkProfile_KubeProxyConfig_IpvsConfig_STATUS
+                  type: object
+              type: object
+            name:
+              type: string
+            networkProfile:
+              description: |-
+                Storage version of v1api20240901.ContainerServiceNetworkProfile_STATUS
+                Profile of network configuration.
+              properties:
+                $propertyBag:
+                  additionalProperties:
+                    type: string
+                  description: |-
+                    PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                    resources, allowing for full fidelity round trip conversions
+                  type: object
+                advancedNetworking:
+                  description: |-
+                    Storage version of v1api20240901.AdvancedNetworking_STATUS
+                    Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see
+                    aka.ms/aksadvancednetworking.
+                  properties:
+                    $propertyBag:
+                      additionalProperties:
+                        type: string
+                      description: |-
+                        PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                        resources, allowing for full fidelity round trip conversions
+                      type: object
+                    enabled:
+                      type: boolean
+                    observability:
+                      description: |-
+                        Storage version of v1api20240901.AdvancedNetworkingObservability_STATUS
+                        Observability profile to enable advanced network metrics and flow logs with historical contexts.
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -3017,21 +3209,34 @@
                             PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
                             resources, allowing for full fidelity round trip conversions
                           type: object
-                        scheduler:
-                          type: string
-                        tcpFinTimeoutSeconds:
-                          type: integer
-                        tcpTimeoutSeconds:
-                          type: integer
-                        udpTimeoutSeconds:
-                          type: integer
+                        enabled:
+                          type: boolean
                       type: object
-                    mode:
-                      type: string
+                    security:
+                      description: |-
+                        Storage version of v1api20240901.AdvancedNetworkingSecurity_STATUS
+                        Security profile to enable security features on cilium based cluster.
+                      properties:
+                        $propertyBag:
+                          additionalProperties:
+                            type: string
+                          description: |-
+                            PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                            resources, allowing for full fidelity round trip conversions
+                          type: object
+                        enabled:
+                          type: boolean
+                      type: object
                   type: object
+                dnsServiceIP:
+                  type: string
+                ipFamilies:
+                  items:
+                    type: string
+                  type: array
                 loadBalancerProfile:
                   description: |-
-                    Storage version of v1api20230202preview.ManagedClusterLoadBalancerProfile_STATUS
+                    Storage version of v1api20240901.ManagedClusterLoadBalancerProfile_STATUS
                     Profile of the managed cluster load balancer.
                   properties:
                     $propertyBag:
@@ -3048,7 +3253,7 @@
                     effectiveOutboundIPs:
                       items:
                         description: |-
-                          Storage version of v1api20230202preview.ResourceReference_STATUS
+                          Storage version of v1api20240901.ResourceReference_STATUS
                           A reference to an Azure resource.
                         properties:
                           $propertyBag:
@@ -3067,7 +3272,7 @@
                     idleTimeoutInMinutes:
                       type: integer
                     managedOutboundIPs:
-                      description: Storage version of v1api20230202preview.ManagedClusterLoadBalancerProfile_ManagedOutboundIPs_STATUS
+                      description: Storage version of v1api20240901.ManagedClusterLoadBalancerProfile_ManagedOutboundIPs_STATUS
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -3082,7 +3287,7 @@
                           type: integer
                       type: object
                     outboundIPPrefixes:
-                      description: Storage version of v1api20230202preview.ManagedClusterLoadBalancerProfile_OutboundIPPrefixes_STATUS
+                      description: Storage version of v1api20240901.ManagedClusterLoadBalancerProfile_OutboundIPPrefixes_STATUS
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -3094,7 +3299,7 @@
                         publicIPPrefixes:
                           items:
                             description: |-
-                              Storage version of v1api20230202preview.ResourceReference_STATUS
+                              Storage version of v1api20240901.ResourceReference_STATUS
                               A reference to an Azure resource.
                             properties:
                               $propertyBag:
@@ -3110,7 +3315,7 @@
                           type: array
                       type: object
                     outboundIPs:
-                      description: Storage version of v1api20230202preview.ManagedClusterLoadBalancerProfile_OutboundIPs_STATUS
+                      description: Storage version of v1api20240901.ManagedClusterLoadBalancerProfile_OutboundIPs_STATUS
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -3122,7 +3327,7 @@
                         publicIPs:
                           items:
                             description: |-
-                              Storage version of v1api20230202preview.ResourceReference_STATUS
+                              Storage version of v1api20240901.ResourceReference_STATUS
                               A reference to an Azure resource.
                             properties:
                               $propertyBag:
@@ -3142,7 +3347,7 @@
                   type: string
                 natGatewayProfile:
                   description: |-
-                    Storage version of v1api20230202preview.ManagedClusterNATGatewayProfile_STATUS
+                    Storage version of v1api20240901.ManagedClusterNATGatewayProfile_STATUS
                     Profile of the managed cluster NAT gateway.
                   properties:
                     $propertyBag:
@@ -3155,7 +3360,7 @@
                     effectiveOutboundIPs:
                       items:
                         description: |-
-                          Storage version of v1api20230202preview.ResourceReference_STATUS
+                          Storage version of v1api20240901.ResourceReference_STATUS
                           A reference to an Azure resource.
                         properties:
                           $propertyBag:
@@ -3173,7 +3378,7 @@
                       type: integer
                     managedOutboundIPProfile:
                       description: |-
-                        Storage version of v1api20230202preview.ManagedClusterManagedOutboundIPProfile_STATUS
+                        Storage version of v1api20240901.ManagedClusterManagedOutboundIPProfile_STATUS
                         Profile of the managed outbound IP resources of the managed cluster.
                       properties:
                         $propertyBag:
@@ -3216,7 +3421,7 @@
               type: string
             nodeResourceGroupProfile:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterNodeResourceGroupProfile_STATUS
+                Storage version of v1api20240901.ManagedClusterNodeResourceGroupProfile_STATUS
                 Node resource group lockdown profile for a managed cluster.
               properties:
                 $propertyBag:
@@ -3231,7 +3436,7 @@
               type: object
             oidcIssuerProfile:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterOIDCIssuerProfile_STATUS
+                Storage version of v1api20240901.ManagedClusterOIDCIssuerProfile_STATUS
                 The OIDC issuer profile of the Managed Cluster.
               properties:
                 $propertyBag:
@@ -3248,7 +3453,7 @@
               type: object
             podIdentityProfile:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterPodIdentityProfile_STATUS
+                Storage version of v1api20240901.ManagedClusterPodIdentityProfile_STATUS
                 See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on pod
                 identity integration.
               properties:
@@ -3266,7 +3471,7 @@
                 userAssignedIdentities:
                   items:
                     description: |-
-                      Storage version of v1api20230202preview.ManagedClusterPodIdentity_STATUS
+                      Storage version of v1api20240901.ManagedClusterPodIdentity_STATUS
                       Details about the pod identity assigned to the Managed Cluster.
                     properties:
                       $propertyBag:
@@ -3280,7 +3485,7 @@
                         type: string
                       identity:
                         description: |-
-                          Storage version of v1api20230202preview.UserAssignedIdentity_STATUS
+                          Storage version of v1api20240901.UserAssignedIdentity_STATUS
                           Details about a user assigned identity.
                         properties:
                           $propertyBag:
@@ -3302,7 +3507,7 @@
                       namespace:
                         type: string
                       provisioningInfo:
-                        description: Storage version of v1api20230202preview.ManagedClusterPodIdentity_ProvisioningInfo_STATUS
+                        description: Storage version of v1api20240901.ManagedClusterPodIdentity_ProvisioningInfo_STATUS
                         properties:
                           $propertyBag:
                             additionalProperties:
@@ -3313,7 +3518,7 @@
                             type: object
                           error:
                             description: |-
-                              Storage version of v1api20230202preview.ManagedClusterPodIdentityProvisioningError_STATUS
+                              Storage version of v1api20240901.ManagedClusterPodIdentityProvisioningError_STATUS
                               An error response from the pod identity provisioning.
                             properties:
                               $propertyBag:
@@ -3325,7 +3530,7 @@
                                 type: object
                               error:
                                 description: |-
-                                  Storage version of v1api20230202preview.ManagedClusterPodIdentityProvisioningErrorBody_STATUS
+                                  Storage version of v1api20240901.ManagedClusterPodIdentityProvisioningErrorBody_STATUS
                                   An error response from the pod identity provisioning.
                                 properties:
                                   $propertyBag:
@@ -3339,7 +3544,7 @@
                                     type: string
                                   details:
                                     items:
-                                      description: Storage version of v1api20230202preview.ManagedClusterPodIdentityProvisioningErrorBody_STATUS_Unrolled
+                                      description: Storage version of v1api20240901.ManagedClusterPodIdentityProvisioningErrorBody_STATUS_Unrolled
                                       properties:
                                         $propertyBag:
                                           additionalProperties:
@@ -3370,7 +3575,7 @@
                 userAssignedIdentityExceptions:
                   items:
                     description: |-
-                      Storage version of v1api20230202preview.ManagedClusterPodIdentityException_STATUS
+                      Storage version of v1api20240901.ManagedClusterPodIdentityException_STATUS
                       See [disable AAD Pod Identity for a specific
                       Pod/Application](https://azure.github.io/aad-pod-identity/docs/configure/application_exception/) for more details.
                     properties:
@@ -3394,7 +3599,7 @@
               type: object
             powerState:
               description: |-
-                Storage version of v1api20230202preview.PowerState_STATUS
+                Storage version of v1api20240901.PowerState_STATUS
                 Describes the Power State of the cluster
               properties:
                 $propertyBag:
@@ -3412,7 +3617,7 @@
             privateLinkResources:
               items:
                 description: |-
-                  Storage version of v1api20230202preview.PrivateLinkResource_STATUS
+                  Storage version of v1api20240901.PrivateLinkResource_STATUS
                   A private link resource
                 properties:
                   $propertyBag:
@@ -3442,9 +3647,11 @@
               type: string
             publicNetworkAccess:
               type: string
+            resourceUID:
+              type: string
             securityProfile:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterSecurityProfile_STATUS
+                Storage version of v1api20240901.ManagedClusterSecurityProfile_STATUS
                 Security profile for the container service cluster.
               properties:
                 $propertyBag:
@@ -3456,7 +3663,7 @@
                   type: object
                 azureKeyVaultKms:
                   description: |-
-                    Storage version of v1api20230202preview.AzureKeyVaultKms_STATUS
+                    Storage version of v1api20240901.AzureKeyVaultKms_STATUS
                     Azure Key Vault key management service settings for the security profile.
                   properties:
                     $propertyBag:
@@ -3475,13 +3682,9 @@
                     keyVaultResourceId:
                       type: string
                   type: object
-                customCATrustCertificates:
-                  items:
-                    type: string
-                  type: array
                 defender:
                   description: |-
-                    Storage version of v1api20230202preview.ManagedClusterSecurityProfileDefender_STATUS
+                    Storage version of v1api20240901.ManagedClusterSecurityProfileDefender_STATUS
                     Microsoft Defender settings for the security profile.
                   properties:
                     $propertyBag:
@@ -3495,7 +3698,7 @@
                       type: string
                     securityMonitoring:
                       description: |-
-                        Storage version of v1api20230202preview.ManagedClusterSecurityProfileDefenderSecurityMonitoring_STATUS
+                        Storage version of v1api20240901.ManagedClusterSecurityProfileDefenderSecurityMonitoring_STATUS
                         Microsoft Defender settings for the security profile threat detection.
                       properties:
                         $propertyBag:
@@ -3511,7 +3714,7 @@
                   type: object
                 imageCleaner:
                   description: |-
-                    Storage version of v1api20230202preview.ManagedClusterSecurityProfileImageCleaner_STATUS
+                    Storage version of v1api20240901.ManagedClusterSecurityProfileImageCleaner_STATUS
                     Image Cleaner removes unused images from nodes, freeing up disk space and helping to reduce attack surface area. Here
                     are settings for the security profile.
                   properties:
@@ -3527,24 +3730,9 @@
                     intervalHours:
                       type: integer
                   type: object
-                nodeRestriction:
-                  description: |-
-                    Storage version of v1api20230202preview.ManagedClusterSecurityProfileNodeRestriction_STATUS
-                    Node Restriction settings for the security profile.
-                  properties:
-                    $propertyBag:
-                      additionalProperties:
-                        type: string
-                      description: |-
-                        PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
-                        resources, allowing for full fidelity round trip conversions
-                      type: object
-                    enabled:
-                      type: boolean
-                  type: object
                 workloadIdentity:
                   description: |-
-                    Storage version of v1api20230202preview.ManagedClusterSecurityProfileWorkloadIdentity_STATUS
+                    Storage version of v1api20240901.ManagedClusterSecurityProfileWorkloadIdentity_STATUS
                     Workload identity settings for the security profile.
                   properties:
                     $propertyBag:
@@ -3560,7 +3748,7 @@
               type: object
             serviceMeshProfile:
               description: |-
-                Storage version of v1api20230202preview.ServiceMeshProfile_STATUS
+                Storage version of v1api20240901.ServiceMeshProfile_STATUS
                 Service mesh profile for a managed cluster.
               properties:
                 $propertyBag:
@@ -3572,7 +3760,7 @@
                   type: object
                 istio:
                   description: |-
-                    Storage version of v1api20230202preview.IstioServiceMesh_STATUS
+                    Storage version of v1api20240901.IstioServiceMesh_STATUS
                     Istio service mesh configuration.
                   properties:
                     $propertyBag:
@@ -3582,9 +3770,46 @@
                         PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
                         resources, allowing for full fidelity round trip conversions
                       type: object
+                    certificateAuthority:
+                      description: |-
+                        Storage version of v1api20240901.IstioCertificateAuthority_STATUS
+                        Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described
+                        here https://aka.ms/asm-plugin-ca
+                      properties:
+                        $propertyBag:
+                          additionalProperties:
+                            type: string
+                          description: |-
+                            PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                            resources, allowing for full fidelity round trip conversions
+                          type: object
+                        plugin:
+                          description: |-
+                            Storage version of v1api20240901.IstioPluginCertificateAuthority_STATUS
+                            Plugin certificates information for Service Mesh.
+                          properties:
+                            $propertyBag:
+                              additionalProperties:
+                                type: string
+                              description: |-
+                                PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                                resources, allowing for full fidelity round trip conversions
+                              type: object
+                            certChainObjectName:
+                              type: string
+                            certObjectName:
+                              type: string
+                            keyObjectName:
+                              type: string
+                            keyVaultId:
+                              type: string
+                            rootCertObjectName:
+                              type: string
+                          type: object
+                      type: object
                     components:
                       description: |-
-                        Storage version of v1api20230202preview.IstioComponents_STATUS
+                        Storage version of v1api20240901.IstioComponents_STATUS
                         Istio components configuration.
                       properties:
                         $propertyBag:
@@ -3594,10 +3819,27 @@
                             PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
                             resources, allowing for full fidelity round trip conversions
                           type: object
+                        egressGateways:
+                          items:
+                            description: |-
+                              Storage version of v1api20240901.IstioEgressGateway_STATUS
+                              Istio egress gateway configuration.
+                            properties:
+                              $propertyBag:
+                                additionalProperties:
+                                  type: string
+                                description: |-
+                                  PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                                  resources, allowing for full fidelity round trip conversions
+                                type: object
+                              enabled:
+                                type: boolean
+                            type: object
+                          type: array
                         ingressGateways:
                           items:
                             description: |-
-                              Storage version of v1api20230202preview.IstioIngressGateway_STATUS
+                              Storage version of v1api20240901.IstioIngressGateway_STATUS
                               Istio ingress gateway configuration. For now, we support up to one external ingress gateway named
                               `aks-istio-ingressgateway-external` and one internal ingress gateway named `aks-istio-ingressgateway-internal`.
                             properties:
@@ -3615,13 +3857,17 @@
                             type: object
                           type: array
                       type: object
+                    revisions:
+                      items:
+                        type: string
+                      type: array
                   type: object
                 mode:
                   type: string
               type: object
             servicePrincipalProfile:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterServicePrincipalProfile_STATUS
+                Storage version of v1api20240901.ManagedClusterServicePrincipalProfile_STATUS
                 Information about a service principal identity for the cluster to use for manipulating Azure APIs.
               properties:
                 $propertyBag:
@@ -3636,7 +3882,7 @@
               type: object
             sku:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterSKU_STATUS
+                Storage version of v1api20240901.ManagedClusterSKU_STATUS
                 The SKU of a Managed Cluster.
               properties:
                 $propertyBag:
@@ -3653,7 +3899,7 @@
               type: object
             storageProfile:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterStorageProfile_STATUS
+                Storage version of v1api20240901.ManagedClusterStorageProfile_STATUS
                 Storage profile for the container service cluster.
               properties:
                 $propertyBag:
@@ -3665,7 +3911,7 @@
                   type: object
                 blobCSIDriver:
                   description: |-
-                    Storage version of v1api20230202preview.ManagedClusterStorageProfileBlobCSIDriver_STATUS
+                    Storage version of v1api20240901.ManagedClusterStorageProfileBlobCSIDriver_STATUS
                     AzureBlob CSI Driver settings for the storage profile.
                   properties:
                     $propertyBag:
@@ -3680,7 +3926,7 @@
                   type: object
                 diskCSIDriver:
                   description: |-
-                    Storage version of v1api20230202preview.ManagedClusterStorageProfileDiskCSIDriver_STATUS
+                    Storage version of v1api20240901.ManagedClusterStorageProfileDiskCSIDriver_STATUS
                     AzureDisk CSI Driver settings for the storage profile.
                   properties:
                     $propertyBag:
@@ -3692,12 +3938,10 @@
                       type: object
                     enabled:
                       type: boolean
-                    version:
-                      type: string
                   type: object
                 fileCSIDriver:
                   description: |-
-                    Storage version of v1api20230202preview.ManagedClusterStorageProfileFileCSIDriver_STATUS
+                    Storage version of v1api20240901.ManagedClusterStorageProfileFileCSIDriver_STATUS
                     AzureFile CSI Driver settings for the storage profile.
                   properties:
                     $propertyBag:
@@ -3712,7 +3956,7 @@
                   type: object
                 snapshotController:
                   description: |-
-                    Storage version of v1api20230202preview.ManagedClusterStorageProfileSnapshotController_STATUS
+                    Storage version of v1api20240901.ManagedClusterStorageProfileSnapshotController_STATUS
                     Snapshot Controller settings for the storage profile.
                   properties:
                     $propertyBag:
@@ -3726,9 +3970,11 @@
                       type: boolean
                   type: object
               type: object
+            supportPlan:
+              type: string
             systemData:
               description: |-
-                Storage version of v1api20230202preview.SystemData_STATUS
+                Storage version of v1api20240901.SystemData_STATUS
                 Metadata pertaining to creation and last modification of the resource.
               properties:
                 $propertyBag:
@@ -3759,7 +4005,7 @@
               type: string
             upgradeSettings:
               description: |-
-                Storage version of v1api20230202preview.ClusterUpgradeSettings_STATUS
+                Storage version of v1api20240901.ClusterUpgradeSettings_STATUS
                 Settings for upgrading a cluster.
               properties:
                 $propertyBag:
@@ -3771,7 +4017,7 @@
                   type: object
                 overrideSettings:
                   description: |-
-                    Storage version of v1api20230202preview.UpgradeOverrideSettings_STATUS
+                    Storage version of v1api20240901.UpgradeOverrideSettings_STATUS
                     Settings for overrides when upgrading a cluster.
                   properties:
                     $propertyBag:
@@ -3781,17 +4027,15 @@
                         PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
                         resources, allowing for full fidelity round trip conversions
                       type: object
-                    controlPlaneOverrides:
-                      items:
-                        type: string
-                      type: array
+                    forceUpgrade:
+                      type: boolean
                     until:
                       type: string
                   type: object
               type: object
             windowsProfile:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterWindowsProfile_STATUS
+                Storage version of v1api20240901.ManagedClusterWindowsProfile_STATUS
                 Profile for Windows VMs in the managed cluster.
               properties:
                 $propertyBag:
@@ -3807,7 +4051,7 @@
                   type: boolean
                 gmsaProfile:
                   description: |-
-                    Storage version of v1api20230202preview.WindowsGmsaProfile_STATUS
+                    Storage version of v1api20240901.WindowsGmsaProfile_STATUS
                     Windows gMSA Profile in the managed cluster.
                   properties:
                     $propertyBag:
@@ -3829,7 +4073,7 @@
               type: object
             workloadAutoScalerProfile:
               description: |-
-                Storage version of v1api20230202preview.ManagedClusterWorkloadAutoScalerProfile_STATUS
+                Storage version of v1api20240901.ManagedClusterWorkloadAutoScalerProfile_STATUS
                 Workload Auto-scaler profile for the managed cluster.
               properties:
                 $propertyBag:
@@ -3841,7 +4085,7 @@
                   type: object
                 keda:
                   description: |-
-                    Storage version of v1api20230202preview.ManagedClusterWorkloadAutoScalerProfileKeda_STATUS
+                    Storage version of v1api20240901.ManagedClusterWorkloadAutoScalerProfileKeda_STATUS
                     KEDA (Kubernetes Event-driven Autoscaling) settings for the workload auto-scaler profile.
                   properties:
                     $propertyBag:
@@ -3855,7 +4099,9 @@
                       type: boolean
                   type: object
                 verticalPodAutoscaler:
-                  description: Storage version of v1api20230202preview.ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler_STATUS
+                  description: |-
+                    Storage version of v1api20240901.ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler_STATUS
+                    VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile.
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -3864,12 +4110,8 @@
                         PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
                         resources, allowing for full fidelity round trip conversions
                       type: object
-                    controlledValues:
-                      type: string
                     enabled:
                       type: boolean
-                    updateMode:
-                      type: string
                   type: object
               type: object
           type: object

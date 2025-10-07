@@ -14,6 +14,7 @@ metadata:
   namespace: '{{ .Release.Namespace }}'
 spec:
   replicas: 1
+  revisionHistoryLimit: 10
   selector:
     matchLabels:
       control-plane: controller-manager
@@ -22,9 +23,8 @@ spec:
       annotations:
         kubectl.kubernetes.io/default-container: manager
       labels:
-        aadpodidbinding: aso-manager-binding
         app.kubernetes.io/name: azure-service-operator
-        app.kubernetes.io/version: v2.8.0
+        app.kubernetes.io/version: v2.11.0
         control-plane: controller-manager
     spec:
       containers:
@@ -120,11 +120,35 @@ spec:
               key: AZURE_USER_AGENT_SUFFIX
               name: aso-controller-settings
               optional: true
+        - name: MAX_CONCURRENT_RECONCILES
+          valueFrom:
+            secretKeyRef:
+              key: MAX_CONCURRENT_RECONCILES
+              name: aso-controller-settings
+              optional: true
+        - name: RATE_LIMIT_MODE
+          valueFrom:
+            secretKeyRef:
+              key: RATE_LIMIT_MODE
+              name: aso-controller-settings
+              optional: true
+        - name: RATE_LIMIT_QPS
+          valueFrom:
+            secretKeyRef:
+              key: RATE_LIMIT_QPS
+              name: aso-controller-settings
+              optional: true
+        - name: RATE_LIMIT_BUCKET_SIZE
+          valueFrom:
+            secretKeyRef:
+              key: RATE_LIMIT_BUCKET_SIZE
+              name: aso-controller-settings
+              optional: true
         - name: POD_NAMESPACE
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        image: '{{ .Values.aso.image.registry }}/{{ .Values.aso.image.name }}:v2.8.0'
+        image: '{{ .Values.aso.image.registry }}/{{ .Values.aso.image.name }}:v2.11.0'
         imagePullPolicy: Always
         livenessProbe:
           httpGet:
@@ -160,6 +184,7 @@ spec:
             drop:
             - ALL
           readOnlyRootFilesystem: true
+          runAsGroup: 65532
           runAsNonRoot: true
           runAsUser: 65532
           seccompProfile:

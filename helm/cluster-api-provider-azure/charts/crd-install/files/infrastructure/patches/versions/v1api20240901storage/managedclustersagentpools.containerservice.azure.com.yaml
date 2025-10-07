@@ -1,11 +1,11 @@
 - op: replace
-  path: /spec/versions/5/schema
+  path: /spec/versions/11/schema
   value:
     openAPIV3Schema:
       description: |-
-        Storage version of v1api20230202preview.ManagedClustersAgentPool
+        Storage version of v1api20240901.ManagedClustersAgentPool
         Generator information:
-        - Generated from: /containerservice/resource-manager/Microsoft.ContainerService/aks/preview/2023-02-02-preview/managedClusters.json
+        - Generated from: /containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2024-09-01/managedClusters.json
         - ARM URI: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}
       properties:
         apiVersion:
@@ -26,7 +26,7 @@
         metadata:
           type: object
         spec:
-          description: Storage version of v1api20230202preview.ManagedClusters_AgentPool_Spec
+          description: Storage version of v1api20240901.ManagedClustersAgentPool_Spec
           properties:
             $propertyBag:
               additionalProperties:
@@ -44,13 +44,31 @@
                 AzureName: The name of the resource in Azure. This is often the same as the name of the resource in Kubernetes but it
                 doesn't have to be.
               type: string
-            capacityReservationGroupID:
-              type: string
+            capacityReservationGroupReference:
+              description: 'CapacityReservationGroupReference: AKS will associate the specified agent pool with the Capacity Reservation Group.'
+              properties:
+                armId:
+                  description: |-
+                    ARMID is a string of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}.
+                    The /resourcegroups/{resourceGroupName} bit is optional as some resources are scoped at the subscription level
+                    ARMID is mutually exclusive with Group, Kind, Namespace and Name.
+                  pattern: (?i)(^(/subscriptions/([^/]+)(/resourcegroups/([^/]+))?)?/providers/([^/]+)/([^/]+/[^/]+)(/([^/]+/[^/]+))*$|^/subscriptions/([^/]+)(/resourcegroups/([^/]+))?$)
+                  type: string
+                group:
+                  description: Group is the Kubernetes group of the resource.
+                  type: string
+                kind:
+                  description: Kind is the Kubernetes kind of the resource.
+                  type: string
+                name:
+                  description: Name is the Kubernetes name of the resource.
+                  type: string
+              type: object
             count:
               type: integer
             creationData:
               description: |-
-                Storage version of v1api20230202preview.CreationData
+                Storage version of v1api20240901.CreationData
                 Data used when creating a target resource from a source resource.
               properties:
                 $propertyBag:
@@ -82,8 +100,6 @@
                   type: object
               type: object
             enableAutoScaling:
-              type: boolean
-            enableCustomCATrust:
               type: boolean
             enableEncryptionAtHost:
               type: boolean
@@ -120,7 +136,7 @@
               type: object
             kubeletConfig:
               description: |-
-                Storage version of v1api20230202preview.KubeletConfig
+                Storage version of v1api20240901.KubeletConfig
                 See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
               properties:
                 $propertyBag:
@@ -159,7 +175,7 @@
               type: string
             linuxOSConfig:
               description: |-
-                Storage version of v1api20230202preview.LinuxOSConfig
+                Storage version of v1api20240901.LinuxOSConfig
                 See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
               properties:
                 $propertyBag:
@@ -173,7 +189,7 @@
                   type: integer
                 sysctls:
                   description: |-
-                    Storage version of v1api20230202preview.SysctlConfig
+                    Storage version of v1api20240901.SysctlConfig
                     Sysctl settings for Linux agent nodes.
                   properties:
                     $propertyBag:
@@ -249,15 +265,13 @@
               type: integer
             maxPods:
               type: integer
-            messageOfTheDay:
-              type: string
             minCount:
               type: integer
             mode:
               type: string
             networkProfile:
               description: |-
-                Storage version of v1api20230202preview.AgentPoolNetworkProfile
+                Storage version of v1api20240901.AgentPoolNetworkProfile
                 Network settings of an agent pool.
               properties:
                 $propertyBag:
@@ -270,7 +284,7 @@
                 allowedHostPorts:
                   items:
                     description: |-
-                      Storage version of v1api20230202preview.PortRange
+                      Storage version of v1api20240901.PortRange
                       The port range.
                     properties:
                       $propertyBag:
@@ -313,7 +327,7 @@
                 nodePublicIPTags:
                   items:
                     description: |-
-                      Storage version of v1api20230202preview.IPTag
+                      Storage version of v1api20240901.IPTag
                       Contains the IPTag associated with the object.
                     properties:
                       $propertyBag:
@@ -360,6 +374,77 @@
               items:
                 type: string
               type: array
+            operatorSpec:
+              description: |-
+                Storage version of v1api20240901.ManagedClustersAgentPoolOperatorSpec
+                Details for configuring operator behavior. Fields in this struct are interpreted by the operator directly rather than being passed to Azure
+              properties:
+                $propertyBag:
+                  additionalProperties:
+                    type: string
+                  description: |-
+                    PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                    resources, allowing for full fidelity round trip conversions
+                  type: object
+                configMapExpressions:
+                  items:
+                    description: |-
+                      DestinationExpression is a CEL expression and a destination to store the result in. The destination may
+                      be a secret or a configmap. The value of the expression is stored at the specified location in
+                      the destination.
+                    properties:
+                      key:
+                        description: |-
+                          Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string
+                          this is required to identify what key to write to. If the CEL expression in Value returns a map[string]string
+                          Key must not be set, instead the keys written will be determined dynamically based on the keys of the resulting
+                          map[string]string.
+                        type: string
+                      name:
+                        description: |-
+                          Name is the name of the Kubernetes configmap or secret to write to.
+                          The configmap or secret will be created in the same namespace as the resource.
+                        type: string
+                      value:
+                        description: |-
+                          Value is a CEL expression. The CEL expression may return a string or a map[string]string. For more information
+                          on CEL in ASO see https://azure.github.io/azure-service-operator/guide/expressions/
+                        type: string
+                    required:
+                      - name
+                      - value
+                    type: object
+                  type: array
+                secretExpressions:
+                  items:
+                    description: |-
+                      DestinationExpression is a CEL expression and a destination to store the result in. The destination may
+                      be a secret or a configmap. The value of the expression is stored at the specified location in
+                      the destination.
+                    properties:
+                      key:
+                        description: |-
+                          Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string
+                          this is required to identify what key to write to. If the CEL expression in Value returns a map[string]string
+                          Key must not be set, instead the keys written will be determined dynamically based on the keys of the resulting
+                          map[string]string.
+                        type: string
+                      name:
+                        description: |-
+                          Name is the name of the Kubernetes configmap or secret to write to.
+                          The configmap or secret will be created in the same namespace as the resource.
+                        type: string
+                      value:
+                        description: |-
+                          Value is a CEL expression. The CEL expression may return a string or a map[string]string. For more information
+                          on CEL in ASO see https://azure.github.io/azure-service-operator/guide/expressions/
+                        type: string
+                    required:
+                      - name
+                      - value
+                    type: object
+                  type: array
+              type: object
             orchestratorVersion:
               type: string
             originalVersion:
@@ -410,7 +495,7 @@
               type: object
             powerState:
               description: |-
-                Storage version of v1api20230202preview.PowerState
+                Storage version of v1api20240901.PowerState
                 Describes the Power State of the cluster
               properties:
                 $propertyBag:
@@ -449,6 +534,23 @@
               type: string
             scaleSetPriority:
               type: string
+            securityProfile:
+              description: |-
+                Storage version of v1api20240901.AgentPoolSecurityProfile
+                The security settings of an agent pool.
+              properties:
+                $propertyBag:
+                  additionalProperties:
+                    type: string
+                  description: |-
+                    PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                    resources, allowing for full fidelity round trip conversions
+                  type: object
+                enableSecureBoot:
+                  type: boolean
+                enableVTPM:
+                  type: boolean
+              type: object
             spotMaxPrice:
               type: number
             tags:
@@ -459,7 +561,7 @@
               type: string
             upgradeSettings:
               description: |-
-                Storage version of v1api20230202preview.AgentPoolUpgradeSettings
+                Storage version of v1api20240901.AgentPoolUpgradeSettings
                 Settings for upgrading an agentpool
               properties:
                 $propertyBag:
@@ -469,8 +571,12 @@
                     PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
                     resources, allowing for full fidelity round trip conversions
                   type: object
+                drainTimeoutInMinutes:
+                  type: integer
                 maxSurge:
                   type: string
+                nodeSoakDurationInMinutes:
+                  type: integer
               type: object
             vmSize:
               type: string
@@ -499,7 +605,7 @@
               type: object
             windowsProfile:
               description: |-
-                Storage version of v1api20230202preview.AgentPoolWindowsProfile
+                Storage version of v1api20240901.AgentPoolWindowsProfile
                 The Windows agent pool's specific profile.
               properties:
                 $propertyBag:
@@ -518,7 +624,7 @@
             - owner
           type: object
         status:
-          description: Storage version of v1api20230202preview.ManagedClusters_AgentPool_STATUS
+          description: Storage version of v1api20240901.ManagedClustersAgentPool_STATUS
           properties:
             $propertyBag:
               additionalProperties:
@@ -580,7 +686,7 @@
               type: integer
             creationData:
               description: |-
-                Storage version of v1api20230202preview.CreationData_STATUS
+                Storage version of v1api20240901.CreationData_STATUS
                 Data used when creating a target resource from a source resource.
               properties:
                 $propertyBag:
@@ -595,9 +701,9 @@
               type: object
             currentOrchestratorVersion:
               type: string
+            eTag:
+              type: string
             enableAutoScaling:
-              type: boolean
-            enableCustomCATrust:
               type: boolean
             enableEncryptionAtHost:
               type: boolean
@@ -615,7 +721,7 @@
               type: string
             kubeletConfig:
               description: |-
-                Storage version of v1api20230202preview.KubeletConfig_STATUS
+                Storage version of v1api20240901.KubeletConfig_STATUS
                 See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
               properties:
                 $propertyBag:
@@ -654,7 +760,7 @@
               type: string
             linuxOSConfig:
               description: |-
-                Storage version of v1api20230202preview.LinuxOSConfig_STATUS
+                Storage version of v1api20240901.LinuxOSConfig_STATUS
                 See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
               properties:
                 $propertyBag:
@@ -668,7 +774,7 @@
                   type: integer
                 sysctls:
                   description: |-
-                    Storage version of v1api20230202preview.SysctlConfig_STATUS
+                    Storage version of v1api20240901.SysctlConfig_STATUS
                     Sysctl settings for Linux agent nodes.
                   properties:
                     $propertyBag:
@@ -744,8 +850,6 @@
               type: integer
             maxPods:
               type: integer
-            messageOfTheDay:
-              type: string
             minCount:
               type: integer
             mode:
@@ -754,7 +858,7 @@
               type: string
             networkProfile:
               description: |-
-                Storage version of v1api20230202preview.AgentPoolNetworkProfile_STATUS
+                Storage version of v1api20240901.AgentPoolNetworkProfile_STATUS
                 Network settings of an agent pool.
               properties:
                 $propertyBag:
@@ -767,7 +871,7 @@
                 allowedHostPorts:
                   items:
                     description: |-
-                      Storage version of v1api20230202preview.PortRange_STATUS
+                      Storage version of v1api20240901.PortRange_STATUS
                       The port range.
                     properties:
                       $propertyBag:
@@ -792,7 +896,7 @@
                 nodePublicIPTags:
                   items:
                     description: |-
-                      Storage version of v1api20230202preview.IPTag_STATUS
+                      Storage version of v1api20240901.IPTag_STATUS
                       Contains the IPTag associated with the object.
                     properties:
                       $propertyBag:
@@ -835,7 +939,7 @@
               type: string
             powerState:
               description: |-
-                Storage version of v1api20230202preview.PowerState_STATUS
+                Storage version of v1api20240901.PowerState_STATUS
                 Describes the Power State of the cluster
               properties:
                 $propertyBag:
@@ -860,6 +964,23 @@
               type: string
             scaleSetPriority:
               type: string
+            securityProfile:
+              description: |-
+                Storage version of v1api20240901.AgentPoolSecurityProfile_STATUS
+                The security settings of an agent pool.
+              properties:
+                $propertyBag:
+                  additionalProperties:
+                    type: string
+                  description: |-
+                    PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                    resources, allowing for full fidelity round trip conversions
+                  type: object
+                enableSecureBoot:
+                  type: boolean
+                enableVTPM:
+                  type: boolean
+              type: object
             spotMaxPrice:
               type: number
             tags:
@@ -870,7 +991,7 @@
               type: string
             upgradeSettings:
               description: |-
-                Storage version of v1api20230202preview.AgentPoolUpgradeSettings_STATUS
+                Storage version of v1api20240901.AgentPoolUpgradeSettings_STATUS
                 Settings for upgrading an agentpool
               properties:
                 $propertyBag:
@@ -880,8 +1001,12 @@
                     PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
                     resources, allowing for full fidelity round trip conversions
                   type: object
+                drainTimeoutInMinutes:
+                  type: integer
                 maxSurge:
                   type: string
+                nodeSoakDurationInMinutes:
+                  type: integer
               type: object
             vmSize:
               type: string
@@ -889,7 +1014,7 @@
               type: string
             windowsProfile:
               description: |-
-                Storage version of v1api20230202preview.AgentPoolWindowsProfile_STATUS
+                Storage version of v1api20240901.AgentPoolWindowsProfile_STATUS
                 The Windows agent pool's specific profile.
               properties:
                 $propertyBag:

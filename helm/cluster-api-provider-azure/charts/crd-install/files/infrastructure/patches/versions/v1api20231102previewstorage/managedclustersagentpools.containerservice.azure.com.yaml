@@ -1,5 +1,5 @@
 - op: replace
-  path: /spec/versions/9/schema
+  path: /spec/versions/7/schema
   value:
     openAPIV3Schema:
       description: |-
@@ -26,7 +26,7 @@
         metadata:
           type: object
         spec:
-          description: Storage version of v1api20231102preview.ManagedClusters_AgentPool_Spec
+          description: Storage version of v1api20231102preview.ManagedClustersAgentPool_Spec
           properties:
             $propertyBag:
               additionalProperties:
@@ -80,9 +80,7 @@
             count:
               type: integer
             creationData:
-              description: |-
-                Storage version of v1api20231102preview.CreationData
-                Data used when creating a target resource from a source resource.
+              description: Storage version of v1api20231102preview.CreationData
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -92,7 +90,7 @@
                     resources, allowing for full fidelity round trip conversions
                   type: object
                 sourceResourceReference:
-                  description: 'SourceResourceReference: This is the ARM ID of the source object to be used to create the target object.'
+                  description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
                   properties:
                     armId:
                       description: |-
@@ -163,9 +161,7 @@
                   type: string
               type: object
             kubeletConfig:
-              description: |-
-                Storage version of v1api20231102preview.KubeletConfig
-                See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
+              description: Storage version of v1api20231102preview.KubeletConfig
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -202,9 +198,7 @@
             kubeletDiskType:
               type: string
             linuxOSConfig:
-              description: |-
-                Storage version of v1api20231102preview.LinuxOSConfig
-                See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
+              description: Storage version of v1api20231102preview.LinuxOSConfig
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -216,9 +210,7 @@
                 swapFileSizeMB:
                   type: integer
                 sysctls:
-                  description: |-
-                    Storage version of v1api20231102preview.SysctlConfig
-                    Sysctl settings for Linux agent nodes.
+                  description: Storage version of v1api20231102preview.SysctlConfig
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -300,9 +292,7 @@
             mode:
               type: string
             networkProfile:
-              description: |-
-                Storage version of v1api20231102preview.AgentPoolNetworkProfile
-                Network settings of an agent pool.
+              description: Storage version of v1api20231102preview.AgentPoolNetworkProfile
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -313,9 +303,7 @@
                   type: object
                 allowedHostPorts:
                   items:
-                    description: |-
-                      Storage version of v1api20231102preview.PortRange
-                      The port range.
+                    description: Storage version of v1api20231102preview.PortRange
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -356,9 +344,7 @@
                   type: array
                 nodePublicIPTags:
                   items:
-                    description: |-
-                      Storage version of v1api20231102preview.IPTag
-                      Contains the IPTag associated with the object.
+                    description: Storage version of v1api20231102preview.IPTag
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -408,6 +394,77 @@
               items:
                 type: string
               type: array
+            operatorSpec:
+              description: |-
+                Storage version of v1api20231102preview.ManagedClustersAgentPoolOperatorSpec
+                Details for configuring operator behavior. Fields in this struct are interpreted by the operator directly rather than being passed to Azure
+              properties:
+                $propertyBag:
+                  additionalProperties:
+                    type: string
+                  description: |-
+                    PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                    resources, allowing for full fidelity round trip conversions
+                  type: object
+                configMapExpressions:
+                  items:
+                    description: |-
+                      DestinationExpression is a CEL expression and a destination to store the result in. The destination may
+                      be a secret or a configmap. The value of the expression is stored at the specified location in
+                      the destination.
+                    properties:
+                      key:
+                        description: |-
+                          Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string
+                          this is required to identify what key to write to. If the CEL expression in Value returns a map[string]string
+                          Key must not be set, instead the keys written will be determined dynamically based on the keys of the resulting
+                          map[string]string.
+                        type: string
+                      name:
+                        description: |-
+                          Name is the name of the Kubernetes configmap or secret to write to.
+                          The configmap or secret will be created in the same namespace as the resource.
+                        type: string
+                      value:
+                        description: |-
+                          Value is a CEL expression. The CEL expression may return a string or a map[string]string. For more information
+                          on CEL in ASO see https://azure.github.io/azure-service-operator/guide/expressions/
+                        type: string
+                    required:
+                      - name
+                      - value
+                    type: object
+                  type: array
+                secretExpressions:
+                  items:
+                    description: |-
+                      DestinationExpression is a CEL expression and a destination to store the result in. The destination may
+                      be a secret or a configmap. The value of the expression is stored at the specified location in
+                      the destination.
+                    properties:
+                      key:
+                        description: |-
+                          Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string
+                          this is required to identify what key to write to. If the CEL expression in Value returns a map[string]string
+                          Key must not be set, instead the keys written will be determined dynamically based on the keys of the resulting
+                          map[string]string.
+                        type: string
+                      name:
+                        description: |-
+                          Name is the name of the Kubernetes configmap or secret to write to.
+                          The configmap or secret will be created in the same namespace as the resource.
+                        type: string
+                      value:
+                        description: |-
+                          Value is a CEL expression. The CEL expression may return a string or a map[string]string. For more information
+                          on CEL in ASO see https://azure.github.io/azure-service-operator/guide/expressions/
+                        type: string
+                    required:
+                      - name
+                      - value
+                    type: object
+                  type: array
+              type: object
             orchestratorVersion:
               type: string
             originalVersion:
@@ -457,9 +514,7 @@
                   type: string
               type: object
             powerState:
-              description: |-
-                Storage version of v1api20231102preview.PowerState
-                Describes the Power State of the cluster
+              description: Storage version of v1api20231102preview.PowerState
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -498,9 +553,7 @@
             scaleSetPriority:
               type: string
             securityProfile:
-              description: |-
-                Storage version of v1api20231102preview.AgentPoolSecurityProfile
-                The security settings of an agent pool.
+              description: Storage version of v1api20231102preview.AgentPoolSecurityProfile
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -525,9 +578,7 @@
             type:
               type: string
             upgradeSettings:
-              description: |-
-                Storage version of v1api20231102preview.AgentPoolUpgradeSettings
-                Settings for upgrading an agentpool
+              description: Storage version of v1api20231102preview.AgentPoolUpgradeSettings
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -545,9 +596,7 @@
               type: object
             virtualMachineNodesStatus:
               items:
-                description: |-
-                  Storage version of v1api20231102preview.VirtualMachineNodes
-                  Current status on a group of nodes of the same vm size.
+                description: Storage version of v1api20231102preview.VirtualMachineNodes
                 properties:
                   $propertyBag:
                     additionalProperties:
@@ -563,9 +612,7 @@
                 type: object
               type: array
             virtualMachinesProfile:
-              description: |-
-                Storage version of v1api20231102preview.VirtualMachinesProfile
-                Specifications on VirtualMachines agent pool.
+              description: Storage version of v1api20231102preview.VirtualMachinesProfile
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -575,9 +622,7 @@
                     resources, allowing for full fidelity round trip conversions
                   type: object
                 scale:
-                  description: |-
-                    Storage version of v1api20231102preview.ScaleProfile
-                    Specifications on how to scale a VirtualMachines agent pool.
+                  description: Storage version of v1api20231102preview.ScaleProfile
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -588,9 +633,7 @@
                       type: object
                     manual:
                       items:
-                        description: |-
-                          Storage version of v1api20231102preview.ManualScaleProfile
-                          Specifications on number of machines.
+                        description: Storage version of v1api20231102preview.ManualScaleProfile
                         properties:
                           $propertyBag:
                             additionalProperties:
@@ -635,9 +678,7 @@
                   type: string
               type: object
             windowsProfile:
-              description: |-
-                Storage version of v1api20231102preview.AgentPoolWindowsProfile
-                The Windows agent pool's specific profile.
+              description: Storage version of v1api20231102preview.AgentPoolWindowsProfile
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -655,7 +696,7 @@
             - owner
           type: object
         status:
-          description: Storage version of v1api20231102preview.ManagedClusters_AgentPool_STATUS
+          description: Storage version of v1api20231102preview.ManagedClustersAgentPool_STATUS
           properties:
             $propertyBag:
               additionalProperties:
@@ -729,9 +770,7 @@
             count:
               type: integer
             creationData:
-              description: |-
-                Storage version of v1api20231102preview.CreationData_STATUS
-                Data used when creating a target resource from a source resource.
+              description: Storage version of v1api20231102preview.CreationData_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -777,9 +816,7 @@
             id:
               type: string
             kubeletConfig:
-              description: |-
-                Storage version of v1api20231102preview.KubeletConfig_STATUS
-                See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
+              description: Storage version of v1api20231102preview.KubeletConfig_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -816,9 +853,7 @@
             kubeletDiskType:
               type: string
             linuxOSConfig:
-              description: |-
-                Storage version of v1api20231102preview.LinuxOSConfig_STATUS
-                See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
+              description: Storage version of v1api20231102preview.LinuxOSConfig_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -830,9 +865,7 @@
                 swapFileSizeMB:
                   type: integer
                 sysctls:
-                  description: |-
-                    Storage version of v1api20231102preview.SysctlConfig_STATUS
-                    Sysctl settings for Linux agent nodes.
+                  description: Storage version of v1api20231102preview.SysctlConfig_STATUS
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -916,9 +949,7 @@
             name:
               type: string
             networkProfile:
-              description: |-
-                Storage version of v1api20231102preview.AgentPoolNetworkProfile_STATUS
-                Network settings of an agent pool.
+              description: Storage version of v1api20231102preview.AgentPoolNetworkProfile_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -929,9 +960,7 @@
                   type: object
                 allowedHostPorts:
                   items:
-                    description: |-
-                      Storage version of v1api20231102preview.PortRange_STATUS
-                      The port range.
+                    description: Storage version of v1api20231102preview.PortRange_STATUS
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -954,9 +983,7 @@
                   type: array
                 nodePublicIPTags:
                   items:
-                    description: |-
-                      Storage version of v1api20231102preview.IPTag_STATUS
-                      Contains the IPTag associated with the object.
+                    description: Storage version of v1api20231102preview.IPTag_STATUS
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -1001,9 +1028,7 @@
             podSubnetID:
               type: string
             powerState:
-              description: |-
-                Storage version of v1api20231102preview.PowerState_STATUS
-                Describes the Power State of the cluster
+              description: Storage version of v1api20231102preview.PowerState_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -1028,9 +1053,7 @@
             scaleSetPriority:
               type: string
             securityProfile:
-              description: |-
-                Storage version of v1api20231102preview.AgentPoolSecurityProfile_STATUS
-                The security settings of an agent pool.
+              description: Storage version of v1api20231102preview.AgentPoolSecurityProfile_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -1055,9 +1078,7 @@
             type:
               type: string
             upgradeSettings:
-              description: |-
-                Storage version of v1api20231102preview.AgentPoolUpgradeSettings_STATUS
-                Settings for upgrading an agentpool
+              description: Storage version of v1api20231102preview.AgentPoolUpgradeSettings_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -1075,9 +1096,7 @@
               type: object
             virtualMachineNodesStatus:
               items:
-                description: |-
-                  Storage version of v1api20231102preview.VirtualMachineNodes_STATUS
-                  Current status on a group of nodes of the same vm size.
+                description: Storage version of v1api20231102preview.VirtualMachineNodes_STATUS
                 properties:
                   $propertyBag:
                     additionalProperties:
@@ -1093,9 +1112,7 @@
                 type: object
               type: array
             virtualMachinesProfile:
-              description: |-
-                Storage version of v1api20231102preview.VirtualMachinesProfile_STATUS
-                Specifications on VirtualMachines agent pool.
+              description: Storage version of v1api20231102preview.VirtualMachinesProfile_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -1105,9 +1122,7 @@
                     resources, allowing for full fidelity round trip conversions
                   type: object
                 scale:
-                  description: |-
-                    Storage version of v1api20231102preview.ScaleProfile_STATUS
-                    Specifications on how to scale a VirtualMachines agent pool.
+                  description: Storage version of v1api20231102preview.ScaleProfile_STATUS
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -1118,9 +1133,7 @@
                       type: object
                     manual:
                       items:
-                        description: |-
-                          Storage version of v1api20231102preview.ManualScaleProfile_STATUS
-                          Specifications on number of machines.
+                        description: Storage version of v1api20231102preview.ManualScaleProfile_STATUS
                         properties:
                           $propertyBag:
                             additionalProperties:
@@ -1144,9 +1157,7 @@
             vnetSubnetID:
               type: string
             windowsProfile:
-              description: |-
-                Storage version of v1api20231102preview.AgentPoolWindowsProfile_STATUS
-                The Windows agent pool's specific profile.
+              description: Storage version of v1api20231102preview.AgentPoolWindowsProfile_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:

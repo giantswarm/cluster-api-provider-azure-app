@@ -1,10 +1,10 @@
 - op: replace
-  path: /spec/versions/4/schema
+  path: /spec/versions/10/schema
   value:
     openAPIV3Schema:
       description: |-
         Generator information:
-        - Generated from: /containerservice/resource-manager/Microsoft.ContainerService/aks/preview/2023-02-02-preview/managedClusters.json
+        - Generated from: /containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2024-09-01/managedClusters.json
         - ARM URI: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}
       properties:
         apiVersion:
@@ -84,9 +84,26 @@
                     items:
                       type: string
                     type: array
-                  capacityReservationGroupID:
-                    description: 'CapacityReservationGroupID: AKS will associate the specified agent pool with the Capacity Reservation Group.'
-                    type: string
+                  capacityReservationGroupReference:
+                    description: 'CapacityReservationGroupReference: AKS will associate the specified agent pool with the Capacity Reservation Group.'
+                    properties:
+                      armId:
+                        description: |-
+                          ARMID is a string of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}.
+                          The /resourcegroups/{resourceGroupName} bit is optional as some resources are scoped at the subscription level
+                          ARMID is mutually exclusive with Group, Kind, Namespace and Name.
+                        pattern: (?i)(^(/subscriptions/([^/]+)(/resourcegroups/([^/]+))?)?/providers/([^/]+)/([^/]+/[^/]+)(/([^/]+/[^/]+))*$|^/subscriptions/([^/]+)(/resourcegroups/([^/]+))?$)
+                        type: string
+                      group:
+                        description: Group is the Kubernetes group of the resource.
+                        type: string
+                      kind:
+                        description: Kind is the Kubernetes kind of the resource.
+                        type: string
+                      name:
+                        description: Name is the Kubernetes name of the resource.
+                        type: string
+                    type: object
                   count:
                     description: |-
                       Count: Number of agents (VMs) to host docker containers. Allowed values must be in the range of 0 to 1000 (inclusive)
@@ -120,12 +137,6 @@
                     type: object
                   enableAutoScaling:
                     description: 'EnableAutoScaling: Whether to enable auto-scaler'
-                    type: boolean
-                  enableCustomCATrust:
-                    description: |-
-                      EnableCustomCATrust: When set to true, AKS adds a label to the node indicating that the feature is enabled and deploys a
-                      daemonset along with host services to sync custom certificate authorities from user-provided list of base64 encoded
-                      certificates into node trust stores. Defaults to false.
                     type: boolean
                   enableEncryptionAtHost:
                     description: |-
@@ -316,12 +327,18 @@
                             type: boolean
                           netIpv4TcpkeepaliveIntvl:
                             description: 'NetIpv4TcpkeepaliveIntvl: Sysctl setting net.ipv4.tcp_keepalive_intvl.'
+                            maximum: 90
+                            minimum: 10
                             type: integer
                           netNetfilterNfConntrackBuckets:
                             description: 'NetNetfilterNfConntrackBuckets: Sysctl setting net.netfilter.nf_conntrack_buckets.'
+                            maximum: 524288
+                            minimum: 65536
                             type: integer
                           netNetfilterNfConntrackMax:
                             description: 'NetNetfilterNfConntrackMax: Sysctl setting net.netfilter.nf_conntrack_max.'
+                            maximum: 2097152
+                            minimum: 131072
                             type: integer
                           vmMaxMapCount:
                             description: 'VmMaxMapCount: Sysctl setting vm.max_map_count.'
@@ -352,12 +369,6 @@
                   maxPods:
                     description: 'MaxPods: The maximum number of pods that can run on a node.'
                     type: integer
-                  messageOfTheDay:
-                    description: |-
-                      MessageOfTheDay: A base64-encoded string which will be written to /etc/motd after decoding. This allows customization of
-                      the message of the day for Linux nodes. It must not be specified for Windows nodes. It must be a static string (i.e.,
-                      will be printed raw and not be executed as a script).
-                    type: string
                   minCount:
                     description: 'MinCount: The minimum number of nodes for auto-scaling'
                     type: integer
@@ -476,13 +487,14 @@
                     type: array
                   orchestratorVersion:
                     description: |-
-                      OrchestratorVersion: Both patch version <major.minor.patch> and <major.minor> are supported. When <major.minor> is
-                      specified, the latest supported patch version is chosen automatically. Updating the agent pool with the same
-                      <major.minor> once it has been created will not trigger an upgrade, even if a newer patch version is available. As a
-                      best practice, you should upgrade all node pools in an AKS cluster to the same Kubernetes version. The node pool version
-                      must have the same major version as the control plane. The node pool minor version must be within two minor versions of
-                      the control plane version. The node pool version cannot be greater than the control plane version. For more information
-                      see [upgrading a node pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#upgrade-a-node-pool).
+                      OrchestratorVersion: Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor> (e.g. 1.20) are supported.
+                      When <major.minor> is specified, the latest supported GA patch version is chosen automatically. Updating the cluster
+                      with the same <major.minor> once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade, even if a newer
+                      patch version is available. As a best practice, you should upgrade all node pools in an AKS cluster to the same
+                      Kubernetes version. The node pool version must have the same major version as the control plane. The node pool minor
+                      version must be within two minor versions of the control plane version. The node pool version cannot be greater than the
+                      control plane version. For more information see [upgrading a node
+                      pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#upgrade-a-node-pool).
                     type: string
                   osDiskSizeGB:
                     maximum: 2048
@@ -499,12 +511,11 @@
                     type: string
                   osSKU:
                     description: |-
-                      OsSKU: Specifies the OS SKU used by the agent pool. If not specified, the default is Ubuntu if OSType=Linux or
-                      Windows2019 if  OSType=Windows. And the default Windows OSSKU will be changed to Windows2022 after Windows2019 is
-                      deprecated.
+                      OsSKU: Specifies the OS SKU used by the agent pool. The default is Ubuntu if OSType is Linux. The default is Windows2019
+                      when  Kubernetes <= 1.24 or Windows2022 when Kubernetes >= 1.25 if OSType is Windows.
                     enum:
+                      - AzureLinux
                       - CBLMariner
-                      - Mariner
                       - Ubuntu
                       - Windows2019
                       - Windows2022
@@ -591,6 +602,20 @@
                       - Regular
                       - Spot
                     type: string
+                  securityProfile:
+                    description: 'SecurityProfile: The security settings of an agent pool.'
+                    properties:
+                      enableSecureBoot:
+                        description: |-
+                          EnableSecureBoot: Secure Boot is a feature of Trusted Launch which ensures that only signed operating systems and
+                          drivers can boot. For more details, see aka.ms/aks/trustedlaunch.  If not specified, the default is false.
+                        type: boolean
+                      enableVTPM:
+                        description: |-
+                          EnableVTPM: vTPM is a Trusted Launch feature for configuring a dedicated secure vault for keys and measurements held
+                          locally on the node. For more details, see aka.ms/aks/trustedlaunch. If not specified, the default is false.
+                        type: boolean
+                    type: object
                   spotMaxPrice:
                     description: |-
                       SpotMaxPrice: Possible values are any decimal value greater than zero or -1 which indicates the willingness to pay any
@@ -611,6 +636,14 @@
                   upgradeSettings:
                     description: 'UpgradeSettings: Settings for upgrading the agentpool'
                     properties:
+                      drainTimeoutInMinutes:
+                        description: |-
+                          DrainTimeoutInMinutes: The amount of time (in minutes) to wait on eviction of pods and graceful termination per node.
+                          This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails. If not
+                          specified, the default is 30 minutes.
+                        maximum: 1440
+                        minimum: 1
+                        type: integer
                       maxSurge:
                         description: |-
                           MaxSurge: This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it
@@ -618,6 +651,13 @@
                           up. If not specified, the default is 1. For more information, including best practices, see:
                           https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
                         type: string
+                      nodeSoakDurationInMinutes:
+                        description: |-
+                          NodeSoakDurationInMinutes: The amount of time (in minutes) to wait after draining a node and before reimaging it and
+                          moving on to next node. If not specified, the default is 0 minutes.
+                        maximum: 30
+                        minimum: 0
+                        type: integer
                     type: object
                   vmSize:
                     description: |-
@@ -660,7 +700,6 @@
                   workloadRuntime:
                     description: 'WorkloadRuntime: Determines the type of workload a node can run.'
                     enum:
-                      - KataMshvVmIsolation
                       - OCIContainer
                       - WasmWasi
                     type: string
@@ -690,19 +729,11 @@
                 enablePrivateClusterPublicFQDN:
                   description: 'EnablePrivateClusterPublicFQDN: Whether to create additional public FQDN for private cluster or not.'
                   type: boolean
-                enableVnetIntegration:
-                  description: 'EnableVnetIntegration: Whether to enable apiserver vnet integration for the cluster or not.'
-                  type: boolean
                 privateDNSZone:
                   description: |-
                     PrivateDNSZone: The default is System. For more details see [configure private DNS
                     zone](https://docs.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone). Allowed values are 'system' and
                     'none'.
-                  type: string
-                subnetId:
-                  description: |-
-                    SubnetId: It is required when: 1. creating a new cluster with BYO Vnet; 2. updating an existing cluster to enable
-                    apiserver vnet integration.
                   type: string
               type: object
             autoScalerProfile:
@@ -711,6 +742,18 @@
                 balance-similar-node-groups:
                   description: 'BalanceSimilarNodeGroups: Valid values are ''true'' and ''false'''
                   type: string
+                daemonset-eviction-for-empty-nodes:
+                  description: |-
+                    DaemonsetEvictionForEmptyNodes: If set to true, all daemonset pods on empty nodes will be evicted before deletion of the
+                    node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be
+                    deleted without ensuring that daemonset pods are deleted or evicted.
+                  type: boolean
+                daemonset-eviction-for-occupied-nodes:
+                  description: |-
+                    DaemonsetEvictionForOccupiedNodes: If set to true, all daemonset pods on occupied nodes will be evicted before deletion
+                    of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node
+                    will be deleted without ensuring that daemonset pods are deleted or evicted.
+                  type: boolean
                 expander:
                   description: |-
                     Expander: If not specified, the default is 'random'. See
@@ -722,6 +765,11 @@
                     - priority
                     - random
                   type: string
+                ignore-daemonsets-utilization:
+                  description: |-
+                    IgnoreDaemonsetsUtilization: If set to true, the resources used by daemonset will be taken into account when making
+                    scaling down decisions.
+                  type: boolean
                 max-empty-bulk-delete:
                   description: 'MaxEmptyBulkDelete: The default is 10.'
                   type: string
@@ -787,7 +835,7 @@
               description: 'AutoUpgradeProfile: The auto upgrade configuration.'
               properties:
                 nodeOSUpgradeChannel:
-                  description: 'NodeOSUpgradeChannel: The default is Unmanaged, but may change to either NodeImage or SecurityPatch at GA.'
+                  description: 'NodeOSUpgradeChannel: Manner in which the OS on your nodes is updated. The default is NodeImage.'
                   enum:
                     - NodeImage
                     - None
@@ -807,26 +855,36 @@
                   type: string
               type: object
             azureMonitorProfile:
-              description: 'AzureMonitorProfile: Prometheus addon profile for the container service cluster'
+              description: 'AzureMonitorProfile: Azure Monitor addon profiles for monitoring the managed cluster.'
               properties:
                 metrics:
-                  description: 'Metrics: Metrics profile for the prometheus service addon'
+                  description: |-
+                    Metrics: Metrics profile for the Azure Monitor managed service for Prometheus addon. Collect out-of-the-box Kubernetes
+                    infrastructure metrics to send to an Azure Monitor Workspace and configure additional scraping for custom targets. See
+                    aka.ms/AzureManagedPrometheus for an overview.
                   properties:
                     enabled:
-                      description: 'Enabled: Whether to enable the Prometheus collector'
+                      description: |-
+                        Enabled: Whether to enable or disable the Azure Managed Prometheus addon for Prometheus monitoring. See
+                        aka.ms/AzureManagedPrometheus-aks-enable for details on enabling and disabling.
                       type: boolean
                     kubeStateMetrics:
-                      description: 'KubeStateMetrics: Kube State Metrics for prometheus addon profile for the container service cluster'
+                      description: |-
+                        KubeStateMetrics: Kube State Metrics profile for the Azure Managed Prometheus addon. These optional settings are for the
+                         kube-state-metrics pod that is deployed with the addon. See aka.ms/AzureManagedPrometheus-optional-parameters for
+                        details.
                       properties:
                         metricAnnotationsAllowList:
                           description: |-
-                            MetricAnnotationsAllowList: Comma-separated list of additional Kubernetes label keys that will be used in the resource's
-                            labels metric.
+                            MetricAnnotationsAllowList: Comma-separated list of Kubernetes annotation keys that will be used in the resource's
+                            labels metric (Example: 'namespaces=[kubernetes.io/team,...],pods=[kubernetes.io/team],...'). By default the metric
+                            contains only resource name and namespace labels.
                           type: string
                         metricLabelsAllowlist:
                           description: |-
-                            MetricLabelsAllowlist: Comma-separated list of Kubernetes annotations keys that will be used in the resource's labels
-                            metric.
+                            MetricLabelsAllowlist: Comma-separated list of additional Kubernetes label keys that will be used in the resource's
+                            labels metric (Example: 'namespaces=[k8s-label-1,k8s-label-n,...],pods=[app],...'). By default the metric contains only
+                            resource name and namespace labels.
                           type: string
                       type: object
                   required:
@@ -841,32 +899,6 @@
               minLength: 1
               pattern: ^[a-zA-Z0-9]$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,61}[a-zA-Z0-9]$
               type: string
-            creationData:
-              description: |-
-                CreationData: CreationData to be used to specify the source Snapshot ID if the cluster will be created/upgraded using a
-                snapshot.
-              properties:
-                sourceResourceReference:
-                  description: 'SourceResourceReference: This is the ARM ID of the source object to be used to create the target object.'
-                  properties:
-                    armId:
-                      description: |-
-                        ARMID is a string of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}.
-                        The /resourcegroups/{resourceGroupName} bit is optional as some resources are scoped at the subscription level
-                        ARMID is mutually exclusive with Group, Kind, Namespace and Name.
-                      pattern: (?i)(^(/subscriptions/([^/]+)(/resourcegroups/([^/]+))?)?/providers/([^/]+)/([^/]+/[^/]+)(/([^/]+/[^/]+))*$|^/subscriptions/([^/]+)(/resourcegroups/([^/]+))?$)
-                      type: string
-                    group:
-                      description: Group is the Kubernetes group of the resource.
-                      type: string
-                    kind:
-                      description: Kind is the Kubernetes kind of the resource.
-                      type: string
-                    name:
-                      description: Name is the Kubernetes name of the resource.
-                      type: string
-                  type: object
-              type: object
             disableLocalAccounts:
               description: |-
                 DisableLocalAccounts: If set to true, getting static credentials will be disabled for this cluster. This must only be
@@ -898,12 +930,6 @@
             dnsPrefix:
               description: 'DnsPrefix: This cannot be updated once the Managed Cluster has been created.'
               type: string
-            enableNamespaceResources:
-              description: |-
-                EnableNamespaceResources: The default value is false. It can be enabled/disabled on creation and updating of the managed
-                cluster. See [https://aka.ms/NamespaceARMResource](https://aka.ms/NamespaceARMResource) for more details on Namespace as
-                a ARM Resource.
-              type: boolean
             enablePodSecurityPolicy:
               description: |-
                 EnablePodSecurityPolicy: (DEPRECATED) Whether to enable Kubernetes pod security policy (preview). PodSecurityPolicy was
@@ -928,30 +954,6 @@
             fqdnSubdomain:
               description: 'FqdnSubdomain: This cannot be updated once the Managed Cluster has been created.'
               type: string
-            guardrailsProfile:
-              description: 'GuardrailsProfile: The guardrails profile holds all the guardrails information for a given cluster'
-              properties:
-                excludedNamespaces:
-                  description: 'ExcludedNamespaces: List of namespaces excluded from guardrails checks'
-                  items:
-                    type: string
-                  type: array
-                level:
-                  description: |-
-                    Level: The guardrails level to be used. By default, Guardrails is enabled for all namespaces except those that AKS
-                    excludes via systemExcludedNamespaces
-                  enum:
-                    - Enforcement
-                    - "Off"
-                    - Warning
-                  type: string
-                version:
-                  description: 'Version: The version of constraints to use'
-                  type: string
-              required:
-                - level
-                - version
-              type: object
             httpProxyConfig:
               description: 'HttpProxyConfig: Configurations for provisioning the cluster with HTTP proxy servers.'
               properties:
@@ -973,6 +975,45 @@
             identity:
               description: 'Identity: The identity of the managed cluster, if configured.'
               properties:
+                delegatedResources:
+                  additionalProperties:
+                    description: Delegated resource properties - internal use only.
+                    properties:
+                      location:
+                        description: 'Location: The source resource location - internal use only.'
+                        type: string
+                      referralResource:
+                        description: 'ReferralResource: The delegation id of the referral delegation (optional) - internal use only.'
+                        type: string
+                      resourceReference:
+                        description: 'ResourceReference: The ARM resource id of the delegated resource - internal use only.'
+                        properties:
+                          armId:
+                            description: |-
+                              ARMID is a string of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}.
+                              The /resourcegroups/{resourceGroupName} bit is optional as some resources are scoped at the subscription level
+                              ARMID is mutually exclusive with Group, Kind, Namespace and Name.
+                            pattern: (?i)(^(/subscriptions/([^/]+)(/resourcegroups/([^/]+))?)?/providers/([^/]+)/([^/]+/[^/]+)(/([^/]+/[^/]+))*$|^/subscriptions/([^/]+)(/resourcegroups/([^/]+))?$)
+                            type: string
+                          group:
+                            description: Group is the Kubernetes group of the resource.
+                            type: string
+                          kind:
+                            description: Kind is the Kubernetes kind of the resource.
+                            type: string
+                          name:
+                            description: Name is the Kubernetes name of the resource.
+                            type: string
+                        type: object
+                      tenantId:
+                        description: 'TenantId: The tenant id of the delegated resource - internal use only.'
+                        pattern: ^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$
+                        type: string
+                    type: object
+                  description: |-
+                    DelegatedResources: The delegated identity resources assigned to this managed cluster. This can only be set by another
+                    Azure Resource Provider, and managed cluster only accept one delegated identity resource. Internal use only.
+                  type: object
                 type:
                   description: |-
                     Type: For more information see [use managed identities in
@@ -1043,46 +1084,58 @@
                         type: string
                     type: object
                 type: object
-              description: 'IdentityProfile: Identities associated with the cluster.'
+              description: |-
+                IdentityProfile: The user identity associated with the managed cluster. This identity will be used by the kubelet. Only
+                one user assigned identity is allowed. The only accepted key is "kubeletidentity", with value of "resourceId":
+                "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}".
               type: object
             ingressProfile:
               description: 'IngressProfile: Ingress profile for the managed cluster.'
               properties:
                 webAppRouting:
-                  description: 'WebAppRouting: Web App Routing settings for the ingress profile.'
+                  description: |-
+                    WebAppRouting: App Routing settings for the ingress profile. You can find an overview and onboarding guide for this
+                    feature at https://learn.microsoft.com/en-us/azure/aks/app-routing?tabs=default%2Cdeploy-app-default.
                   properties:
-                    dnsZoneResourceReference:
+                    dnsZoneResourceReferences:
                       description: |-
-                        DnsZoneResourceReference: Resource ID of the DNS Zone to be associated with the web app. Used only when Web App Routing
-                        is enabled.
-                      properties:
-                        armId:
-                          description: |-
-                            ARMID is a string of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}.
-                            The /resourcegroups/{resourceGroupName} bit is optional as some resources are scoped at the subscription level
-                            ARMID is mutually exclusive with Group, Kind, Namespace and Name.
-                          pattern: (?i)(^(/subscriptions/([^/]+)(/resourcegroups/([^/]+))?)?/providers/([^/]+)/([^/]+/[^/]+)(/([^/]+/[^/]+))*$|^/subscriptions/([^/]+)(/resourcegroups/([^/]+))?$)
-                          type: string
-                        group:
-                          description: Group is the Kubernetes group of the resource.
-                          type: string
-                        kind:
-                          description: Kind is the Kubernetes kind of the resource.
-                          type: string
-                        name:
-                          description: Name is the Kubernetes name of the resource.
-                          type: string
-                      type: object
+                        DnsZoneResourceReferences: Resource IDs of the DNS zones to be associated with the Application Routing add-on. Used only
+                        when Application Routing add-on is enabled. Public and private DNS zones can be in different resource groups, but all
+                        public DNS zones must be in the same resource group and all private DNS zones must be in the same resource group.
+                      items:
+                        description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
+                        properties:
+                          armId:
+                            description: |-
+                              ARMID is a string of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}.
+                              The /resourcegroups/{resourceGroupName} bit is optional as some resources are scoped at the subscription level
+                              ARMID is mutually exclusive with Group, Kind, Namespace and Name.
+                            pattern: (?i)(^(/subscriptions/([^/]+)(/resourcegroups/([^/]+))?)?/providers/([^/]+)/([^/]+/[^/]+)(/([^/]+/[^/]+))*$|^/subscriptions/([^/]+)(/resourcegroups/([^/]+))?$)
+                            type: string
+                          group:
+                            description: Group is the Kubernetes group of the resource.
+                            type: string
+                          kind:
+                            description: Kind is the Kubernetes kind of the resource.
+                            type: string
+                          name:
+                            description: Name is the Kubernetes name of the resource.
+                            type: string
+                        type: object
+                      type: array
                     enabled:
-                      description: 'Enabled: Whether to enable Web App Routing.'
+                      description: 'Enabled: Whether to enable the Application Routing add-on.'
                       type: boolean
                   type: object
               type: object
             kubernetesVersion:
               description: |-
-                KubernetesVersion: When you upgrade a supported AKS cluster, Kubernetes minor versions cannot be skipped. All upgrades
-                must be performed sequentially by major version number. For example, upgrades between 1.14.x -> 1.15.x or 1.15.x ->
-                1.16.x are allowed, however 1.14.x -> 1.16.x is not allowed. See [upgrading an AKS
+                KubernetesVersion: Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor> (e.g. 1.20) are supported.
+                When <major.minor> is specified, the latest supported GA patch version is chosen automatically. Updating the cluster
+                with the same <major.minor> once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade, even if a newer
+                patch version is available. When you upgrade a supported AKS cluster, Kubernetes minor versions cannot be skipped. All
+                upgrades must be performed sequentially by major version number. For example, upgrades between 1.14.x -> 1.15.x or
+                1.15.x -> 1.16.x are allowed, however 1.14.x -> 1.16.x is not allowed. See [upgrading an AKS
                 cluster](https://docs.microsoft.com/azure/aks/upgrade-cluster) for more details.
               type: string
             linuxProfile:
@@ -1119,20 +1172,56 @@
             location:
               description: 'Location: The geo-location where the resource lives'
               type: string
+            metricsProfile:
+              description: 'MetricsProfile: Optional cluster metrics configuration.'
+              properties:
+                costAnalysis:
+                  description: 'CostAnalysis: The cost analysis configuration for the cluster'
+                  properties:
+                    enabled:
+                      description: |-
+                        Enabled: The Managed Cluster sku.tier must be set to 'Standard' or 'Premium' to enable this feature. Enabling this will
+                        add Kubernetes Namespace and Deployment details to the Cost Analysis views in the Azure portal. If not specified, the
+                        default is false. For more information see aka.ms/aks/docs/cost-analysis.
+                      type: boolean
+                  type: object
+              type: object
             networkProfile:
               description: 'NetworkProfile: The network configuration profile.'
               properties:
+                advancedNetworking:
+                  description: |-
+                    AdvancedNetworking: Advanced Networking profile for enabling observability and security feature suite on a cluster. For
+                    more information see  aka.ms/aksadvancednetworking.
+                  properties:
+                    enabled:
+                      description: |-
+                        Enabled: Indicates the enablement of Advanced Networking functionalities of observability and security on AKS clusters.
+                        When this is set to true, all observability and security features will be set to enabled unless explicitly disabled. If
+                        not specified, the default is false.
+                      type: boolean
+                    observability:
+                      description: 'Observability: Observability profile to enable advanced network metrics and flow logs with historical contexts.'
+                      properties:
+                        enabled:
+                          description: 'Enabled: Indicates the enablement of Advanced Networking observability functionalities on clusters.'
+                          type: boolean
+                      type: object
+                    security:
+                      description: 'Security: Security profile to enable security features on cilium based cluster.'
+                      properties:
+                        enabled:
+                          description: |-
+                            Enabled: This feature allows user to configure network policy based on DNS (FQDN) names. It can be enabled only on
+                            cilium based clusters. If not specified, the default is false.
+                          type: boolean
+                      type: object
+                  type: object
                 dnsServiceIP:
                   description: |-
                     DnsServiceIP: An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address
                     range specified in serviceCidr.
                   pattern: ^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$
-                  type: string
-                dockerBridgeCidr:
-                  description: |-
-                    DockerBridgeCidr: A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP
-                    ranges or the Kubernetes service address range.
-                  pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}(\/([0-9]|[1-2][0-9]|3[0-2]))?$
                   type: string
                 ipFamilies:
                   description: |-
@@ -1144,45 +1233,6 @@
                       - IPv6
                     type: string
                   type: array
-                kubeProxyConfig:
-                  description: |-
-                    KubeProxyConfig: Holds configuration customizations for kube-proxy. Any values not defined will use the kube-proxy
-                    defaulting behavior. See https://v<version>.docs.kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/
-                    where <version> is represented by a <major version>-<minor version> string. Kubernetes version 1.23 would be '1-23'.
-                  properties:
-                    enabled:
-                      description: |-
-                        Enabled: Whether to enable on kube-proxy on the cluster (if no 'kubeProxyConfig' exists, kube-proxy is enabled in AKS by
-                        default without these customizations).
-                      type: boolean
-                    ipvsConfig:
-                      description: 'IpvsConfig: Holds configuration customizations for IPVS. May only be specified if ''mode'' is set to ''IPVS''.'
-                      properties:
-                        scheduler:
-                          description: 'Scheduler: IPVS scheduler, for more information please see http://www.linuxvirtualserver.org/docs/scheduling.html.'
-                          enum:
-                            - LeastConnection
-                            - RoundRobin
-                          type: string
-                        tcpFinTimeoutSeconds:
-                          description: |-
-                            TcpFinTimeoutSeconds: The timeout value used for IPVS TCP sessions after receiving a FIN in seconds. Must be a positive
-                            integer value.
-                          type: integer
-                        tcpTimeoutSeconds:
-                          description: 'TcpTimeoutSeconds: The timeout value used for idle IPVS TCP sessions in seconds. Must be a positive integer value.'
-                          type: integer
-                        udpTimeoutSeconds:
-                          description: 'UdpTimeoutSeconds: The timeout value used for IPVS UDP packets in seconds. Must be a positive integer value.'
-                          type: integer
-                      type: object
-                    mode:
-                      description: 'Mode: Specify which proxy mode to use (''IPTABLES'' or ''IPVS'')'
-                      enum:
-                        - IPTABLES
-                        - IPVS
-                      type: string
-                  type: object
                 loadBalancerProfile:
                   description: 'LoadBalancerProfile: Profile of the cluster load balancer.'
                   properties:
@@ -1395,9 +1445,9 @@
                     - none
                   type: string
                 networkPluginMode:
-                  description: 'NetworkPluginMode: Network plugin mode used for building the Kubernetes network.'
+                  description: 'NetworkPluginMode: The mode the network plugin should use.'
                   enum:
-                    - Overlay
+                    - overlay
                   type: string
                 networkPolicy:
                   description: 'NetworkPolicy: Network policy used for building the Kubernetes network.'
@@ -1405,6 +1455,7 @@
                     - azure
                     - calico
                     - cilium
+                    - none
                   type: string
                 outboundType:
                   description: |-
@@ -1445,10 +1496,12 @@
               description: 'NodeResourceGroup: The name of the resource group containing agent pool nodes.'
               type: string
             nodeResourceGroupProfile:
-              description: 'NodeResourceGroupProfile: The node resource group configuration profile.'
+              description: 'NodeResourceGroupProfile: Profile of the node resource group configuration.'
               properties:
                 restrictionLevel:
-                  description: 'RestrictionLevel: The restriction level applied to the cluster''s node resource group'
+                  description: |-
+                    RestrictionLevel: The restriction level applied to the cluster's node resource group. If not specified, the default is
+                    'Unrestricted'
                   enum:
                     - ReadOnly
                     - Unrestricted
@@ -1466,6 +1519,36 @@
                 OperatorSpec: The specification for configuring operator behavior. This field is interpreted by the operator and not
                 passed directly to Azure
               properties:
+                configMapExpressions:
+                  description: 'ConfigMapExpressions: configures where to place operator written dynamic ConfigMaps (created with CEL expressions).'
+                  items:
+                    description: |-
+                      DestinationExpression is a CEL expression and a destination to store the result in. The destination may
+                      be a secret or a configmap. The value of the expression is stored at the specified location in
+                      the destination.
+                    properties:
+                      key:
+                        description: |-
+                          Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string
+                          this is required to identify what key to write to. If the CEL expression in Value returns a map[string]string
+                          Key must not be set, instead the keys written will be determined dynamically based on the keys of the resulting
+                          map[string]string.
+                        type: string
+                      name:
+                        description: |-
+                          Name is the name of the Kubernetes configmap or secret to write to.
+                          The configmap or secret will be created in the same namespace as the resource.
+                        type: string
+                      value:
+                        description: |-
+                          Value is a CEL expression. The CEL expression may return a string or a map[string]string. For more information
+                          on CEL in ASO see https://azure.github.io/azure-service-operator/guide/expressions/
+                        type: string
+                    required:
+                      - name
+                      - value
+                    type: object
+                  type: array
                 configMaps:
                   description: 'ConfigMaps: configures where to place operator written ConfigMaps.'
                   properties:
@@ -1479,29 +1562,44 @@
                           type: string
                         name:
                           description: |-
-                            Name is the name of the Kubernetes ConfigMap being referenced.
-                            The ConfigMap must be in the same namespace as the resource
-                          type: string
-                      required:
-                        - key
-                        - name
-                      type: object
-                    principalId:
-                      description: 'PrincipalId: indicates where the PrincipalId config map should be placed. If omitted, no config map will be created.'
-                      properties:
-                        key:
-                          description: Key is the key in the ConfigMap being referenced
-                          type: string
-                        name:
-                          description: |-
-                            Name is the name of the Kubernetes ConfigMap being referenced.
-                            The ConfigMap must be in the same namespace as the resource
+                            Name is the name of the Kubernetes ConfigMap to write to.
+                            The ConfigMap will be created in the same namespace as the resource.
                           type: string
                       required:
                         - key
                         - name
                       type: object
                   type: object
+                secretExpressions:
+                  description: 'SecretExpressions: configures where to place operator written dynamic secrets (created with CEL expressions).'
+                  items:
+                    description: |-
+                      DestinationExpression is a CEL expression and a destination to store the result in. The destination may
+                      be a secret or a configmap. The value of the expression is stored at the specified location in
+                      the destination.
+                    properties:
+                      key:
+                        description: |-
+                          Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string
+                          this is required to identify what key to write to. If the CEL expression in Value returns a map[string]string
+                          Key must not be set, instead the keys written will be determined dynamically based on the keys of the resulting
+                          map[string]string.
+                        type: string
+                      name:
+                        description: |-
+                          Name is the name of the Kubernetes configmap or secret to write to.
+                          The configmap or secret will be created in the same namespace as the resource.
+                        type: string
+                      value:
+                        description: |-
+                          Value is a CEL expression. The CEL expression may return a string or a map[string]string. For more information
+                          on CEL in ASO see https://azure.github.io/azure-service-operator/guide/expressions/
+                        type: string
+                    required:
+                      - name
+                      - value
+                    type: object
+                  type: array
                 secrets:
                   description: 'Secrets: configures where to place Azure generated secrets.'
                   properties:
@@ -1511,12 +1609,12 @@
                         retrieved from Azure.
                       properties:
                         key:
-                          description: Key is the key in the Kubernetes secret being referenced
+                          description: Key is the key in the Kubernetes secret being referenced.
                           type: string
                         name:
                           description: |-
-                            Name is the name of the Kubernetes secret being referenced.
-                            The secret must be in the same namespace as the resource
+                            Name is the name of the Kubernetes secret to write to.
+                            The secret will be created in the same namespace as the resource.
                           type: string
                       required:
                         - key
@@ -1528,12 +1626,12 @@
                         retrieved from Azure.
                       properties:
                         key:
-                          description: Key is the key in the Kubernetes secret being referenced
+                          description: Key is the key in the Kubernetes secret being referenced.
                           type: string
                         name:
                           description: |-
-                            Name is the name of the Kubernetes secret being referenced.
-                            The secret must be in the same namespace as the resource
+                            Name is the name of the Kubernetes secret to write to.
+                            The secret will be created in the same namespace as the resource.
                           type: string
                       required:
                         - key
@@ -1690,7 +1788,6 @@
               enum:
                 - Disabled
                 - Enabled
-                - SecuredByPerimeter
               type: string
             securityProfile:
               description: 'SecurityProfile: Security profile for the managed cluster.'
@@ -1742,16 +1839,6 @@
                           type: string
                       type: object
                   type: object
-                customCATrustCertificates:
-                  description: |-
-                    CustomCATrustCertificates: A list of up to 10 base64 encoded CAs that will be added to the trust store on nodes with the
-                    Custom CA Trust feature enabled. For more information see [Custom CA Trust
-                    Certificates](https://learn.microsoft.com/en-us/azure/aks/custom-certificate-authority)
-                  items:
-                    type: string
-                  maxItems: 10
-                  minItems: 0
-                  type: array
                 defender:
                   description: 'Defender: Microsoft Defender settings for the security profile.'
                   properties:
@@ -1796,16 +1883,6 @@
                       description: 'IntervalHours: Image Cleaner scanning interval in hours.'
                       type: integer
                   type: object
-                nodeRestriction:
-                  description: |-
-                    NodeRestriction: [Node
-                    Restriction](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#noderestriction) settings
-                    for the security profile.
-                  properties:
-                    enabled:
-                      description: 'Enabled: Whether to enable Node Restriction'
-                      type: boolean
-                  type: object
                 workloadIdentity:
                   description: |-
                     WorkloadIdentity: Workload identity settings for the security profile. Workload identity enables Kubernetes applications
@@ -1822,9 +1899,63 @@
                 istio:
                   description: 'Istio: Istio service mesh configuration.'
                   properties:
+                    certificateAuthority:
+                      description: |-
+                        CertificateAuthority: Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin
+                        certificates as described  here https://aka.ms/asm-plugin-ca
+                      properties:
+                        plugin:
+                          description: 'Plugin: Plugin certificates information for Service Mesh.'
+                          properties:
+                            certChainObjectName:
+                              description: 'CertChainObjectName: Certificate chain object name in Azure Key Vault.'
+                              type: string
+                            certObjectName:
+                              description: 'CertObjectName: Intermediate certificate object name in Azure Key Vault.'
+                              type: string
+                            keyObjectName:
+                              description: 'KeyObjectName: Intermediate certificate private key object name in Azure Key Vault.'
+                              type: string
+                            keyVaultReference:
+                              description: 'KeyVaultReference: The resource ID of the Key Vault.'
+                              properties:
+                                armId:
+                                  description: |-
+                                    ARMID is a string of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}.
+                                    The /resourcegroups/{resourceGroupName} bit is optional as some resources are scoped at the subscription level
+                                    ARMID is mutually exclusive with Group, Kind, Namespace and Name.
+                                  pattern: (?i)(^(/subscriptions/([^/]+)(/resourcegroups/([^/]+))?)?/providers/([^/]+)/([^/]+/[^/]+)(/([^/]+/[^/]+))*$|^/subscriptions/([^/]+)(/resourcegroups/([^/]+))?$)
+                                  type: string
+                                group:
+                                  description: Group is the Kubernetes group of the resource.
+                                  type: string
+                                kind:
+                                  description: Kind is the Kubernetes kind of the resource.
+                                  type: string
+                                name:
+                                  description: Name is the Kubernetes name of the resource.
+                                  type: string
+                              type: object
+                            rootCertObjectName:
+                              description: 'RootCertObjectName: Root certificate object name in Azure Key Vault.'
+                              type: string
+                          type: object
+                      type: object
                     components:
                       description: 'Components: Istio components configuration.'
                       properties:
+                        egressGateways:
+                          description: 'EgressGateways: Istio egress gateways.'
+                          items:
+                            description: Istio egress gateway configuration.
+                            properties:
+                              enabled:
+                                description: 'Enabled: Whether to enable the egress gateway.'
+                                type: boolean
+                            required:
+                              - enabled
+                            type: object
+                          type: array
                         ingressGateways:
                           description: 'IngressGateways: Istio ingress gateways.'
                           items:
@@ -1847,6 +1978,15 @@
                             type: object
                           type: array
                       type: object
+                    revisions:
+                      description: |-
+                        Revisions: The list of revisions of the Istio control plane. When an upgrade is not in progress, this holds one value.
+                        When canary upgrade is in progress, this can only hold two consecutive values. For more information, see:
+                        https://learn.microsoft.com/en-us/azure/aks/istio-upgrade
+                      items:
+                        type: string
+                      maxItems: 2
+                      type: array
                   type: object
                 mode:
                   description: 'Mode: Mode of the service mesh.'
@@ -1897,6 +2037,7 @@
                     Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers) for more details.
                   enum:
                     - Free
+                    - Premium
                     - Standard
                   type: string
               type: object
@@ -1916,9 +2057,6 @@
                     enabled:
                       description: 'Enabled: Whether to enable AzureDisk CSI Driver. The default value is true.'
                       type: boolean
-                    version:
-                      description: 'Version: The version of AzureDisk CSI Driver. The default value is v1.'
-                      type: string
                   type: object
                 fileCSIDriver:
                   description: 'FileCSIDriver: AzureFile CSI Driver settings for the storage profile.'
@@ -1935,6 +2073,12 @@
                       type: boolean
                   type: object
               type: object
+            supportPlan:
+              description: 'SupportPlan: The support plan for the Managed Cluster. If unspecified, the default is ''KubernetesOfficial''.'
+              enum:
+                - AKSLongTermSupport
+                - KubernetesOfficial
+              type: string
             tags:
               additionalProperties:
                 type: string
@@ -1946,14 +2090,11 @@
                 overrideSettings:
                   description: 'OverrideSettings: Settings for overrides.'
                   properties:
-                    controlPlaneOverrides:
-                      description: 'ControlPlaneOverrides: List of upgrade overrides when upgrading a cluster''s control plane.'
-                      items:
-                        description: The list of control plane upgrade override settings.
-                        enum:
-                          - IgnoreKubernetesDeprecations
-                        type: string
-                      type: array
+                    forceUpgrade:
+                      description: |-
+                        ForceUpgrade: Whether to force upgrade the cluster. Note that this option instructs upgrade operation to bypass upgrade
+                        protections such as checking for deprecated API usage. Enable this option only with caution.
+                      type: boolean
                     until:
                       description: |-
                         Until: Until when the overrides are effective. Note that this only matches the start time of an upgrade, and the
@@ -2046,31 +2187,13 @@
                     - enabled
                   type: object
                 verticalPodAutoscaler:
+                  description: 'VerticalPodAutoscaler: VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile.'
                   properties:
-                    controlledValues:
-                      description: 'ControlledValues: Controls which resource value autoscaler will change. Default value is RequestsAndLimits.'
-                      enum:
-                        - RequestsAndLimits
-                        - RequestsOnly
-                      type: string
                     enabled:
                       description: 'Enabled: Whether to enable VPA. Default value is false.'
                       type: boolean
-                    updateMode:
-                      description: |-
-                        UpdateMode: Each update mode level is a superset of the lower levels. Off<Initial<Recreate<=Auto. For example: if
-                        UpdateMode is Initial, it means VPA sets the recommended resources in the VerticalPodAutoscaler Custom Resource (from
-                        UpdateMode Off) and also assigns resources on pod creation (from Initial). The default value is Off.
-                      enum:
-                        - Auto
-                        - Initial
-                        - "Off"
-                        - Recreate
-                      type: string
                   required:
-                    - controlledValues
                     - enabled
-                    - updateMode
                   type: object
               type: object
           required:
@@ -2168,18 +2291,18 @@
                     type: object
                   currentOrchestratorVersion:
                     description: |-
-                      CurrentOrchestratorVersion: If orchestratorVersion was a fully specified version <major.minor.patch>, this field will be
-                      exactly equal to it. If orchestratorVersion was <major.minor>, this field will contain the full <major.minor.patch>
+                      CurrentOrchestratorVersion: If orchestratorVersion is a fully specified version <major.minor.patch>, this field will be
+                      exactly equal to it. If orchestratorVersion is <major.minor>, this field will contain the full <major.minor.patch>
                       version being used.
+                    type: string
+                  eTag:
+                    description: |-
+                      ETag: Unique read-only string used to implement optimistic concurrency. The eTag value will change when the resource is
+                      updated. Specify an if-match or if-none-match header with the eTag value for a subsequent request to enable optimistic
+                      concurrency per the normal etag convention.
                     type: string
                   enableAutoScaling:
                     description: 'EnableAutoScaling: Whether to enable auto-scaler'
-                    type: boolean
-                  enableCustomCATrust:
-                    description: |-
-                      EnableCustomCATrust: When set to true, AKS adds a label to the node indicating that the feature is enabled and deploys a
-                      daemonset along with host services to sync custom certificate authorities from user-provided list of base64 encoded
-                      certificates into node trust stores. Defaults to false.
                     type: boolean
                   enableEncryptionAtHost:
                     description: |-
@@ -2379,12 +2502,6 @@
                   maxPods:
                     description: 'MaxPods: The maximum number of pods that can run on a node.'
                     type: integer
-                  messageOfTheDay:
-                    description: |-
-                      MessageOfTheDay: A base64-encoded string which will be written to /etc/motd after decoding. This allows customization of
-                      the message of the day for Linux nodes. It must not be specified for Windows nodes. It must be a static string (i.e.,
-                      will be printed raw and not be executed as a script).
-                    type: string
                   minCount:
                     description: 'MinCount: The minimum number of nodes for auto-scaling'
                     type: integer
@@ -2458,13 +2575,14 @@
                     type: array
                   orchestratorVersion:
                     description: |-
-                      OrchestratorVersion: Both patch version <major.minor.patch> and <major.minor> are supported. When <major.minor> is
-                      specified, the latest supported patch version is chosen automatically. Updating the agent pool with the same
-                      <major.minor> once it has been created will not trigger an upgrade, even if a newer patch version is available. As a
-                      best practice, you should upgrade all node pools in an AKS cluster to the same Kubernetes version. The node pool version
-                      must have the same major version as the control plane. The node pool minor version must be within two minor versions of
-                      the control plane version. The node pool version cannot be greater than the control plane version. For more information
-                      see [upgrading a node pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#upgrade-a-node-pool).
+                      OrchestratorVersion: Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor> (e.g. 1.20) are supported.
+                      When <major.minor> is specified, the latest supported GA patch version is chosen automatically. Updating the cluster
+                      with the same <major.minor> once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade, even if a newer
+                      patch version is available. As a best practice, you should upgrade all node pools in an AKS cluster to the same
+                      Kubernetes version. The node pool version must have the same major version as the control plane. The node pool minor
+                      version must be within two minor versions of the control plane version. The node pool version cannot be greater than the
+                      control plane version. For more information see [upgrading a node
+                      pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#upgrade-a-node-pool).
                     type: string
                   osDiskSizeGB:
                     type: integer
@@ -2476,9 +2594,8 @@
                     type: string
                   osSKU:
                     description: |-
-                      OsSKU: Specifies the OS SKU used by the agent pool. If not specified, the default is Ubuntu if OSType=Linux or
-                      Windows2019 if  OSType=Windows. And the default Windows OSSKU will be changed to Windows2022 after Windows2019 is
-                      deprecated.
+                      OsSKU: Specifies the OS SKU used by the agent pool. The default is Ubuntu if OSType is Linux. The default is Windows2019
+                      when  Kubernetes <= 1.24 or Windows2022 when Kubernetes >= 1.25 if OSType is Windows.
                     type: string
                   osType:
                     description: 'OsType: The operating system type. The default is Linux.'
@@ -2516,6 +2633,20 @@
                   scaleSetPriority:
                     description: 'ScaleSetPriority: The Virtual Machine Scale Set priority. If not specified, the default is ''Regular''.'
                     type: string
+                  securityProfile:
+                    description: 'SecurityProfile: The security settings of an agent pool.'
+                    properties:
+                      enableSecureBoot:
+                        description: |-
+                          EnableSecureBoot: Secure Boot is a feature of Trusted Launch which ensures that only signed operating systems and
+                          drivers can boot. For more details, see aka.ms/aks/trustedlaunch.  If not specified, the default is false.
+                        type: boolean
+                      enableVTPM:
+                        description: |-
+                          EnableVTPM: vTPM is a Trusted Launch feature for configuring a dedicated secure vault for keys and measurements held
+                          locally on the node. For more details, see aka.ms/aks/trustedlaunch. If not specified, the default is false.
+                        type: boolean
+                    type: object
                   spotMaxPrice:
                     description: |-
                       SpotMaxPrice: Possible values are any decimal value greater than zero or -1 which indicates the willingness to pay any
@@ -2533,6 +2664,12 @@
                   upgradeSettings:
                     description: 'UpgradeSettings: Settings for upgrading the agentpool'
                     properties:
+                      drainTimeoutInMinutes:
+                        description: |-
+                          DrainTimeoutInMinutes: The amount of time (in minutes) to wait on eviction of pods and graceful termination per node.
+                          This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails. If not
+                          specified, the default is 30 minutes.
+                        type: integer
                       maxSurge:
                         description: |-
                           MaxSurge: This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it
@@ -2540,6 +2677,11 @@
                           up. If not specified, the default is 1. For more information, including best practices, see:
                           https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
                         type: string
+                      nodeSoakDurationInMinutes:
+                        description: |-
+                          NodeSoakDurationInMinutes: The amount of time (in minutes) to wait after draining a node and before reimaging it and
+                          moving on to next node. If not specified, the default is 0 minutes.
+                        type: integer
                     type: object
                   vmSize:
                     description: |-
@@ -2589,19 +2731,11 @@
                 enablePrivateClusterPublicFQDN:
                   description: 'EnablePrivateClusterPublicFQDN: Whether to create additional public FQDN for private cluster or not.'
                   type: boolean
-                enableVnetIntegration:
-                  description: 'EnableVnetIntegration: Whether to enable apiserver vnet integration for the cluster or not.'
-                  type: boolean
                 privateDNSZone:
                   description: |-
                     PrivateDNSZone: The default is System. For more details see [configure private DNS
                     zone](https://docs.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone). Allowed values are 'system' and
                     'none'.
-                  type: string
-                subnetId:
-                  description: |-
-                    SubnetId: It is required when: 1. creating a new cluster with BYO Vnet; 2. updating an existing cluster to enable
-                    apiserver vnet integration.
                   type: string
               type: object
             autoScalerProfile:
@@ -2610,12 +2744,29 @@
                 balance-similar-node-groups:
                   description: 'BalanceSimilarNodeGroups: Valid values are ''true'' and ''false'''
                   type: string
+                daemonset-eviction-for-empty-nodes:
+                  description: |-
+                    DaemonsetEvictionForEmptyNodes: If set to true, all daemonset pods on empty nodes will be evicted before deletion of the
+                    node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be
+                    deleted without ensuring that daemonset pods are deleted or evicted.
+                  type: boolean
+                daemonset-eviction-for-occupied-nodes:
+                  description: |-
+                    DaemonsetEvictionForOccupiedNodes: If set to true, all daemonset pods on occupied nodes will be evicted before deletion
+                    of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node
+                    will be deleted without ensuring that daemonset pods are deleted or evicted.
+                  type: boolean
                 expander:
                   description: |-
                     Expander: If not specified, the default is 'random'. See
                     [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more
                     information.
                   type: string
+                ignore-daemonsets-utilization:
+                  description: |-
+                    IgnoreDaemonsetsUtilization: If set to true, the resources used by daemonset will be taken into account when making
+                    scaling down decisions.
+                  type: boolean
                 max-empty-bulk-delete:
                   description: 'MaxEmptyBulkDelete: The default is 10.'
                   type: string
@@ -2681,7 +2832,7 @@
               description: 'AutoUpgradeProfile: The auto upgrade configuration.'
               properties:
                 nodeOSUpgradeChannel:
-                  description: 'NodeOSUpgradeChannel: The default is Unmanaged, but may change to either NodeImage or SecurityPatch at GA.'
+                  description: 'NodeOSUpgradeChannel: Manner in which the OS on your nodes is updated. The default is NodeImage.'
                   type: string
                 upgradeChannel:
                   description: |-
@@ -2690,26 +2841,36 @@
                   type: string
               type: object
             azureMonitorProfile:
-              description: 'AzureMonitorProfile: Prometheus addon profile for the container service cluster'
+              description: 'AzureMonitorProfile: Azure Monitor addon profiles for monitoring the managed cluster.'
               properties:
                 metrics:
-                  description: 'Metrics: Metrics profile for the prometheus service addon'
+                  description: |-
+                    Metrics: Metrics profile for the Azure Monitor managed service for Prometheus addon. Collect out-of-the-box Kubernetes
+                    infrastructure metrics to send to an Azure Monitor Workspace and configure additional scraping for custom targets. See
+                    aka.ms/AzureManagedPrometheus for an overview.
                   properties:
                     enabled:
-                      description: 'Enabled: Whether to enable the Prometheus collector'
+                      description: |-
+                        Enabled: Whether to enable or disable the Azure Managed Prometheus addon for Prometheus monitoring. See
+                        aka.ms/AzureManagedPrometheus-aks-enable for details on enabling and disabling.
                       type: boolean
                     kubeStateMetrics:
-                      description: 'KubeStateMetrics: Kube State Metrics for prometheus addon profile for the container service cluster'
+                      description: |-
+                        KubeStateMetrics: Kube State Metrics profile for the Azure Managed Prometheus addon. These optional settings are for the
+                         kube-state-metrics pod that is deployed with the addon. See aka.ms/AzureManagedPrometheus-optional-parameters for
+                        details.
                       properties:
                         metricAnnotationsAllowList:
                           description: |-
-                            MetricAnnotationsAllowList: Comma-separated list of additional Kubernetes label keys that will be used in the resource's
-                            labels metric.
+                            MetricAnnotationsAllowList: Comma-separated list of Kubernetes annotation keys that will be used in the resource's
+                            labels metric (Example: 'namespaces=[kubernetes.io/team,...],pods=[kubernetes.io/team],...'). By default the metric
+                            contains only resource name and namespace labels.
                           type: string
                         metricLabelsAllowlist:
                           description: |-
-                            MetricLabelsAllowlist: Comma-separated list of Kubernetes annotations keys that will be used in the resource's labels
-                            metric.
+                            MetricLabelsAllowlist: Comma-separated list of additional Kubernetes label keys that will be used in the resource's
+                            labels metric (Example: 'namespaces=[k8s-label-1,k8s-label-n,...],pods=[app],...'). By default the metric contains only
+                            resource name and namespace labels.
                           type: string
                       type: object
                   type: object
@@ -2764,17 +2925,11 @@
                   - type
                 type: object
               type: array
-            creationData:
-              description: |-
-                CreationData: CreationData to be used to specify the source Snapshot ID if the cluster will be created/upgraded using a
-                snapshot.
-              properties:
-                sourceResourceId:
-                  description: 'SourceResourceId: This is the ARM ID of the source object to be used to create the target object.'
-                  type: string
-              type: object
             currentKubernetesVersion:
-              description: 'CurrentKubernetesVersion: The version of Kubernetes the Managed Cluster is running.'
+              description: |-
+                CurrentKubernetesVersion: If kubernetesVersion was a fully specified version <major.minor.patch>, this field will be
+                exactly equal to it. If kubernetesVersion was <major.minor>, this field will contain the full <major.minor.patch>
+                version being used.
               type: string
             disableLocalAccounts:
               description: |-
@@ -2790,12 +2945,12 @@
             dnsPrefix:
               description: 'DnsPrefix: This cannot be updated once the Managed Cluster has been created.'
               type: string
-            enableNamespaceResources:
+            eTag:
               description: |-
-                EnableNamespaceResources: The default value is false. It can be enabled/disabled on creation and updating of the managed
-                cluster. See [https://aka.ms/NamespaceARMResource](https://aka.ms/NamespaceARMResource) for more details on Namespace as
-                a ARM Resource.
-              type: boolean
+                ETag: Unique read-only string used to implement optimistic concurrency. The eTag value will change when the resource is
+                updated. Specify an if-match or if-none-match header with the eTag value for a subsequent request to enable optimistic
+                concurrency per the normal etag convention.
+              type: string
             enablePodSecurityPolicy:
               description: |-
                 EnablePodSecurityPolicy: (DEPRECATED) Whether to enable Kubernetes pod security policy (preview). PodSecurityPolicy was
@@ -2821,38 +2976,9 @@
             fqdnSubdomain:
               description: 'FqdnSubdomain: This cannot be updated once the Managed Cluster has been created.'
               type: string
-            guardrailsProfile:
-              description: 'GuardrailsProfile: The guardrails profile holds all the guardrails information for a given cluster'
-              properties:
-                excludedNamespaces:
-                  description: 'ExcludedNamespaces: List of namespaces excluded from guardrails checks'
-                  items:
-                    type: string
-                  type: array
-                level:
-                  description: |-
-                    Level: The guardrails level to be used. By default, Guardrails is enabled for all namespaces except those that AKS
-                    excludes via systemExcludedNamespaces
-                  type: string
-                systemExcludedNamespaces:
-                  description: 'SystemExcludedNamespaces: List of namespaces specified by AKS to be excluded from Guardrails'
-                  items:
-                    type: string
-                  type: array
-                version:
-                  description: 'Version: The version of constraints to use'
-                  type: string
-              type: object
             httpProxyConfig:
               description: 'HttpProxyConfig: Configurations for provisioning the cluster with HTTP proxy servers.'
               properties:
-                effectiveNoProxy:
-                  description: |-
-                    EffectiveNoProxy: A read-only list of all endpoints for which traffic should not be sent to the proxy. This list is a
-                    superset of noProxy and values injected by AKS.
-                  items:
-                    type: string
-                  type: array
                 httpProxy:
                   description: 'HttpProxy: The HTTP proxy server endpoint to use.'
                   type: string
@@ -2870,12 +2996,33 @@
               type: object
             id:
               description: |-
-                Id: Fully qualified resource ID for the resource. Ex -
-                /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+                Id: Fully qualified resource ID for the resource. E.g.
+                "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
               type: string
             identity:
               description: 'Identity: The identity of the managed cluster, if configured.'
               properties:
+                delegatedResources:
+                  additionalProperties:
+                    description: Delegated resource properties - internal use only.
+                    properties:
+                      location:
+                        description: 'Location: The source resource location - internal use only.'
+                        type: string
+                      referralResource:
+                        description: 'ReferralResource: The delegation id of the referral delegation (optional) - internal use only.'
+                        type: string
+                      resourceId:
+                        description: 'ResourceId: The ARM resource id of the delegated resource - internal use only.'
+                        type: string
+                      tenantId:
+                        description: 'TenantId: The tenant id of the delegated resource - internal use only.'
+                        type: string
+                    type: object
+                  description: |-
+                    DelegatedResources: The delegated identity resources assigned to this managed cluster. This can only be set by another
+                    Azure Resource Provider, and managed cluster only accept one delegated identity resource. Internal use only.
+                  type: object
                 principalId:
                   description: 'PrincipalId: The principal id of the system assigned identity which is used by master components.'
                   type: string
@@ -2916,28 +3063,35 @@
                     description: 'ResourceId: The resource ID of the user assigned identity.'
                     type: string
                 type: object
-              description: 'IdentityProfile: Identities associated with the cluster.'
+              description: |-
+                IdentityProfile: The user identity associated with the managed cluster. This identity will be used by the kubelet. Only
+                one user assigned identity is allowed. The only accepted key is "kubeletidentity", with value of "resourceId":
+                "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}".
               type: object
             ingressProfile:
               description: 'IngressProfile: Ingress profile for the managed cluster.'
               properties:
                 webAppRouting:
-                  description: 'WebAppRouting: Web App Routing settings for the ingress profile.'
+                  description: |-
+                    WebAppRouting: App Routing settings for the ingress profile. You can find an overview and onboarding guide for this
+                    feature at https://learn.microsoft.com/en-us/azure/aks/app-routing?tabs=default%2Cdeploy-app-default.
                   properties:
-                    dnsZoneResourceId:
+                    dnsZoneResourceIds:
                       description: |-
-                        DnsZoneResourceId: Resource ID of the DNS Zone to be associated with the web app. Used only when Web App Routing is
-                        enabled.
-                      type: string
+                        DnsZoneResourceIds: Resource IDs of the DNS zones to be associated with the Application Routing add-on. Used only when
+                        Application Routing add-on is enabled. Public and private DNS zones can be in different resource groups, but all public
+                        DNS zones must be in the same resource group and all private DNS zones must be in the same resource group.
+                      items:
+                        type: string
+                      type: array
                     enabled:
-                      description: 'Enabled: Whether to enable Web App Routing.'
+                      description: 'Enabled: Whether to enable the Application Routing add-on.'
                       type: boolean
                     identity:
                       description: |-
-                        Identity: Managed identity of the Web Application Routing add-on. This is the identity that should be granted
-                        permissions, for example, to manage the associated Azure DNS resource and get certificates from Azure Key Vault. See
-                        [this overview of the add-on](https://learn.microsoft.com/en-us/azure/aks/web-app-routing?tabs=with-osm) for more
-                        instructions.
+                        Identity: Managed identity of the Application Routing add-on. This is the identity that should be granted permissions,
+                        for example, to manage the associated Azure DNS resource and get certificates from Azure Key Vault. See [this overview
+                        of the add-on](https://learn.microsoft.com/en-us/azure/aks/web-app-routing?tabs=with-osm) for more instructions.
                       properties:
                         clientId:
                           description: 'ClientId: The client ID of the user assigned identity.'
@@ -2953,9 +3107,12 @@
               type: object
             kubernetesVersion:
               description: |-
-                KubernetesVersion: When you upgrade a supported AKS cluster, Kubernetes minor versions cannot be skipped. All upgrades
-                must be performed sequentially by major version number. For example, upgrades between 1.14.x -> 1.15.x or 1.15.x ->
-                1.16.x are allowed, however 1.14.x -> 1.16.x is not allowed. See [upgrading an AKS
+                KubernetesVersion: Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor> (e.g. 1.20) are supported.
+                When <major.minor> is specified, the latest supported GA patch version is chosen automatically. Updating the cluster
+                with the same <major.minor> once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade, even if a newer
+                patch version is available. When you upgrade a supported AKS cluster, Kubernetes minor versions cannot be skipped. All
+                upgrades must be performed sequentially by major version number. For example, upgrades between 1.14.x -> 1.15.x or
+                1.15.x -> 1.16.x are allowed, however 1.14.x -> 1.16.x is not allowed. See [upgrading an AKS
                 cluster](https://docs.microsoft.com/azure/aks/upgrade-cluster) for more details.
               type: string
             linuxProfile:
@@ -2987,21 +3144,58 @@
             maxAgentPools:
               description: 'MaxAgentPools: The max number of agent pools for the managed cluster.'
               type: integer
+            metricsProfile:
+              description: 'MetricsProfile: Optional cluster metrics configuration.'
+              properties:
+                costAnalysis:
+                  description: 'CostAnalysis: The cost analysis configuration for the cluster'
+                  properties:
+                    enabled:
+                      description: |-
+                        Enabled: The Managed Cluster sku.tier must be set to 'Standard' or 'Premium' to enable this feature. Enabling this will
+                        add Kubernetes Namespace and Deployment details to the Cost Analysis views in the Azure portal. If not specified, the
+                        default is false. For more information see aka.ms/aks/docs/cost-analysis.
+                      type: boolean
+                  type: object
+              type: object
             name:
               description: 'Name: The name of the resource'
               type: string
             networkProfile:
               description: 'NetworkProfile: The network configuration profile.'
               properties:
+                advancedNetworking:
+                  description: |-
+                    AdvancedNetworking: Advanced Networking profile for enabling observability and security feature suite on a cluster. For
+                    more information see  aka.ms/aksadvancednetworking.
+                  properties:
+                    enabled:
+                      description: |-
+                        Enabled: Indicates the enablement of Advanced Networking functionalities of observability and security on AKS clusters.
+                        When this is set to true, all observability and security features will be set to enabled unless explicitly disabled. If
+                        not specified, the default is false.
+                      type: boolean
+                    observability:
+                      description: 'Observability: Observability profile to enable advanced network metrics and flow logs with historical contexts.'
+                      properties:
+                        enabled:
+                          description: 'Enabled: Indicates the enablement of Advanced Networking observability functionalities on clusters.'
+                          type: boolean
+                      type: object
+                    security:
+                      description: 'Security: Security profile to enable security features on cilium based cluster.'
+                      properties:
+                        enabled:
+                          description: |-
+                            Enabled: This feature allows user to configure network policy based on DNS (FQDN) names. It can be enabled only on
+                            cilium based clusters. If not specified, the default is false.
+                          type: boolean
+                      type: object
+                  type: object
                 dnsServiceIP:
                   description: |-
                     DnsServiceIP: An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address
                     range specified in serviceCidr.
-                  type: string
-                dockerBridgeCidr:
-                  description: |-
-                    DockerBridgeCidr: A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP
-                    ranges or the Kubernetes service address range.
                   type: string
                 ipFamilies:
                   description: |-
@@ -3010,39 +3204,6 @@
                   items:
                     type: string
                   type: array
-                kubeProxyConfig:
-                  description: |-
-                    KubeProxyConfig: Holds configuration customizations for kube-proxy. Any values not defined will use the kube-proxy
-                    defaulting behavior. See https://v<version>.docs.kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/
-                    where <version> is represented by a <major version>-<minor version> string. Kubernetes version 1.23 would be '1-23'.
-                  properties:
-                    enabled:
-                      description: |-
-                        Enabled: Whether to enable on kube-proxy on the cluster (if no 'kubeProxyConfig' exists, kube-proxy is enabled in AKS by
-                        default without these customizations).
-                      type: boolean
-                    ipvsConfig:
-                      description: 'IpvsConfig: Holds configuration customizations for IPVS. May only be specified if ''mode'' is set to ''IPVS''.'
-                      properties:
-                        scheduler:
-                          description: 'Scheduler: IPVS scheduler, for more information please see http://www.linuxvirtualserver.org/docs/scheduling.html.'
-                          type: string
-                        tcpFinTimeoutSeconds:
-                          description: |-
-                            TcpFinTimeoutSeconds: The timeout value used for IPVS TCP sessions after receiving a FIN in seconds. Must be a positive
-                            integer value.
-                          type: integer
-                        tcpTimeoutSeconds:
-                          description: 'TcpTimeoutSeconds: The timeout value used for idle IPVS TCP sessions in seconds. Must be a positive integer value.'
-                          type: integer
-                        udpTimeoutSeconds:
-                          description: 'UdpTimeoutSeconds: The timeout value used for IPVS UDP packets in seconds. Must be a positive integer value.'
-                          type: integer
-                      type: object
-                    mode:
-                      description: 'Mode: Specify which proxy mode to use (''IPTABLES'' or ''IPVS'')'
-                      type: string
-                  type: object
                 loadBalancerProfile:
                   description: 'LoadBalancerProfile: Profile of the cluster load balancer.'
                   properties:
@@ -3159,7 +3320,7 @@
                   description: 'NetworkPlugin: Network plugin used for building the Kubernetes network.'
                   type: string
                 networkPluginMode:
-                  description: 'NetworkPluginMode: Network plugin mode used for building the Kubernetes network.'
+                  description: 'NetworkPluginMode: The mode the network plugin should use.'
                   type: string
                 networkPolicy:
                   description: 'NetworkPolicy: Network policy used for building the Kubernetes network.'
@@ -3196,10 +3357,12 @@
               description: 'NodeResourceGroup: The name of the resource group containing agent pool nodes.'
               type: string
             nodeResourceGroupProfile:
-              description: 'NodeResourceGroupProfile: The node resource group configuration profile.'
+              description: 'NodeResourceGroupProfile: Profile of the node resource group configuration.'
               properties:
                 restrictionLevel:
-                  description: 'RestrictionLevel: The restriction level applied to the cluster''s node resource group'
+                  description: |-
+                    RestrictionLevel: The restriction level applied to the cluster's node resource group. If not specified, the default is
+                    'Unrestricted'
                   type: string
               type: object
             oidcIssuerProfile:
@@ -3358,6 +3521,11 @@
             publicNetworkAccess:
               description: 'PublicNetworkAccess: Allow or deny public network access for AKS'
               type: string
+            resourceUID:
+              description: |-
+                ResourceUID: The resourceUID uniquely identifies ManagedClusters that reuse ARM ResourceIds (i.e: create, delete, create
+                sequence)
+              type: string
             securityProfile:
               description: 'SecurityProfile: Security profile for the managed cluster.'
               properties:
@@ -3388,14 +3556,6 @@
                         be a valid resource ID. When keyVaultNetworkAccess is `Public`, leave the field empty.
                       type: string
                   type: object
-                customCATrustCertificates:
-                  description: |-
-                    CustomCATrustCertificates: A list of up to 10 base64 encoded CAs that will be added to the trust store on nodes with the
-                    Custom CA Trust feature enabled. For more information see [Custom CA Trust
-                    Certificates](https://learn.microsoft.com/en-us/azure/aks/custom-certificate-authority)
-                  items:
-                    type: string
-                  type: array
                 defender:
                   description: 'Defender: Microsoft Defender settings for the security profile.'
                   properties:
@@ -3423,16 +3583,6 @@
                       description: 'IntervalHours: Image Cleaner scanning interval in hours.'
                       type: integer
                   type: object
-                nodeRestriction:
-                  description: |-
-                    NodeRestriction: [Node
-                    Restriction](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#noderestriction) settings
-                    for the security profile.
-                  properties:
-                    enabled:
-                      description: 'Enabled: Whether to enable Node Restriction'
-                      type: boolean
-                  type: object
                 workloadIdentity:
                   description: |-
                     WorkloadIdentity: Workload identity settings for the security profile. Workload identity enables Kubernetes applications
@@ -3449,9 +3599,44 @@
                 istio:
                   description: 'Istio: Istio service mesh configuration.'
                   properties:
+                    certificateAuthority:
+                      description: |-
+                        CertificateAuthority: Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin
+                        certificates as described  here https://aka.ms/asm-plugin-ca
+                      properties:
+                        plugin:
+                          description: 'Plugin: Plugin certificates information for Service Mesh.'
+                          properties:
+                            certChainObjectName:
+                              description: 'CertChainObjectName: Certificate chain object name in Azure Key Vault.'
+                              type: string
+                            certObjectName:
+                              description: 'CertObjectName: Intermediate certificate object name in Azure Key Vault.'
+                              type: string
+                            keyObjectName:
+                              description: 'KeyObjectName: Intermediate certificate private key object name in Azure Key Vault.'
+                              type: string
+                            keyVaultId:
+                              description: 'KeyVaultId: The resource ID of the Key Vault.'
+                              type: string
+                            rootCertObjectName:
+                              description: 'RootCertObjectName: Root certificate object name in Azure Key Vault.'
+                              type: string
+                          type: object
+                      type: object
                     components:
                       description: 'Components: Istio components configuration.'
                       properties:
+                        egressGateways:
+                          description: 'EgressGateways: Istio egress gateways.'
+                          items:
+                            description: Istio egress gateway configuration.
+                            properties:
+                              enabled:
+                                description: 'Enabled: Whether to enable the egress gateway.'
+                                type: boolean
+                            type: object
+                          type: array
                         ingressGateways:
                           description: 'IngressGateways: Istio ingress gateways.'
                           items:
@@ -3468,6 +3653,14 @@
                             type: object
                           type: array
                       type: object
+                    revisions:
+                      description: |-
+                        Revisions: The list of revisions of the Istio control plane. When an upgrade is not in progress, this holds one value.
+                        When canary upgrade is in progress, this can only hold two consecutive values. For more information, see:
+                        https://learn.microsoft.com/en-us/azure/aks/istio-upgrade
+                      items:
+                        type: string
+                      type: array
                   type: object
                 mode:
                   description: 'Mode: Mode of the service mesh.'
@@ -3510,9 +3703,6 @@
                     enabled:
                       description: 'Enabled: Whether to enable AzureDisk CSI Driver. The default value is true.'
                       type: boolean
-                    version:
-                      description: 'Version: The version of AzureDisk CSI Driver. The default value is v1.'
-                      type: string
                   type: object
                 fileCSIDriver:
                   description: 'FileCSIDriver: AzureFile CSI Driver settings for the storage profile.'
@@ -3529,6 +3719,9 @@
                       type: boolean
                   type: object
               type: object
+            supportPlan:
+              description: 'SupportPlan: The support plan for the Managed Cluster. If unspecified, the default is ''KubernetesOfficial''.'
+              type: string
             systemData:
               description: 'SystemData: Azure Resource Manager metadata containing createdBy and modifiedBy information.'
               properties:
@@ -3565,12 +3758,11 @@
                 overrideSettings:
                   description: 'OverrideSettings: Settings for overrides.'
                   properties:
-                    controlPlaneOverrides:
-                      description: 'ControlPlaneOverrides: List of upgrade overrides when upgrading a cluster''s control plane.'
-                      items:
-                        description: The list of control plane upgrade override settings.
-                        type: string
-                      type: array
+                    forceUpgrade:
+                      description: |-
+                        ForceUpgrade: Whether to force upgrade the cluster. Note that this option instructs upgrade operation to bypass upgrade
+                        protections such as checking for deprecated API usage. Enable this option only with caution.
+                      type: boolean
                     until:
                       description: |-
                         Until: Until when the overrides are effective. Note that this only matches the start time of an upgrade, and the
@@ -3631,19 +3823,11 @@
                       type: boolean
                   type: object
                 verticalPodAutoscaler:
+                  description: 'VerticalPodAutoscaler: VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile.'
                   properties:
-                    controlledValues:
-                      description: 'ControlledValues: Controls which resource value autoscaler will change. Default value is RequestsAndLimits.'
-                      type: string
                     enabled:
                       description: 'Enabled: Whether to enable VPA. Default value is false.'
                       type: boolean
-                    updateMode:
-                      description: |-
-                        UpdateMode: Each update mode level is a superset of the lower levels. Off<Initial<Recreate<=Auto. For example: if
-                        UpdateMode is Initial, it means VPA sets the recommended resources in the VerticalPodAutoscaler Custom Resource (from
-                        UpdateMode Off) and also assigns resources on pod creation (from Initial). The default value is Off.
-                      type: string
                   type: object
               type: object
           type: object

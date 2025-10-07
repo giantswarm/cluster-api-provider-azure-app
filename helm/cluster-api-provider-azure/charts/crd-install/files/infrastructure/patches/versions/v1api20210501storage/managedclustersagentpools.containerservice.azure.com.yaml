@@ -26,7 +26,7 @@
         metadata:
           type: object
         spec:
-          description: Storage version of v1api20210501.ManagedClusters_AgentPool_Spec
+          description: Storage version of v1api20210501.ManagedClustersAgentPool_Spec
           properties:
             $propertyBag:
               additionalProperties:
@@ -59,9 +59,7 @@
             gpuInstanceProfile:
               type: string
             kubeletConfig:
-              description: |-
-                Storage version of v1api20210501.KubeletConfig
-                See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
+              description: Storage version of v1api20210501.KubeletConfig
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -98,9 +96,7 @@
             kubeletDiskType:
               type: string
             linuxOSConfig:
-              description: |-
-                Storage version of v1api20210501.LinuxOSConfig
-                See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
+              description: Storage version of v1api20210501.LinuxOSConfig
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -112,9 +108,7 @@
                 swapFileSizeMB:
                   type: integer
                 sysctls:
-                  description: |-
-                    Storage version of v1api20210501.SysctlConfig
-                    Sysctl settings for Linux agent nodes.
+                  description: Storage version of v1api20210501.SysctlConfig
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -223,6 +217,77 @@
               items:
                 type: string
               type: array
+            operatorSpec:
+              description: |-
+                Storage version of v1api20210501.ManagedClustersAgentPoolOperatorSpec
+                Details for configuring operator behavior. Fields in this struct are interpreted by the operator directly rather than being passed to Azure
+              properties:
+                $propertyBag:
+                  additionalProperties:
+                    type: string
+                  description: |-
+                    PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                    resources, allowing for full fidelity round trip conversions
+                  type: object
+                configMapExpressions:
+                  items:
+                    description: |-
+                      DestinationExpression is a CEL expression and a destination to store the result in. The destination may
+                      be a secret or a configmap. The value of the expression is stored at the specified location in
+                      the destination.
+                    properties:
+                      key:
+                        description: |-
+                          Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string
+                          this is required to identify what key to write to. If the CEL expression in Value returns a map[string]string
+                          Key must not be set, instead the keys written will be determined dynamically based on the keys of the resulting
+                          map[string]string.
+                        type: string
+                      name:
+                        description: |-
+                          Name is the name of the Kubernetes configmap or secret to write to.
+                          The configmap or secret will be created in the same namespace as the resource.
+                        type: string
+                      value:
+                        description: |-
+                          Value is a CEL expression. The CEL expression may return a string or a map[string]string. For more information
+                          on CEL in ASO see https://azure.github.io/azure-service-operator/guide/expressions/
+                        type: string
+                    required:
+                      - name
+                      - value
+                    type: object
+                  type: array
+                secretExpressions:
+                  items:
+                    description: |-
+                      DestinationExpression is a CEL expression and a destination to store the result in. The destination may
+                      be a secret or a configmap. The value of the expression is stored at the specified location in
+                      the destination.
+                    properties:
+                      key:
+                        description: |-
+                          Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string
+                          this is required to identify what key to write to. If the CEL expression in Value returns a map[string]string
+                          Key must not be set, instead the keys written will be determined dynamically based on the keys of the resulting
+                          map[string]string.
+                        type: string
+                      name:
+                        description: |-
+                          Name is the name of the Kubernetes configmap or secret to write to.
+                          The configmap or secret will be created in the same namespace as the resource.
+                        type: string
+                      value:
+                        description: |-
+                          Value is a CEL expression. The CEL expression may return a string or a map[string]string. For more information
+                          on CEL in ASO see https://azure.github.io/azure-service-operator/guide/expressions/
+                        type: string
+                    required:
+                      - name
+                      - value
+                    type: object
+                  type: array
+              type: object
             orchestratorVersion:
               type: string
             originalVersion:
@@ -286,9 +351,7 @@
             type:
               type: string
             upgradeSettings:
-              description: |-
-                Storage version of v1api20210501.AgentPoolUpgradeSettings
-                Settings for upgrading an agentpool
+              description: Storage version of v1api20210501.AgentPoolUpgradeSettings
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -329,7 +392,7 @@
             - owner
           type: object
         status:
-          description: Storage version of v1api20210501.ManagedClusters_AgentPool_STATUS
+          description: Storage version of v1api20210501.ManagedClustersAgentPool_STATUS
           properties:
             $propertyBag:
               additionalProperties:
@@ -402,9 +465,7 @@
             id:
               type: string
             kubeletConfig:
-              description: |-
-                Storage version of v1api20210501.KubeletConfig_STATUS
-                See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
+              description: Storage version of v1api20210501.KubeletConfig_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -441,9 +502,7 @@
             kubeletDiskType:
               type: string
             linuxOSConfig:
-              description: |-
-                Storage version of v1api20210501.LinuxOSConfig_STATUS
-                See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
+              description: Storage version of v1api20210501.LinuxOSConfig_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -455,9 +514,7 @@
                 swapFileSizeMB:
                   type: integer
                 sysctls:
-                  description: |-
-                    Storage version of v1api20210501.SysctlConfig_STATUS
-                    Sysctl settings for Linux agent nodes.
+                  description: Storage version of v1api20210501.SysctlConfig_STATUS
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -563,9 +620,7 @@
             podSubnetID:
               type: string
             powerState:
-              description: |-
-                Storage version of v1api20210501.PowerState_STATUS
-                Describes the Power State of the cluster
+              description: Storage version of v1api20210501.PowerState_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -596,9 +651,7 @@
             type:
               type: string
             upgradeSettings:
-              description: |-
-                Storage version of v1api20210501.AgentPoolUpgradeSettings_STATUS
-                Settings for upgrading an agentpool
+              description: Storage version of v1api20210501.AgentPoolUpgradeSettings_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:

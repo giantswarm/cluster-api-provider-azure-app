@@ -59,7 +59,6 @@
                         Immutable.
                         See also [AKS doc].
 
-
                         [AKS doc]: https://learn.microsoft.com/en-us/azure/aks/enable-host-encryption
                       type: boolean
                     enableFIPS:
@@ -149,7 +148,6 @@
                         Immutable.
                         See also [AKS doc].
 
-
                         [AKS doc]: https://learn.microsoft.com/rest/api/aks/agent-pools/create-or-update?tabs=HTTP#kubeletdisktype
                       enum:
                         - OS
@@ -166,7 +164,6 @@
                             Max value of SwapFileSizeMB should be the size of temporary disk(/dev/sdb).
                             Must be at least 1.
                             See also [AKS doc].
-
 
                             [AKS doc]: https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview#temporary-disk
                           minimum: 1
@@ -410,7 +407,6 @@
                             TransparentHugePageDefrag specifies whether the kernel should make aggressive use of memory compaction to make more hugepages available.
                             See also [Linux doc].
 
-
                             [Linux doc]: https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge for more details.
                           enum:
                             - always
@@ -424,7 +420,6 @@
                             TransparentHugePageEnabled specifies various modes of Transparent Hugepages.
                             See also [Linux doc].
 
-
                             [Linux doc]: https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge for more details.
                           enum:
                             - always
@@ -437,7 +432,6 @@
                         MaxPods specifies the kubelet `--max-pods` configuration for the node pool.
                         Immutable.
                         See also [AKS doc], [K8s doc].
-
 
                         [AKS doc]: https://learn.microsoft.com/azure/aks/configure-azure-cni#configure-maximum---new-clusters
                         [K8s doc]: https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/
@@ -460,7 +454,6 @@
                         Node labels represent the labels for all of the nodes present in node pool.
                         See also [AKS doc].
 
-
                         [AKS doc]: https://learn.microsoft.com/azure/aks/use-labels
                       type: object
                     nodePublicIPPrefixID:
@@ -481,19 +474,18 @@
                         Immutable.
                         See also [AKS doc].
 
-
                         [AKS doc]: https://learn.microsoft.com/azure/aks/cluster-configuration#ephemeral-os
                       enum:
                         - Ephemeral
                         - Managed
                       type: string
                     osType:
+                      default: Linux
                       description: |-
                         OSType specifies the virtual machine operating system. Default to Linux. Possible values include: 'Linux', 'Windows'.
                         'Windows' requires the AzureManagedControlPlane's `spec.networkPlugin` to be `azure`.
                         Immutable.
                         See also [AKS doc].
-
 
                         [AKS doc]: https://learn.microsoft.com/rest/api/aks/agent-pools/create-or-update?tabs=HTTP#ostype
                       enum:
@@ -549,7 +541,6 @@
                       description: |-
                         Taints specifies the taints for nodes present in this agent pool.
                         See also [AKS doc].
-
 
                         [AKS doc]: https://learn.microsoft.com/azure/aks/use-multiple-node-pools#setting-node-pool-taints
                       items:
