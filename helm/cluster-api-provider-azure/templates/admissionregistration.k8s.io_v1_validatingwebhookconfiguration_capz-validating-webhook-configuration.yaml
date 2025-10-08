@@ -21,14 +21,14 @@ webhooks:
     service:
       name: capz-webhook-service
       namespace: '{{ .Release.Namespace }}'
-      path: /validate-infrastructure-cluster-x-k8s-io-v1alpha1-azureasomanagedcluster
+      path: /validate-infrastructure-cluster-x-k8s-io-v1beta1-azureasomanagedcluster
   failurePolicy: Fail
   name: validation.azureasomanagedcluster.infrastructure.cluster.x-k8s.io
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
     apiVersions:
-    - v1alpha1
+    - v1beta1
     operations:
     - CREATE
     resources:
@@ -41,14 +41,14 @@ webhooks:
     service:
       name: capz-webhook-service
       namespace: '{{ .Release.Namespace }}'
-      path: /validate-infrastructure-cluster-x-k8s-io-v1alpha1-azureasomanagedcontrolplane
+      path: /validate-infrastructure-cluster-x-k8s-io-v1beta1-azureasomanagedcontrolplane
   failurePolicy: Fail
   name: validation.azureasomanagedcontrolplane.infrastructure.cluster.x-k8s.io
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
     apiVersions:
-    - v1alpha1
+    - v1beta1
     operations:
     - CREATE
     resources:
@@ -61,14 +61,14 @@ webhooks:
     service:
       name: capz-webhook-service
       namespace: '{{ .Release.Namespace }}'
-      path: /validate-infrastructure-cluster-x-k8s-io-v1alpha1-azureasomanagedmachinepool
+      path: /validate-infrastructure-cluster-x-k8s-io-v1beta1-azureasomanagedmachinepool
   failurePolicy: Fail
   name: validation.azureasomanagedmachinepool.infrastructure.cluster.x-k8s.io
   rules:
   - apiGroups:
     - infrastructure.cluster.x-k8s.io
     apiVersions:
-    - v1alpha1
+    - v1beta1
     operations:
     - CREATE
     resources:

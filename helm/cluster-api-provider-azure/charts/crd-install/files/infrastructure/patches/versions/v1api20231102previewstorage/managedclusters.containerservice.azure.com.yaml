@@ -1,12 +1,8 @@
 - op: replace
-  path: /spec/versions/9/schema
+  path: /spec/versions/7/schema
   value:
     openAPIV3Schema:
-      description: |-
-        Storage version of v1api20231102preview.ManagedCluster
-        Generator information:
-        - Generated from: /containerservice/resource-manager/Microsoft.ContainerService/aks/preview/2023-11-02-preview/managedClusters.json
-        - ARM URI: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}
+      description: Storage version of v1api20231102preview.ManagedCluster
       properties:
         apiVersion:
           description: |-
@@ -36,9 +32,7 @@
                 resources, allowing for full fidelity round trip conversions
               type: object
             aadProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterAADProfile
-                For more details see [managed AAD on AKS](https://docs.microsoft.com/azure/aks/managed-aad).
+              description: Storage version of v1api20231102preview.ManagedClusterAADProfile
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -66,9 +60,7 @@
               type: object
             addonProfiles:
               additionalProperties:
-                description: |-
-                  Storage version of v1api20231102preview.ManagedClusterAddonProfile
-                  A Kubernetes add-on profile for a managed cluster.
+                description: Storage version of v1api20231102preview.ManagedClusterAddonProfile
                 properties:
                   $propertyBag:
                     additionalProperties:
@@ -87,9 +79,7 @@
               type: object
             agentPoolProfiles:
               items:
-                description: |-
-                  Storage version of v1api20231102preview.ManagedClusterAgentPoolProfile
-                  Profile for the container service agent pool.
+                description: Storage version of v1api20231102preview.ManagedClusterAgentPoolProfile
                 properties:
                   $propertyBag:
                     additionalProperties:
@@ -116,7 +106,7 @@
                       type: string
                     type: array
                   capacityReservationGroupReference:
-                    description: 'CapacityReservationGroupReference: AKS will associate the specified agent pool with the Capacity Reservation Group.'
+                    description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
                     properties:
                       armId:
                         description: |-
@@ -138,9 +128,7 @@
                   count:
                     type: integer
                   creationData:
-                    description: |-
-                      Storage version of v1api20231102preview.CreationData
-                      Data used when creating a target resource from a source resource.
+                    description: Storage version of v1api20231102preview.CreationData
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -150,7 +138,7 @@
                           resources, allowing for full fidelity round trip conversions
                         type: object
                       sourceResourceReference:
-                        description: 'SourceResourceReference: This is the ARM ID of the source object to be used to create the target object.'
+                        description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
                         properties:
                           armId:
                             description: |-
@@ -198,10 +186,7 @@
                         type: boolean
                     type: object
                   hostGroupReference:
-                    description: |-
-                      HostGroupReference: This is of the form:
-                      /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}.
-                      For more information see [Azure dedicated hosts](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts).
+                    description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
                     properties:
                       armId:
                         description: |-
@@ -221,9 +206,7 @@
                         type: string
                     type: object
                   kubeletConfig:
-                    description: |-
-                      Storage version of v1api20231102preview.KubeletConfig
-                      See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
+                    description: Storage version of v1api20231102preview.KubeletConfig
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -260,9 +243,7 @@
                   kubeletDiskType:
                     type: string
                   linuxOSConfig:
-                    description: |-
-                      Storage version of v1api20231102preview.LinuxOSConfig
-                      See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
+                    description: Storage version of v1api20231102preview.LinuxOSConfig
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -274,9 +255,7 @@
                       swapFileSizeMB:
                         type: integer
                       sysctls:
-                        description: |-
-                          Storage version of v1api20231102preview.SysctlConfig
-                          Sysctl settings for Linux agent nodes.
+                        description: Storage version of v1api20231102preview.SysctlConfig
                         properties:
                           $propertyBag:
                             additionalProperties:
@@ -360,9 +339,7 @@
                   name:
                     type: string
                   networkProfile:
-                    description: |-
-                      Storage version of v1api20231102preview.AgentPoolNetworkProfile
-                      Network settings of an agent pool.
+                    description: Storage version of v1api20231102preview.AgentPoolNetworkProfile
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -373,9 +350,7 @@
                         type: object
                       allowedHostPorts:
                         items:
-                          description: |-
-                            Storage version of v1api20231102preview.PortRange
-                            The port range.
+                          description: Storage version of v1api20231102preview.PortRange
                           properties:
                             $propertyBag:
                               additionalProperties:
@@ -416,9 +391,7 @@
                         type: array
                       nodePublicIPTags:
                         items:
-                          description: |-
-                            Storage version of v1api20231102preview.IPTag
-                            Contains the IPTag associated with the object.
+                          description: Storage version of v1api20231102preview.IPTag
                           properties:
                             $propertyBag:
                               additionalProperties:
@@ -443,9 +416,7 @@
                       type: string
                     type: object
                   nodePublicIPPrefixReference:
-                    description: |-
-                      NodePublicIPPrefixReference: This is of the form:
-                      /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIPPrefixName}
+                    description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
                     properties:
                       armId:
                         description: |-
@@ -479,10 +450,7 @@
                   osType:
                     type: string
                   podSubnetReference:
-                    description: |-
-                      PodSubnetReference: If omitted, pod IPs are statically assigned on the node subnet (see vnetSubnetID for more details).
-                      This is of the form:
-                      /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
+                    description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
                     properties:
                       armId:
                         description: |-
@@ -502,9 +470,7 @@
                         type: string
                     type: object
                   powerState:
-                    description: |-
-                      Storage version of v1api20231102preview.PowerState
-                      Describes the Power State of the cluster
+                    description: Storage version of v1api20231102preview.PowerState
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -517,7 +483,7 @@
                         type: string
                     type: object
                   proximityPlacementGroupReference:
-                    description: 'ProximityPlacementGroupReference: The ID for Proximity Placement Group.'
+                    description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
                     properties:
                       armId:
                         description: |-
@@ -543,9 +509,7 @@
                   scaleSetPriority:
                     type: string
                   securityProfile:
-                    description: |-
-                      Storage version of v1api20231102preview.AgentPoolSecurityProfile
-                      The security settings of an agent pool.
+                    description: Storage version of v1api20231102preview.AgentPoolSecurityProfile
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -570,9 +534,7 @@
                   type:
                     type: string
                   upgradeSettings:
-                    description: |-
-                      Storage version of v1api20231102preview.AgentPoolUpgradeSettings
-                      Settings for upgrading an agentpool
+                    description: Storage version of v1api20231102preview.AgentPoolUpgradeSettings
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -590,9 +552,7 @@
                     type: object
                   virtualMachineNodesStatus:
                     items:
-                      description: |-
-                        Storage version of v1api20231102preview.VirtualMachineNodes
-                        Current status on a group of nodes of the same vm size.
+                      description: Storage version of v1api20231102preview.VirtualMachineNodes
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -608,9 +568,7 @@
                       type: object
                     type: array
                   virtualMachinesProfile:
-                    description: |-
-                      Storage version of v1api20231102preview.VirtualMachinesProfile
-                      Specifications on VirtualMachines agent pool.
+                    description: Storage version of v1api20231102preview.VirtualMachinesProfile
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -620,9 +578,7 @@
                           resources, allowing for full fidelity round trip conversions
                         type: object
                       scale:
-                        description: |-
-                          Storage version of v1api20231102preview.ScaleProfile
-                          Specifications on how to scale a VirtualMachines agent pool.
+                        description: Storage version of v1api20231102preview.ScaleProfile
                         properties:
                           $propertyBag:
                             additionalProperties:
@@ -633,9 +589,7 @@
                             type: object
                           manual:
                             items:
-                              description: |-
-                                Storage version of v1api20231102preview.ManualScaleProfile
-                                Specifications on number of machines.
+                              description: Storage version of v1api20231102preview.ManualScaleProfile
                               properties:
                                 $propertyBag:
                                   additionalProperties:
@@ -657,10 +611,7 @@
                   vmSize:
                     type: string
                   vnetSubnetReference:
-                    description: |-
-                      VnetSubnetReference: If this is not specified, a VNET and subnet will be generated and used. If no podSubnetID is
-                      specified, this applies to nodes and pods, otherwise it applies to just nodes. This is of the form:
-                      /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
+                    description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
                     properties:
                       armId:
                         description: |-
@@ -680,9 +631,7 @@
                         type: string
                     type: object
                   windowsProfile:
-                    description: |-
-                      Storage version of v1api20231102preview.AgentPoolWindowsProfile
-                      The Windows agent pool's specific profile.
+                    description: Storage version of v1api20231102preview.AgentPoolWindowsProfile
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -699,11 +648,7 @@
                 type: object
               type: array
             aiToolchainOperatorProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterAIToolchainOperatorProfile
-                When enabling the operator, a set of AKS managed CRDs and controllers will be installed in the cluster. The operator
-                automates the deployment of OSS models for inference and/or training purposes. It provides a set of preset models and
-                enables distributed inference against them.
+              description: Storage version of v1api20231102preview.ManagedClusterAIToolchainOperatorProfile
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -716,9 +661,7 @@
                   type: boolean
               type: object
             apiServerAccessProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterAPIServerAccessProfile
-                Access profile for managed cluster API server.
+              description: Storage version of v1api20231102preview.ManagedClusterAPIServerAccessProfile
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -796,9 +739,7 @@
                   type: string
               type: object
             autoUpgradeProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterAutoUpgradeProfile
-                Auto upgrade profile for a managed cluster.
+              description: Storage version of v1api20231102preview.ManagedClusterAutoUpgradeProfile
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -813,9 +754,7 @@
                   type: string
               type: object
             azureMonitorProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfile
-                Prometheus addon profile for the container service cluster
+              description: Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfile
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -825,10 +764,7 @@
                     resources, allowing for full fidelity round trip conversions
                   type: object
                 logs:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileLogs
-                    Logs profile for the Azure Monitor Infrastructure and Application Logs. Collect out-of-the-box Kubernetes infrastructure
-                    & application logs to send to Azure Monitor. See aka.ms/AzureMonitorContainerInsights for an overview.
+                  description: Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileLogs
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -838,11 +774,7 @@
                         resources, allowing for full fidelity round trip conversions
                       type: object
                     appMonitoring:
-                      description: |-
-                        Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileAppMonitoring
-                        Application Monitoring Profile for Kubernetes Application Container. Collects application logs, metrics and traces
-                        through auto-instrumentation of the application using Azure Monitor OpenTelemetry based SDKs. See
-                        aka.ms/AzureMonitorApplicationMonitoring for an overview.
+                      description: Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileAppMonitoring
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -855,10 +787,7 @@
                           type: boolean
                       type: object
                     containerInsights:
-                      description: |-
-                        Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileContainerInsights
-                        Azure Monitor Container Insights Profile for Kubernetes Events, Inventory and Container stdout & stderr logs etc. See
-                        aka.ms/AzureMonitorContainerInsights for an overview.
+                      description: Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileContainerInsights
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -870,9 +799,7 @@
                         enabled:
                           type: boolean
                         logAnalyticsWorkspaceResourceReference:
-                          description: |-
-                            LogAnalyticsWorkspaceResourceReference: Fully Qualified ARM Resource Id of Azure Log Analytics Workspace for storing
-                            Azure Monitor Container Insights Logs.
+                          description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
                           properties:
                             armId:
                               description: |-
@@ -892,10 +819,7 @@
                               type: string
                           type: object
                         windowsHostLogs:
-                          description: |-
-                            Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileWindowsHostLogs
-                            Windows Host Logs Profile for Kubernetes Windows Nodes Log Collection. Collects ETW, Event Logs and Text logs etc. See
-                            aka.ms/AzureMonitorContainerInsights for an overview.
+                          description: Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileWindowsHostLogs
                           properties:
                             $propertyBag:
                               additionalProperties:
@@ -910,9 +834,7 @@
                       type: object
                   type: object
                 metrics:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileMetrics
-                    Metrics profile for the prometheus service addon
+                  description: Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileMetrics
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -922,11 +844,7 @@
                         resources, allowing for full fidelity round trip conversions
                       type: object
                     appMonitoringOpenTelemetryMetrics:
-                      description: |-
-                        Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetrics
-                        Application Monitoring Open Telemetry Metrics Profile for Kubernetes Application Container Metrics. Collects
-                        OpenTelemetry metrics through auto-instrumentation of the application using Azure Monitor OpenTelemetry based SDKs. See
-                        aka.ms/AzureMonitorApplicationMonitoring for an overview.
+                      description: Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetrics
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -941,9 +859,7 @@
                     enabled:
                       type: boolean
                     kubeStateMetrics:
-                      description: |-
-                        Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileKubeStateMetrics
-                        Kube State Metrics for prometheus addon profile for the container service cluster
+                      description: Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileKubeStateMetrics
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -965,9 +881,7 @@
                 doesn't have to be.
               type: string
             creationData:
-              description: |-
-                Storage version of v1api20231102preview.CreationData
-                Data used when creating a target resource from a source resource.
+              description: Storage version of v1api20231102preview.CreationData
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -977,7 +891,7 @@
                     resources, allowing for full fidelity round trip conversions
                   type: object
                 sourceResourceReference:
-                  description: 'SourceResourceReference: This is the ARM ID of the source object to be used to create the target object.'
+                  description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
                   properties:
                     armId:
                       description: |-
@@ -1000,9 +914,7 @@
             disableLocalAccounts:
               type: boolean
             diskEncryptionSetReference:
-              description: |-
-                DiskEncryptionSetReference: This is of the form:
-                '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{encryptionSetName}'
+              description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
               properties:
                 armId:
                   description: |-
@@ -1030,9 +942,7 @@
             enableRBAC:
               type: boolean
             extendedLocation:
-              description: |-
-                Storage version of v1api20231102preview.ExtendedLocation
-                The complex type of the extended location.
+              description: Storage version of v1api20231102preview.ExtendedLocation
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -1049,9 +959,7 @@
             fqdnSubdomain:
               type: string
             httpProxyConfig:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterHTTPProxyConfig
-                Cluster HTTP proxy configuration.
+              description: Storage version of v1api20231102preview.ManagedClusterHTTPProxyConfig
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -1072,9 +980,7 @@
                   type: string
               type: object
             identity:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterIdentity
-                Identity for the managed cluster.
+              description: Storage version of v1api20231102preview.ManagedClusterIdentity
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -1085,9 +991,7 @@
                   type: object
                 delegatedResources:
                   additionalProperties:
-                    description: |-
-                      Storage version of v1api20231102preview.DelegatedResource
-                      Delegated resource properties - internal use only.
+                    description: Storage version of v1api20231102preview.DelegatedResource
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -1101,7 +1005,7 @@
                       referralResource:
                         type: string
                       resourceReference:
-                        description: 'ResourceReference: The ARM resource id of the delegated resource - internal use only.'
+                        description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
                         properties:
                           armId:
                             description: |-
@@ -1128,9 +1032,7 @@
                   type: string
                 userAssignedIdentities:
                   items:
-                    description: |-
-                      Storage version of v1api20231102preview.UserAssignedIdentityDetails
-                      Information about the user assigned identity for the resource
+                    description: Storage version of v1api20231102preview.UserAssignedIdentityDetails
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -1164,9 +1066,7 @@
               type: object
             identityProfile:
               additionalProperties:
-                description: |-
-                  Storage version of v1api20231102preview.UserAssignedIdentity
-                  Details about a user assigned identity.
+                description: Storage version of v1api20231102preview.UserAssignedIdentity
                 properties:
                   $propertyBag:
                     additionalProperties:
@@ -1180,7 +1080,7 @@
                   objectId:
                     type: string
                   resourceReference:
-                    description: 'ResourceReference: The resource ID of the user assigned identity.'
+                    description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
                     properties:
                       armId:
                         description: |-
@@ -1202,9 +1102,7 @@
                 type: object
               type: object
             ingressProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterIngressProfile
-                Ingress profile for the container service cluster.
+              description: Storage version of v1api20231102preview.ManagedClusterIngressProfile
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -1214,9 +1112,7 @@
                     resources, allowing for full fidelity round trip conversions
                   type: object
                 webAppRouting:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterIngressProfileWebAppRouting
-                    Web App Routing settings for the ingress profile.
+                  description: Storage version of v1api20231102preview.ManagedClusterIngressProfileWebAppRouting
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -1254,9 +1150,7 @@
             kubernetesVersion:
               type: string
             linuxProfile:
-              description: |-
-                Storage version of v1api20231102preview.ContainerServiceLinuxProfile
-                Profile for Linux VMs in the container service cluster.
+              description: Storage version of v1api20231102preview.ContainerServiceLinuxProfile
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -1268,9 +1162,7 @@
                 adminUsername:
                   type: string
                 ssh:
-                  description: |-
-                    Storage version of v1api20231102preview.ContainerServiceSshConfiguration
-                    SSH configuration for Linux-based VMs running on Azure.
+                  description: Storage version of v1api20231102preview.ContainerServiceSshConfiguration
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -1281,9 +1173,7 @@
                       type: object
                     publicKeys:
                       items:
-                        description: |-
-                          Storage version of v1api20231102preview.ContainerServiceSshPublicKey
-                          Contains information about SSH certificate public key data.
+                        description: Storage version of v1api20231102preview.ContainerServiceSshPublicKey
                         properties:
                           $propertyBag:
                             additionalProperties:
@@ -1301,9 +1191,7 @@
             location:
               type: string
             metricsProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterMetricsProfile
-                The metrics profile for the ManagedCluster.
+              description: Storage version of v1api20231102preview.ManagedClusterMetricsProfile
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -1313,9 +1201,7 @@
                     resources, allowing for full fidelity round trip conversions
                   type: object
                 costAnalysis:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterCostAnalysis
-                    The cost analysis configuration for the cluster
+                  description: Storage version of v1api20231102preview.ManagedClusterCostAnalysis
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -1329,9 +1215,7 @@
                   type: object
               type: object
             networkProfile:
-              description: |-
-                Storage version of v1api20231102preview.ContainerServiceNetworkProfile
-                Profile of network configuration.
+              description: Storage version of v1api20231102preview.ContainerServiceNetworkProfile
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -1381,9 +1265,7 @@
                       type: string
                   type: object
                 loadBalancerProfile:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterLoadBalancerProfile
-                    Profile of the managed cluster load balancer.
+                  description: Storage version of v1api20231102preview.ManagedClusterLoadBalancerProfile
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -1398,9 +1280,7 @@
                       type: string
                     effectiveOutboundIPs:
                       items:
-                        description: |-
-                          Storage version of v1api20231102preview.ResourceReference
-                          A reference to an Azure resource.
+                        description: Storage version of v1api20231102preview.ResourceReference
                         properties:
                           $propertyBag:
                             additionalProperties:
@@ -1410,7 +1290,7 @@
                               resources, allowing for full fidelity round trip conversions
                             type: object
                           reference:
-                            description: 'Reference: The fully qualified Azure resource id.'
+                            description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
                             properties:
                               armId:
                                 description: |-
@@ -1462,9 +1342,7 @@
                           type: object
                         publicIPPrefixes:
                           items:
-                            description: |-
-                              Storage version of v1api20231102preview.ResourceReference
-                              A reference to an Azure resource.
+                            description: Storage version of v1api20231102preview.ResourceReference
                             properties:
                               $propertyBag:
                                 additionalProperties:
@@ -1474,7 +1352,7 @@
                                   resources, allowing for full fidelity round trip conversions
                                 type: object
                               reference:
-                                description: 'Reference: The fully qualified Azure resource id.'
+                                description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
                                 properties:
                                   armId:
                                     description: |-
@@ -1508,9 +1386,7 @@
                           type: object
                         publicIPs:
                           items:
-                            description: |-
-                              Storage version of v1api20231102preview.ResourceReference
-                              A reference to an Azure resource.
+                            description: Storage version of v1api20231102preview.ResourceReference
                             properties:
                               $propertyBag:
                                 additionalProperties:
@@ -1520,7 +1396,7 @@
                                   resources, allowing for full fidelity round trip conversions
                                 type: object
                               reference:
-                                description: 'Reference: The fully qualified Azure resource id.'
+                                description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
                                 properties:
                                   armId:
                                     description: |-
@@ -1546,9 +1422,7 @@
                 loadBalancerSku:
                   type: string
                 monitoring:
-                  description: |-
-                    Storage version of v1api20231102preview.NetworkMonitoring
-                    This addon can be used to configure network monitoring and generate network monitoring data in Prometheus format
+                  description: Storage version of v1api20231102preview.NetworkMonitoring
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -1561,9 +1435,7 @@
                       type: boolean
                   type: object
                 natGatewayProfile:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterNATGatewayProfile
-                    Profile of the managed cluster NAT gateway.
+                  description: Storage version of v1api20231102preview.ManagedClusterNATGatewayProfile
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -1574,9 +1446,7 @@
                       type: object
                     effectiveOutboundIPs:
                       items:
-                        description: |-
-                          Storage version of v1api20231102preview.ResourceReference
-                          A reference to an Azure resource.
+                        description: Storage version of v1api20231102preview.ResourceReference
                         properties:
                           $propertyBag:
                             additionalProperties:
@@ -1586,7 +1456,7 @@
                               resources, allowing for full fidelity round trip conversions
                             type: object
                           reference:
-                            description: 'Reference: The fully qualified Azure resource id.'
+                            description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
                             properties:
                               armId:
                                 description: |-
@@ -1610,9 +1480,7 @@
                     idleTimeoutInMinutes:
                       type: integer
                     managedOutboundIPProfile:
-                      description: |-
-                        Storage version of v1api20231102preview.ManagedClusterManagedOutboundIPProfile
-                        Profile of the managed outbound IP resources of the managed cluster.
+                      description: Storage version of v1api20231102preview.ManagedClusterManagedOutboundIPProfile
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -1666,9 +1534,7 @@
             nodeResourceGroup:
               type: string
             nodeResourceGroupProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterNodeResourceGroupProfile
-                Node resource group lockdown profile for a managed cluster.
+              description: Storage version of v1api20231102preview.ManagedClusterNodeResourceGroupProfile
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -1681,9 +1547,7 @@
                   type: string
               type: object
             oidcIssuerProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterOIDCIssuerProfile
-                The OIDC issuer profile of the Managed Cluster.
+              description: Storage version of v1api20231102preview.ManagedClusterOIDCIssuerProfile
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -1707,6 +1571,35 @@
                     PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
                     resources, allowing for full fidelity round trip conversions
                   type: object
+                configMapExpressions:
+                  items:
+                    description: |-
+                      DestinationExpression is a CEL expression and a destination to store the result in. The destination may
+                      be a secret or a configmap. The value of the expression is stored at the specified location in
+                      the destination.
+                    properties:
+                      key:
+                        description: |-
+                          Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string
+                          this is required to identify what key to write to. If the CEL expression in Value returns a map[string]string
+                          Key must not be set, instead the keys written will be determined dynamically based on the keys of the resulting
+                          map[string]string.
+                        type: string
+                      name:
+                        description: |-
+                          Name is the name of the Kubernetes configmap or secret to write to.
+                          The configmap or secret will be created in the same namespace as the resource.
+                        type: string
+                      value:
+                        description: |-
+                          Value is a CEL expression. The CEL expression may return a string or a map[string]string. For more information
+                          on CEL in ASO see https://azure.github.io/azure-service-operator/guide/expressions/
+                        type: string
+                    required:
+                      - name
+                      - value
+                    type: object
+                  type: array
                 configMaps:
                   description: Storage version of v1api20231102preview.ManagedClusterOperatorConfigMaps
                   properties:
@@ -1720,21 +1613,51 @@
                     oidcIssuerProfile:
                       description: |-
                         ConfigMapDestination describes the location to store a single configmap value
-                        Note: This is similar to SecretDestination in secrets.go. Changes to one should likely also be made to the other.
+                        Note: This is similar to: SecretDestination in secrets.go.
+                        Changes to one may need to be made to the others as well.
                       properties:
                         key:
                           description: Key is the key in the ConfigMap being referenced
                           type: string
                         name:
                           description: |-
-                            Name is the name of the Kubernetes ConfigMap being referenced.
-                            The ConfigMap must be in the same namespace as the resource
+                            Name is the name of the Kubernetes ConfigMap to write to.
+                            The ConfigMap will be created in the same namespace as the resource.
                           type: string
                       required:
                         - key
                         - name
                       type: object
                   type: object
+                secretExpressions:
+                  items:
+                    description: |-
+                      DestinationExpression is a CEL expression and a destination to store the result in. The destination may
+                      be a secret or a configmap. The value of the expression is stored at the specified location in
+                      the destination.
+                    properties:
+                      key:
+                        description: |-
+                          Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string
+                          this is required to identify what key to write to. If the CEL expression in Value returns a map[string]string
+                          Key must not be set, instead the keys written will be determined dynamically based on the keys of the resulting
+                          map[string]string.
+                        type: string
+                      name:
+                        description: |-
+                          Name is the name of the Kubernetes configmap or secret to write to.
+                          The configmap or secret will be created in the same namespace as the resource.
+                        type: string
+                      value:
+                        description: |-
+                          Value is a CEL expression. The CEL expression may return a string or a map[string]string. For more information
+                          on CEL in ASO see https://azure.github.io/azure-service-operator/guide/expressions/
+                        type: string
+                    required:
+                      - name
+                      - value
+                    type: object
+                  type: array
                 secrets:
                   description: Storage version of v1api20231102preview.ManagedClusterOperatorSecrets
                   properties:
@@ -1748,15 +1671,16 @@
                     adminCredentials:
                       description: |-
                         SecretDestination describes the location to store a single secret value.
-                        Note: This is similar to ConfigMapDestination in configmaps.go. Changes to one should likely also be made to the other.
+                        Note: This is similar to: ConfigMapDestination in configmaps.go.
+                        Changes to one may need to be made to the others as well.
                       properties:
                         key:
-                          description: Key is the key in the Kubernetes secret being referenced
+                          description: Key is the key in the Kubernetes secret being referenced.
                           type: string
                         name:
                           description: |-
-                            Name is the name of the Kubernetes secret being referenced.
-                            The secret must be in the same namespace as the resource
+                            Name is the name of the Kubernetes secret to write to.
+                            The secret will be created in the same namespace as the resource.
                           type: string
                       required:
                         - key
@@ -1765,15 +1689,16 @@
                     userCredentials:
                       description: |-
                         SecretDestination describes the location to store a single secret value.
-                        Note: This is similar to ConfigMapDestination in configmaps.go. Changes to one should likely also be made to the other.
+                        Note: This is similar to: ConfigMapDestination in configmaps.go.
+                        Changes to one may need to be made to the others as well.
                       properties:
                         key:
-                          description: Key is the key in the Kubernetes secret being referenced
+                          description: Key is the key in the Kubernetes secret being referenced.
                           type: string
                         name:
                           description: |-
-                            Name is the name of the Kubernetes secret being referenced.
-                            The secret must be in the same namespace as the resource
+                            Name is the name of the Kubernetes secret to write to.
+                            The secret will be created in the same namespace as the resource.
                           type: string
                       required:
                         - key
@@ -1797,10 +1722,7 @@
                   type: string
               type: object
             podIdentityProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterPodIdentityProfile
-                See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on pod
-                identity integration.
+              description: Storage version of v1api20231102preview.ManagedClusterPodIdentityProfile
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -1815,9 +1737,7 @@
                   type: boolean
                 userAssignedIdentities:
                   items:
-                    description: |-
-                      Storage version of v1api20231102preview.ManagedClusterPodIdentity
-                      Details about the pod identity assigned to the Managed Cluster.
+                    description: Storage version of v1api20231102preview.ManagedClusterPodIdentity
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -1829,9 +1749,7 @@
                       bindingSelector:
                         type: string
                       identity:
-                        description: |-
-                          Storage version of v1api20231102preview.UserAssignedIdentity
-                          Details about a user assigned identity.
+                        description: Storage version of v1api20231102preview.UserAssignedIdentity
                         properties:
                           $propertyBag:
                             additionalProperties:
@@ -1845,7 +1763,7 @@
                           objectId:
                             type: string
                           resourceReference:
-                            description: 'ResourceReference: The resource ID of the user assigned identity.'
+                            description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
                             properties:
                               armId:
                                 description: |-
@@ -1873,10 +1791,7 @@
                   type: array
                 userAssignedIdentityExceptions:
                   items:
-                    description: |-
-                      Storage version of v1api20231102preview.ManagedClusterPodIdentityException
-                      See [disable AAD Pod Identity for a specific
-                      Pod/Application](https://azure.github.io/aad-pod-identity/docs/configure/application_exception/) for more details.
+                    description: Storage version of v1api20231102preview.ManagedClusterPodIdentityException
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -1898,9 +1813,7 @@
               type: object
             privateLinkResources:
               items:
-                description: |-
-                  Storage version of v1api20231102preview.PrivateLinkResource
-                  A private link resource
+                description: Storage version of v1api20231102preview.PrivateLinkResource
                 properties:
                   $propertyBag:
                     additionalProperties:
@@ -1914,7 +1827,7 @@
                   name:
                     type: string
                   reference:
-                    description: 'Reference: The ID of the private link resource.'
+                    description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
                     properties:
                       armId:
                         description: |-
@@ -1944,9 +1857,7 @@
             publicNetworkAccess:
               type: string
             safeguardsProfile:
-              description: |-
-                Storage version of v1api20231102preview.SafeguardsProfile
-                The Safeguards profile.
+              description: Storage version of v1api20231102preview.SafeguardsProfile
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -1965,9 +1876,7 @@
                   type: string
               type: object
             securityProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterSecurityProfile
-                Security profile for the container service cluster.
+              description: Storage version of v1api20231102preview.ManagedClusterSecurityProfile
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -1977,9 +1886,7 @@
                     resources, allowing for full fidelity round trip conversions
                   type: object
                 azureKeyVaultKms:
-                  description: |-
-                    Storage version of v1api20231102preview.AzureKeyVaultKms
-                    Azure Key Vault key management service settings for the security profile.
+                  description: Storage version of v1api20231102preview.AzureKeyVaultKms
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -1995,9 +1902,7 @@
                     keyVaultNetworkAccess:
                       type: string
                     keyVaultResourceReference:
-                      description: |-
-                        KeyVaultResourceReference: Resource ID of key vault. When keyVaultNetworkAccess is `Private`, this field is required and
-                        must be a valid resource ID. When keyVaultNetworkAccess is `Public`, leave the field empty.
+                      description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
                       properties:
                         armId:
                           description: |-
@@ -2022,9 +1927,7 @@
                     type: string
                   type: array
                 defender:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterSecurityProfileDefender
-                    Microsoft Defender settings for the security profile.
+                  description: Storage version of v1api20231102preview.ManagedClusterSecurityProfileDefender
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -2034,10 +1937,7 @@
                         resources, allowing for full fidelity round trip conversions
                       type: object
                     logAnalyticsWorkspaceResourceReference:
-                      description: |-
-                        LogAnalyticsWorkspaceResourceReference: Resource ID of the Log Analytics workspace to be associated with Microsoft
-                        Defender. When Microsoft Defender is enabled, this field is required and must be a valid workspace resource ID. When
-                        Microsoft Defender is disabled, leave the field empty.
+                      description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
                       properties:
                         armId:
                           description: |-
@@ -2057,9 +1957,7 @@
                           type: string
                       type: object
                     securityMonitoring:
-                      description: |-
-                        Storage version of v1api20231102preview.ManagedClusterSecurityProfileDefenderSecurityMonitoring
-                        Microsoft Defender settings for the security profile threat detection.
+                      description: Storage version of v1api20231102preview.ManagedClusterSecurityProfileDefenderSecurityMonitoring
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -2073,10 +1971,7 @@
                       type: object
                   type: object
                 imageCleaner:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterSecurityProfileImageCleaner
-                    Image Cleaner removes unused images from nodes, freeing up disk space and helping to reduce attack surface area. Here
-                    are settings for the security profile.
+                  description: Storage version of v1api20231102preview.ManagedClusterSecurityProfileImageCleaner
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -2091,9 +1986,7 @@
                       type: integer
                   type: object
                 imageIntegrity:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterSecurityProfileImageIntegrity
-                    Image integrity related settings for the security profile.
+                  description: Storage version of v1api20231102preview.ManagedClusterSecurityProfileImageIntegrity
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -2106,9 +1999,7 @@
                       type: boolean
                   type: object
                 nodeRestriction:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterSecurityProfileNodeRestriction
-                    Node Restriction settings for the security profile.
+                  description: Storage version of v1api20231102preview.ManagedClusterSecurityProfileNodeRestriction
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -2121,9 +2012,7 @@
                       type: boolean
                   type: object
                 workloadIdentity:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterSecurityProfileWorkloadIdentity
-                    Workload identity settings for the security profile.
+                  description: Storage version of v1api20231102preview.ManagedClusterSecurityProfileWorkloadIdentity
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -2137,9 +2026,7 @@
                   type: object
               type: object
             serviceMeshProfile:
-              description: |-
-                Storage version of v1api20231102preview.ServiceMeshProfile
-                Service mesh profile for a managed cluster.
+              description: Storage version of v1api20231102preview.ServiceMeshProfile
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -2149,9 +2036,7 @@
                     resources, allowing for full fidelity round trip conversions
                   type: object
                 istio:
-                  description: |-
-                    Storage version of v1api20231102preview.IstioServiceMesh
-                    Istio service mesh configuration.
+                  description: Storage version of v1api20231102preview.IstioServiceMesh
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -2161,10 +2046,7 @@
                         resources, allowing for full fidelity round trip conversions
                       type: object
                     certificateAuthority:
-                      description: |-
-                        Storage version of v1api20231102preview.IstioCertificateAuthority
-                        Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described
-                        here https://aka.ms/asm-plugin-ca
+                      description: Storage version of v1api20231102preview.IstioCertificateAuthority
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -2174,9 +2056,7 @@
                             resources, allowing for full fidelity round trip conversions
                           type: object
                         plugin:
-                          description: |-
-                            Storage version of v1api20231102preview.IstioPluginCertificateAuthority
-                            Plugin certificates information for Service Mesh.
+                          description: Storage version of v1api20231102preview.IstioPluginCertificateAuthority
                           properties:
                             $propertyBag:
                               additionalProperties:
@@ -2192,7 +2072,7 @@
                             keyObjectName:
                               type: string
                             keyVaultReference:
-                              description: 'KeyVaultReference: The resource ID of the Key Vault.'
+                              description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
                               properties:
                                 armId:
                                   description: |-
@@ -2216,9 +2096,7 @@
                           type: object
                       type: object
                     components:
-                      description: |-
-                        Storage version of v1api20231102preview.IstioComponents
-                        Istio components configuration.
+                      description: Storage version of v1api20231102preview.IstioComponents
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -2229,9 +2107,7 @@
                           type: object
                         egressGateways:
                           items:
-                            description: |-
-                              Storage version of v1api20231102preview.IstioEgressGateway
-                              Istio egress gateway configuration.
+                            description: Storage version of v1api20231102preview.IstioEgressGateway
                             properties:
                               $propertyBag:
                                 additionalProperties:
@@ -2250,10 +2126,7 @@
                           type: array
                         ingressGateways:
                           items:
-                            description: |-
-                              Storage version of v1api20231102preview.IstioIngressGateway
-                              Istio ingress gateway configuration. For now, we support up to one external ingress gateway named
-                              `aks-istio-ingressgateway-external` and one internal ingress gateway named `aks-istio-ingressgateway-internal`.
+                            description: Storage version of v1api20231102preview.IstioIngressGateway
                             properties:
                               $propertyBag:
                                 additionalProperties:
@@ -2278,9 +2151,7 @@
                   type: string
               type: object
             servicePrincipalProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterServicePrincipalProfile
-                Information about a service principal identity for the cluster to use for manipulating Azure APIs.
+              description: Storage version of v1api20231102preview.ManagedClusterServicePrincipalProfile
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -2310,9 +2181,7 @@
                   type: object
               type: object
             sku:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterSKU
-                The SKU of a Managed Cluster.
+              description: Storage version of v1api20231102preview.ManagedClusterSKU
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -2327,9 +2196,7 @@
                   type: string
               type: object
             storageProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterStorageProfile
-                Storage profile for the container service cluster.
+              description: Storage version of v1api20231102preview.ManagedClusterStorageProfile
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -2339,9 +2206,7 @@
                     resources, allowing for full fidelity round trip conversions
                   type: object
                 blobCSIDriver:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterStorageProfileBlobCSIDriver
-                    AzureBlob CSI Driver settings for the storage profile.
+                  description: Storage version of v1api20231102preview.ManagedClusterStorageProfileBlobCSIDriver
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -2354,9 +2219,7 @@
                       type: boolean
                   type: object
                 diskCSIDriver:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterStorageProfileDiskCSIDriver
-                    AzureDisk CSI Driver settings for the storage profile.
+                  description: Storage version of v1api20231102preview.ManagedClusterStorageProfileDiskCSIDriver
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -2371,9 +2234,7 @@
                       type: string
                   type: object
                 fileCSIDriver:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterStorageProfileFileCSIDriver
-                    AzureFile CSI Driver settings for the storage profile.
+                  description: Storage version of v1api20231102preview.ManagedClusterStorageProfileFileCSIDriver
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -2386,9 +2247,7 @@
                       type: boolean
                   type: object
                 snapshotController:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterStorageProfileSnapshotController
-                    Snapshot Controller settings for the storage profile.
+                  description: Storage version of v1api20231102preview.ManagedClusterStorageProfileSnapshotController
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -2408,9 +2267,7 @@
                 type: string
               type: object
             upgradeSettings:
-              description: |-
-                Storage version of v1api20231102preview.ClusterUpgradeSettings
-                Settings for upgrading a cluster.
+              description: Storage version of v1api20231102preview.ClusterUpgradeSettings
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -2420,9 +2277,7 @@
                     resources, allowing for full fidelity round trip conversions
                   type: object
                 overrideSettings:
-                  description: |-
-                    Storage version of v1api20231102preview.UpgradeOverrideSettings
-                    Settings for overrides when upgrading a cluster.
+                  description: Storage version of v1api20231102preview.UpgradeOverrideSettings
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -2438,9 +2293,7 @@
                   type: object
               type: object
             windowsProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterWindowsProfile
-                Profile for Windows VMs in the managed cluster.
+              description: Storage version of v1api20231102preview.ManagedClusterWindowsProfile
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -2471,9 +2324,7 @@
                 enableCSIProxy:
                   type: boolean
                 gmsaProfile:
-                  description: |-
-                    Storage version of v1api20231102preview.WindowsGmsaProfile
-                    Windows gMSA Profile in the managed cluster.
+                  description: Storage version of v1api20231102preview.WindowsGmsaProfile
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -2493,9 +2344,7 @@
                   type: string
               type: object
             workloadAutoScalerProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterWorkloadAutoScalerProfile
-                Workload Auto-scaler profile for the managed cluster.
+              description: Storage version of v1api20231102preview.ManagedClusterWorkloadAutoScalerProfile
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -2505,9 +2354,7 @@
                     resources, allowing for full fidelity round trip conversions
                   type: object
                 keda:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterWorkloadAutoScalerProfileKeda
-                    KEDA (Kubernetes Event-driven Autoscaling) settings for the workload auto-scaler profile.
+                  description: Storage version of v1api20231102preview.ManagedClusterWorkloadAutoScalerProfileKeda
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -2539,9 +2386,7 @@
             - owner
           type: object
         status:
-          description: |-
-            Storage version of v1api20231102preview.ManagedCluster_STATUS
-            Managed cluster.
+          description: Storage version of v1api20231102preview.ManagedCluster_STATUS
           properties:
             $propertyBag:
               additionalProperties:
@@ -2551,9 +2396,7 @@
                 resources, allowing for full fidelity round trip conversions
               type: object
             aadProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterAADProfile_STATUS
-                For more details see [managed AAD on AKS](https://docs.microsoft.com/azure/aks/managed-aad).
+              description: Storage version of v1api20231102preview.ManagedClusterAADProfile_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -2581,9 +2424,7 @@
               type: object
             addonProfiles:
               additionalProperties:
-                description: |-
-                  Storage version of v1api20231102preview.ManagedClusterAddonProfile_STATUS
-                  A Kubernetes add-on profile for a managed cluster.
+                description: Storage version of v1api20231102preview.ManagedClusterAddonProfile_STATUS
                 properties:
                   $propertyBag:
                     additionalProperties:
@@ -2599,9 +2440,7 @@
                   enabled:
                     type: boolean
                   identity:
-                    description: |-
-                      Storage version of v1api20231102preview.UserAssignedIdentity_STATUS
-                      Details about a user assigned identity.
+                    description: Storage version of v1api20231102preview.UserAssignedIdentity_STATUS
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -2621,9 +2460,7 @@
               type: object
             agentPoolProfiles:
               items:
-                description: |-
-                  Storage version of v1api20231102preview.ManagedClusterAgentPoolProfile_STATUS
-                  Profile for the container service agent pool.
+                description: Storage version of v1api20231102preview.ManagedClusterAgentPoolProfile_STATUS
                 properties:
                   $propertyBag:
                     additionalProperties:
@@ -2654,9 +2491,7 @@
                   count:
                     type: integer
                   creationData:
-                    description: |-
-                      Storage version of v1api20231102preview.CreationData_STATUS
-                      Data used when creating a target resource from a source resource.
+                    description: Storage version of v1api20231102preview.CreationData_STATUS
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -2700,9 +2535,7 @@
                   hostGroupID:
                     type: string
                   kubeletConfig:
-                    description: |-
-                      Storage version of v1api20231102preview.KubeletConfig_STATUS
-                      See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
+                    description: Storage version of v1api20231102preview.KubeletConfig_STATUS
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -2739,9 +2572,7 @@
                   kubeletDiskType:
                     type: string
                   linuxOSConfig:
-                    description: |-
-                      Storage version of v1api20231102preview.LinuxOSConfig_STATUS
-                      See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
+                    description: Storage version of v1api20231102preview.LinuxOSConfig_STATUS
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -2753,9 +2584,7 @@
                       swapFileSizeMB:
                         type: integer
                       sysctls:
-                        description: |-
-                          Storage version of v1api20231102preview.SysctlConfig_STATUS
-                          Sysctl settings for Linux agent nodes.
+                        description: Storage version of v1api20231102preview.SysctlConfig_STATUS
                         properties:
                           $propertyBag:
                             additionalProperties:
@@ -2839,9 +2668,7 @@
                   name:
                     type: string
                   networkProfile:
-                    description: |-
-                      Storage version of v1api20231102preview.AgentPoolNetworkProfile_STATUS
-                      Network settings of an agent pool.
+                    description: Storage version of v1api20231102preview.AgentPoolNetworkProfile_STATUS
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -2852,9 +2679,7 @@
                         type: object
                       allowedHostPorts:
                         items:
-                          description: |-
-                            Storage version of v1api20231102preview.PortRange_STATUS
-                            The port range.
+                          description: Storage version of v1api20231102preview.PortRange_STATUS
                           properties:
                             $propertyBag:
                               additionalProperties:
@@ -2877,9 +2702,7 @@
                         type: array
                       nodePublicIPTags:
                         items:
-                          description: |-
-                            Storage version of v1api20231102preview.IPTag_STATUS
-                            Contains the IPTag associated with the object.
+                          description: Storage version of v1api20231102preview.IPTag_STATUS
                           properties:
                             $propertyBag:
                               additionalProperties:
@@ -2924,9 +2747,7 @@
                   podSubnetID:
                     type: string
                   powerState:
-                    description: |-
-                      Storage version of v1api20231102preview.PowerState_STATUS
-                      Describes the Power State of the cluster
+                    description: Storage version of v1api20231102preview.PowerState_STATUS
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -2949,9 +2770,7 @@
                   scaleSetPriority:
                     type: string
                   securityProfile:
-                    description: |-
-                      Storage version of v1api20231102preview.AgentPoolSecurityProfile_STATUS
-                      The security settings of an agent pool.
+                    description: Storage version of v1api20231102preview.AgentPoolSecurityProfile_STATUS
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -2976,9 +2795,7 @@
                   type:
                     type: string
                   upgradeSettings:
-                    description: |-
-                      Storage version of v1api20231102preview.AgentPoolUpgradeSettings_STATUS
-                      Settings for upgrading an agentpool
+                    description: Storage version of v1api20231102preview.AgentPoolUpgradeSettings_STATUS
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -2996,9 +2813,7 @@
                     type: object
                   virtualMachineNodesStatus:
                     items:
-                      description: |-
-                        Storage version of v1api20231102preview.VirtualMachineNodes_STATUS
-                        Current status on a group of nodes of the same vm size.
+                      description: Storage version of v1api20231102preview.VirtualMachineNodes_STATUS
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -3014,9 +2829,7 @@
                       type: object
                     type: array
                   virtualMachinesProfile:
-                    description: |-
-                      Storage version of v1api20231102preview.VirtualMachinesProfile_STATUS
-                      Specifications on VirtualMachines agent pool.
+                    description: Storage version of v1api20231102preview.VirtualMachinesProfile_STATUS
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -3026,9 +2839,7 @@
                           resources, allowing for full fidelity round trip conversions
                         type: object
                       scale:
-                        description: |-
-                          Storage version of v1api20231102preview.ScaleProfile_STATUS
-                          Specifications on how to scale a VirtualMachines agent pool.
+                        description: Storage version of v1api20231102preview.ScaleProfile_STATUS
                         properties:
                           $propertyBag:
                             additionalProperties:
@@ -3039,9 +2850,7 @@
                             type: object
                           manual:
                             items:
-                              description: |-
-                                Storage version of v1api20231102preview.ManualScaleProfile_STATUS
-                                Specifications on number of machines.
+                              description: Storage version of v1api20231102preview.ManualScaleProfile_STATUS
                               properties:
                                 $propertyBag:
                                   additionalProperties:
@@ -3065,9 +2874,7 @@
                   vnetSubnetID:
                     type: string
                   windowsProfile:
-                    description: |-
-                      Storage version of v1api20231102preview.AgentPoolWindowsProfile_STATUS
-                      The Windows agent pool's specific profile.
+                    description: Storage version of v1api20231102preview.AgentPoolWindowsProfile_STATUS
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -3084,11 +2891,7 @@
                 type: object
               type: array
             aiToolchainOperatorProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterAIToolchainOperatorProfile_STATUS
-                When enabling the operator, a set of AKS managed CRDs and controllers will be installed in the cluster. The operator
-                automates the deployment of OSS models for inference and/or training purposes. It provides a set of preset models and
-                enables distributed inference against them.
+              description: Storage version of v1api20231102preview.ManagedClusterAIToolchainOperatorProfile_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -3101,9 +2904,7 @@
                   type: boolean
               type: object
             apiServerAccessProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterAPIServerAccessProfile_STATUS
-                Access profile for managed cluster API server.
+              description: Storage version of v1api20231102preview.ManagedClusterAPIServerAccessProfile_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -3181,9 +2982,7 @@
                   type: string
               type: object
             autoUpgradeProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterAutoUpgradeProfile_STATUS
-                Auto upgrade profile for a managed cluster.
+              description: Storage version of v1api20231102preview.ManagedClusterAutoUpgradeProfile_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -3198,9 +2997,7 @@
                   type: string
               type: object
             azureMonitorProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfile_STATUS
-                Prometheus addon profile for the container service cluster
+              description: Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfile_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -3210,10 +3007,7 @@
                     resources, allowing for full fidelity round trip conversions
                   type: object
                 logs:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileLogs_STATUS
-                    Logs profile for the Azure Monitor Infrastructure and Application Logs. Collect out-of-the-box Kubernetes infrastructure
-                    & application logs to send to Azure Monitor. See aka.ms/AzureMonitorContainerInsights for an overview.
+                  description: Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileLogs_STATUS
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -3223,11 +3017,7 @@
                         resources, allowing for full fidelity round trip conversions
                       type: object
                     appMonitoring:
-                      description: |-
-                        Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileAppMonitoring_STATUS
-                        Application Monitoring Profile for Kubernetes Application Container. Collects application logs, metrics and traces
-                        through auto-instrumentation of the application using Azure Monitor OpenTelemetry based SDKs. See
-                        aka.ms/AzureMonitorApplicationMonitoring for an overview.
+                      description: Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileAppMonitoring_STATUS
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -3240,10 +3030,7 @@
                           type: boolean
                       type: object
                     containerInsights:
-                      description: |-
-                        Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileContainerInsights_STATUS
-                        Azure Monitor Container Insights Profile for Kubernetes Events, Inventory and Container stdout & stderr logs etc. See
-                        aka.ms/AzureMonitorContainerInsights for an overview.
+                      description: Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileContainerInsights_STATUS
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -3257,10 +3044,7 @@
                         logAnalyticsWorkspaceResourceId:
                           type: string
                         windowsHostLogs:
-                          description: |-
-                            Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileWindowsHostLogs_STATUS
-                            Windows Host Logs Profile for Kubernetes Windows Nodes Log Collection. Collects ETW, Event Logs and Text logs etc. See
-                            aka.ms/AzureMonitorContainerInsights for an overview.
+                          description: Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileWindowsHostLogs_STATUS
                           properties:
                             $propertyBag:
                               additionalProperties:
@@ -3275,9 +3059,7 @@
                       type: object
                   type: object
                 metrics:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileMetrics_STATUS
-                    Metrics profile for the prometheus service addon
+                  description: Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileMetrics_STATUS
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -3287,11 +3069,7 @@
                         resources, allowing for full fidelity round trip conversions
                       type: object
                     appMonitoringOpenTelemetryMetrics:
-                      description: |-
-                        Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetrics_STATUS
-                        Application Monitoring Open Telemetry Metrics Profile for Kubernetes Application Container Metrics. Collects
-                        OpenTelemetry metrics through auto-instrumentation of the application using Azure Monitor OpenTelemetry based SDKs. See
-                        aka.ms/AzureMonitorApplicationMonitoring for an overview.
+                      description: Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetrics_STATUS
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -3306,9 +3084,7 @@
                     enabled:
                       type: boolean
                     kubeStateMetrics:
-                      description: |-
-                        Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileKubeStateMetrics_STATUS
-                        Kube State Metrics for prometheus addon profile for the container service cluster
+                      description: Storage version of v1api20231102preview.ManagedClusterAzureMonitorProfileKubeStateMetrics_STATUS
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -3370,9 +3146,7 @@
                 type: object
               type: array
             creationData:
-              description: |-
-                Storage version of v1api20231102preview.CreationData_STATUS
-                Data used when creating a target resource from a source resource.
+              description: Storage version of v1api20231102preview.CreationData_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -3399,9 +3173,7 @@
             enableRBAC:
               type: boolean
             extendedLocation:
-              description: |-
-                Storage version of v1api20231102preview.ExtendedLocation_STATUS
-                The complex type of the extended location.
+              description: Storage version of v1api20231102preview.ExtendedLocation_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -3420,9 +3192,7 @@
             fqdnSubdomain:
               type: string
             httpProxyConfig:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterHTTPProxyConfig_STATUS
-                Cluster HTTP proxy configuration.
+              description: Storage version of v1api20231102preview.ManagedClusterHTTPProxyConfig_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -3449,9 +3219,7 @@
             id:
               type: string
             identity:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterIdentity_STATUS
-                Identity for the managed cluster.
+              description: Storage version of v1api20231102preview.ManagedClusterIdentity_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -3462,9 +3230,7 @@
                   type: object
                 delegatedResources:
                   additionalProperties:
-                    description: |-
-                      Storage version of v1api20231102preview.DelegatedResource_STATUS
-                      Delegated resource properties - internal use only.
+                    description: Storage version of v1api20231102preview.DelegatedResource_STATUS
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -3509,9 +3275,7 @@
               type: object
             identityProfile:
               additionalProperties:
-                description: |-
-                  Storage version of v1api20231102preview.UserAssignedIdentity_STATUS
-                  Details about a user assigned identity.
+                description: Storage version of v1api20231102preview.UserAssignedIdentity_STATUS
                 properties:
                   $propertyBag:
                     additionalProperties:
@@ -3529,9 +3293,7 @@
                 type: object
               type: object
             ingressProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterIngressProfile_STATUS
-                Ingress profile for the container service cluster.
+              description: Storage version of v1api20231102preview.ManagedClusterIngressProfile_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -3541,9 +3303,7 @@
                     resources, allowing for full fidelity round trip conversions
                   type: object
                 webAppRouting:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterIngressProfileWebAppRouting_STATUS
-                    Web App Routing settings for the ingress profile.
+                  description: Storage version of v1api20231102preview.ManagedClusterIngressProfileWebAppRouting_STATUS
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -3559,9 +3319,7 @@
                     enabled:
                       type: boolean
                     identity:
-                      description: |-
-                        Storage version of v1api20231102preview.UserAssignedIdentity_STATUS
-                        Details about a user assigned identity.
+                      description: Storage version of v1api20231102preview.UserAssignedIdentity_STATUS
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -3582,9 +3340,7 @@
             kubernetesVersion:
               type: string
             linuxProfile:
-              description: |-
-                Storage version of v1api20231102preview.ContainerServiceLinuxProfile_STATUS
-                Profile for Linux VMs in the container service cluster.
+              description: Storage version of v1api20231102preview.ContainerServiceLinuxProfile_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -3596,9 +3352,7 @@
                 adminUsername:
                   type: string
                 ssh:
-                  description: |-
-                    Storage version of v1api20231102preview.ContainerServiceSshConfiguration_STATUS
-                    SSH configuration for Linux-based VMs running on Azure.
+                  description: Storage version of v1api20231102preview.ContainerServiceSshConfiguration_STATUS
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -3609,9 +3363,7 @@
                       type: object
                     publicKeys:
                       items:
-                        description: |-
-                          Storage version of v1api20231102preview.ContainerServiceSshPublicKey_STATUS
-                          Contains information about SSH certificate public key data.
+                        description: Storage version of v1api20231102preview.ContainerServiceSshPublicKey_STATUS
                         properties:
                           $propertyBag:
                             additionalProperties:
@@ -3631,9 +3383,7 @@
             maxAgentPools:
               type: integer
             metricsProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterMetricsProfile_STATUS
-                The metrics profile for the ManagedCluster.
+              description: Storage version of v1api20231102preview.ManagedClusterMetricsProfile_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -3643,9 +3393,7 @@
                     resources, allowing for full fidelity round trip conversions
                   type: object
                 costAnalysis:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterCostAnalysis_STATUS
-                    The cost analysis configuration for the cluster
+                  description: Storage version of v1api20231102preview.ManagedClusterCostAnalysis_STATUS
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -3661,9 +3409,7 @@
             name:
               type: string
             networkProfile:
-              description: |-
-                Storage version of v1api20231102preview.ContainerServiceNetworkProfile_STATUS
-                Profile of network configuration.
+              description: Storage version of v1api20231102preview.ContainerServiceNetworkProfile_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -3713,9 +3459,7 @@
                       type: string
                   type: object
                 loadBalancerProfile:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterLoadBalancerProfile_STATUS
-                    Profile of the managed cluster load balancer.
+                  description: Storage version of v1api20231102preview.ManagedClusterLoadBalancerProfile_STATUS
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -3730,9 +3474,7 @@
                       type: string
                     effectiveOutboundIPs:
                       items:
-                        description: |-
-                          Storage version of v1api20231102preview.ResourceReference_STATUS
-                          A reference to an Azure resource.
+                        description: Storage version of v1api20231102preview.ResourceReference_STATUS
                         properties:
                           $propertyBag:
                             additionalProperties:
@@ -3776,9 +3518,7 @@
                           type: object
                         publicIPPrefixes:
                           items:
-                            description: |-
-                              Storage version of v1api20231102preview.ResourceReference_STATUS
-                              A reference to an Azure resource.
+                            description: Storage version of v1api20231102preview.ResourceReference_STATUS
                             properties:
                               $propertyBag:
                                 additionalProperties:
@@ -3804,9 +3544,7 @@
                           type: object
                         publicIPs:
                           items:
-                            description: |-
-                              Storage version of v1api20231102preview.ResourceReference_STATUS
-                              A reference to an Azure resource.
+                            description: Storage version of v1api20231102preview.ResourceReference_STATUS
                             properties:
                               $propertyBag:
                                 additionalProperties:
@@ -3824,9 +3562,7 @@
                 loadBalancerSku:
                   type: string
                 monitoring:
-                  description: |-
-                    Storage version of v1api20231102preview.NetworkMonitoring_STATUS
-                    This addon can be used to configure network monitoring and generate network monitoring data in Prometheus format
+                  description: Storage version of v1api20231102preview.NetworkMonitoring_STATUS
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -3839,9 +3575,7 @@
                       type: boolean
                   type: object
                 natGatewayProfile:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterNATGatewayProfile_STATUS
-                    Profile of the managed cluster NAT gateway.
+                  description: Storage version of v1api20231102preview.ManagedClusterNATGatewayProfile_STATUS
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -3852,9 +3586,7 @@
                       type: object
                     effectiveOutboundIPs:
                       items:
-                        description: |-
-                          Storage version of v1api20231102preview.ResourceReference_STATUS
-                          A reference to an Azure resource.
+                        description: Storage version of v1api20231102preview.ResourceReference_STATUS
                         properties:
                           $propertyBag:
                             additionalProperties:
@@ -3870,9 +3602,7 @@
                     idleTimeoutInMinutes:
                       type: integer
                     managedOutboundIPProfile:
-                      description: |-
-                        Storage version of v1api20231102preview.ManagedClusterManagedOutboundIPProfile_STATUS
-                        Profile of the managed outbound IP resources of the managed cluster.
+                      description: Storage version of v1api20231102preview.ManagedClusterManagedOutboundIPProfile_STATUS
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -3926,9 +3656,7 @@
             nodeResourceGroup:
               type: string
             nodeResourceGroupProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterNodeResourceGroupProfile_STATUS
-                Node resource group lockdown profile for a managed cluster.
+              description: Storage version of v1api20231102preview.ManagedClusterNodeResourceGroupProfile_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -3941,9 +3669,7 @@
                   type: string
               type: object
             oidcIssuerProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterOIDCIssuerProfile_STATUS
-                The OIDC issuer profile of the Managed Cluster.
+              description: Storage version of v1api20231102preview.ManagedClusterOIDCIssuerProfile_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -3958,10 +3684,7 @@
                   type: string
               type: object
             podIdentityProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterPodIdentityProfile_STATUS
-                See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on pod
-                identity integration.
+              description: Storage version of v1api20231102preview.ManagedClusterPodIdentityProfile_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -3976,9 +3699,7 @@
                   type: boolean
                 userAssignedIdentities:
                   items:
-                    description: |-
-                      Storage version of v1api20231102preview.ManagedClusterPodIdentity_STATUS
-                      Details about the pod identity assigned to the Managed Cluster.
+                    description: Storage version of v1api20231102preview.ManagedClusterPodIdentity_STATUS
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -3990,9 +3711,7 @@
                       bindingSelector:
                         type: string
                       identity:
-                        description: |-
-                          Storage version of v1api20231102preview.UserAssignedIdentity_STATUS
-                          Details about a user assigned identity.
+                        description: Storage version of v1api20231102preview.UserAssignedIdentity_STATUS
                         properties:
                           $propertyBag:
                             additionalProperties:
@@ -4023,9 +3742,7 @@
                               resources, allowing for full fidelity round trip conversions
                             type: object
                           error:
-                            description: |-
-                              Storage version of v1api20231102preview.ManagedClusterPodIdentityProvisioningError_STATUS
-                              An error response from the pod identity provisioning.
+                            description: Storage version of v1api20231102preview.ManagedClusterPodIdentityProvisioningError_STATUS
                             properties:
                               $propertyBag:
                                 additionalProperties:
@@ -4035,9 +3752,7 @@
                                   resources, allowing for full fidelity round trip conversions
                                 type: object
                               error:
-                                description: |-
-                                  Storage version of v1api20231102preview.ManagedClusterPodIdentityProvisioningErrorBody_STATUS
-                                  An error response from the pod identity provisioning.
+                                description: Storage version of v1api20231102preview.ManagedClusterPodIdentityProvisioningErrorBody_STATUS
                                 properties:
                                   $propertyBag:
                                     additionalProperties:
@@ -4080,10 +3795,7 @@
                   type: array
                 userAssignedIdentityExceptions:
                   items:
-                    description: |-
-                      Storage version of v1api20231102preview.ManagedClusterPodIdentityException_STATUS
-                      See [disable AAD Pod Identity for a specific
-                      Pod/Application](https://azure.github.io/aad-pod-identity/docs/configure/application_exception/) for more details.
+                    description: Storage version of v1api20231102preview.ManagedClusterPodIdentityException_STATUS
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -4104,9 +3816,7 @@
                   type: array
               type: object
             powerState:
-              description: |-
-                Storage version of v1api20231102preview.PowerState_STATUS
-                Describes the Power State of the cluster
+              description: Storage version of v1api20231102preview.PowerState_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -4122,9 +3832,7 @@
               type: string
             privateLinkResources:
               items:
-                description: |-
-                  Storage version of v1api20231102preview.PrivateLinkResource_STATUS
-                  A private link resource
+                description: Storage version of v1api20231102preview.PrivateLinkResource_STATUS
                 properties:
                   $propertyBag:
                     additionalProperties:
@@ -4156,9 +3864,7 @@
             resourceUID:
               type: string
             safeguardsProfile:
-              description: |-
-                Storage version of v1api20231102preview.SafeguardsProfile_STATUS
-                The Safeguards profile.
+              description: Storage version of v1api20231102preview.SafeguardsProfile_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -4181,9 +3887,7 @@
                   type: string
               type: object
             securityProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterSecurityProfile_STATUS
-                Security profile for the container service cluster.
+              description: Storage version of v1api20231102preview.ManagedClusterSecurityProfile_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -4193,9 +3897,7 @@
                     resources, allowing for full fidelity round trip conversions
                   type: object
                 azureKeyVaultKms:
-                  description: |-
-                    Storage version of v1api20231102preview.AzureKeyVaultKms_STATUS
-                    Azure Key Vault key management service settings for the security profile.
+                  description: Storage version of v1api20231102preview.AzureKeyVaultKms_STATUS
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -4218,9 +3920,7 @@
                     type: string
                   type: array
                 defender:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterSecurityProfileDefender_STATUS
-                    Microsoft Defender settings for the security profile.
+                  description: Storage version of v1api20231102preview.ManagedClusterSecurityProfileDefender_STATUS
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -4232,9 +3932,7 @@
                     logAnalyticsWorkspaceResourceId:
                       type: string
                     securityMonitoring:
-                      description: |-
-                        Storage version of v1api20231102preview.ManagedClusterSecurityProfileDefenderSecurityMonitoring_STATUS
-                        Microsoft Defender settings for the security profile threat detection.
+                      description: Storage version of v1api20231102preview.ManagedClusterSecurityProfileDefenderSecurityMonitoring_STATUS
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -4248,10 +3946,7 @@
                       type: object
                   type: object
                 imageCleaner:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterSecurityProfileImageCleaner_STATUS
-                    Image Cleaner removes unused images from nodes, freeing up disk space and helping to reduce attack surface area. Here
-                    are settings for the security profile.
+                  description: Storage version of v1api20231102preview.ManagedClusterSecurityProfileImageCleaner_STATUS
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -4266,9 +3961,7 @@
                       type: integer
                   type: object
                 imageIntegrity:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterSecurityProfileImageIntegrity_STATUS
-                    Image integrity related settings for the security profile.
+                  description: Storage version of v1api20231102preview.ManagedClusterSecurityProfileImageIntegrity_STATUS
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -4281,9 +3974,7 @@
                       type: boolean
                   type: object
                 nodeRestriction:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterSecurityProfileNodeRestriction_STATUS
-                    Node Restriction settings for the security profile.
+                  description: Storage version of v1api20231102preview.ManagedClusterSecurityProfileNodeRestriction_STATUS
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -4296,9 +3987,7 @@
                       type: boolean
                   type: object
                 workloadIdentity:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterSecurityProfileWorkloadIdentity_STATUS
-                    Workload identity settings for the security profile.
+                  description: Storage version of v1api20231102preview.ManagedClusterSecurityProfileWorkloadIdentity_STATUS
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -4312,9 +4001,7 @@
                   type: object
               type: object
             serviceMeshProfile:
-              description: |-
-                Storage version of v1api20231102preview.ServiceMeshProfile_STATUS
-                Service mesh profile for a managed cluster.
+              description: Storage version of v1api20231102preview.ServiceMeshProfile_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -4324,9 +4011,7 @@
                     resources, allowing for full fidelity round trip conversions
                   type: object
                 istio:
-                  description: |-
-                    Storage version of v1api20231102preview.IstioServiceMesh_STATUS
-                    Istio service mesh configuration.
+                  description: Storage version of v1api20231102preview.IstioServiceMesh_STATUS
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -4336,10 +4021,7 @@
                         resources, allowing for full fidelity round trip conversions
                       type: object
                     certificateAuthority:
-                      description: |-
-                        Storage version of v1api20231102preview.IstioCertificateAuthority_STATUS
-                        Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described
-                        here https://aka.ms/asm-plugin-ca
+                      description: Storage version of v1api20231102preview.IstioCertificateAuthority_STATUS
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -4349,9 +4031,7 @@
                             resources, allowing for full fidelity round trip conversions
                           type: object
                         plugin:
-                          description: |-
-                            Storage version of v1api20231102preview.IstioPluginCertificateAuthority_STATUS
-                            Plugin certificates information for Service Mesh.
+                          description: Storage version of v1api20231102preview.IstioPluginCertificateAuthority_STATUS
                           properties:
                             $propertyBag:
                               additionalProperties:
@@ -4373,9 +4053,7 @@
                           type: object
                       type: object
                     components:
-                      description: |-
-                        Storage version of v1api20231102preview.IstioComponents_STATUS
-                        Istio components configuration.
+                      description: Storage version of v1api20231102preview.IstioComponents_STATUS
                       properties:
                         $propertyBag:
                           additionalProperties:
@@ -4386,9 +4064,7 @@
                           type: object
                         egressGateways:
                           items:
-                            description: |-
-                              Storage version of v1api20231102preview.IstioEgressGateway_STATUS
-                              Istio egress gateway configuration.
+                            description: Storage version of v1api20231102preview.IstioEgressGateway_STATUS
                             properties:
                               $propertyBag:
                                 additionalProperties:
@@ -4407,10 +4083,7 @@
                           type: array
                         ingressGateways:
                           items:
-                            description: |-
-                              Storage version of v1api20231102preview.IstioIngressGateway_STATUS
-                              Istio ingress gateway configuration. For now, we support up to one external ingress gateway named
-                              `aks-istio-ingressgateway-external` and one internal ingress gateway named `aks-istio-ingressgateway-internal`.
+                            description: Storage version of v1api20231102preview.IstioIngressGateway_STATUS
                             properties:
                               $propertyBag:
                                 additionalProperties:
@@ -4435,9 +4108,7 @@
                   type: string
               type: object
             servicePrincipalProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterServicePrincipalProfile_STATUS
-                Information about a service principal identity for the cluster to use for manipulating Azure APIs.
+              description: Storage version of v1api20231102preview.ManagedClusterServicePrincipalProfile_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -4450,9 +4121,7 @@
                   type: string
               type: object
             sku:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterSKU_STATUS
-                The SKU of a Managed Cluster.
+              description: Storage version of v1api20231102preview.ManagedClusterSKU_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -4467,9 +4136,7 @@
                   type: string
               type: object
             storageProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterStorageProfile_STATUS
-                Storage profile for the container service cluster.
+              description: Storage version of v1api20231102preview.ManagedClusterStorageProfile_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -4479,9 +4146,7 @@
                     resources, allowing for full fidelity round trip conversions
                   type: object
                 blobCSIDriver:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterStorageProfileBlobCSIDriver_STATUS
-                    AzureBlob CSI Driver settings for the storage profile.
+                  description: Storage version of v1api20231102preview.ManagedClusterStorageProfileBlobCSIDriver_STATUS
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -4494,9 +4159,7 @@
                       type: boolean
                   type: object
                 diskCSIDriver:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterStorageProfileDiskCSIDriver_STATUS
-                    AzureDisk CSI Driver settings for the storage profile.
+                  description: Storage version of v1api20231102preview.ManagedClusterStorageProfileDiskCSIDriver_STATUS
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -4511,9 +4174,7 @@
                       type: string
                   type: object
                 fileCSIDriver:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterStorageProfileFileCSIDriver_STATUS
-                    AzureFile CSI Driver settings for the storage profile.
+                  description: Storage version of v1api20231102preview.ManagedClusterStorageProfileFileCSIDriver_STATUS
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -4526,9 +4187,7 @@
                       type: boolean
                   type: object
                 snapshotController:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterStorageProfileSnapshotController_STATUS
-                    Snapshot Controller settings for the storage profile.
+                  description: Storage version of v1api20231102preview.ManagedClusterStorageProfileSnapshotController_STATUS
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -4544,9 +4203,7 @@
             supportPlan:
               type: string
             systemData:
-              description: |-
-                Storage version of v1api20231102preview.SystemData_STATUS
-                Metadata pertaining to creation and last modification of the resource.
+              description: Storage version of v1api20231102preview.SystemData_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -4575,9 +4232,7 @@
             type:
               type: string
             upgradeSettings:
-              description: |-
-                Storage version of v1api20231102preview.ClusterUpgradeSettings_STATUS
-                Settings for upgrading a cluster.
+              description: Storage version of v1api20231102preview.ClusterUpgradeSettings_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -4587,9 +4242,7 @@
                     resources, allowing for full fidelity round trip conversions
                   type: object
                 overrideSettings:
-                  description: |-
-                    Storage version of v1api20231102preview.UpgradeOverrideSettings_STATUS
-                    Settings for overrides when upgrading a cluster.
+                  description: Storage version of v1api20231102preview.UpgradeOverrideSettings_STATUS
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -4605,9 +4258,7 @@
                   type: object
               type: object
             windowsProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterWindowsProfile_STATUS
-                Profile for Windows VMs in the managed cluster.
+              description: Storage version of v1api20231102preview.ManagedClusterWindowsProfile_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -4621,9 +4272,7 @@
                 enableCSIProxy:
                   type: boolean
                 gmsaProfile:
-                  description: |-
-                    Storage version of v1api20231102preview.WindowsGmsaProfile_STATUS
-                    Windows gMSA Profile in the managed cluster.
+                  description: Storage version of v1api20231102preview.WindowsGmsaProfile_STATUS
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -4643,9 +4292,7 @@
                   type: string
               type: object
             workloadAutoScalerProfile:
-              description: |-
-                Storage version of v1api20231102preview.ManagedClusterWorkloadAutoScalerProfile_STATUS
-                Workload Auto-scaler profile for the managed cluster.
+              description: Storage version of v1api20231102preview.ManagedClusterWorkloadAutoScalerProfile_STATUS
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -4655,9 +4302,7 @@
                     resources, allowing for full fidelity round trip conversions
                   type: object
                 keda:
-                  description: |-
-                    Storage version of v1api20231102preview.ManagedClusterWorkloadAutoScalerProfileKeda_STATUS
-                    KEDA (Kubernetes Event-driven Autoscaling) settings for the workload auto-scaler profile.
+                  description: Storage version of v1api20231102preview.ManagedClusterWorkloadAutoScalerProfileKeda_STATUS
                   properties:
                     $propertyBag:
                       additionalProperties:

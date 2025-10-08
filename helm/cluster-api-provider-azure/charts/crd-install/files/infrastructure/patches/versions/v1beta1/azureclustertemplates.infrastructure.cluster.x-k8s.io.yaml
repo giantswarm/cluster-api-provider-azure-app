@@ -46,7 +46,6 @@
                         - PublicCloud: "AzurePublicCloud"
                         - USGovernmentCloud: "AzureUSGovernmentCloud"
 
-
                         Note that values other than the default must also be accompanied by corresponding changes to the
                         aso-controller-settings Secret to configure ASO to refer to the non-Public cloud. ASO currently does
                         not support referring to multiple different clouds in a single installation. The following fields must
@@ -55,9 +54,7 @@
                         - AZURE_RESOURCE_MANAGER_ENDPOINT
                         - AZURE_RESOURCE_MANAGER_AUDIENCE
 
-
                         See the [ASO docs] for more details.
-
 
                         [ASO docs]: https://azure.github.io/azure-service-operator/guide/aso-controller-settings-options/
                       type: string
@@ -362,10 +359,10 @@
                           attributes:
                             additionalProperties:
                               type: string
-                            description: Attributes is a free form map of attributes an infrastructure provider might use or require.
+                            description: attributes is a free form map of attributes an infrastructure provider might use or require.
                             type: object
                           controlPlane:
-                            description: ControlPlane determines if this failure domain is suitable for use by control plane machines.
+                            description: controlPlane determines if this failure domain is suitable for use by control plane machines.
                             type: boolean
                         type: object
                       description: |-
@@ -389,7 +386,6 @@
                             the event) or if no container name is specified "spec.containers[2]" (container with
                             index 2 in this pod). This syntax is chosen only to have some well-defined way of
                             referencing a part of an object.
-                            TODO: this design is not final and this field is subject to change in the future.
                           type: string
                         kind:
                           description: |-
@@ -423,6 +419,25 @@
                     networkSpec:
                       description: NetworkSpec encapsulates all things related to Azure network.
                       properties:
+                        additionalAPIServerLBPorts:
+                          description: |-
+                            AdditionalAPIServerLBPorts is the configuration for the additional inbound control-plane load balancer ports
+                            Each port specified (e.g., 9345) creates an inbound rule where the frontend port and the backend port are the same.
+                          items:
+                            description: LoadBalancerPort specifies additional port for the API server load balancer.
+                            properties:
+                              name:
+                                description: Name for the additional port within LB definition
+                                type: string
+                              port:
+                                description: Port for the LB definition
+                                format: int32
+                                type: integer
+                            required:
+                              - name
+                              - port
+                            type: object
+                          type: array
                         apiServerLB:
                           description: APIServerLB is the configuration for the control-plane load balancer.
                           properties:
@@ -469,6 +484,11 @@
                           type: object
                         privateDNSZoneName:
                           description: PrivateDNSZoneName defines the zone name for the Azure Private DNS.
+                          type: string
+                        privateDNSZoneResourceGroup:
+                          description: |-
+                            PrivateDNSZoneResourceGroup defines the resource group to be used for Azure Private DNS Zone.
+                            If not specified, the resource group of the cluster will be used to create the Azure Private DNS Zone.
                           type: string
                         subnets:
                           description: Subnets is the configuration for the control-plane subnet and the node subnet.

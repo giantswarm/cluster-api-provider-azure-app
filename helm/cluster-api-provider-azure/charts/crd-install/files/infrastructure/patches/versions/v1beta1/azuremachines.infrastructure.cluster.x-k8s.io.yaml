@@ -177,6 +177,11 @@
                 Use this setting only if VMExtensions are not supported by your image, as it disables CAPZ bootstrapping extension used for detecting Kubernetes bootstrap failure.
                 This may only be set to True when no extensions are configured on the virtual machine.
               type: boolean
+            disableVMBootstrapExtension:
+              description: |-
+                DisableVMBootstrapExtension specifies whether the VM bootstrap extension should be disabled on the virtual machine.
+                Use this setting if you want to disable only the bootstrapping extension and not all extensions.
+              type: boolean
             dnsServers:
               description: DNSServers adds a list of DNS Server IP addresses to the VM NICs.
               items:
@@ -209,8 +214,8 @@
             image:
               description: |-
                 Image is used to provide details of an image to use during VM creation.
-                If image details are omitted the image will default the Azure Marketplace "capi" offer,
-                which is based on Ubuntu.
+                If image details are omitted, the default is to use an Azure Compute Gallery Image
+                from CAPZ's community gallery.
               properties:
                 computeGallery:
                   description: ComputeGallery specifies an image to use from the Azure Compute Gallery
@@ -397,6 +402,7 @@
               description: OSDisk specifies the parameters for the operating system disk of the machine
               properties:
                 cachingType:
+                  default: None
                   description: CachingType specifies the caching requirements.
                   enum:
                     - None
@@ -470,6 +476,7 @@
                       type: string
                   type: object
                 osType:
+                  default: Linux
                   type: string
               required:
                 - osType
@@ -643,36 +650,43 @@
                 properties:
                   lastTransitionTime:
                     description: |-
-                      Last time the condition transitioned from one status to another.
+                      lastTransitionTime is the last time the condition transitioned from one status to another.
                       This should be when the underlying condition changed. If that is not known, then using the time when
                       the API field changed is acceptable.
                     format: date-time
                     type: string
                   message:
                     description: |-
-                      A human readable message indicating details about the transition.
+                      message is a human readable message indicating details about the transition.
                       This field may be empty.
+                    maxLength: 10240
+                    minLength: 1
                     type: string
                   reason:
                     description: |-
-                      The reason for the condition's last transition in CamelCase.
+                      reason is the reason for the condition's last transition in CamelCase.
                       The specific API may choose whether or not this field is considered a guaranteed API.
-                      This field may not be empty.
+                      This field may be empty.
+                    maxLength: 256
+                    minLength: 1
                     type: string
                   severity:
                     description: |-
-                      Severity provides an explicit classification of Reason code, so the users or machines can immediately
+                      severity provides an explicit classification of Reason code, so the users or machines can immediately
                       understand the current situation and act accordingly.
                       The Severity field MUST be set only when Status=False.
+                    maxLength: 32
                     type: string
                   status:
-                    description: Status of the condition, one of True, False, Unknown.
+                    description: status of the condition, one of True, False, Unknown.
                     type: string
                   type:
                     description: |-
-                      Type of condition in CamelCase or in foo.example.com/CamelCase.
+                      type of condition in CamelCase or in foo.example.com/CamelCase.
                       Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
                       can be useful (see .node.status.conditions), the ability to deconflict is important.
+                    maxLength: 256
+                    minLength: 1
                     type: string
                 required:
                   - lastTransitionTime
@@ -686,7 +700,6 @@
                 reconciling the Machine and will contain a more verbose string suitable
                 for logging and human consumption.
 
-
                 This field should not be set for transitive errors that a controller
                 faces that are expected to be fixed automatically over
                 time (like service outages), but instead indicate that something is
@@ -695,7 +708,6 @@
                 of terminal errors would be invalid combinations of settings in the
                 spec, values that are unsupported by the controller, or the
                 responsible controller itself being critically misconfigured.
-
 
                 Any transient errors that occur during the reconciliation of Machines
                 can be added as events to the Machine object and/or logged in the
@@ -707,7 +719,6 @@
                 reconciling the Machine and will contain a succinct value suitable
                 for machine interpretation.
 
-
                 This field should not be set for transitive errors that a controller
                 faces that are expected to be fixed automatically over
                 time (like service outages), but instead indicate that something is
@@ -716,7 +727,6 @@
                 of terminal errors would be invalid combinations of settings in the
                 spec, values that are unsupported by the controller, or the
                 responsible controller itself being critically misconfigured.
-
 
                 Any transient errors that occur during the reconciliation of Machines
                 can be added as events to the Machine object and/or logged in the

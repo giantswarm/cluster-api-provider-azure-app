@@ -1,5 +1,5 @@
 - op: replace
-  path: /spec/versions/10/schema
+  path: /spec/versions/8/schema
   value:
     openAPIV3Schema:
       description: |-
@@ -786,9 +786,7 @@
                               type: object
                             type: array
                           manual:
-                            description: |-
-                              Manual: Specifications on how to scale the VirtualMachines agent pool to a fixed size. Currently, at most one
-                              ManualScaleProfile is allowed.
+                            description: 'Manual: Specifications on how to scale the VirtualMachines agent pool to a fixed size.'
                             items:
                               description: Specifications on number of machines.
                               properties:
@@ -1875,6 +1873,36 @@
                 OperatorSpec: The specification for configuring operator behavior. This field is interpreted by the operator and not
                 passed directly to Azure
               properties:
+                configMapExpressions:
+                  description: 'ConfigMapExpressions: configures where to place operator written dynamic ConfigMaps (created with CEL expressions).'
+                  items:
+                    description: |-
+                      DestinationExpression is a CEL expression and a destination to store the result in. The destination may
+                      be a secret or a configmap. The value of the expression is stored at the specified location in
+                      the destination.
+                    properties:
+                      key:
+                        description: |-
+                          Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string
+                          this is required to identify what key to write to. If the CEL expression in Value returns a map[string]string
+                          Key must not be set, instead the keys written will be determined dynamically based on the keys of the resulting
+                          map[string]string.
+                        type: string
+                      name:
+                        description: |-
+                          Name is the name of the Kubernetes configmap or secret to write to.
+                          The configmap or secret will be created in the same namespace as the resource.
+                        type: string
+                      value:
+                        description: |-
+                          Value is a CEL expression. The CEL expression may return a string or a map[string]string. For more information
+                          on CEL in ASO see https://azure.github.io/azure-service-operator/guide/expressions/
+                        type: string
+                    required:
+                      - name
+                      - value
+                    type: object
+                  type: array
                 configMaps:
                   description: 'ConfigMaps: configures where to place operator written ConfigMaps.'
                   properties:
@@ -1888,14 +1916,44 @@
                           type: string
                         name:
                           description: |-
-                            Name is the name of the Kubernetes ConfigMap being referenced.
-                            The ConfigMap must be in the same namespace as the resource
+                            Name is the name of the Kubernetes ConfigMap to write to.
+                            The ConfigMap will be created in the same namespace as the resource.
                           type: string
                       required:
                         - key
                         - name
                       type: object
                   type: object
+                secretExpressions:
+                  description: 'SecretExpressions: configures where to place operator written dynamic secrets (created with CEL expressions).'
+                  items:
+                    description: |-
+                      DestinationExpression is a CEL expression and a destination to store the result in. The destination may
+                      be a secret or a configmap. The value of the expression is stored at the specified location in
+                      the destination.
+                    properties:
+                      key:
+                        description: |-
+                          Key is the key in the ConfigMap or Secret being written to. If the CEL expression in Value returns a string
+                          this is required to identify what key to write to. If the CEL expression in Value returns a map[string]string
+                          Key must not be set, instead the keys written will be determined dynamically based on the keys of the resulting
+                          map[string]string.
+                        type: string
+                      name:
+                        description: |-
+                          Name is the name of the Kubernetes configmap or secret to write to.
+                          The configmap or secret will be created in the same namespace as the resource.
+                        type: string
+                      value:
+                        description: |-
+                          Value is a CEL expression. The CEL expression may return a string or a map[string]string. For more information
+                          on CEL in ASO see https://azure.github.io/azure-service-operator/guide/expressions/
+                        type: string
+                    required:
+                      - name
+                      - value
+                    type: object
+                  type: array
                 secrets:
                   description: 'Secrets: configures where to place Azure generated secrets.'
                   properties:
@@ -1905,12 +1963,12 @@
                         retrieved from Azure.
                       properties:
                         key:
-                          description: Key is the key in the Kubernetes secret being referenced
+                          description: Key is the key in the Kubernetes secret being referenced.
                           type: string
                         name:
                           description: |-
-                            Name is the name of the Kubernetes secret being referenced.
-                            The secret must be in the same namespace as the resource
+                            Name is the name of the Kubernetes secret to write to.
+                            The secret will be created in the same namespace as the resource.
                           type: string
                       required:
                         - key
@@ -1922,12 +1980,12 @@
                         retrieved from Azure.
                       properties:
                         key:
-                          description: Key is the key in the Kubernetes secret being referenced
+                          description: Key is the key in the Kubernetes secret being referenced.
                           type: string
                         name:
                           description: |-
-                            Name is the name of the Kubernetes secret being referenced.
-                            The secret must be in the same namespace as the resource
+                            Name is the name of the Kubernetes secret to write to.
+                            The secret will be created in the same namespace as the resource.
                           type: string
                       required:
                         - key
@@ -3154,9 +3212,7 @@
                               type: object
                             type: array
                           manual:
-                            description: |-
-                              Manual: Specifications on how to scale the VirtualMachines agent pool to a fixed size. Currently, at most one
-                              ManualScaleProfile is allowed.
+                            description: 'Manual: Specifications on how to scale the VirtualMachines agent pool to a fixed size.'
                             items:
                               description: Specifications on number of machines.
                               properties:

@@ -3,7 +3,7 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     cert-manager.io/inject-ca-from: '{{ .Release.Namespace }}/azureserviceoperator-serving-cert'
-    controller-gen.kubebuilder.io/version: v0.14.0
+    controller-gen.kubebuilder.io/version: v0.16.3
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
     app.kubernetes.io/managed-by: '{{ .Release.Service }}'
@@ -124,44 +124,6 @@ spec:
         - jsonPath: .status.conditions[?(@.type=='Ready')].message
           name: Message
           type: string
-      name: v1api20230202preview
-      schema: {}
-      served: true
-      storage: false
-      subresources:
-        status: {}
-    - additionalPrinterColumns:
-        - jsonPath: .status.conditions[?(@.type=='Ready')].status
-          name: Ready
-          type: string
-        - jsonPath: .status.conditions[?(@.type=='Ready')].severity
-          name: Severity
-          type: string
-        - jsonPath: .status.conditions[?(@.type=='Ready')].reason
-          name: Reason
-          type: string
-        - jsonPath: .status.conditions[?(@.type=='Ready')].message
-          name: Message
-          type: string
-      name: v1api20230202previewstorage
-      schema: {}
-      served: true
-      storage: false
-      subresources:
-        status: {}
-    - additionalPrinterColumns:
-        - jsonPath: .status.conditions[?(@.type=='Ready')].status
-          name: Ready
-          type: string
-        - jsonPath: .status.conditions[?(@.type=='Ready')].severity
-          name: Severity
-          type: string
-        - jsonPath: .status.conditions[?(@.type=='Ready')].reason
-          name: Reason
-          type: string
-        - jsonPath: .status.conditions[?(@.type=='Ready')].message
-          name: Message
-          type: string
       name: v1api20231001
       schema: {}
       served: true
@@ -184,7 +146,7 @@ spec:
       name: v1api20231001storage
       schema: {}
       served: true
-      storage: true
+      storage: false
       subresources:
         status: {}
     - additionalPrinterColumns:
@@ -261,5 +223,43 @@ spec:
       schema: {}
       served: true
       storage: false
+      subresources:
+        status: {}
+    - additionalPrinterColumns:
+        - jsonPath: .status.conditions[?(@.type=='Ready')].status
+          name: Ready
+          type: string
+        - jsonPath: .status.conditions[?(@.type=='Ready')].severity
+          name: Severity
+          type: string
+        - jsonPath: .status.conditions[?(@.type=='Ready')].reason
+          name: Reason
+          type: string
+        - jsonPath: .status.conditions[?(@.type=='Ready')].message
+          name: Message
+          type: string
+      name: v1api20240901
+      schema: {}
+      served: true
+      storage: false
+      subresources:
+        status: {}
+    - additionalPrinterColumns:
+        - jsonPath: .status.conditions[?(@.type=='Ready')].status
+          name: Ready
+          type: string
+        - jsonPath: .status.conditions[?(@.type=='Ready')].severity
+          name: Severity
+          type: string
+        - jsonPath: .status.conditions[?(@.type=='Ready')].reason
+          name: Reason
+          type: string
+        - jsonPath: .status.conditions[?(@.type=='Ready')].message
+          name: Message
+          type: string
+      name: v1api20240901storage
+      schema: {}
+      served: true
+      storage: true
       subresources:
         status: {}

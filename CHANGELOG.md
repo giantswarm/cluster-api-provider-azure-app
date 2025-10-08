@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Chart: Update CAPZ to v1.20.2. ([#211](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/211))
+
 ## [3.0.3] - 2025-09-08
 
 ### Added
