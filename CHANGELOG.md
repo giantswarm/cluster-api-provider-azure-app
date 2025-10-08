@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.0.0] - 2025-10-08
+
 ### Changed
 
 - Chart: Update CAPZ to v1.20.2. ([#211](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/211))
@@ -487,7 +489,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed label selector for webhook and manager services.
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v3.0.3...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v4.0.0...HEAD
+[4.0.0]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v3.0.3...v4.0.0
 [3.0.3]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v3.0.2...v3.0.3
 [3.0.2]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v3.0.1...v3.0.2
 [3.0.1]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v3.0.0...v3.0.1
