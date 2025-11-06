@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.0.1] - 2025-11-06
+
 ### Changed
 
 - Chart: Fix RBAC for OwnerReferencesPermissionEnforcement. ([#216](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/216))
@@ -493,7 +495,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed label selector for webhook and manager services.
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v4.0.0...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v4.0.1...HEAD
+[4.0.1]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v4.0.0...v4.0.1
 [4.0.0]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v3.0.3...v4.0.0
 [3.0.3]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v3.0.2...v3.0.3
 [3.0.2]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v3.0.1...v3.0.2
