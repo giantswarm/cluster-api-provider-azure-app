@@ -27,7 +27,7 @@ helm.sh/chart: {{ include "cluster-api-provider-azure.chart" . }}
 {{ include "cluster-api-provider-azure.selectorLabels" . }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
-application.giantswarm.io/team: {{ index .Chart.Annotations "application.giantswarm.io/team" | quote }}
+application.giantswarm.io/team: {{ index .Chart.Annotations "io.giantswarm.application.team" | quote }}
 {{- end }}
 
 {{/*
