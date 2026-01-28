@@ -1,0 +1,9 @@
+checks:
+  exclude:
+    # Upstream CAPZ templates - cannot modify
+    - no-read-only-root-fs
+    - unset-cpu-requirements
+    - unset-memory-requirements
+    # CRD install job
+    - job-ttl-seconds-after-finished
+

@@ -1,13 +1,13 @@
 apiVersion: v2
 name: cluster-api-provider-azure
 description: A Helm chart for Cluster API Provider Azure components.
-version: [[ .Version ]]
-appVersion: [[ .AppVersion ]]
+version: 4.0.1-dev
+appVersion: v1.20.2-gs-c8fd00c00
 home: https://github.com/giantswarm/cluster-api-provider-azure-app
 icon: https://s.giantswarm.io/app-icons/giantswarm/1/dark.svg
 annotations:
-  application.giantswarm.io/team: phoenix
   ui.giantswarm.io/logo: https://s.giantswarm.io/app-icons/giantswarm/1/dark.svg
+  io.giantswarm.application.team: phoenix
 dependencies:
 - name: crd-install
   version: 1.0.0
