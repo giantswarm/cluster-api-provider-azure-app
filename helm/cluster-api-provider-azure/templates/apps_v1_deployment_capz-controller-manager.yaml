@@ -65,7 +65,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.uid
-        image: gcr.io/k8s-staging-cluster-api-azure/cluster-api-azure-controller:main
+        image: gsoci.azurecr.io/giantswarm/cluster-api-azure-controller:v1.22.0-gs-a4d910c8f
         imagePullPolicy: Always
         livenessProbe:
           httpGet:
