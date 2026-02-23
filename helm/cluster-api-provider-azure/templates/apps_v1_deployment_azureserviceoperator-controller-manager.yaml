@@ -29,6 +29,14 @@ spec:
         app.kubernetes.io/version: v2.13.0
         control-plane: controller-manager
     spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                control-plane: controller-manager
+              topologyKey: kubernetes.io/hostname
+            weight: 10
       containers:
       - args:
         - --metrics-addr=0.0.0.0:8443

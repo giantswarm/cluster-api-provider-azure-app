@@ -1,0 +1,7 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: azureserviceoperator-pdb
+  namespace: capz-system
+spec:
+  unhealthyPodEvictionPolicy: AlwaysAllow
