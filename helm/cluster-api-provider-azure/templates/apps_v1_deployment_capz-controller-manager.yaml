@@ -65,9 +65,8 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.uid
-        image: '{{ .Values.image.registry }}/{{ .Values.image.name }}:{{ .Values.image.tag
-          }}'
-        imagePullPolicy: IfNotPresent
+        image: gsoci.azurecr.io/giantswarm/cluster-api-azure-controller:v1.22.0-gs-a4d910c8f
+        imagePullPolicy: Always
         livenessProbe:
           httpGet:
             path: /healthz

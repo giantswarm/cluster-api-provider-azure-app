@@ -120,6 +120,36 @@ rules:
   - patch
   - update
 - apiGroups:
+  - app.azure.com
+  resources:
+  - authconfigs
+  - containerapps
+  - jobs
+  - managedenvironments
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - app.azure.com
+  resources:
+  - authconfigs/finalizers
+  - authconfigs/status
+  - containerapps/finalizers
+  - containerapps/status
+  - jobs/finalizers
+  - jobs/status
+  - managedenvironments/finalizers
+  - managedenvironments/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
   - appconfiguration.azure.com
   resources:
   - configurationstores
@@ -342,6 +372,7 @@ rules:
   - containerregistry.azure.com
   resources:
   - registries
+  - registryreplications
   verbs:
   - create
   - delete
@@ -355,6 +386,8 @@ rules:
   resources:
   - registries/finalizers
   - registries/status
+  - registryreplications/finalizers
+  - registryreplications/status
   verbs:
   - get
   - patch
@@ -525,9 +558,12 @@ rules:
   - dbforpostgresql.azure.com
   resources:
   - flexibleservers
+  - flexibleserversadvancedthreatprotectionsettings
+  - flexibleserversbackups
   - flexibleserversconfigurations
   - flexibleserversdatabases
   - flexibleserversfirewallrules
+  - flexibleserversvirtualendpoints
   - users
   verbs:
   - create
@@ -542,12 +578,18 @@ rules:
   resources:
   - flexibleservers/finalizers
   - flexibleservers/status
+  - flexibleserversadvancedthreatprotectionsettings/finalizers
+  - flexibleserversadvancedthreatprotectionsettings/status
+  - flexibleserversbackups/finalizers
+  - flexibleserversbackups/status
   - flexibleserversconfigurations/finalizers
   - flexibleserversconfigurations/status
   - flexibleserversdatabases/finalizers
   - flexibleserversdatabases/status
   - flexibleserversfirewallrules/finalizers
   - flexibleserversfirewallrules/status
+  - flexibleserversvirtualendpoints/finalizers
+  - flexibleserversvirtualendpoints/status
   - users/finalizers
   - users/status
   verbs:
@@ -583,6 +625,7 @@ rules:
   - mongodbdatabasecollectionthroughputsettings
   - mongodbdatabases
   - mongodbdatabasethroughputsettings
+  - mongodbuserdefinitions
   - sqldatabasecontainers
   - sqldatabasecontainerstoredprocedures
   - sqldatabasecontainerthroughputsettings
@@ -612,6 +655,8 @@ rules:
   - mongodbdatabases/status
   - mongodbdatabasethroughputsettings/finalizers
   - mongodbdatabasethroughputsettings/status
+  - mongodbuserdefinitions/finalizers
+  - mongodbuserdefinitions/status
   - sqldatabasecontainers/finalizers
   - sqldatabasecontainers/status
   - sqldatabasecontainerstoredprocedures/finalizers
@@ -775,6 +820,33 @@ rules:
   - extensions/status
   - fluxconfigurations/finalizers
   - fluxconfigurations/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - kusto.azure.com
+  resources:
+  - clusters
+  - databases
+  - dataconnections
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - kusto.azure.com
+  resources:
+  - clusters/finalizers
+  - clusters/status
+  - databases/finalizers
+  - databases/status
+  - dataconnections/finalizers
+  - dataconnections/status
   verbs:
   - get
   - patch
@@ -1044,6 +1116,36 @@ rules:
   - patch
   - update
 - apiGroups:
+  - notificationhubs.azure.com
+  resources:
+  - namespaces
+  - namespacesauthorizationrules
+  - notificationhubs
+  - notificationhubsauthorizationrules
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - notificationhubs.azure.com
+  resources:
+  - namespaces/finalizers
+  - namespaces/status
+  - namespacesauthorizationrules/finalizers
+  - namespacesauthorizationrules/status
+  - notificationhubs/finalizers
+  - notificationhubs/status
+  - notificationhubsauthorizationrules/finalizers
+  - notificationhubsauthorizationrules/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
   - operationalinsights.azure.com
   resources:
   - workspaces
@@ -1136,6 +1238,7 @@ rules:
   - namespacestopics
   - namespacestopicssubscriptions
   - namespacestopicssubscriptionsrules
+  - topicauthorizationrules
   verbs:
   - create
   - delete
@@ -1159,6 +1262,8 @@ rules:
   - namespacestopicssubscriptions/status
   - namespacestopicssubscriptionsrules/finalizers
   - namespacestopicssubscriptionsrules/status
+  - topicauthorizationrules/finalizers
+  - topicauthorizationrules/status
   verbs:
   - get
   - patch
@@ -1166,6 +1271,9 @@ rules:
 - apiGroups:
   - signalrservice.azure.com
   resources:
+  - customcertificates
+  - customdomains
+  - replicas
   - signalrs
   verbs:
   - create
@@ -1178,6 +1286,12 @@ rules:
 - apiGroups:
   - signalrservice.azure.com
   resources:
+  - customcertificates/finalizers
+  - customcertificates/status
+  - customdomains/finalizers
+  - customdomains/status
+  - replicas/finalizers
+  - replicas/status
   - signalrs/finalizers
   - signalrs/status
   verbs:
@@ -1369,6 +1483,7 @@ rules:
   resources:
   - serverfarms
   - sites
+  - sitessourcecontrols
   verbs:
   - create
   - delete
@@ -1384,6 +1499,8 @@ rules:
   - serverfarms/status
   - sites/finalizers
   - sites/status
+  - sitessourcecontrols/finalizers
+  - sitessourcecontrols/status
   verbs:
   - get
   - patch

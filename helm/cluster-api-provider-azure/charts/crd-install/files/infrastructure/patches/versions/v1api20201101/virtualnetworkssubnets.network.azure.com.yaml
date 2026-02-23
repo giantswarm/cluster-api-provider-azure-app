@@ -435,7 +435,9 @@
                 type: object
               type: array
             ipConfigurations:
-              description: 'IpConfigurations: An array of references to the network interface IP configurations using subnet.'
+              description: |-
+                IpConfigurations: An array of references to the network interface IP configurations using subnet. This field is not
+                included if there are more than 2000 entries.
               items:
                 description: IP configuration.
                 properties:

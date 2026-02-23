@@ -80,3 +80,6 @@ patches:
 # Validating webhooks
 - path: patches/validatingwebhooks/azureserviceoperator-validating-webhook-configuration.yaml
 - path: patches/validatingwebhooks/capz-validating-webhook-configuration.yaml
+
+# Pod Disruption Budgets
+- path: patches/poddisruptionbudgets/azureserviceoperator.yaml
