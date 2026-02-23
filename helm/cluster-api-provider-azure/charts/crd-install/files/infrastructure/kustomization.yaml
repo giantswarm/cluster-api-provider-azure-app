@@ -21,8 +21,8 @@ resources:
   - bases/bastionhosts.network.azure.com.yaml
   - bases/extensions.kubernetesconfiguration.azure.com.yaml
   - bases/fleetsmembers.containerservice.azure.com.yaml
-  - bases/managedclustersagentpools.containerservice.azure.com.yaml
   - bases/managedclusters.containerservice.azure.com.yaml
+  - bases/managedclustersagentpools.containerservice.azure.com.yaml
   - bases/natgateways.network.azure.com.yaml
   - bases/privateendpoints.network.azure.com.yaml
   - bases/resourcegroups.resources.azure.com.yaml
