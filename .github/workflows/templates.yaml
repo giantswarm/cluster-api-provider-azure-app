@@ -10,6 +10,6 @@ jobs:
     - name: Generate templates
       run: make generate
     - name: Output template
-      run: helm/cluster-api-provider-azure/charts/crd-install/files/infrastructure/kustomization.yaml
+      run: cat helm/cluster-api-provider-azure/charts/crd-install/files/infrastructure/kustomization.yaml
     - name: Verify templates
       run: git diff --exit-code
