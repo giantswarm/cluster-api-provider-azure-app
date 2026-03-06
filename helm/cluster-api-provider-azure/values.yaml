@@ -1,3 +1,13 @@
+# This refers to a release in the Giant Swarm fork. The fork closely follows upstream releases unless hotfixes are
+# needed. Please read https://github.com/giantswarm/cluster-api-provider-azure/blob/main/README.md on how to create a
+# release. Please include the short commit SHA in the tag name, such as `v1.22.0-gs-123abcd`. After changing this
+# tag, please run `make generate` to update CRDs and other manifests.
+
+# Changes in this tag include upstream v1.22.x with additional:
+#   * Giant Swarm fork modifications (https://github.com/giantswarm/cluster-api-provider-azure/pull/120)
+#   * Add Private Link Support (https://github.com/giantswarm/cluster-api-provider-azure/pull/121)
+#   * Fix RBAC for OwnerReferencesPermissionEnforcement feature (https://github.com/giantswarm/cluster-api-provider-azure/pull/122)
+
 # -- Image settings.
 image:
   # -- Image registry.
@@ -5,7 +15,7 @@ image:
   # -- Image repository.
   name: giantswarm/cluster-api-azure-controller
   # -- Image tag.
-  tag: v1.22.0-gs-a4d910c8f
+  tag: v1.22.0-gs-0f7f47f68
 
 # -- Azure Service Operator settings.
 aso:
