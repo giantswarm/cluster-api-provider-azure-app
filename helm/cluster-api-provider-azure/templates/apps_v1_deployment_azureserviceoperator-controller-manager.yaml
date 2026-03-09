@@ -179,7 +179,7 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace
         image: '{{ .Values.aso.image.registry }}/{{ .Values.aso.image.name }}:v2.13.0'
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
             path: /healthz

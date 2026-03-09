@@ -67,7 +67,7 @@ spec:
               fieldPath: metadata.uid
         image: '{{ .Values.image.registry }}/{{ .Values.image.name }}:{{ .Values.image.tag
           }}'
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
             path: /healthz
