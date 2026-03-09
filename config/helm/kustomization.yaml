@@ -23,7 +23,7 @@ images:
 # Cluster API Provider Azure
 - name: gcr.io/k8s-staging-cluster-api-azure/cluster-api-azure-controller
   newName: "{{ .Values.image.registry }}/{{ .Values.image.name }}"
-  newTag: "{{ .Values.image.tag }}"
+  newTag: "{{ default .Chart.AppVersion .Values.image.tag }}"
 # Azure Service Operator
 - name: mcr.microsoft.com/k8s/azureserviceoperator
   newName: "{{ .Values.aso.image.registry }}/{{ .Values.aso.image.name }}"
