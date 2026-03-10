@@ -33,6 +33,14 @@ rules:
 - apiGroups:
   - ""
   resources:
+  - nodes
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
   - secrets
   verbs:
   - create
@@ -41,6 +49,14 @@ rules:
   - list
   - patch
   - update
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+  - list
   - watch
 - apiGroups:
   - authentication.k8s.io
@@ -138,14 +154,6 @@ rules:
   - list
   - watch
 - apiGroups:
-  - ""
-  resources:
-  - nodes
-  verbs:
-  - get
-  - list
-  - watch
-- apiGroups:
   - infrastructure.cluster.x-k8s.io
   resources:
   - azureasomanagedclusters
@@ -210,10 +218,19 @@ rules:
   resources:
   - azuremachinetemplates
   - azuremachinetemplates/finalizers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - infrastructure.cluster.x-k8s.io
+  resources:
   - azuremachinetemplates/status
   verbs:
   - get
   - list
+  - patch
+  - update
   - watch
 - apiGroups:
   - kubernetesconfiguration.azure.com

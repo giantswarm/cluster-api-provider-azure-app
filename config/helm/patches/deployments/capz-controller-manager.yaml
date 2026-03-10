@@ -18,6 +18,7 @@ spec:
         - --insecure-diagnostics=true
         - --feature-gates=MachinePool=true
         - --v={{ .Values.controller.verbosity }}
+        imagePullPolicy: IfNotPresent
         ports:
         - name: metrics
           protocol: TCP

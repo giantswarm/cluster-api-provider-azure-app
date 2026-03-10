@@ -10,7 +10,7 @@ set -o errexit -o nounset -o pipefail
 repository="$(realpath "$(dirname "${0}")/..")"
 
 # Get Cluster API Provider Azure version.
-version="$(yq --exit-status ".image.tag" "${repository}/helm/cluster-api-provider-azure/values.yaml")"
+version="$(yq --exit-status ".appVersion" "${repository}/helm/cluster-api-provider-azure/Chart.yaml")"
 
 # Fetch Cluster API Provider Azure components.
 curl --silent --show-error --fail --location \

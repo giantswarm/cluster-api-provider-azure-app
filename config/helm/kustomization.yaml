@@ -21,9 +21,9 @@ labels:
 
 images:
 # Cluster API Provider Azure
-- name: registry.k8s.io/cluster-api-azure/cluster-api-azure-controller
+- name: gcr.io/k8s-staging-cluster-api-azure/cluster-api-azure-controller
   newName: "{{ .Values.image.registry }}/{{ .Values.image.name }}"
-  newTag: "{{ .Values.image.tag }}"
+  newTag: "{{ default .Chart.AppVersion .Values.image.tag }}"
 # Azure Service Operator
 - name: mcr.microsoft.com/k8s/azureserviceoperator
   newName: "{{ .Values.aso.image.registry }}/{{ .Values.aso.image.name }}"
@@ -80,3 +80,6 @@ patches:
 # Validating webhooks
 - path: patches/validatingwebhooks/azureserviceoperator-validating-webhook-configuration.yaml
 - path: patches/validatingwebhooks/capz-validating-webhook-configuration.yaml
+
+# Pod Disruption Budgets
+- path: patches/poddisruptionbudgets/azureserviceoperator.yaml

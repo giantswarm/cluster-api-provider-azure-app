@@ -147,6 +147,11 @@
                               type: object
                             name:
                               type: string
+                            zones:
+                              description: Zones mentions the list of zones the NAT gateway should be a part of.
+                              items:
+                                type: string
+                              type: array
                           required:
                             - name
                           type: object
@@ -922,6 +927,14 @@
                       description: LBType defines an Azure load balancer Type.
                       type: string
                   type: object
+                privateDNSZone:
+                  description: |-
+                    PrivateDNSZone enables private dns zone creation modes for a private cluster.
+                    When unspecified, it defaults to PrivateDNSZoneModeSystem which creates a private DNS zone.
+                  enum:
+                    - System
+                    - None
+                  type: string
                 privateDNSZoneName:
                   description: PrivateDNSZoneName defines the zone name for the Azure Private DNS.
                   type: string
@@ -983,6 +996,11 @@
                             type: object
                           name:
                             type: string
+                          zones:
+                            description: Zones mentions the list of zones the NAT gateway should be a part of.
+                            items:
+                              type: string
+                            type: array
                         required:
                           - name
                         type: object

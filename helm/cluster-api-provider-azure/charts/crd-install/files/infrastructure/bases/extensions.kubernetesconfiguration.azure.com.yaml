@@ -70,6 +70,44 @@ spec:
       name: v1api20230501storage
       schema: {}
       served: true
+      storage: false
+      subresources:
+        status: {}
+    - additionalPrinterColumns:
+        - jsonPath: .status.conditions[?(@.type=='Ready')].status
+          name: Ready
+          type: string
+        - jsonPath: .status.conditions[?(@.type=='Ready')].severity
+          name: Severity
+          type: string
+        - jsonPath: .status.conditions[?(@.type=='Ready')].reason
+          name: Reason
+          type: string
+        - jsonPath: .status.conditions[?(@.type=='Ready')].message
+          name: Message
+          type: string
+      name: v1api20241101
+      schema: {}
+      served: true
+      storage: false
+      subresources:
+        status: {}
+    - additionalPrinterColumns:
+        - jsonPath: .status.conditions[?(@.type=='Ready')].status
+          name: Ready
+          type: string
+        - jsonPath: .status.conditions[?(@.type=='Ready')].severity
+          name: Severity
+          type: string
+        - jsonPath: .status.conditions[?(@.type=='Ready')].reason
+          name: Reason
+          type: string
+        - jsonPath: .status.conditions[?(@.type=='Ready')].message
+          name: Message
+          type: string
+      name: v1api20241101storage
+      schema: {}
+      served: true
       storage: true
       subresources:
         status: {}

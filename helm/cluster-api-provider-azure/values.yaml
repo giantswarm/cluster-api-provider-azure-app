@@ -4,8 +4,8 @@ image:
   registry: gsoci.azurecr.io
   # -- Image repository.
   name: giantswarm/cluster-api-azure-controller
-  # -- Image tag.
-  tag: v1.20.2-gs-c8fd00c00
+  # -- Image tag. Defaults to the chart's app version.
+  tag:
 
 # -- Azure Service Operator settings.
 aso:
