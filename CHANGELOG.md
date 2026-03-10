@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Migrate to App Build Suite (ABS) for building and publishing Helm charts.
+- Chart: Update CAPZ to v1.22.0. ([#228](https://github.com/giantswarm/cluster-api-provider-azure-app/pull/228))
 
 ## [4.0.1] - 2025-11-06
 
