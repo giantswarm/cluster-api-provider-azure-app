@@ -4,8 +4,7 @@ generate:
 	hack/fetch-manifest.sh
 
 	# Kustomize templates.
-	rm -f helm/cluster-api-provider-azure/templates/*.yaml
-	kubectl kustomize config/helm --output helm/cluster-api-provider-azure/templates
+	hack/kustomize-templates.sh
 
 	# Move CRDs.
 	hack/move-crds.sh
