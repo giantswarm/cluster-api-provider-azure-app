@@ -10,6 +10,8 @@ KUSTOMIZE_CRD_DIR="$ROOT_DIR/helm/cluster-api-provider-azure/charts/crd-install/
 
 # YQ="./$(dirname "$0")/tools/bin/yq"
 
+echo "using $(yq --version)"
+
 # shellcheck disable=SC2066
 for CRD_DIR in "$KUSTOMIZE_CRD_DIR/infrastructure"; do
     CRD_BASE_DIR="${CRD_DIR}/bases"
