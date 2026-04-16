@@ -10,8 +10,11 @@ KUSTOMIZE_CRD_DIR="$ROOT_DIR/helm/cluster-api-provider-azure/charts/crd-install/
 
 # YQ="./$(dirname "$0")/tools/bin/yq"
 
-echo "using locale:"
-locale
+# Set the locale to the same as used in GitHub Actions.
+# The locale affects the ordering of file names when listing a directory.
+# This script's output is determined in part by that ordering.
+export LC_ALL="C.UTF-8"
+
 echo "using $(yq --version)"
 
 # shellcheck disable=SC2066
