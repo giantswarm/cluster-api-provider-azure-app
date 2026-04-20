@@ -1,17 +1,17 @@
 apiVersion: v2
 name: cluster-api-provider-azure
 description: A Helm chart for Cluster API Provider Azure components.
-version: 4.1.0
+version: 4.2.0
 # This refers to a release in the Giant Swarm fork. The fork closely follows upstream releases unless hotfixes are
 # needed. Please read https://github.com/giantswarm/cluster-api-provider-azure/blob/main/README.md on how to create a
 # release. Please include the short commit SHA in the tag name, such as `v1.22.0-gs-123abcd`. After changing this
 # tag, please run `make generate` to update CRDs and other manifests.
 
-# Changes in this tag include upstream v1.22.x with additional:
-#   * Giant Swarm fork modifications (https://github.com/giantswarm/cluster-api-provider-azure/pull/120)
-#   * Add Private Link Support (https://github.com/giantswarm/cluster-api-provider-azure/pull/121)
-#   * Fix RBAC for OwnerReferencesPermissionEnforcement feature (https://github.com/giantswarm/cluster-api-provider-azure/pull/122)
-appVersion: v1.22.0-gs-0f7f47f68
+# Changes in this tag include upstream v1.23.x with additional:
+# * Giant Swarm README and GitHub Workflows (https://github.com/giantswarm/cluster-api-provider-azure/pull/123)
+# * Add Private Link support (https://github.com/giantswarm/cluster-api-provider-azure/pull/124)
+# * Fix RBAC for OwnerReferencesPermissionEnforcement feature (https://github.com/giantswarm/cluster-api-provider-azure/pull/125)
+appVersion: v1.23.0-gs-dd9dbf924
 home: https://github.com/giantswarm/cluster-api-provider-azure-app
 icon: https://s.giantswarm.io/app-icons/giantswarm/1/dark.svg
 annotations:
