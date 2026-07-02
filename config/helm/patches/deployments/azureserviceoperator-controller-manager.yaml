@@ -11,7 +11,8 @@ spec:
           preferredDuringSchedulingIgnoredDuringExecution:
           - podAffinityTerm:
               labelSelector:
-                control-plane: controller-manager
+                matchLabels:
+                  control-plane: controller-manager
               topologyKey: kubernetes.io/hostname
             weight: 10
       containers:

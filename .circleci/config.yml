@@ -13,6 +13,8 @@ workflows:
           chart: cluster-api-provider-azure
           app_catalog: control-plane-catalog
           app_catalog_test: control-plane-test-catalog
+          override_chart_version: true
+          override_app_version: false
           filters:
             branches:
               ignore:
