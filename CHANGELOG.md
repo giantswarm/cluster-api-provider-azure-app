@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.2.1] - 2026-07-02
+
 ### Changed
 
 - Chart: fix ASO deployment template.
@@ -512,7 +514,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed label selector for webhook and manager services.
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v4.2.0...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v4.2.1...HEAD
+[4.2.1]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v4.2.0...v4.2.1
 [4.2.0]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v4.1.0...v4.2.0
 [4.1.0]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v4.0.1...v4.1.0
 [4.0.1]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v4.0.0...v4.0.1
