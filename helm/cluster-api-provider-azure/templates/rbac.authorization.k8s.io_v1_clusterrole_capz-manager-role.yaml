@@ -15,4 +15,3 @@ metadata:
     cluster.x-k8s.io/provider: infrastructure-azure
     helm.sh/chart: cluster-api-provider-azure
   name: capz-manager-role
-rules: []
