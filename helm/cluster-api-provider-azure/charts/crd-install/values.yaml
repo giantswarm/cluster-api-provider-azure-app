@@ -5,4 +5,4 @@ image:
   # -- Image repository.
   name: giantswarm/docker-kubectl
   # -- Image tag.
-  tag: 1.33.4
+  tag: 1.36.2
