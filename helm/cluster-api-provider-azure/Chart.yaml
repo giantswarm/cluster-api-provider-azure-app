@@ -19,5 +19,5 @@ annotations:
   io.giantswarm.application.team: phoenix
 dependencies:
   - name: crd-install
-    version: 1.0.0
+    version: 1.0.1
     condition: crds.install
