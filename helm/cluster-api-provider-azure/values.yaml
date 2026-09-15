@@ -15,6 +15,10 @@ aso:
     registry: gsoci.azurecr.io
     # -- Image repository.
     name: giantswarm/azureserviceoperator
+  # -- Semicolon-delimited glob patterns of additional ASO CRDs to install on
+  # startup, on top of the ones installed by the CRD install job. See
+  # https://azure.github.io/azure-service-operator/guide/crd-management/.
+  crdPattern: "insights.azure.com/DiagnosticSetting;eventhub.azure.com/*"
 
 # -- Workload cluster settings.
 workloadCluster:

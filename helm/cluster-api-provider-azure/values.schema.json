@@ -5,6 +5,9 @@
         "aso": {
             "type": "object",
             "properties": {
+                "crdPattern": {
+                    "type": "string"
+                },
                 "image": {
                     "type": "object",
                     "properties": {
