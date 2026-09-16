@@ -7,9 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
+### Changed
 
-- Install the `insights.azure.com/DiagnosticSetting` and `eventhub.azure.com` ASO CRDs via the new `aso.crdPattern` value, so AKS clusters can enable API server audit logging.
+- Patch ASO's `--crd-pattern` argument by index with a `test` op, instead of restating the whole `args` list in a strategic merge patch. The old patch silently discarded any argument upstream added or changed.
 
 ## [4.2.3] - 2026-07-21
 
