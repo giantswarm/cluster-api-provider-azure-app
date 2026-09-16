@@ -63,6 +63,12 @@ patches:
 
 # Deployments
 - path: patches/deployments/azureserviceoperator-controller-manager.yaml
+- path: patches/deployments/azureserviceoperator-crd-pattern.yaml
+  target:
+    group: apps
+    version: v1
+    kind: Deployment
+    name: azureserviceoperator-controller-manager
 - path: patches/deployments/capz-controller-manager.yaml
 
 # Services
