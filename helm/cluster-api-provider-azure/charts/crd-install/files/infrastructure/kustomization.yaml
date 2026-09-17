@@ -19,10 +19,15 @@ resources:
   - bases/azuremanagedmachinepools.infrastructure.cluster.x-k8s.io.yaml
   - bases/azuremanagedmachinepooltemplates.infrastructure.cluster.x-k8s.io.yaml
   - bases/bastionhosts.network.azure.com.yaml
+  - bases/diagnosticsettings.insights.azure.com.yaml
   - bases/extensions.kubernetesconfiguration.azure.com.yaml
   - bases/fleetsmembers.containerservice.azure.com.yaml
   - bases/managedclusters.containerservice.azure.com.yaml
   - bases/managedclustersagentpools.containerservice.azure.com.yaml
+  - bases/namespaces.eventhub.azure.com.yaml
+  - bases/namespacesauthorizationrules.eventhub.azure.com.yaml
+  - bases/namespaceseventhubs.eventhub.azure.com.yaml
+  - bases/namespaceseventhubsconsumergroups.eventhub.azure.com.yaml
   - bases/natgateways.network.azure.com.yaml
   - bases/privateendpoints.network.azure.com.yaml
   - bases/resourcegroups.resources.azure.com.yaml
@@ -203,6 +208,18 @@ patches:
       version: v1
       kind: CustomResourceDefinition
       name: bastionhosts.network.azure.com
+  - path: patches/versions/v1api20210501preview/diagnosticsettings.insights.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: diagnosticsettings.insights.azure.com
+  - path: patches/versions/v1api20210501previewstorage/diagnosticsettings.insights.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: diagnosticsettings.insights.azure.com
   - path: patches/versions/v1api20230501/extensions.kubernetesconfiguration.azure.com.yaml
     target:
       group: apiextensions.k8s.io
@@ -383,6 +400,102 @@ patches:
       version: v1
       kind: CustomResourceDefinition
       name: managedclustersagentpools.containerservice.azure.com
+  - path: patches/versions/v1api20211101/namespaces.eventhub.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: namespaces.eventhub.azure.com
+  - path: patches/versions/v1api20211101storage/namespaces.eventhub.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: namespaces.eventhub.azure.com
+  - path: patches/versions/v1api20240101/namespaces.eventhub.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: namespaces.eventhub.azure.com
+  - path: patches/versions/v1api20240101storage/namespaces.eventhub.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: namespaces.eventhub.azure.com
+  - path: patches/versions/v1api20211101/namespacesauthorizationrules.eventhub.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: namespacesauthorizationrules.eventhub.azure.com
+  - path: patches/versions/v1api20211101storage/namespacesauthorizationrules.eventhub.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: namespacesauthorizationrules.eventhub.azure.com
+  - path: patches/versions/v1api20240101/namespacesauthorizationrules.eventhub.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: namespacesauthorizationrules.eventhub.azure.com
+  - path: patches/versions/v1api20240101storage/namespacesauthorizationrules.eventhub.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: namespacesauthorizationrules.eventhub.azure.com
+  - path: patches/versions/v1api20211101/namespaceseventhubs.eventhub.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: namespaceseventhubs.eventhub.azure.com
+  - path: patches/versions/v1api20211101storage/namespaceseventhubs.eventhub.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: namespaceseventhubs.eventhub.azure.com
+  - path: patches/versions/v1api20240101/namespaceseventhubs.eventhub.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: namespaceseventhubs.eventhub.azure.com
+  - path: patches/versions/v1api20240101storage/namespaceseventhubs.eventhub.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: namespaceseventhubs.eventhub.azure.com
+  - path: patches/versions/v1api20211101/namespaceseventhubsconsumergroups.eventhub.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: namespaceseventhubsconsumergroups.eventhub.azure.com
+  - path: patches/versions/v1api20211101storage/namespaceseventhubsconsumergroups.eventhub.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: namespaceseventhubsconsumergroups.eventhub.azure.com
+  - path: patches/versions/v1api20240101/namespaceseventhubsconsumergroups.eventhub.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: namespaceseventhubsconsumergroups.eventhub.azure.com
+  - path: patches/versions/v1api20240101storage/namespaceseventhubsconsumergroups.eventhub.azure.com.yaml
+    target:
+      group: apiextensions.k8s.io
+      version: v1
+      kind: CustomResourceDefinition
+      name: namespaceseventhubsconsumergroups.eventhub.azure.com
   - path: patches/versions/v1api20220701/natgateways.network.azure.com.yaml
     target:
       group: apiextensions.k8s.io

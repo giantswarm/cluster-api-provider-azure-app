@@ -1,0 +1,17 @@
+# ASO's --crd-pattern is patched by index rather than in the strategic merge
+# patch next to this file. Listing `args` there replaces the whole list, which
+# silently drops anything upstream adds or changes.
+#
+# The `test` op pins the value we expect from upstream. If CAPZ changes it --
+# newer versions populate it with the base CRD patterns that used to ship in
+# config/aso/crds.yaml -- kustomize fails here instead of silently discarding
+# the new value, and this patch has to be reconciled by hand.
+#
+# CRDs themselves are installed by the crd-install sub-chart, from the list in
+# the ASO_CRDS variable of giantswarm/cluster-api-provider-azure's Makefile.
+- op: test
+  path: /spec/template/spec/containers/0/args/6
+  value: --crd-pattern=${ADDITIONAL_ASO_CRDS:= }
+- op: replace
+  path: /spec/template/spec/containers/0/args/6
+  value: --crd-pattern=
