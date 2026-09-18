@@ -1,5 +1,5 @@
 - op: replace
-  path: /spec/versions/4/schema
+  path: /spec/versions/2/schema
   value:
     openAPIV3Schema:
       description: |-
@@ -1012,9 +1012,39 @@
                   clientId:
                     description: 'ClientId: The client ID of the user assigned identity.'
                     type: string
+                  clientIdFromConfig:
+                    description: 'ClientIdFromConfig: The client ID of the user assigned identity.'
+                    properties:
+                      key:
+                        description: Key is the key in the Kubernetes configmap being referenced
+                        type: string
+                      name:
+                        description: |-
+                          Name is the name of the Kubernetes configmap being referenced.
+                          The configmap must be in the same namespace as the resource
+                        type: string
+                    required:
+                      - key
+                      - name
+                    type: object
                   objectId:
                     description: 'ObjectId: The object ID of the user assigned identity.'
                     type: string
+                  objectIdFromConfig:
+                    description: 'ObjectIdFromConfig: The object ID of the user assigned identity.'
+                    properties:
+                      key:
+                        description: Key is the key in the Kubernetes configmap being referenced
+                        type: string
+                      name:
+                        description: |-
+                          Name is the name of the Kubernetes configmap being referenced.
+                          The configmap must be in the same namespace as the resource
+                        type: string
+                    required:
+                      - key
+                      - name
+                    type: object
                   resourceReference:
                     description: 'ResourceReference: The resource ID of the user assigned identity.'
                     properties:
@@ -1551,9 +1581,39 @@
                           clientId:
                             description: 'ClientId: The client ID of the user assigned identity.'
                             type: string
+                          clientIdFromConfig:
+                            description: 'ClientIdFromConfig: The client ID of the user assigned identity.'
+                            properties:
+                              key:
+                                description: Key is the key in the Kubernetes configmap being referenced
+                                type: string
+                              name:
+                                description: |-
+                                  Name is the name of the Kubernetes configmap being referenced.
+                                  The configmap must be in the same namespace as the resource
+                                type: string
+                            required:
+                              - key
+                              - name
+                            type: object
                           objectId:
                             description: 'ObjectId: The object ID of the user assigned identity.'
                             type: string
+                          objectIdFromConfig:
+                            description: 'ObjectIdFromConfig: The object ID of the user assigned identity.'
+                            properties:
+                              key:
+                                description: Key is the key in the Kubernetes configmap being referenced
+                                type: string
+                              name:
+                                description: |-
+                                  Name is the name of the Kubernetes configmap being referenced.
+                                  The configmap must be in the same namespace as the resource
+                                type: string
+                            required:
+                              - key
+                              - name
+                            type: object
                           resourceReference:
                             description: 'ResourceReference: The resource ID of the user assigned identity.'
                             properties:

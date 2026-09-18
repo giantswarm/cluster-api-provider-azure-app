@@ -649,6 +649,300 @@ webhooks:
     service:
       name: azureserviceoperator-webhook-service
       namespace: '{{ .Release.Namespace }}'
+      path: /mutate-apimanagement-azure-com-v1api20240501-api
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20240501.apis.apimanagement.azure.com
+  rules:
+  - apiGroups:
+    - apimanagement.azure.com
+    apiVersions:
+    - v1api20240501
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - apis
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-apimanagement-azure-com-v1api20240501-apiversionset
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20240501.apiversionsets.apimanagement.azure.com
+  rules:
+  - apiGroups:
+    - apimanagement.azure.com
+    apiVersions:
+    - v1api20240501
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - apiversionsets
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-apimanagement-azure-com-v1api20240501-authorizationprovider
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20240501.authorizationproviders.apimanagement.azure.com
+  rules:
+  - apiGroups:
+    - apimanagement.azure.com
+    apiVersions:
+    - v1api20240501
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - authorizationproviders
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-apimanagement-azure-com-v1api20240501-authorizationprovidersauthorization
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20240501.authorizationprovidersauthorizations.apimanagement.azure.com
+  rules:
+  - apiGroups:
+    - apimanagement.azure.com
+    apiVersions:
+    - v1api20240501
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - authorizationprovidersauthorizations
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-apimanagement-azure-com-v1api20240501-authorizationprovidersauthorizationsaccesspolicy
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20240501.authorizationprovidersauthorizationsaccesspolicies.apimanagement.azure.com
+  rules:
+  - apiGroups:
+    - apimanagement.azure.com
+    apiVersions:
+    - v1api20240501
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - authorizationprovidersauthorizationsaccesspolicies
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-apimanagement-azure-com-v1api20240501-backend
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20240501.backends.apimanagement.azure.com
+  rules:
+  - apiGroups:
+    - apimanagement.azure.com
+    apiVersions:
+    - v1api20240501
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - backends
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-apimanagement-azure-com-v1api20240501-namedvalue
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20240501.namedvalues.apimanagement.azure.com
+  rules:
+  - apiGroups:
+    - apimanagement.azure.com
+    apiVersions:
+    - v1api20240501
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - namedvalues
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-apimanagement-azure-com-v1api20240501-policy
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20240501.policies.apimanagement.azure.com
+  rules:
+  - apiGroups:
+    - apimanagement.azure.com
+    apiVersions:
+    - v1api20240501
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - policies
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-apimanagement-azure-com-v1api20240501-policyfragment
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20240501.policyfragments.apimanagement.azure.com
+  rules:
+  - apiGroups:
+    - apimanagement.azure.com
+    apiVersions:
+    - v1api20240501
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - policyfragments
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-apimanagement-azure-com-v1api20240501-productapi
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20240501.productapis.apimanagement.azure.com
+  rules:
+  - apiGroups:
+    - apimanagement.azure.com
+    apiVersions:
+    - v1api20240501
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - productapis
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-apimanagement-azure-com-v1api20240501-productpolicy
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20240501.productpolicies.apimanagement.azure.com
+  rules:
+  - apiGroups:
+    - apimanagement.azure.com
+    apiVersions:
+    - v1api20240501
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - productpolicies
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-apimanagement-azure-com-v1api20240501-product
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20240501.products.apimanagement.azure.com
+  rules:
+  - apiGroups:
+    - apimanagement.azure.com
+    apiVersions:
+    - v1api20240501
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - products
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-apimanagement-azure-com-v1api20240501-service
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20240501.services.apimanagement.azure.com
+  rules:
+  - apiGroups:
+    - apimanagement.azure.com
+    apiVersions:
+    - v1api20240501
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - services
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-apimanagement-azure-com-v1api20240501-subscription
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20240501.subscriptions.apimanagement.azure.com
+  rules:
+  - apiGroups:
+    - apimanagement.azure.com
+    apiVersions:
+    - v1api20240501
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - subscriptions
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
       path: /mutate-app-azure-com-v1api20240301-authconfig
   failurePolicy: Fail
   matchPolicy: Exact
@@ -721,6 +1015,90 @@ webhooks:
     - app.azure.com
     apiVersions:
     - v1api20240301
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - managedenvironments
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-app-azure-com-v1api20250101-authconfig
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20250101.authconfigs.app.azure.com
+  rules:
+  - apiGroups:
+    - app.azure.com
+    apiVersions:
+    - v1api20250101
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - authconfigs
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-app-azure-com-v1api20250101-containerapp
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20250101.containerapps.app.azure.com
+  rules:
+  - apiGroups:
+    - app.azure.com
+    apiVersions:
+    - v1api20250101
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - containerapps
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-app-azure-com-v1api20250101-job
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20250101.jobs.app.azure.com
+  rules:
+  - apiGroups:
+    - app.azure.com
+    apiVersions:
+    - v1api20250101
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - jobs
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-app-azure-com-v1api20250101-managedenvironment
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20250101.managedenvironments.app.azure.com
+  rules:
+  - apiGroups:
+    - app.azure.com
+    apiVersions:
+    - v1api20250101
     operations:
     - CREATE
     - UPDATE
@@ -1174,6 +1552,174 @@ webhooks:
     service:
       name: azureserviceoperator-webhook-service
       namespace: '{{ .Release.Namespace }}'
+      path: /mutate-cache-azure-com-v1api20241101-redis
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20241101.redis.cache.azure.com
+  rules:
+  - apiGroups:
+    - cache.azure.com
+    apiVersions:
+    - v1api20241101
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - redis
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-cache-azure-com-v1api20241101-redisaccesspolicy
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20241101.redisaccesspolicies.cache.azure.com
+  rules:
+  - apiGroups:
+    - cache.azure.com
+    apiVersions:
+    - v1api20241101
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - redisaccesspolicies
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-cache-azure-com-v1api20241101-redisaccesspolicyassignment
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20241101.redisaccesspolicyassignments.cache.azure.com
+  rules:
+  - apiGroups:
+    - cache.azure.com
+    apiVersions:
+    - v1api20241101
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - redisaccesspolicyassignments
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-cache-azure-com-v1api20241101-redisfirewallrule
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20241101.redisfirewallrules.cache.azure.com
+  rules:
+  - apiGroups:
+    - cache.azure.com
+    apiVersions:
+    - v1api20241101
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - redisfirewallrules
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-cache-azure-com-v1api20241101-redislinkedserver
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20241101.redislinkedservers.cache.azure.com
+  rules:
+  - apiGroups:
+    - cache.azure.com
+    apiVersions:
+    - v1api20241101
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - redislinkedservers
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-cache-azure-com-v1api20241101-redispatchschedule
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20241101.redispatchschedules.cache.azure.com
+  rules:
+  - apiGroups:
+    - cache.azure.com
+    apiVersions:
+    - v1api20241101
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - redispatchschedules
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-cache-azure-com-v1api20250401-redisenterprisedatabase
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20250401.redisenterprisedatabases.cache.azure.com
+  rules:
+  - apiGroups:
+    - cache.azure.com
+    apiVersions:
+    - v1api20250401
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - redisenterprisedatabases
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-cache-azure-com-v1api20250401-redisenterprise
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20250401.redisenterprises.cache.azure.com
+  rules:
+  - apiGroups:
+    - cache.azure.com
+    apiVersions:
+    - v1api20250401
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - redisenterprises
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
       path: /mutate-cdn-azure-com-v1api20210601-profile
   failurePolicy: Fail
   matchPolicy: Exact
@@ -1419,6 +1965,48 @@ webhooks:
     - UPDATE
     resources:
     - securitypolicies
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-cognitiveservices-azure-com-v1api20250601-account
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20250601.accounts.cognitiveservices.azure.com
+  rules:
+  - apiGroups:
+    - cognitiveservices.azure.com
+    apiVersions:
+    - v1api20250601
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - accounts
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-cognitiveservices-azure-com-v1api20250601-deployment
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20250601.deployments.cognitiveservices.azure.com
+  rules:
+  - apiGroups:
+    - cognitiveservices.azure.com
+    apiVersions:
+    - v1api20250601
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - deployments
   sideEffects: None
 - admissionReviewVersions:
   - v1
@@ -1783,6 +2371,69 @@ webhooks:
     service:
       name: azureserviceoperator-webhook-service
       namespace: '{{ .Release.Namespace }}'
+      path: /mutate-compute-azure-com-v1api20241101-availabilityset
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20241101.availabilitysets.compute.azure.com
+  rules:
+  - apiGroups:
+    - compute.azure.com
+    apiVersions:
+    - v1api20241101
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - availabilitysets
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-compute-azure-com-v1api20250401-capacityreservationgroup
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20250401.capacityreservationgroups.compute.azure.com
+  rules:
+  - apiGroups:
+    - compute.azure.com
+    apiVersions:
+    - v1api20250401
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - capacityreservationgroups
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-compute-azure-com-v1api20250401-capacityreservation
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20250401.capacityreservations.compute.azure.com
+  rules:
+  - apiGroups:
+    - compute.azure.com
+    apiVersions:
+    - v1api20250401
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - capacityreservations
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
       path: /mutate-containerinstance-azure-com-v1api20211001-containergroup
   failurePolicy: Fail
   matchPolicy: Exact
@@ -1860,48 +2511,6 @@ webhooks:
     - UPDATE
     resources:
     - registryreplications
-  sideEffects: None
-- admissionReviewVersions:
-  - v1
-  clientConfig:
-    service:
-      name: azureserviceoperator-webhook-service
-      namespace: '{{ .Release.Namespace }}'
-      path: /mutate-containerservice-azure-com-v1api20210501-managedcluster
-  failurePolicy: Fail
-  matchPolicy: Exact
-  name: default.v1api20210501.managedclusters.containerservice.azure.com
-  rules:
-  - apiGroups:
-    - containerservice.azure.com
-    apiVersions:
-    - v1api20210501
-    operations:
-    - CREATE
-    - UPDATE
-    resources:
-    - managedclusters
-  sideEffects: None
-- admissionReviewVersions:
-  - v1
-  clientConfig:
-    service:
-      name: azureserviceoperator-webhook-service
-      namespace: '{{ .Release.Namespace }}'
-      path: /mutate-containerservice-azure-com-v1api20210501-managedclustersagentpool
-  failurePolicy: Fail
-  matchPolicy: Exact
-  name: default.v1api20210501.managedclustersagentpools.containerservice.azure.com
-  rules:
-  - apiGroups:
-    - containerservice.azure.com
-    apiVersions:
-    - v1api20210501
-    operations:
-    - CREATE
-    - UPDATE
-    resources:
-    - managedclustersagentpools
   sideEffects: None
 - admissionReviewVersions:
   - v1
@@ -2077,48 +2686,6 @@ webhooks:
     service:
       name: azureserviceoperator-webhook-service
       namespace: '{{ .Release.Namespace }}'
-      path: /mutate-containerservice-azure-com-v1api20231102preview-managedcluster
-  failurePolicy: Fail
-  matchPolicy: Exact
-  name: default.v1api20231102preview.managedclusters.containerservice.azure.com
-  rules:
-  - apiGroups:
-    - containerservice.azure.com
-    apiVersions:
-    - v1api20231102preview
-    operations:
-    - CREATE
-    - UPDATE
-    resources:
-    - managedclusters
-  sideEffects: None
-- admissionReviewVersions:
-  - v1
-  clientConfig:
-    service:
-      name: azureserviceoperator-webhook-service
-      namespace: '{{ .Release.Namespace }}'
-      path: /mutate-containerservice-azure-com-v1api20231102preview-managedclustersagentpool
-  failurePolicy: Fail
-  matchPolicy: Exact
-  name: default.v1api20231102preview.managedclustersagentpools.containerservice.azure.com
-  rules:
-  - apiGroups:
-    - containerservice.azure.com
-    apiVersions:
-    - v1api20231102preview
-    operations:
-    - CREATE
-    - UPDATE
-    resources:
-    - managedclustersagentpools
-  sideEffects: None
-- admissionReviewVersions:
-  - v1
-  clientConfig:
-    service:
-      name: azureserviceoperator-webhook-service
-      namespace: '{{ .Release.Namespace }}'
       path: /mutate-containerservice-azure-com-v1api20240402preview-managedcluster
   failurePolicy: Fail
   matchPolicy: Exact
@@ -2254,6 +2821,195 @@ webhooks:
     - containerservice.azure.com
     apiVersions:
     - v1api20240901
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - trustedaccessrolebindings
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-containerservice-azure-com-v1api20250301-fleet
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20250301.fleets.containerservice.azure.com
+  rules:
+  - apiGroups:
+    - containerservice.azure.com
+    apiVersions:
+    - v1api20250301
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - fleets
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-containerservice-azure-com-v1api20250301-fleetsautoupgradeprofile
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20250301.fleetsautoupgradeprofiles.containerservice.azure.com
+  rules:
+  - apiGroups:
+    - containerservice.azure.com
+    apiVersions:
+    - v1api20250301
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - fleetsautoupgradeprofiles
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-containerservice-azure-com-v1api20250301-fleetsmember
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20250301.fleetsmembers.containerservice.azure.com
+  rules:
+  - apiGroups:
+    - containerservice.azure.com
+    apiVersions:
+    - v1api20250301
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - fleetsmembers
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-containerservice-azure-com-v1api20250301-fleetsupdaterun
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20250301.fleetsupdateruns.containerservice.azure.com
+  rules:
+  - apiGroups:
+    - containerservice.azure.com
+    apiVersions:
+    - v1api20250301
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - fleetsupdateruns
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-containerservice-azure-com-v1api20250301-fleetsupdatestrategy
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20250301.fleetsupdatestrategies.containerservice.azure.com
+  rules:
+  - apiGroups:
+    - containerservice.azure.com
+    apiVersions:
+    - v1api20250301
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - fleetsupdatestrategies
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-containerservice-azure-com-v1api20250801-maintenanceconfiguration
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20250801.maintenanceconfigurations.containerservice.azure.com
+  rules:
+  - apiGroups:
+    - containerservice.azure.com
+    apiVersions:
+    - v1api20250801
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - maintenanceconfigurations
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-containerservice-azure-com-v1api20250801-managedcluster
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20250801.managedclusters.containerservice.azure.com
+  rules:
+  - apiGroups:
+    - containerservice.azure.com
+    apiVersions:
+    - v1api20250801
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - managedclusters
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-containerservice-azure-com-v1api20250801-managedclustersagentpool
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20250801.managedclustersagentpools.containerservice.azure.com
+  rules:
+  - apiGroups:
+    - containerservice.azure.com
+    apiVersions:
+    - v1api20250801
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - managedclustersagentpools
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-containerservice-azure-com-v1api20250801-trustedaccessrolebinding
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20250801.trustedaccessrolebindings.containerservice.azure.com
+  rules:
+  - apiGroups:
+    - containerservice.azure.com
+    apiVersions:
+    - v1api20250801
     operations:
     - CREATE
     - UPDATE
@@ -3862,6 +4618,48 @@ webhooks:
     service:
       name: azureserviceoperator-webhook-service
       namespace: '{{ .Release.Namespace }}'
+      path: /mutate-documentdb-azure-com-v1api20240701-firewallrule
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20240701.firewallrules.documentdb.azure.com
+  rules:
+  - apiGroups:
+    - documentdb.azure.com
+    apiVersions:
+    - v1api20240701
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - firewallrules
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-documentdb-azure-com-v1api20240701-mongocluster
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20240701.mongoclusters.documentdb.azure.com
+  rules:
+  - apiGroups:
+    - documentdb.azure.com
+    apiVersions:
+    - v1api20240701
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - mongoclusters
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
       path: /mutate-documentdb-azure-com-v1api20240815-databaseaccount
   failurePolicy: Fail
   matchPolicy: Exact
@@ -3960,6 +4758,27 @@ webhooks:
     - UPDATE
     resources:
     - mongodbdatabasethroughputsettings
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-documentdb-azure-com-v1api20240815-mongodbroledefinition
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20240815.mongodbroledefinitions.documentdb.azure.com
+  rules:
+  - apiGroups:
+    - documentdb.azure.com
+    apiVersions:
+    - v1api20240815
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - mongodbroledefinitions
   sideEffects: None
 - admissionReviewVersions:
   - v1
@@ -4149,6 +4968,27 @@ webhooks:
     - UPDATE
     resources:
     - sqlroleassignments
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-entra-azure-com-v1-securitygroup
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1.securitygroups.entra.azure.com
+  rules:
+  - apiGroups:
+    - entra.azure.com
+    apiVersions:
+    - v1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - securitygroups
   sideEffects: None
 - admissionReviewVersions:
   - v1
@@ -4450,6 +5290,27 @@ webhooks:
     service:
       name: azureserviceoperator-webhook-service
       namespace: '{{ .Release.Namespace }}'
+      path: /mutate-insights-azure-com-v1api20171001-pricingplan
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20171001.pricingplans.insights.azure.com
+  rules:
+  - apiGroups:
+    - insights.azure.com
+    apiVersions:
+    - v1api20171001
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - pricingplans
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
       path: /mutate-insights-azure-com-v1api20180301-metricalert
   failurePolicy: Fail
   matchPolicy: Exact
@@ -4506,6 +5367,27 @@ webhooks:
     - UPDATE
     resources:
     - components
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-insights-azure-com-v1api20201001-activitylogalert
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20201001.activitylogalerts.insights.azure.com
+  rules:
+  - apiGroups:
+    - insights.azure.com
+    apiVersions:
+    - v1api20201001
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - activitylogalerts
   sideEffects: None
 - admissionReviewVersions:
   - v1
@@ -4611,6 +5493,90 @@ webhooks:
     - UPDATE
     resources:
     - actiongroups
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-insights-azure-com-v1api20230311-datacollectionendpoint
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20230311.datacollectionendpoints.insights.azure.com
+  rules:
+  - apiGroups:
+    - insights.azure.com
+    apiVersions:
+    - v1api20230311
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - datacollectionendpoints
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-insights-azure-com-v1api20230311-datacollectionruleassociation
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20230311.datacollectionruleassociations.insights.azure.com
+  rules:
+  - apiGroups:
+    - insights.azure.com
+    apiVersions:
+    - v1api20230311
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - datacollectionruleassociations
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-insights-azure-com-v1api20230311-datacollectionrule
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20230311.datacollectionrules.insights.azure.com
+  rules:
+  - apiGroups:
+    - insights.azure.com
+    apiVersions:
+    - v1api20230311
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - datacollectionrules
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-insights-azure-com-v1api20230601-workbook
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20230601.workbooks.insights.azure.com
+  rules:
+  - apiGroups:
+    - insights.azure.com
+    apiVersions:
+    - v1api20230601
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - workbooks
   sideEffects: None
 - admissionReviewVersions:
   - v1
@@ -4821,6 +5787,90 @@ webhooks:
     - UPDATE
     resources:
     - dataconnections
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-kusto-azure-com-v1api20240413-cluster
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20240413.clusters.kusto.azure.com
+  rules:
+  - apiGroups:
+    - kusto.azure.com
+    apiVersions:
+    - v1api20240413
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - clusters
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-kusto-azure-com-v1api20240413-database
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20240413.databases.kusto.azure.com
+  rules:
+  - apiGroups:
+    - kusto.azure.com
+    apiVersions:
+    - v1api20240413
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - databases
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-kusto-azure-com-v1api20240413-dataconnection
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20240413.dataconnections.kusto.azure.com
+  rules:
+  - apiGroups:
+    - kusto.azure.com
+    apiVersions:
+    - v1api20240413
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - dataconnections
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-kusto-azure-com-v1api20240413-principalassignment
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20240413.principalassignments.kusto.azure.com
+  rules:
+  - apiGroups:
+    - kusto.azure.com
+    apiVersions:
+    - v1api20240413
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - principalassignments
   sideEffects: None
 - admissionReviewVersions:
   - v1
@@ -6151,6 +7201,27 @@ webhooks:
     service:
       name: azureserviceoperator-webhook-service
       namespace: '{{ .Release.Namespace }}'
+      path: /mutate-network-azure-com-v1api20240301-azurefirewall
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20240301.azurefirewalls.network.azure.com
+  rules:
+  - apiGroups:
+    - network.azure.com
+    apiVersions:
+    - v1api20240301
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - azurefirewalls
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
       path: /mutate-network-azure-com-v1api20240301-bastionhost
   failurePolicy: Fail
   matchPolicy: Exact
@@ -6165,6 +7236,48 @@ webhooks:
     - UPDATE
     resources:
     - bastionhosts
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-network-azure-com-v1api20240301-firewallpolicy
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20240301.firewallpolicies.network.azure.com
+  rules:
+  - apiGroups:
+    - network.azure.com
+    apiVersions:
+    - v1api20240301
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - firewallpolicies
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-network-azure-com-v1api20240301-firewallpoliciesrulecollectiongroup
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20240301.firewallpoliciesrulecollectiongroups.network.azure.com
+  rules:
+  - apiGroups:
+    - network.azure.com
+    apiVersions:
+    - v1api20240301
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - firewallpoliciesrulecollectiongroups
   sideEffects: None
 - admissionReviewVersions:
   - v1
@@ -6718,6 +7831,48 @@ webhooks:
     service:
       name: azureserviceoperator-webhook-service
       namespace: '{{ .Release.Namespace }}'
+      path: /mutate-network-azure-com-v1api20241001-networkwatcher
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20241001.networkwatchers.network.azure.com
+  rules:
+  - apiGroups:
+    - network.azure.com
+    apiVersions:
+    - v1api20241001
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - networkwatchers
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-network-azure-com-v1api20241001-networkwatchersflowlog
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20241001.networkwatchersflowlogs.network.azure.com
+  rules:
+  - apiGroups:
+    - network.azure.com
+    apiVersions:
+    - v1api20241001
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - networkwatchersflowlogs
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
       path: /mutate-notificationhubs-azure-com-v1api20230901-namespace
   failurePolicy: Fail
   matchPolicy: Exact
@@ -6823,6 +7978,27 @@ webhooks:
     service:
       name: azureserviceoperator-webhook-service
       namespace: '{{ .Release.Namespace }}'
+      path: /mutate-quota-azure-com-v1api20250901-quota
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20250901.quotas.quota.azure.com
+  rules:
+  - apiGroups:
+    - quota.azure.com
+    apiVersions:
+    - v1api20250901
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - quotas
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
       path: /mutate-redhatopenshift-azure-com-v1api20231122-openshiftcluster
   failurePolicy: Fail
   matchPolicy: Exact
@@ -6874,6 +8050,27 @@ webhooks:
     - search.azure.com
     apiVersions:
     - v1api20220901
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - searchservices
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: azureserviceoperator-webhook-service
+      namespace: '{{ .Release.Namespace }}'
+      path: /mutate-search-azure-com-v1api20231101-searchservice
+  failurePolicy: Fail
+  matchPolicy: Exact
+  name: default.v1api20231101.searchservices.search.azure.com
+  rules:
+  - apiGroups:
+    - search.azure.com
+    apiVersions:
+    - v1api20231101
     operations:
     - CREATE
     - UPDATE

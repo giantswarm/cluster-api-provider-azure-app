@@ -1,11 +1,11 @@
 - op: replace
-  path: /spec/versions/7/schema
+  path: /spec/versions/9/schema
   value:
     openAPIV3Schema:
       description: |-
-        Storage version of v1api20231102preview.ManagedClustersAgentPool
+        Storage version of v1api20250801.ManagedClustersAgentPool
         Generator information:
-        - Generated from: /containerservice/resource-manager/Microsoft.ContainerService/aks/preview/2023-11-02-preview/managedClusters.json
+        - Generated from: /containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2025-08-01/managedClusters.json
         - ARM URI: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}
       properties:
         apiVersion:
@@ -26,7 +26,7 @@
         metadata:
           type: object
         spec:
-          description: Storage version of v1api20231102preview.ManagedClustersAgentPool_Spec
+          description: Storage version of v1api20250801.ManagedClustersAgentPool_Spec
           properties:
             $propertyBag:
               additionalProperties:
@@ -34,19 +34,6 @@
               description: |-
                 PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
                 resources, allowing for full fidelity round trip conversions
-              type: object
-            artifactStreamingProfile:
-              description: Storage version of v1api20231102preview.AgentPoolArtifactStreamingProfile
-              properties:
-                $propertyBag:
-                  additionalProperties:
-                    type: string
-                  description: |-
-                    PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
-                    resources, allowing for full fidelity round trip conversions
-                  type: object
-                enabled:
-                  type: boolean
               type: object
             availabilityZones:
               items:
@@ -80,7 +67,9 @@
             count:
               type: integer
             creationData:
-              description: Storage version of v1api20231102preview.CreationData
+              description: |-
+                Storage version of v1api20250801.CreationData
+                Data used when creating a target resource from a source resource.
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -90,7 +79,7 @@
                     resources, allowing for full fidelity round trip conversions
                   type: object
                 sourceResourceReference:
-                  description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
+                  description: 'SourceResourceReference: This is the ARM ID of the source object to be used to create the target object.'
                   properties:
                     armId:
                       description: |-
@@ -112,8 +101,6 @@
               type: object
             enableAutoScaling:
               type: boolean
-            enableCustomCATrust:
-              type: boolean
             enableEncryptionAtHost:
               type: boolean
             enableFIPS:
@@ -122,10 +109,10 @@
               type: boolean
             enableUltraSSD:
               type: boolean
-            gpuInstanceProfile:
-              type: string
-            gpuProfile:
-              description: Storage version of v1api20231102preview.AgentPoolGPUProfile
+            gatewayProfile:
+              description: |-
+                Storage version of v1api20250801.AgentPoolGatewayProfile
+                Profile of the managed cluster gateway agent pool.
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -134,12 +121,30 @@
                     PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
                     resources, allowing for full fidelity round trip conversions
                   type: object
-                installGPUDriver:
-                  type: boolean
+                publicIPPrefixSize:
+                  type: integer
+              type: object
+            gpuInstanceProfile:
+              type: string
+            gpuProfile:
+              description: |-
+                Storage version of v1api20250801.GPUProfile
+                GPU settings for the Agent Pool.
+              properties:
+                $propertyBag:
+                  additionalProperties:
+                    type: string
+                  description: |-
+                    PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                    resources, allowing for full fidelity round trip conversions
+                  type: object
+                driver:
+                  type: string
               type: object
             hostGroupReference:
               description: |-
-                HostGroupReference: This is of the form:
+                HostGroupReference: The fully qualified resource ID of the Dedicated Host Group to provision virtual machines from, used
+                only in creation scenario and not allowed to changed once set. This is of the form:
                 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}.
                 For more information see [Azure dedicated hosts](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts).
               properties:
@@ -161,7 +166,10 @@
                   type: string
               type: object
             kubeletConfig:
-              description: Storage version of v1api20231102preview.KubeletConfig
+              description: |-
+                Storage version of v1api20250801.KubeletConfig
+                Kubelet configurations of agent nodes. See [AKS custom node
+                configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -198,7 +206,10 @@
             kubeletDiskType:
               type: string
             linuxOSConfig:
-              description: Storage version of v1api20231102preview.LinuxOSConfig
+              description: |-
+                Storage version of v1api20250801.LinuxOSConfig
+                OS configurations of Linux agent nodes. See [AKS custom node
+                configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -210,7 +221,9 @@
                 swapFileSizeMB:
                   type: integer
                 sysctls:
-                  description: Storage version of v1api20231102preview.SysctlConfig
+                  description: |-
+                    Storage version of v1api20250801.SysctlConfig
+                    Sysctl settings for Linux agent nodes.
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -292,7 +305,9 @@
             mode:
               type: string
             networkProfile:
-              description: Storage version of v1api20231102preview.AgentPoolNetworkProfile
+              description: |-
+                Storage version of v1api20250801.AgentPoolNetworkProfile
+                Network settings of an agent pool.
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -303,7 +318,9 @@
                   type: object
                 allowedHostPorts:
                   items:
-                    description: Storage version of v1api20231102preview.PortRange
+                    description: |-
+                      Storage version of v1api20250801.PortRange
+                      The port range.
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -344,7 +361,9 @@
                   type: array
                 nodePublicIPTags:
                   items:
-                    description: Storage version of v1api20231102preview.IPTag
+                    description: |-
+                      Storage version of v1api20250801.IPTag
+                      Contains the IPTag associated with the object.
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -360,17 +379,13 @@
                     type: object
                   type: array
               type: object
-            nodeInitializationTaints:
-              items:
-                type: string
-              type: array
             nodeLabels:
               additionalProperties:
                 type: string
               type: object
             nodePublicIPPrefixReference:
               description: |-
-                NodePublicIPPrefixReference: This is of the form:
+                NodePublicIPPrefixReference: The public IP prefix ID which VM nodes should use IPs from. This is of the form:
                 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIPPrefixName}
               properties:
                 armId:
@@ -396,7 +411,7 @@
               type: array
             operatorSpec:
               description: |-
-                Storage version of v1api20231102preview.ManagedClustersAgentPoolOperatorSpec
+                Storage version of v1api20250801.ManagedClustersAgentPoolOperatorSpec
                 Details for configuring operator behavior. Fields in this struct are interpreted by the operator directly rather than being passed to Azure
               properties:
                 $propertyBag:
@@ -490,10 +505,12 @@
                   description: This is the name of the Kubernetes resource to reference.
                   type: string
               type: object
+            podIPAllocationMode:
+              type: string
             podSubnetReference:
               description: |-
-                PodSubnetReference: If omitted, pod IPs are statically assigned on the node subnet (see vnetSubnetID for more details).
-                This is of the form:
+                PodSubnetReference: The ID of the subnet which pods will join when launched. If omitted, pod IPs are statically assigned
+                on the node subnet (see vnetSubnetID for more details). This is of the form:
                 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
               properties:
                 armId:
@@ -514,7 +531,9 @@
                   type: string
               type: object
             powerState:
-              description: Storage version of v1api20231102preview.PowerState
+              description: |-
+                Storage version of v1api20250801.PowerState
+                Describes the Power State of the cluster
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -553,7 +572,9 @@
             scaleSetPriority:
               type: string
             securityProfile:
-              description: Storage version of v1api20231102preview.AgentPoolSecurityProfile
+              description: |-
+                Storage version of v1api20250801.AgentPoolSecurityProfile
+                The security settings of an agent pool.
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -578,7 +599,9 @@
             type:
               type: string
             upgradeSettings:
-              description: Storage version of v1api20231102preview.AgentPoolUpgradeSettings
+              description: |-
+                Storage version of v1api20250801.AgentPoolUpgradeSettings
+                Settings for upgrading an agentpool
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -591,12 +614,18 @@
                   type: integer
                 maxSurge:
                   type: string
+                maxUnavailable:
+                  type: string
                 nodeSoakDurationInMinutes:
                   type: integer
+                undrainableNodeBehavior:
+                  type: string
               type: object
             virtualMachineNodesStatus:
               items:
-                description: Storage version of v1api20231102preview.VirtualMachineNodes
+                description: |-
+                  Storage version of v1api20250801.VirtualMachineNodes
+                  Current status on a group of nodes of the same vm size.
                 properties:
                   $propertyBag:
                     additionalProperties:
@@ -612,7 +641,9 @@
                 type: object
               type: array
             virtualMachinesProfile:
-              description: Storage version of v1api20231102preview.VirtualMachinesProfile
+              description: |-
+                Storage version of v1api20250801.VirtualMachinesProfile
+                Specifications on VirtualMachines agent pool.
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -622,7 +653,9 @@
                     resources, allowing for full fidelity round trip conversions
                   type: object
                 scale:
-                  description: Storage version of v1api20231102preview.ScaleProfile
+                  description: |-
+                    Storage version of v1api20250801.ScaleProfile
+                    Specifications on how to scale a VirtualMachines agent pool.
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -633,7 +666,9 @@
                       type: object
                     manual:
                       items:
-                        description: Storage version of v1api20231102preview.ManualScaleProfile
+                        description: |-
+                          Storage version of v1api20250801.ManualScaleProfile
+                          Specifications on number of machines.
                         properties:
                           $propertyBag:
                             additionalProperties:
@@ -644,10 +679,8 @@
                             type: object
                           count:
                             type: integer
-                          sizes:
-                            items:
-                              type: string
-                            type: array
+                          size:
+                            type: string
                         type: object
                       type: array
                   type: object
@@ -656,8 +689,9 @@
               type: string
             vnetSubnetReference:
               description: |-
-                VnetSubnetReference: If this is not specified, a VNET and subnet will be generated and used. If no podSubnetID is
-                specified, this applies to nodes and pods, otherwise it applies to just nodes. This is of the form:
+                VnetSubnetReference: The ID of the subnet which agent pool nodes and optionally pods will join on startup. If this is
+                not specified, a VNET and subnet will be generated and used. If no podSubnetID is specified, this applies to nodes and
+                pods, otherwise it applies to just nodes. This is of the form:
                 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
               properties:
                 armId:
@@ -678,7 +712,9 @@
                   type: string
               type: object
             windowsProfile:
-              description: Storage version of v1api20231102preview.AgentPoolWindowsProfile
+              description: |-
+                Storage version of v1api20250801.AgentPoolWindowsProfile
+                The Windows agent pool's specific profile.
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -696,7 +732,7 @@
             - owner
           type: object
         status:
-          description: Storage version of v1api20231102preview.ManagedClustersAgentPool_STATUS
+          description: Storage version of v1api20250801.ManagedClustersAgentPool_STATUS
           properties:
             $propertyBag:
               additionalProperties:
@@ -704,19 +740,6 @@
               description: |-
                 PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
                 resources, allowing for full fidelity round trip conversions
-              type: object
-            artifactStreamingProfile:
-              description: Storage version of v1api20231102preview.AgentPoolArtifactStreamingProfile_STATUS
-              properties:
-                $propertyBag:
-                  additionalProperties:
-                    type: string
-                  description: |-
-                    PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
-                    resources, allowing for full fidelity round trip conversions
-                  type: object
-                enabled:
-                  type: boolean
               type: object
             availabilityZones:
               items:
@@ -770,7 +793,9 @@
             count:
               type: integer
             creationData:
-              description: Storage version of v1api20231102preview.CreationData_STATUS
+              description: |-
+                Storage version of v1api20250801.CreationData_STATUS
+                Data used when creating a target resource from a source resource.
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -784,9 +809,9 @@
               type: object
             currentOrchestratorVersion:
               type: string
+            eTag:
+              type: string
             enableAutoScaling:
-              type: boolean
-            enableCustomCATrust:
               type: boolean
             enableEncryptionAtHost:
               type: boolean
@@ -796,10 +821,10 @@
               type: boolean
             enableUltraSSD:
               type: boolean
-            gpuInstanceProfile:
-              type: string
-            gpuProfile:
-              description: Storage version of v1api20231102preview.AgentPoolGPUProfile_STATUS
+            gatewayProfile:
+              description: |-
+                Storage version of v1api20250801.AgentPoolGatewayProfile_STATUS
+                Profile of the managed cluster gateway agent pool.
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -808,15 +833,35 @@
                     PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
                     resources, allowing for full fidelity round trip conversions
                   type: object
-                installGPUDriver:
-                  type: boolean
+                publicIPPrefixSize:
+                  type: integer
+              type: object
+            gpuInstanceProfile:
+              type: string
+            gpuProfile:
+              description: |-
+                Storage version of v1api20250801.GPUProfile_STATUS
+                GPU settings for the Agent Pool.
+              properties:
+                $propertyBag:
+                  additionalProperties:
+                    type: string
+                  description: |-
+                    PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                    resources, allowing for full fidelity round trip conversions
+                  type: object
+                driver:
+                  type: string
               type: object
             hostGroupID:
               type: string
             id:
               type: string
             kubeletConfig:
-              description: Storage version of v1api20231102preview.KubeletConfig_STATUS
+              description: |-
+                Storage version of v1api20250801.KubeletConfig_STATUS
+                Kubelet configurations of agent nodes. See [AKS custom node
+                configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -853,7 +898,10 @@
             kubeletDiskType:
               type: string
             linuxOSConfig:
-              description: Storage version of v1api20231102preview.LinuxOSConfig_STATUS
+              description: |-
+                Storage version of v1api20250801.LinuxOSConfig_STATUS
+                OS configurations of Linux agent nodes. See [AKS custom node
+                configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -865,7 +913,9 @@
                 swapFileSizeMB:
                   type: integer
                 sysctls:
-                  description: Storage version of v1api20231102preview.SysctlConfig_STATUS
+                  description: |-
+                    Storage version of v1api20250801.SysctlConfig_STATUS
+                    Sysctl settings for Linux agent nodes.
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -949,7 +999,9 @@
             name:
               type: string
             networkProfile:
-              description: Storage version of v1api20231102preview.AgentPoolNetworkProfile_STATUS
+              description: |-
+                Storage version of v1api20250801.AgentPoolNetworkProfile_STATUS
+                Network settings of an agent pool.
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -960,7 +1012,9 @@
                   type: object
                 allowedHostPorts:
                   items:
-                    description: Storage version of v1api20231102preview.PortRange_STATUS
+                    description: |-
+                      Storage version of v1api20250801.PortRange_STATUS
+                      The port range.
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -983,7 +1037,9 @@
                   type: array
                 nodePublicIPTags:
                   items:
-                    description: Storage version of v1api20231102preview.IPTag_STATUS
+                    description: |-
+                      Storage version of v1api20250801.IPTag_STATUS
+                      Contains the IPTag associated with the object.
                     properties:
                       $propertyBag:
                         additionalProperties:
@@ -1001,10 +1057,6 @@
               type: object
             nodeImageVersion:
               type: string
-            nodeInitializationTaints:
-              items:
-                type: string
-              type: array
             nodeLabels:
               additionalProperties:
                 type: string
@@ -1025,10 +1077,14 @@
               type: string
             osType:
               type: string
+            podIPAllocationMode:
+              type: string
             podSubnetID:
               type: string
             powerState:
-              description: Storage version of v1api20231102preview.PowerState_STATUS
+              description: |-
+                Storage version of v1api20250801.PowerState_STATUS
+                Describes the Power State of the cluster
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -1053,7 +1109,9 @@
             scaleSetPriority:
               type: string
             securityProfile:
-              description: Storage version of v1api20231102preview.AgentPoolSecurityProfile_STATUS
+              description: |-
+                Storage version of v1api20250801.AgentPoolSecurityProfile_STATUS
+                The security settings of an agent pool.
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -1071,6 +1129,99 @@
               type: object
             spotMaxPrice:
               type: number
+            status:
+              description: |-
+                Storage version of v1api20250801.AgentPoolStatus_STATUS
+                Contains read-only information about the Agent Pool.
+              properties:
+                $propertyBag:
+                  additionalProperties:
+                    type: string
+                  description: |-
+                    PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                    resources, allowing for full fidelity round trip conversions
+                  type: object
+                provisioningError:
+                  description: |-
+                    Storage version of v1api20250801.ErrorDetail_STATUS
+                    The error detail.
+                  properties:
+                    $propertyBag:
+                      additionalProperties:
+                        type: string
+                      description: |-
+                        PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                        resources, allowing for full fidelity round trip conversions
+                      type: object
+                    additionalInfo:
+                      items:
+                        description: |-
+                          Storage version of v1api20250801.ErrorAdditionalInfo_STATUS
+                          The resource management error additional info.
+                        properties:
+                          $propertyBag:
+                            additionalProperties:
+                              type: string
+                            description: |-
+                              PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                              resources, allowing for full fidelity round trip conversions
+                            type: object
+                          info:
+                            additionalProperties:
+                              x-kubernetes-preserve-unknown-fields: true
+                            type: object
+                          type:
+                            type: string
+                        type: object
+                      type: array
+                    code:
+                      type: string
+                    details:
+                      items:
+                        description: Storage version of v1api20250801.ErrorDetail_STATUS_Unrolled
+                        properties:
+                          $propertyBag:
+                            additionalProperties:
+                              type: string
+                            description: |-
+                              PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                              resources, allowing for full fidelity round trip conversions
+                            type: object
+                          additionalInfo:
+                            items:
+                              description: |-
+                                Storage version of v1api20250801.ErrorAdditionalInfo_STATUS
+                                The resource management error additional info.
+                              properties:
+                                $propertyBag:
+                                  additionalProperties:
+                                    type: string
+                                  description: |-
+                                    PropertyBag is an unordered set of stashed information that used for properties not directly supported by storage
+                                    resources, allowing for full fidelity round trip conversions
+                                  type: object
+                                info:
+                                  additionalProperties:
+                                    x-kubernetes-preserve-unknown-fields: true
+                                  type: object
+                                type:
+                                  type: string
+                              type: object
+                            type: array
+                          code:
+                            type: string
+                          message:
+                            type: string
+                          target:
+                            type: string
+                        type: object
+                      type: array
+                    message:
+                      type: string
+                    target:
+                      type: string
+                  type: object
+              type: object
             tags:
               additionalProperties:
                 type: string
@@ -1078,7 +1229,9 @@
             type:
               type: string
             upgradeSettings:
-              description: Storage version of v1api20231102preview.AgentPoolUpgradeSettings_STATUS
+              description: |-
+                Storage version of v1api20250801.AgentPoolUpgradeSettings_STATUS
+                Settings for upgrading an agentpool
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -1091,12 +1244,18 @@
                   type: integer
                 maxSurge:
                   type: string
+                maxUnavailable:
+                  type: string
                 nodeSoakDurationInMinutes:
                   type: integer
+                undrainableNodeBehavior:
+                  type: string
               type: object
             virtualMachineNodesStatus:
               items:
-                description: Storage version of v1api20231102preview.VirtualMachineNodes_STATUS
+                description: |-
+                  Storage version of v1api20250801.VirtualMachineNodes_STATUS
+                  Current status on a group of nodes of the same vm size.
                 properties:
                   $propertyBag:
                     additionalProperties:
@@ -1112,7 +1271,9 @@
                 type: object
               type: array
             virtualMachinesProfile:
-              description: Storage version of v1api20231102preview.VirtualMachinesProfile_STATUS
+              description: |-
+                Storage version of v1api20250801.VirtualMachinesProfile_STATUS
+                Specifications on VirtualMachines agent pool.
               properties:
                 $propertyBag:
                   additionalProperties:
@@ -1122,7 +1283,9 @@
                     resources, allowing for full fidelity round trip conversions
                   type: object
                 scale:
-                  description: Storage version of v1api20231102preview.ScaleProfile_STATUS
+                  description: |-
+                    Storage version of v1api20250801.ScaleProfile_STATUS
+                    Specifications on how to scale a VirtualMachines agent pool.
                   properties:
                     $propertyBag:
                       additionalProperties:
@@ -1133,7 +1296,9 @@
                       type: object
                     manual:
                       items:
-                        description: Storage version of v1api20231102preview.ManualScaleProfile_STATUS
+                        description: |-
+                          Storage version of v1api20250801.ManualScaleProfile_STATUS
+                          Specifications on number of machines.
                         properties:
                           $propertyBag:
                             additionalProperties:
@@ -1144,10 +1309,8 @@
                             type: object
                           count:
                             type: integer
-                          sizes:
-                            items:
-                              type: string
-                            type: array
+                          size:
+                            type: string
                         type: object
                       type: array
                   type: object
@@ -1157,7 +1320,9 @@
             vnetSubnetID:
               type: string
             windowsProfile:
-              description: Storage version of v1api20231102preview.AgentPoolWindowsProfile_STATUS
+              description: |-
+                Storage version of v1api20250801.AgentPoolWindowsProfile_STATUS
+                The Windows agent pool's specific profile.
               properties:
                 $propertyBag:
                   additionalProperties:
