@@ -46,7 +46,7 @@ spec:
         - --health-addr=:8081
         - --enable-leader-election
         - --v=2
-        - --crd-pattern=containerservice.azure.com/FleetsMember;containerservice.azure.com/MaintenanceConfiguration;containerservice.azure.com/ManagedCluster;containerservice.azure.com/ManagedClustersAgentPool;kubernetesconfiguration.azure.com/Extension;network.azure.com/BastionHost;network.azure.com/NatGateway;network.azure.com/PrivateEndpoint;network.azure.com/PrivateLinkService;network.azure.com/VirtualNetwork;network.azure.com/VirtualNetworksSubnet;resources.azure.com/ResourceGroup;${ADDITIONAL_ASO_CRDS:=resources.azure.com/ResourceGroup}
+        - --crd-pattern=containerservice.azure.com/FleetsMember;containerservice.azure.com/MaintenanceConfiguration;containerservice.azure.com/ManagedCluster;containerservice.azure.com/ManagedClustersAgentPool;kubernetesconfiguration.azure.com/Extension;network.azure.com/BastionHost;network.azure.com/NatGateway;network.azure.com/PrivateEndpoint;network.azure.com/PrivateLinkService;network.azure.com/VirtualNetwork;network.azure.com/VirtualNetworksSubnet;resources.azure.com/ResourceGroup;$(ADDITIONAL_ASO_CRDS)
         - --webhook-port=9443
         - --webhook-cert-dir=/tmp/k8s-webhook-server/serving-certs
         env:
