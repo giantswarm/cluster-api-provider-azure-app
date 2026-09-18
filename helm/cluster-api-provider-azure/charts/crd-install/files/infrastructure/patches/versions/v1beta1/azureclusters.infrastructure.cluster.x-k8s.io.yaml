@@ -553,6 +553,18 @@
                 apiServerLB:
                   description: APIServerLB is the configuration for the control-plane load balancer.
                   properties:
+                    availabilityZones:
+                      description: |-
+                        AvailabilityZones is a list of availability zones for the load balancer.
+                        When specified for an internal load balancer, the frontend IP configuration
+                        will be zone-redundant across the specified zones.
+                        For public load balancers, this should be set on the associated public IP addresses instead.
+                      items:
+                        pattern: ^[1-3]$
+                        type: string
+                      maxItems: 3
+                      type: array
+                      x-kubernetes-list-type: set
                     backendPool:
                       description: BackendPool describes the backend pool of the load balancer.
                       properties:
@@ -616,9 +628,11 @@
                     name:
                       type: string
                     privateLinks:
-                      description: PrivateLinks to the load balancer (max 8 private links).
+                      description: |-
+                        PrivateLinks to the load balancer (max 8 private links).
+                        Only supported on the API server load balancer.
                       items:
-                        description: PrivateLink configures an Azure Private Link Service.
+                        description: PrivateLink configures an Azure private link.
                         properties:
                           allowedSubscriptions:
                             description: AllowedSubscriptions is a list of subscriptions from which the private link can be accessed.
@@ -643,14 +657,18 @@
                               type: string
                             type: array
                           name:
-                            description: Name of the Azure Private Link Service resource.
+                            description: Name of the private link.
                             type: string
-                          natIpConfigurations:
+                          natIPConfigurations:
                             description: NATIPConfigurations specify up to 8 NAT IP configurations for the private link.
                             items:
-                              description: PrivateLinkNATIPConfiguration specifies NAT IP configuration for the private link service.
+                              description: PrivateLinkNATIPConfiguration specifies NAT IP configuration for the private link.
                               properties:
                                 allocationMethod:
+                                  description: 'AllocationMethod specifies how the private link NAT IPs are allocated: "Static" or "Dynamic".'
+                                  enum:
+                                    - Static
+                                    - Dynamic
                                   type: string
                                 privateIPAddress:
                                   type: string
@@ -664,7 +682,7 @@
                             type: array
                         required:
                           - lbFrontendIPConfigNames
-                          - natIpConfigurations
+                          - natIPConfigurations
                         type: object
                       type: array
                     sku:
@@ -679,6 +697,18 @@
                     ControlPlaneOutboundLB is the configuration for the control-plane outbound load balancer.
                     This is different from APIServerLB, and is used only in private clusters (optionally) for enabling outbound traffic.
                   properties:
+                    availabilityZones:
+                      description: |-
+                        AvailabilityZones is a list of availability zones for the load balancer.
+                        When specified for an internal load balancer, the frontend IP configuration
+                        will be zone-redundant across the specified zones.
+                        For public load balancers, this should be set on the associated public IP addresses instead.
+                      items:
+                        pattern: ^[1-3]$
+                        type: string
+                      maxItems: 3
+                      type: array
+                      x-kubernetes-list-type: set
                     backendPool:
                       description: BackendPool describes the backend pool of the load balancer.
                       properties:
@@ -742,9 +772,11 @@
                     name:
                       type: string
                     privateLinks:
-                      description: PrivateLinks to the load balancer (max 8 private links).
+                      description: |-
+                        PrivateLinks to the load balancer (max 8 private links).
+                        Only supported on the API server load balancer.
                       items:
-                        description: PrivateLink configures an Azure Private Link Service.
+                        description: PrivateLink configures an Azure private link.
                         properties:
                           allowedSubscriptions:
                             description: AllowedSubscriptions is a list of subscriptions from which the private link can be accessed.
@@ -769,14 +801,18 @@
                               type: string
                             type: array
                           name:
-                            description: Name of the Azure Private Link Service resource.
+                            description: Name of the private link.
                             type: string
-                          natIpConfigurations:
+                          natIPConfigurations:
                             description: NATIPConfigurations specify up to 8 NAT IP configurations for the private link.
                             items:
-                              description: PrivateLinkNATIPConfiguration specifies NAT IP configuration for the private link service.
+                              description: PrivateLinkNATIPConfiguration specifies NAT IP configuration for the private link.
                               properties:
                                 allocationMethod:
+                                  description: 'AllocationMethod specifies how the private link NAT IPs are allocated: "Static" or "Dynamic".'
+                                  enum:
+                                    - Static
+                                    - Dynamic
                                   type: string
                                 privateIPAddress:
                                   type: string
@@ -790,7 +826,7 @@
                             type: array
                         required:
                           - lbFrontendIPConfigNames
-                          - natIpConfigurations
+                          - natIPConfigurations
                         type: object
                       type: array
                     sku:
@@ -803,6 +839,18 @@
                 nodeOutboundLB:
                   description: NodeOutboundLB is the configuration for the node outbound load balancer.
                   properties:
+                    availabilityZones:
+                      description: |-
+                        AvailabilityZones is a list of availability zones for the load balancer.
+                        When specified for an internal load balancer, the frontend IP configuration
+                        will be zone-redundant across the specified zones.
+                        For public load balancers, this should be set on the associated public IP addresses instead.
+                      items:
+                        pattern: ^[1-3]$
+                        type: string
+                      maxItems: 3
+                      type: array
+                      x-kubernetes-list-type: set
                     backendPool:
                       description: BackendPool describes the backend pool of the load balancer.
                       properties:
@@ -866,9 +914,11 @@
                     name:
                       type: string
                     privateLinks:
-                      description: PrivateLinks to the load balancer (max 8 private links).
+                      description: |-
+                        PrivateLinks to the load balancer (max 8 private links).
+                        Only supported on the API server load balancer.
                       items:
-                        description: PrivateLink configures an Azure Private Link Service.
+                        description: PrivateLink configures an Azure private link.
                         properties:
                           allowedSubscriptions:
                             description: AllowedSubscriptions is a list of subscriptions from which the private link can be accessed.
@@ -893,14 +943,18 @@
                               type: string
                             type: array
                           name:
-                            description: Name of the Azure Private Link Service resource.
+                            description: Name of the private link.
                             type: string
-                          natIpConfigurations:
+                          natIPConfigurations:
                             description: NATIPConfigurations specify up to 8 NAT IP configurations for the private link.
                             items:
-                              description: PrivateLinkNATIPConfiguration specifies NAT IP configuration for the private link service.
+                              description: PrivateLinkNATIPConfiguration specifies NAT IP configuration for the private link.
                               properties:
                                 allocationMethod:
+                                  description: 'AllocationMethod specifies how the private link NAT IPs are allocated: "Static" or "Dynamic".'
+                                  enum:
+                                    - Static
+                                    - Dynamic
                                   type: string
                                 privateIPAddress:
                                   type: string
@@ -914,7 +968,7 @@
                             type: array
                         required:
                           - lbFrontendIPConfigNames
-                          - natIpConfigurations
+                          - natIPConfigurations
                         type: object
                       type: array
                     sku:

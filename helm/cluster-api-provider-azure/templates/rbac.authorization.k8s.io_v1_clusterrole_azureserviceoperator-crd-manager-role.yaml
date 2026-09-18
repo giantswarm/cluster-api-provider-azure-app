@@ -35,3 +35,21 @@ rules:
   - subjectaccessreviews
   verbs:
   - create
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - fleetsmembers.containerservice.azure.com
+  - maintenanceconfigurations.containerservice.azure.com
+  - managedclusters.containerservice.azure.com
+  - managedclustersagentpools.containerservice.azure.com
+  - extensions.kubernetesconfiguration.azure.com
+  - bastionhosts.network.azure.com
+  - natgateways.network.azure.com
+  - privateendpoints.network.azure.com
+  - virtualnetworks.network.azure.com
+  - virtualnetworkssubnets.network.azure.com
+  - resourcegroups.resources.azure.com
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - delete

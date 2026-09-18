@@ -5,6 +5,15 @@
         "aso": {
             "type": "object",
             "properties": {
+                "additionalCRDs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "resources.azure.com/ResourceGroup"
+                    ]
+                },
                 "image": {
                     "type": "object",
                     "properties": {
