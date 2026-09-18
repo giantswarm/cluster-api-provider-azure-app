@@ -3,7 +3,7 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     cert-manager.io/inject-ca-from: '{{ .Release.Namespace }}/azureserviceoperator-serving-cert'
-    controller-gen.kubebuilder.io/version: v0.16.3
+    controller-gen.kubebuilder.io/version: v0.17.3
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
     app.kubernetes.io/managed-by: '{{ .Release.Service }}'
@@ -28,6 +28,9 @@ spec:
         - v1
   group: containerservice.azure.com
   names:
+    categories:
+      - azure
+      - containerservice
     kind: FleetsMember
     listKind: FleetsMemberList
     plural: fleetsmembers
@@ -68,6 +71,44 @@ spec:
           name: Message
           type: string
       name: v1api20230315previewstorage
+      schema: {}
+      served: true
+      storage: false
+      subresources:
+        status: {}
+    - additionalPrinterColumns:
+        - jsonPath: .status.conditions[?(@.type=='Ready')].status
+          name: Ready
+          type: string
+        - jsonPath: .status.conditions[?(@.type=='Ready')].severity
+          name: Severity
+          type: string
+        - jsonPath: .status.conditions[?(@.type=='Ready')].reason
+          name: Reason
+          type: string
+        - jsonPath: .status.conditions[?(@.type=='Ready')].message
+          name: Message
+          type: string
+      name: v1api20250301
+      schema: {}
+      served: true
+      storage: false
+      subresources:
+        status: {}
+    - additionalPrinterColumns:
+        - jsonPath: .status.conditions[?(@.type=='Ready')].status
+          name: Ready
+          type: string
+        - jsonPath: .status.conditions[?(@.type=='Ready')].severity
+          name: Severity
+          type: string
+        - jsonPath: .status.conditions[?(@.type=='Ready')].reason
+          name: Reason
+          type: string
+        - jsonPath: .status.conditions[?(@.type=='Ready')].message
+          name: Message
+          type: string
+      name: v1api20250301storage
       schema: {}
       served: true
       storage: true

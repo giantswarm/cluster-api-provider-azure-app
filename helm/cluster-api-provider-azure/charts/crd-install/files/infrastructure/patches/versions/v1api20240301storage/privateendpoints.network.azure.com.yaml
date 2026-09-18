@@ -400,7 +400,7 @@
           type: object
         status:
           description: |-
-            Storage version of v1api20240301.PrivateEndpoint_STATUS_PrivateEndpoint_SubResourceEmbedded
+            Storage version of v1api20240301.PrivateEndpoint_STATUS
             Private endpoint resource.
           properties:
             $propertyBag:

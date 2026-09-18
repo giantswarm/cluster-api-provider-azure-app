@@ -3,7 +3,7 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     cert-manager.io/inject-ca-from: '{{ .Release.Namespace }}/azureserviceoperator-serving-cert'
-    controller-gen.kubebuilder.io/version: v0.16.3
+    controller-gen.kubebuilder.io/version: v0.17.3
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
     app.kubernetes.io/managed-by: '{{ .Release.Service }}'
@@ -26,6 +26,9 @@ spec:
         - v1
   group: insights.azure.com
   names:
+    categories:
+      - azure
+      - insights
     kind: DiagnosticSetting
     listKind: DiagnosticSettingList
     plural: diagnosticsettings

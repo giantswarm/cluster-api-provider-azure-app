@@ -3,7 +3,7 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     cert-manager.io/inject-ca-from: '{{ .Release.Namespace }}/azureserviceoperator-serving-cert'
-    controller-gen.kubebuilder.io/version: v0.16.3
+    controller-gen.kubebuilder.io/version: v0.17.3
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
     app.kubernetes.io/managed-by: '{{ .Release.Service }}'
@@ -28,6 +28,9 @@ spec:
         - v1
   group: containerservice.azure.com
   names:
+    categories:
+      - azure
+      - containerservice
     kind: ManagedClustersAgentPool
     listKind: ManagedClustersAgentPoolList
     plural: managedclustersagentpools
@@ -35,44 +38,6 @@ spec:
   preserveUnknownFields: false
   scope: Namespaced
   versions:
-    - additionalPrinterColumns:
-        - jsonPath: .status.conditions[?(@.type=='Ready')].status
-          name: Ready
-          type: string
-        - jsonPath: .status.conditions[?(@.type=='Ready')].severity
-          name: Severity
-          type: string
-        - jsonPath: .status.conditions[?(@.type=='Ready')].reason
-          name: Reason
-          type: string
-        - jsonPath: .status.conditions[?(@.type=='Ready')].message
-          name: Message
-          type: string
-      name: v1api20210501
-      schema: {}
-      served: true
-      storage: false
-      subresources:
-        status: {}
-    - additionalPrinterColumns:
-        - jsonPath: .status.conditions[?(@.type=='Ready')].status
-          name: Ready
-          type: string
-        - jsonPath: .status.conditions[?(@.type=='Ready')].severity
-          name: Severity
-          type: string
-        - jsonPath: .status.conditions[?(@.type=='Ready')].reason
-          name: Reason
-          type: string
-        - jsonPath: .status.conditions[?(@.type=='Ready')].message
-          name: Message
-          type: string
-      name: v1api20210501storage
-      schema: {}
-      served: true
-      storage: false
-      subresources:
-        status: {}
     - additionalPrinterColumns:
         - jsonPath: .status.conditions[?(@.type=='Ready')].status
           name: Ready
@@ -162,44 +127,6 @@ spec:
         - jsonPath: .status.conditions[?(@.type=='Ready')].message
           name: Message
           type: string
-      name: v1api20231102preview
-      schema: {}
-      served: true
-      storage: false
-      subresources:
-        status: {}
-    - additionalPrinterColumns:
-        - jsonPath: .status.conditions[?(@.type=='Ready')].status
-          name: Ready
-          type: string
-        - jsonPath: .status.conditions[?(@.type=='Ready')].severity
-          name: Severity
-          type: string
-        - jsonPath: .status.conditions[?(@.type=='Ready')].reason
-          name: Reason
-          type: string
-        - jsonPath: .status.conditions[?(@.type=='Ready')].message
-          name: Message
-          type: string
-      name: v1api20231102previewstorage
-      schema: {}
-      served: true
-      storage: false
-      subresources:
-        status: {}
-    - additionalPrinterColumns:
-        - jsonPath: .status.conditions[?(@.type=='Ready')].status
-          name: Ready
-          type: string
-        - jsonPath: .status.conditions[?(@.type=='Ready')].severity
-          name: Severity
-          type: string
-        - jsonPath: .status.conditions[?(@.type=='Ready')].reason
-          name: Reason
-          type: string
-        - jsonPath: .status.conditions[?(@.type=='Ready')].message
-          name: Message
-          type: string
       name: v1api20240402preview
       schema: {}
       served: true
@@ -258,6 +185,44 @@ spec:
           name: Message
           type: string
       name: v1api20240901storage
+      schema: {}
+      served: true
+      storage: false
+      subresources:
+        status: {}
+    - additionalPrinterColumns:
+        - jsonPath: .status.conditions[?(@.type=='Ready')].status
+          name: Ready
+          type: string
+        - jsonPath: .status.conditions[?(@.type=='Ready')].severity
+          name: Severity
+          type: string
+        - jsonPath: .status.conditions[?(@.type=='Ready')].reason
+          name: Reason
+          type: string
+        - jsonPath: .status.conditions[?(@.type=='Ready')].message
+          name: Message
+          type: string
+      name: v1api20250801
+      schema: {}
+      served: true
+      storage: false
+      subresources:
+        status: {}
+    - additionalPrinterColumns:
+        - jsonPath: .status.conditions[?(@.type=='Ready')].status
+          name: Ready
+          type: string
+        - jsonPath: .status.conditions[?(@.type=='Ready')].severity
+          name: Severity
+          type: string
+        - jsonPath: .status.conditions[?(@.type=='Ready')].reason
+          name: Reason
+          type: string
+        - jsonPath: .status.conditions[?(@.type=='Ready')].message
+          name: Message
+          type: string
+      name: v1api20250801storage
       schema: {}
       served: true
       storage: true

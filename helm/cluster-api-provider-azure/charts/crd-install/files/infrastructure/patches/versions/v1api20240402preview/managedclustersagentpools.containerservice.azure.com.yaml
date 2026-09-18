@@ -1,5 +1,5 @@
 - op: replace
-  path: /spec/versions/8/schema
+  path: /spec/versions/4/schema
   value:
     openAPIV3Schema:
       description: |-

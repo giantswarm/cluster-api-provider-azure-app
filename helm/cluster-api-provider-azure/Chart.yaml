@@ -8,11 +8,12 @@ version: 4.3.0
 # tag, please run `make generate` to update CRDs and other manifests.
 
 # Changes in this tag include upstream v1.23.x with additional:
-# * Giant Swarm README and GitHub Workflows (https://github.com/giantswarm/cluster-api-provider-azure/pull/123)
-# * Add Private Link support (https://github.com/giantswarm/cluster-api-provider-azure/pull/124)
-# * Fix RBAC for OwnerReferencesPermissionEnforcement feature (https://github.com/giantswarm/cluster-api-provider-azure/pull/125)
-# * Add DiagnosticSetting and Event Hub CRDs to ASO_CRDS (https://github.com/giantswarm/cluster-api-provider-azure/pull/127)
-appVersion: v1.23.0-gs-5b4414dd2
+# * Giant Swarm README and GitHub Workflows (https://github.com/giantswarm/cluster-api-provider-azure/pull/129)
+# * Add Private Link support (https://github.com/giantswarm/cluster-api-provider-azure/pull/130)
+# * Fix RBAC for OwnerReferencesPermissionEnforcement feature (https://github.com/giantswarm/cluster-api-provider-azure/pull/131)
+# * Add DiagnosticSetting and Event Hub CRDs to ASO_CRDS (https://github.com/giantswarm/cluster-api-provider-azure/pull/132)
+# * Don't specify rules in aggregated cluster role (https://github.com/giantswarm/cluster-api-provider-azure/pull/133)
+appVersion: v1.24.3-gs-0226b4d39
 home: https://github.com/giantswarm/cluster-api-provider-azure-app
 icon: https://s.giantswarm.io/app-icons/giantswarm/1/dark.svg
 annotations:

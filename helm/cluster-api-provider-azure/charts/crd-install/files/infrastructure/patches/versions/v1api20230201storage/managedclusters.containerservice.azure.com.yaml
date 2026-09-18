@@ -1,5 +1,5 @@
 - op: replace
-  path: /spec/versions/3/schema
+  path: /spec/versions/1/schema
   value:
     openAPIV3Schema:
       description: Storage version of v1api20230201.ManagedCluster
@@ -682,8 +682,42 @@
                     type: object
                   clientId:
                     type: string
+                  clientIdFromConfig:
+                    description: |-
+                      ConfigMapReference is a reference to a Kubernetes configmap and key in the same namespace as
+                      the resource it is on.
+                    properties:
+                      key:
+                        description: Key is the key in the Kubernetes configmap being referenced
+                        type: string
+                      name:
+                        description: |-
+                          Name is the name of the Kubernetes configmap being referenced.
+                          The configmap must be in the same namespace as the resource
+                        type: string
+                    required:
+                      - key
+                      - name
+                    type: object
                   objectId:
                     type: string
+                  objectIdFromConfig:
+                    description: |-
+                      ConfigMapReference is a reference to a Kubernetes configmap and key in the same namespace as
+                      the resource it is on.
+                    properties:
+                      key:
+                        description: Key is the key in the Kubernetes configmap being referenced
+                        type: string
+                      name:
+                        description: |-
+                          Name is the name of the Kubernetes configmap being referenced.
+                          The configmap must be in the same namespace as the resource
+                        type: string
+                    required:
+                      - key
+                      - name
+                    type: object
                   resourceReference:
                     description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
                     properties:
@@ -1240,8 +1274,42 @@
                             type: object
                           clientId:
                             type: string
+                          clientIdFromConfig:
+                            description: |-
+                              ConfigMapReference is a reference to a Kubernetes configmap and key in the same namespace as
+                              the resource it is on.
+                            properties:
+                              key:
+                                description: Key is the key in the Kubernetes configmap being referenced
+                                type: string
+                              name:
+                                description: |-
+                                  Name is the name of the Kubernetes configmap being referenced.
+                                  The configmap must be in the same namespace as the resource
+                                type: string
+                            required:
+                              - key
+                              - name
+                            type: object
                           objectId:
                             type: string
+                          objectIdFromConfig:
+                            description: |-
+                              ConfigMapReference is a reference to a Kubernetes configmap and key in the same namespace as
+                              the resource it is on.
+                            properties:
+                              key:
+                                description: Key is the key in the Kubernetes configmap being referenced
+                                type: string
+                              name:
+                                description: |-
+                                  Name is the name of the Kubernetes configmap being referenced.
+                                  The configmap must be in the same namespace as the resource
+                                type: string
+                            required:
+                              - key
+                              - name
+                            type: object
                           resourceReference:
                             description: ResourceReference represents a resource reference, either to a Kubernetes resource or directly to an Azure resource via ARMID
                             properties:

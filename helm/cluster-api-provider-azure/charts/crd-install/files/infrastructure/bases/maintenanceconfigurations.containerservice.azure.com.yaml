@@ -11,7 +11,9 @@ metadata:
     app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
     application.giantswarm.io/team: '{{ index .Chart.Annotations "application.giantswarm.io/team" }}'
     helm.sh/chart: cluster-api-provider-azure
-  name: namespacesauthorizationrules.eventhub.azure.com
+    visualizer.cluster.x-k8s.io: ""
+    visualizer.cluster.x-k8s.io/provider-type: infrastructure
+  name: maintenanceconfigurations.containerservice.azure.com
 spec:
   conversion:
     strategy: Webhook
@@ -24,15 +26,15 @@ spec:
           port: 443
       conversionReviewVersions:
         - v1
-  group: eventhub.azure.com
+  group: containerservice.azure.com
   names:
     categories:
       - azure
-      - eventhub
-    kind: NamespacesAuthorizationRule
-    listKind: NamespacesAuthorizationRuleList
-    plural: namespacesauthorizationrules
-    singular: namespacesauthorizationrule
+      - containerservice
+    kind: MaintenanceConfiguration
+    listKind: MaintenanceConfigurationList
+    plural: maintenanceconfigurations
+    singular: maintenanceconfiguration
   preserveUnknownFields: false
   scope: Namespaced
   versions:
@@ -49,7 +51,7 @@ spec:
         - jsonPath: .status.conditions[?(@.type=='Ready')].message
           name: Message
           type: string
-      name: v1api20211101
+      name: v1api20240901
       schema: {}
       served: true
       storage: false
@@ -68,7 +70,7 @@ spec:
         - jsonPath: .status.conditions[?(@.type=='Ready')].message
           name: Message
           type: string
-      name: v1api20211101storage
+      name: v1api20240901storage
       schema: {}
       served: true
       storage: false
@@ -87,7 +89,7 @@ spec:
         - jsonPath: .status.conditions[?(@.type=='Ready')].message
           name: Message
           type: string
-      name: v1api20240101
+      name: v1api20250801
       schema: {}
       served: true
       storage: false
@@ -106,7 +108,7 @@ spec:
         - jsonPath: .status.conditions[?(@.type=='Ready')].message
           name: Message
           type: string
-      name: v1api20240101storage
+      name: v1api20250801storage
       schema: {}
       served: true
       storage: true
