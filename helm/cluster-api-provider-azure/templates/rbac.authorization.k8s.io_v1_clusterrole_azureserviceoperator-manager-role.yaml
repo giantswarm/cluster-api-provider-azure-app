@@ -611,6 +611,7 @@ rules:
   - dbforpostgresql.azure.com
   resources:
   - flexibleservers
+  - flexibleserversadministrators
   - flexibleserversadvancedthreatprotectionsettings
   - flexibleserversbackups
   - flexibleserversconfigurations
@@ -631,6 +632,8 @@ rules:
   resources:
   - flexibleservers/finalizers
   - flexibleservers/status
+  - flexibleserversadministrators/finalizers
+  - flexibleserversadministrators/status
   - flexibleserversadvancedthreatprotectionsettings/finalizers
   - flexibleserversadvancedthreatprotectionsettings/status
   - flexibleserversbackups/finalizers

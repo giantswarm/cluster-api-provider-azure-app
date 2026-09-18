@@ -17,10 +17,9 @@ spec:
             weight: 10
       containers:
       - name: manager
-        # NOTE: --crd-pattern is deliberately NOT set here. Listing args in a
-        # strategic merge patch replaces the whole list, which would silently
-        # drop any arg upstream adds. It is patched by index instead, in
-        # patches/deployments/azureserviceoperator-crd-pattern.yaml.
+        env:
+        - name: ADDITIONAL_ASO_CRDS
+          value: '{{ join ";" .Values.aso.additionalCRDs }}'
         imagePullPolicy: IfNotPresent
         securityContext:
           runAsNonRoot: true

@@ -260,6 +260,7 @@ rules:
   - bastionhosts
   - natgateways
   - privateendpoints
+  - privatelinkservices
   - virtualnetworks
   - virtualnetworkssubnets
   verbs:
@@ -279,6 +280,8 @@ rules:
   - natgateways/status
   - privateendpoints/finalizers
   - privateendpoints/status
+  - privatelinkservices/finalizers
+  - privatelinkservices/status
   - virtualnetworks/finalizers
   - virtualnetworks/status
   - virtualnetworkssubnets/finalizers

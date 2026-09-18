@@ -9,6 +9,17 @@ image:
 
 # -- Azure Service Operator settings.
 aso:
+  # -- Additional ASO CRDs to deploy.
+  #
+  # See the reference documentation for the available resources:
+  # https://azure.github.io/azure-service-operator/reference/
+  additionalCRDs:
+  - eventhub.azure.com/Namespace
+  - eventhub.azure.com/NamespacesEventhub
+  - eventhub.azure.com/NamespacesAuthorizationRule
+  - eventhub.azure.com/NamespacesEventhubsConsumerGroup
+  - insights.azure.com/DiagnosticSetting
+
   # -- Image settings.
   image:
     # -- Image registry.
