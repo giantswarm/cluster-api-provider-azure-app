@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.4.0] - 2026-09-18
+
+### Changed
+
+- This release aggregates all changes from release candidate 4.4.0-rc.1.
+- Update `cluster-api-provider-azure` to `v1.24.3-gs-0226b4d39`.
+
 ## [4.4.0-rc.1] - 2026-09-18
 
 ### Changed
@@ -543,7 +550,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed label selector for webhook and manager services.
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v4.4.0-rc.1...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v4.4.0...HEAD
+[4.4.0]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v4.4.0-rc.1...v4.4.0
 [4.4.0-rc.1]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v4.3.0...v4.4.0-rc.1
 [4.3.0]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v4.2.3...v4.3.0
 [4.2.3]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v4.2.2...v4.2.3
