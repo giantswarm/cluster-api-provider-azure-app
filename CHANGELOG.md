@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## Changed
+
+- Update `cluster-api-provider-azure` to `v1.26.1-gs-9584f5149`.
+
 ## [4.5.2] - 2026-09-24
 
 ### Changed
