@@ -8,13 +8,11 @@ version: 4.5.2
 # tag, please run `make generate` to update CRDs and other manifests.
 
 # Changes in this tag include upstream v1.25.x with additional:
-# * Giant Swarm README and GitHub Workflows (https://github.com/giantswarm/cluster-api-provider-azure/pull/134)
-# * Add Private Link support (https://github.com/giantswarm/cluster-api-provider-azure/pull/135)
-# * Fix RBAC for OwnerReferencesPermissionEnforcement feature (https://github.com/giantswarm/cluster-api-provider-azure/pull/136)
-# * Work around compatibility issue with upstream private link patch (https://github.com/giantswarm/cluster-api-provider-azure/pull/137)
-#   * And follow-up to above (https://github.com/giantswarm/cluster-api-provider-azure/pull/138)
-#   * And another (https://github.com/giantswarm/cluster-api-provider-azure/pull/139)
-appVersion: v1.25.2-gs-770f5f05d
+# * Giant Swarm README and GitHub Workflows (https://github.com/giantswarm/cluster-api-provider-azure/pull/140)
+# * Add Private Link support (https://github.com/giantswarm/cluster-api-provider-azure/pull/141)
+# * Private Link Support Compat (https://github.com/giantswarm/cluster-api-provider-azure/pull/142)
+# * Fix RBAC for OwnerReferencesPermissionEnforcement feature (https://github.com/giantswarm/cluster-api-provider-azure/pull/143)
+appVersion: v1.26.1-gs-9584f5149
 home: https://github.com/giantswarm/cluster-api-provider-azure-app
 icon: https://s.giantswarm.io/app-icons/giantswarm/1/dark.svg
 annotations:
