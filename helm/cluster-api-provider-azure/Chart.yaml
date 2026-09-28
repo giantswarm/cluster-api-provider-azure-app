@@ -7,12 +7,11 @@ version: 4.6.0
 # release. Please include the short commit SHA in the tag name, such as `v1.22.0-gs-123abcd`. After changing this
 # tag, please run `make generate` to update CRDs and other manifests.
 
-# Changes in this tag include upstream v1.25.x with additional:
-# * Giant Swarm README and GitHub Workflows (https://github.com/giantswarm/cluster-api-provider-azure/pull/140)
-# * Add Private Link support (https://github.com/giantswarm/cluster-api-provider-azure/pull/141)
-# * Private Link Support Compat (https://github.com/giantswarm/cluster-api-provider-azure/pull/142)
-# * Fix RBAC for OwnerReferencesPermissionEnforcement feature (https://github.com/giantswarm/cluster-api-provider-azure/pull/143)
-appVersion: v1.26.1-gs-9584f5149
+# Changes in this tag include upstream v1.27.x with additional:
+# * Giant Swarm README and GitHub Workflows (https://github.com/giantswarm/cluster-api-provider-azure/pull/144)
+# * Private Link Support Compat (https://github.com/giantswarm/cluster-api-provider-azure/pull/145)
+# * Fix RBAC for OwnerReferencesPermissionEnforcement feature (https://github.com/giantswarm/cluster-api-provider-azure/pull/146)
+appVersion: v1.27.0-gs-e6e7f4f91
 home: https://github.com/giantswarm/cluster-api-provider-azure-app
 icon: https://s.giantswarm.io/app-icons/giantswarm/1/dark.svg
 annotations:

@@ -75,10 +75,20 @@ patches:
 
 # Mutating webhooks
 - path: patches/mutatingwebhooks/azureserviceoperator-mutating-webhook-configuration.yaml
+  target:
+    group: admissionregistration.k8s.io
+    version: v1
+    kind: MutatingWebhookConfiguration
+    name: azureserviceoperator-.*
 - path: patches/mutatingwebhooks/capz-mutating-webhook-configuration.yaml
 
 # Validating webhooks
 - path: patches/validatingwebhooks/azureserviceoperator-validating-webhook-configuration.yaml
+  target:
+    group: admissionregistration.k8s.io
+    version: v1
+    kind: ValidatingWebhookConfiguration
+    name: azureserviceoperator-.*
 - path: patches/validatingwebhooks/capz-validating-webhook-configuration.yaml
 
 # Pod Disruption Budgets
