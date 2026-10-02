@@ -10,8 +10,9 @@ version: 4.7.0
 # Changes in this tag include upstream v1.27.x with additional:
 # * Giant Swarm README and GitHub Workflows (https://github.com/giantswarm/cluster-api-provider-azure/pull/144)
 # * Private Link Support Compat (https://github.com/giantswarm/cluster-api-provider-azure/pull/145)
+#   * And a patch for the above (https://github.com/giantswarm/cluster-api-provider-azure/pull/147)
 # * Fix RBAC for OwnerReferencesPermissionEnforcement feature (https://github.com/giantswarm/cluster-api-provider-azure/pull/146)
-appVersion: v1.27.0-gs-e6e7f4f91
+appVersion: v1.27.0-gs-99647669a
 home: https://github.com/giantswarm/cluster-api-provider-azure-app
 icon: https://s.giantswarm.io/app-icons/giantswarm/1/dark.svg
 annotations:
