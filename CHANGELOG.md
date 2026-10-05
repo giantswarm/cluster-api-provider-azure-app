@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.7.2] - 2026-10-05
+
+### Fixed
+
+- Fix CI release process; no changes comnpared to 4.7.1.
+
 ## [4.7.1] - 2026-10-02
 
 ### Changed
@@ -625,7 +631,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed label selector for webhook and manager services.
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v4.7.1...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v4.7.2...HEAD
+[4.7.2]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v4.7.1...v4.7.2
 [4.7.1]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v4.7.0...v4.7.1
 [4.7.0]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v4.7.0-rc.1...v4.7.0
 [4.7.0-rc.1]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v4.6.0...v4.7.0-rc.1
