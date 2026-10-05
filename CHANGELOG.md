@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [4.7.2] - 2026-10-05
 
+### Fixed
+
+- Fix CI release process; no changes comnpared to 4.7.1.
+
 ## [4.7.1] - 2026-10-02
 
 ### Changed
