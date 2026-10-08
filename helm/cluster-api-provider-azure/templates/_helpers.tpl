@@ -37,3 +37,25 @@ Selector labels
 app.kubernetes.io/name: {{ include "cluster-api-provider-azure.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
+
+{{/*
+ASO CRDs that Giant Swarm requires on every installation,
+on top of the upstream CAPZ defaults in --crd-pattern.
+*/}}
+{{- define "cluster-api-provider-azure.aso.internalCRDs" -}}
+- eventhub.azure.com/Namespace
+- eventhub.azure.com/NamespacesEventhub
+- eventhub.azure.com/NamespacesAuthorizationRule
+- eventhub.azure.com/NamespacesEventhubsConsumerGroup
+- insights.azure.com/DiagnosticSetting
+{{- end }}
+
+{{/*
+Value of ADDITIONAL_ASO_CRDS: internal CRDs plus customer-provided aso.additionalCRDs.
+The internal list is never empty, so the result never yields an empty pattern segment,
+which would make ASO fail to start.
+*/}}
+{{- define "cluster-api-provider-azure.aso.additionalCRDs" -}}
+{{- $internal := include "cluster-api-provider-azure.aso.internalCRDs" . | fromYamlArray }}
+{{- concat $internal .Values.aso.additionalCRDs | uniq | join ";" }}
+{{- end }}

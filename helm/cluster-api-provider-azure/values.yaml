@@ -9,16 +9,17 @@ image:
 
 # -- Azure Service Operator settings.
 aso:
-  # -- Additional ASO CRDs to deploy.
+  # -- Additional ASO CRDs to deploy, in `<group>/<Kind>` format (e.g. `storage.azure.com/StorageAccount`).
+  # A wildcard is allowed in the Kind (e.g. `storage.azure.com/*`), but not in the group.
+  #
+  # These are added to the CRDs that are always deployed, which cannot be removed.
+  # An entry that does not match any CRD in the deployed ASO version makes ASO fail to start.
+  # Removing an entry neither uninstalls the CRD nor stops ASO from reconciling its resources;
+  # delete the CRD manually if it is no longer needed.
   #
   # See the reference documentation for the available resources:
   # https://azure.github.io/azure-service-operator/reference/
-  additionalCRDs:
-  - eventhub.azure.com/Namespace
-  - eventhub.azure.com/NamespacesEventhub
-  - eventhub.azure.com/NamespacesAuthorizationRule
-  - eventhub.azure.com/NamespacesEventhubsConsumerGroup
-  - insights.azure.com/DiagnosticSetting
+  additionalCRDs: []
 
   # -- Image settings.
   image:

@@ -51,7 +51,7 @@ spec:
         - --webhook-cert-dir=/tmp/k8s-webhook-server/serving-certs
         env:
         - name: ADDITIONAL_ASO_CRDS
-          value: '{{ join ";" .Values.aso.additionalCRDs }}'
+          value: '{{ include "cluster-api-provider-azure.aso.additionalCRDs" . }}'
         - name: GOMEMLIMIT
           value: 400MiB
         - name: AZURE_CLIENT_ID
