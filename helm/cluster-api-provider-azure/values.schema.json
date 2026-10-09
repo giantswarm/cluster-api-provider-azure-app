@@ -8,11 +8,9 @@
                 "additionalCRDs": {
                     "type": "array",
                     "items": {
-                        "type": "string"
-                    },
-                    "default": [
-                        "resources.azure.com/ResourceGroup"
-                    ]
+                        "type": "string",
+                        "pattern": "^[a-z0-9-]+(\\.[a-z0-9-]+)*\\.azure\\.com/[A-Za-z0-9*?]+$"
+                    }
                 },
                 "image": {
                     "type": "object",

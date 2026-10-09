@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- `aso.additionalCRDs` is now meant for customers and defaults to an empty list. Its entries are added to the ASO CRDs that are always deployed instead of replacing them, and are validated to be in `<group>.azure.com/<Kind>` format.
+
+### Fixed
+
+- Remove the stale default for `aso.additionalCRDs` from the values schema.
+
 ## [4.7.2] - 2026-10-05
 
 ### Fixed
