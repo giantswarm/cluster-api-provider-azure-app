@@ -19,7 +19,7 @@ spec:
       - name: manager
         env:
         - name: ADDITIONAL_ASO_CRDS
-          value: '{{ join ";" .Values.aso.additionalCRDs }}'
+          value: '{{ include "cluster-api-provider-azure.aso.additionalCRDs" . }}'
         imagePullPolicy: IfNotPresent
         securityContext:
           runAsNonRoot: true
