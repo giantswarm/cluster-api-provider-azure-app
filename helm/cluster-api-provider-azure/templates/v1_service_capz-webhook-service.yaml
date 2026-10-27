@@ -14,11 +14,7 @@ metadata:
   namespace: '{{ .Release.Namespace }}'
 spec:
   ports:
-  - name: webhook-server
-    port: 443
+  - port: 443
     targetPort: webhook-server
-  - name: metrics
-    port: 8080
-    targetPort: metrics
   selector:
     cluster.x-k8s.io/provider: infrastructure-azure
