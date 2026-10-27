@@ -4,8 +4,8 @@ metadata:
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
     app.kubernetes.io/managed-by: '{{ .Release.Service }}'
-    app.kubernetes.io/name: cluster-api-provider-azure
-    app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
+    app.kubernetes.io/name: azure-service-operator
+    app.kubernetes.io/version: v2.19.0
     application.giantswarm.io/team: '{{ index .Chart.Annotations "application.giantswarm.io/team"
       }}'
     helm.sh/chart: cluster-api-provider-azure
