@@ -6,8 +6,6 @@ resources:
 - bases/infrastructure-components.yaml
 # Secrets
 - bases/secrets/cluster-api-provider-azure-ssh-sso-pub-key.yaml
-# Services
-- bases/services/capz-controller-manager-metrics.yaml
 # Service Monitors
 - bases/servicemonitors/azureserviceoperator-controller-manager.yaml
 - bases/servicemonitors/capz-controller-manager.yaml
@@ -98,6 +96,7 @@ patches:
     version: v1
     kind: Service
     labelSelector: app.kubernetes.io/name=azure-service-operator
+- path: patches/services/capz-webhook-service.yaml
 
 # Mutating webhooks
 - path: patches/mutatingwebhooks/azureserviceoperator-mutating-webhook-configuration.yaml
