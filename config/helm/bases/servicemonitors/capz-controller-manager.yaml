@@ -10,4 +10,4 @@ spec:
   - port: metrics
   selector:
     matchLabels:
-      cluster.x-k8s.io/provider: infrastructure-azure
+      app.kubernetes.io/name: cluster-api-provider-azure

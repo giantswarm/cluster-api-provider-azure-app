@@ -15,7 +15,9 @@ metadata:
   namespace: '{{ .Release.Namespace }}'
 spec:
   endpoints:
-  - port: metrics
+  - path: /metrics
+    port: metrics
+    scheme: https
   selector:
     matchLabels:
       app.kubernetes.io/name: azure-service-operator
