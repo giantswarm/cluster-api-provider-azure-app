@@ -1,0 +1,13 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: capz-controller-manager
+  labels:
+    cluster.x-k8s.io/provider: infrastructure-azure
+    observability.giantswarm.io/tenant: giantswarm
+spec:
+  endpoints:
+  - port: metrics
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: cluster-api-provider-azure

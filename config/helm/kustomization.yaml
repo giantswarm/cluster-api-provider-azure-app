@@ -6,6 +6,9 @@ resources:
 - bases/infrastructure-components.yaml
 # Secrets
 - bases/secrets/cluster-api-provider-azure-ssh-sso-pub-key.yaml
+# Service Monitors
+- bases/servicemonitors/azureserviceoperator-controller-manager.yaml
+- bases/servicemonitors/capz-controller-manager.yaml
 
 namespace: "{{ .Release.Namespace }}"
 
@@ -13,9 +16,7 @@ labels:
 # Common labels
 - pairs:
     helm.sh/chart: cluster-api-provider-azure
-    app.kubernetes.io/name: cluster-api-provider-azure
     app.kubernetes.io/instance: "{{ .Release.Name }}"
-    app.kubernetes.io/version: "{{ .Chart.AppVersion }}"
     app.kubernetes.io/managed-by: "{{ .Release.Service }}"
     application.giantswarm.io/team: "{{ index .Chart.Annotations \"application.giantswarm.io/team\" }}"
 
@@ -33,6 +34,30 @@ transformers:
 - patches/mutatingwebhooks/zzz-prefix.yaml
 
 patches:
+# All resources without an `app.kubernetes.io/name` label.
+# Mainly for keeping the labels on ASO resources intact.
+- target:
+    labelSelector: "!app.kubernetes.io/name"
+  patch: |-
+    apiVersion: v1
+    kind: Ignored
+    metadata:
+      name: ignored
+      labels:
+        app.kubernetes.io/name: cluster-api-provider-azure
+
+# All resources without an `app.kubernetes.io/version` label.
+# Mainly for keeping the labels on ASO resources intact.
+- target:
+    labelSelector: "!app.kubernetes.io/version"
+  patch: |-
+    apiVersion: v1
+    kind: Ignored
+    metadata:
+      name: ignored
+      labels:
+        app.kubernetes.io/version: "{{ .Chart.AppVersion }}"
+
 # CRDs
 - path: patches/crds/azureserviceoperator.yaml
   target:
