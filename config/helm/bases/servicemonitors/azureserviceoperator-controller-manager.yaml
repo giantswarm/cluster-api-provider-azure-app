@@ -16,7 +16,7 @@ spec:
         secret:
           name: aso-webhook-service-cert
           key: ca.crt
-      serverName: capz-webhook-service.{{ .Release.Namespace }}.svc
+      serverName: azureserviceoperator-controller-manager-metrics-service.{{ .Release.Namespace }}.svc
     authorization:
       type: Bearer
       credentials:

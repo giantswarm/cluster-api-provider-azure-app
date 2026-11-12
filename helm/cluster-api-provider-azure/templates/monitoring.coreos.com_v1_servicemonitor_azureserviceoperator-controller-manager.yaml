@@ -28,7 +28,8 @@ spec:
         secret:
           key: ca.crt
           name: aso-webhook-service-cert
-      serverName: capz-webhook-service.{{ .Release.Namespace }}.svc
+      serverName: azureserviceoperator-controller-manager-metrics-service.{{ .Release.Namespace
+        }}.svc
   selector:
     matchLabels:
       app.kubernetes.io/name: azure-service-operator
