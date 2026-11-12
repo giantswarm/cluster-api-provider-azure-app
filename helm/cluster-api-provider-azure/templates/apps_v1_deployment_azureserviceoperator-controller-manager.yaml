@@ -233,6 +233,9 @@ spec:
             port: 8081
           periodSeconds: 10
         volumeMounts:
+        - mountPath: /tmp/k8s-metrics-server/serving-certs
+          name: cert
+          readOnly: true
         - mountPath: /var/run/secrets/tokens
           name: azure-identity
           readOnly: true
