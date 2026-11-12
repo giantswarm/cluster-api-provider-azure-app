@@ -90,13 +90,6 @@ patches:
 
 # Deployments
 - path: patches/deployments/azureserviceoperator-controller-manager.yaml
-- patch: |-
-    - op: add
-      path: /spec/template/spec/containers/0/args/-
-      value: --metrics-cert-dir=/tmp/k8s-webhook-server/serving-certs
-  target:
-    kind: Deployment
-    name: azureserviceoperator-controller-manager
 - path: patches/deployments/capz-controller-manager.yaml
 
 # Services
