@@ -25,7 +25,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: azureserviceoperator-controller-manager-scrape
-  namespace: capz-system
+  namespace: "{{ .Release.Namespace }}"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole

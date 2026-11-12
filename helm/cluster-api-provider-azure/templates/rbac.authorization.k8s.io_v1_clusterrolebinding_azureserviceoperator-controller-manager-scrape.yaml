@@ -17,4 +17,4 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: azureserviceoperator-controller-manager-scrape
-  namespace: capz-system
+  namespace: '{{ .Release.Namespace }}'
