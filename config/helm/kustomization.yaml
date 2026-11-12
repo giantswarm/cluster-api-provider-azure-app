@@ -4,6 +4,8 @@ kind: Kustomization
 resources:
 # Cluster API Provider Azure components
 - bases/infrastructure-components.yaml
+# Metric Scrape Authentication
+- bases/scrape-auth.yaml
 # Secrets
 - bases/secrets/cluster-api-provider-azure-ssh-sso-pub-key.yaml
 # Service Monitors

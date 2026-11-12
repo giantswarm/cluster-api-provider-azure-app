@@ -12,7 +12,16 @@ spec:
     path: /metrics
     scheme: https
     tlsConfig:
-      insecureSkipVerify: true
+      ca:
+        secret:
+          name: aso-webhook-service-cert
+          key: ca.crt
+      serverName: capz-webhook-service.{{ .Release.Namespace }}.svc
+    authorization:
+      type: Bearer
+      credentials:
+        name: azureserviceoperator-controller-manager-scrape
+        key: token
   selector:
     matchLabels:
       app.kubernetes.io/name: azure-service-operator

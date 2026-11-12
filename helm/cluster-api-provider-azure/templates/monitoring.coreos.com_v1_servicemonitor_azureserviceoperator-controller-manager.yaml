@@ -15,11 +15,20 @@ metadata:
   namespace: '{{ .Release.Namespace }}'
 spec:
   endpoints:
-  - path: /metrics
+  - authorization:
+      credentials:
+        key: token
+        name: azureserviceoperator-controller-manager-scrape
+      type: Bearer
+    path: /metrics
     port: metrics
     scheme: https
     tlsConfig:
-      insecureSkipVerify: true
+      ca:
+        secret:
+          key: ca.crt
+          name: aso-webhook-service-cert
+      serverName: capz-webhook-service.{{ .Release.Namespace }}.svc
   selector:
     matchLabels:
       app.kubernetes.io/name: azure-service-operator
