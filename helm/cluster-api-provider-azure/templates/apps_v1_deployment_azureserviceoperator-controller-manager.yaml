@@ -4,8 +4,8 @@ metadata:
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
     app.kubernetes.io/managed-by: '{{ .Release.Service }}'
-    app.kubernetes.io/name: cluster-api-provider-azure
-    app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
+    app.kubernetes.io/name: azure-service-operator
+    app.kubernetes.io/version: v2.19.0
     application.giantswarm.io/team: '{{ index .Chart.Annotations "application.giantswarm.io/team"
       }}'
     control-plane: controller-manager
@@ -233,6 +233,9 @@ spec:
             port: 8081
           periodSeconds: 10
         volumeMounts:
+        - mountPath: /tmp/k8s-metrics-server/serving-certs
+          name: cert
+          readOnly: true
         - mountPath: /var/run/secrets/tokens
           name: azure-identity
           readOnly: true

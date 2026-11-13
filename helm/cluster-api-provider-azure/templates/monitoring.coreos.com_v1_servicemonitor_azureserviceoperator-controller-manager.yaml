@@ -1,0 +1,36 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app.kubernetes.io/instance: '{{ .Release.Name }}'
+    app.kubernetes.io/managed-by: '{{ .Release.Service }}'
+    app.kubernetes.io/name: azure-service-operator
+    app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
+    application.giantswarm.io/team: '{{ index .Chart.Annotations "application.giantswarm.io/team"
+      }}'
+    control-plane: controller-manager
+    helm.sh/chart: cluster-api-provider-azure
+    observability.giantswarm.io/tenant: giantswarm
+  name: azureserviceoperator-controller-manager
+  namespace: '{{ .Release.Namespace }}'
+spec:
+  endpoints:
+  - authorization:
+      credentials:
+        key: token
+        name: azureserviceoperator-controller-manager-scrape
+      type: Bearer
+    path: /metrics
+    port: metrics
+    scheme: https
+    tlsConfig:
+      ca:
+        secret:
+          key: ca.crt
+          name: aso-webhook-service-cert
+      serverName: azureserviceoperator-controller-manager-metrics-service.{{ .Release.Namespace
+        }}.svc
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: azure-service-operator
+      control-plane: controller-manager

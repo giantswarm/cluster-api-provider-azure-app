@@ -1,0 +1,28 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: azureserviceoperator-controller-manager
+  labels:
+    app.kubernetes.io/name: azure-service-operator
+    control-plane: controller-manager
+    observability.giantswarm.io/tenant: giantswarm
+spec:
+  endpoints:
+  - port: metrics
+    path: /metrics
+    scheme: https
+    tlsConfig:
+      ca:
+        secret:
+          name: aso-webhook-service-cert
+          key: ca.crt
+      serverName: azureserviceoperator-controller-manager-metrics-service.{{ .Release.Namespace }}.svc
+    authorization:
+      type: Bearer
+      credentials:
+        name: azureserviceoperator-controller-manager-scrape
+        key: token
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: azure-service-operator
+      control-plane: controller-manager

@@ -29,6 +29,10 @@ spec:
           capabilities:
             drop:
             - ALL
+        volumeMounts:
+        - name: cert
+          mountPath: /tmp/k8s-metrics-server/serving-certs
+          readOnly: true
       volumes:
       - name: cert
         secret:

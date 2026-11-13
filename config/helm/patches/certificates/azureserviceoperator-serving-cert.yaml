@@ -5,8 +5,14 @@ metadata:
   namespace: capz-system
 spec:
   dnsNames:
+  - azureserviceoperator-webhook-service
+  - azureserviceoperator-webhook-service.{{ .Release.Namespace }}
   - azureserviceoperator-webhook-service.{{ .Release.Namespace }}.svc
   - azureserviceoperator-webhook-service.{{ .Release.Namespace }}.svc.cluster.local
+  - azureserviceoperator-controller-manager-metrics-service
+  - azureserviceoperator-controller-manager-metrics-service.{{ .Release.Namespace }}
+  - azureserviceoperator-controller-manager-metrics-service.{{ .Release.Namespace }}.svc
+  - azureserviceoperator-controller-manager-metrics-service.{{ .Release.Namespace }}.svc.cluster.local
   issuerRef:
     group: cert-manager.io
     kind: ClusterIssuer

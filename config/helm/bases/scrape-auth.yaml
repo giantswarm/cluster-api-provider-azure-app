@@ -1,0 +1,40 @@
+# These resources setup authenticated access to Azure Service Operator's
+# /metrics endpoint. Team Atlas has an open issue to provide a more streamlined approach.
+# See: https://github.com/giantswarm/giantswarm/issues/38881
+# Once that issue is resolved, we can adopt the Atlas-provided approach and remove all this.
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: azureserviceoperator-controller-manager-scrape
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: azureserviceoperator-controller-manager-scrape
+rules:
+- nonResourceURLs:
+  - /metrics
+  verbs:
+  - get
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: azureserviceoperator-controller-manager-scrape
+subjects:
+- kind: ServiceAccount
+  name: azureserviceoperator-controller-manager-scrape
+  namespace: "{{ .Release.Namespace }}"
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: azureserviceoperator-controller-manager-scrape
+---
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/service-account-token
+metadata:
+  name: azureserviceoperator-controller-manager-scrape
+  annotations:
+    kubernetes.io/service-account.name: azureserviceoperator-controller-manager-scrape
