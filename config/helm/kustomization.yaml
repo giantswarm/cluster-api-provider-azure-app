@@ -30,6 +30,11 @@ images:
 # Azure Service Operator
 - name: mcr.microsoft.com/k8s/azureserviceoperator
   newName: "{{ .Values.aso.image.registry }}/{{ .Values.aso.image.name }}"
+  # Newer than the version Cluster API Provider Azure bundles (v2.19.0): from v2.21.0 on,
+  # ASO retries an AKS node pool that was upgraded together with its control plane
+  # (https://github.com/Azure/azure-service-operator/pull/5581). Remove once the bundled
+  # version is v2.21.0 or newer.
+  newTag: v2.21.1
 
 transformers:
 # Mutating webhooks
