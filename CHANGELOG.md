@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.0.0] - 2026-11-28
+
 ### Changed
 
 - Update Azure Service Operator from v2.19.0 to v2.21.1, ahead of the version Cluster API Provider Azure bundles. When an AKS control plane and its node pools are upgraded to a new Kubernetes version together, Azure rejects the node pool update until the control plane is done (`NodePoolMcVersionIncompatible`). ASO v2.19.0 retried that very slowly, so the node pool stayed on the old version long after the control plane had finished; from v2.21.0 on it requeues the node pool while the control plane upgrades.
@@ -646,7 +648,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed label selector for webhook and manager services.
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v4.8.0...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v5.0.0...HEAD
+[5.0.0]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v4.8.0...v5.0.0
 [4.8.0]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v4.7.2...v4.8.0
 [4.7.2]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v4.7.1...v4.7.2
 [4.7.1]: https://github.com/giantswarm/cluster-api-provider-azure-app/compare/v4.7.0...v4.7.1
