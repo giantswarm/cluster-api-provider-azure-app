@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Update Azure Service Operator from v2.19.0 to v2.21.1, ahead of the version Cluster API Provider Azure bundles. When an AKS control plane and its node pools are upgraded to a new Kubernetes version together, Azure rejects the node pool update until the control plane is done (`NodePoolMcVersionIncompatible`). ASO v2.19.0 retried that very slowly, so the node pool stayed on the old version long after the control plane had finished; from v2.21.0 on it requeues the node pool while the control plane upgrades.
+
 ## [4.8.0] - 2026-11-13
 
 ### Changed
